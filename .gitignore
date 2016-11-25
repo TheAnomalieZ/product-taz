@@ -1,3 +1,9 @@
 .idea/*
 *.iml
-*/target/*
+components/org.taz.commons/target/
+components/org.taz.core/target/
+components/org.taz.database/target/
+components/org.taz.restapi/target/
+distribution/target/
+
+
