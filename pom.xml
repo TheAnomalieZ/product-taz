@@ -17,13 +17,13 @@
     </modules>
     <dependencies>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>sl4j-simple</artifactId>
-            <version>${sl4j.simple.version}</version>
+   	  <groupId>org.slf4j</groupId>
+    	  <artifactId>slf4j-simple</artifactId>
+          <version>${sl4j.simple.version}</version>
         </dependency>
     </dependencies>
     <properties>
-        <sl4j.simple.version>1.6.1</sl4j.simple.version>
+        <sl4j.simple.version>1.7.21</sl4j.simple.version>
     </properties>
 
 
