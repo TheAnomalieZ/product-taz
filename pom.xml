@@ -24,6 +24,7 @@
     </dependencies>
     <properties>
         <sl4j.simple.version>1.7.21</sl4j.simple.version>
+        <jmc.version>5.5.0.165303</jmc.version>
     </properties>
 
 
