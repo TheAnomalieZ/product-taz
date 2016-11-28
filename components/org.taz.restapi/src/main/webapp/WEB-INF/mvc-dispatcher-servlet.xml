@@ -10,10 +10,10 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="com.taz.controller"/>
+    <context:component-scan base-package="com.taz"/>
+    <context:property-placeholder location="WEB-INF/taz.properties"/>
 
-    <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
             <value>/WEB-INF/pages/</value>
         </property>
@@ -21,6 +21,14 @@
             <value>.jsp</value>
         </property>
     </bean>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- setting maximum upload size -->
+        <property name="maxUploadSize" value="20000000"/>
+    </bean>
+
+    <bean class="com.fasterxml.jackson.databind.ObjectMapper"/>
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:annotation-driven/>

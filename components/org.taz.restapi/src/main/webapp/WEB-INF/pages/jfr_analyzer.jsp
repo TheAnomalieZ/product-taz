@@ -1,4 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%--
   Created by IntelliJ IDEA.
@@ -85,7 +86,7 @@
                     <label for="input_file">File input</label>
                     <input type="file" id="input_file" name="file" required>
 
-                    <p class="help-block">Max file size: 20Mb (Image/Video)</p>
+                    <p class="help-block">Max file size: 20Mb</p>
                 </div>
             </div>
         </form>
@@ -126,9 +127,9 @@
 <script type="text/javascript">
 
     function submitAll() {
-        var form = $('#form_user_details');
+        var form = $('#upload_file');
         if (form[0].checkValidity()) {
-            uploadImage();
+            uploadJFR();
         } else {
             form.submit();
         }
@@ -148,8 +149,7 @@
                 success: function (data) {
                     console.log(data);
                     if (data.statusCode == "S1000") {
-                        $('#ad_file').val(data.content);
-                        $('#form_user_details').submit();
+                        $('#upload_file').submit();
                     } else {
                         console.log("Error with Status Code:" + data.statusCode);
                     }
@@ -163,9 +163,6 @@
         }
     }
 
-    function cancelAll() {
-        location.reload();
-    }
 </script>
 
 </body>
