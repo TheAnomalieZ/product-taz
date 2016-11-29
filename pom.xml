@@ -23,8 +23,11 @@
         </dependency>
     </dependencies>
     <properties>
+        <jdk.version>1.8</jdk.version>
         <sl4j.simple.version>1.7.21</sl4j.simple.version>
         <jmc.version>5.5.0.165303</jmc.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 
