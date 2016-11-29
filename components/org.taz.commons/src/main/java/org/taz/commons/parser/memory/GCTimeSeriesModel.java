@@ -2,14 +2,13 @@ package org.taz.commons.parser.memory;
 
 import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.JFRConstants;
-import org.taz.commons.parser.EventHandler;
+import org.taz.commons.parser.util.EventHandler;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class GCTimeSeriesModel extends EventHandler {
-//    private IView view;
     private Map<Long,MemEvent> eventMap;
 
     public GCTimeSeriesModel(IView view){

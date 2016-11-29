@@ -1,4 +1,4 @@
-package org.taz.commons.parser;
+package org.taz.commons.parser.util;
 
 import com.jrockit.mc.flightrecorder.spi.IView;
 
