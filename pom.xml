@@ -22,7 +22,10 @@
           <version>${sl4j.simple.version}</version>
         </dependency>
     </dependencies>
+
     <properties>
+        <product.taz.version>1.0-SNAPSHOT</product.taz.version>
+
         <sl4j.simple.version>1.7.21</sl4j.simple.version>
         <jmc.version>5.5.0.165303</jmc.version>
     </properties>
