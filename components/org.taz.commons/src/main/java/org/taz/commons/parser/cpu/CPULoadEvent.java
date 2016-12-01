@@ -2,7 +2,7 @@ package org.taz.commons.parser.cpu;
 
 
 import org.taz.commons.constants.JFRConstants;
-import org.taz.commons.parser.JFREvent;
+import org.taz.commons.parser.util.JFREvent;
 
 public class CPULoadEvent extends JFREvent {
 

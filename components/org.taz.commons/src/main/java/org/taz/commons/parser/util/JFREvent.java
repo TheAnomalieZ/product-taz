@@ -1,4 +1,4 @@
-package org.taz.commons.parser;
+package org.taz.commons.parser.util;
 
 public abstract class JFREvent {
     private long startTimestamp;

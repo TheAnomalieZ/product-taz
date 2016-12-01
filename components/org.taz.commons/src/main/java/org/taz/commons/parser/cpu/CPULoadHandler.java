@@ -3,7 +3,7 @@ package org.taz.commons.parser.cpu;
 import com.jrockit.mc.flightrecorder.spi.IEvent;
 import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.JFRConstants;
-import org.taz.commons.parser.EventHandler;
+import org.taz.commons.parser.util.EventHandler;
 
 import java.util.ArrayList;
 

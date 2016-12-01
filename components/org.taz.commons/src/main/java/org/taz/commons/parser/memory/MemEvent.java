@@ -1,7 +1,7 @@
 package org.taz.commons.parser.memory;
 
 import org.taz.commons.constants.JFRConstants;
-import org.taz.commons.parser.JFREvent;
+import org.taz.commons.parser.util.JFREvent;
 
 public class MemEvent extends JFREvent {
 
