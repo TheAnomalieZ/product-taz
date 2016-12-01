@@ -12,7 +12,7 @@ public class BaseController {
 
     @RequestMapping (value = "/", method = RequestMethod.GET)
     public String jfrAnalyzer(ModelMap model) {
-        model.addAttribute ("chart_title", "Memory Event");
+        model.addAttribute("chart_title", "Memory Event");
         return VIEW_ANALYZER;
     }
 }
