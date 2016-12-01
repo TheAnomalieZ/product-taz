@@ -695,7 +695,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     float:left;
     margin-top:23px;
     margin-left:-15px;
-    background:#32d2c9;
+    background:#d3b06a;
     border-radius:50%;
     -webkit-border-radius:50%;
     width:32px;
@@ -2114,7 +2114,7 @@ ul.inbox-pagination li {
 }
 .fileinput-button {
     border:1px solid #e6e6e6;
-    background:#eeeeee;
+    background: #78cd51;
 }
 .inbox-body .modal .modal-body input,.inbox-body .modal .modal-body textarea {
     border:1px solid #e6e6e6;
@@ -2245,7 +2245,7 @@ ul.inbox-pagination li {
 
 /*404 page*/
 .body-404 {
-    background:#35bcb5;
+    background: #d09741;
     color:#fff;
 }
 .error-head {
@@ -2278,7 +2278,7 @@ ul.inbox-pagination li {
     margin:0;
 }
 .error-wrapper p.nrml-txt {
-    color:#03f1e4;
+    color: #f5c67e;
     font-size:40px;
     margin:0;
 }

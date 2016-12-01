@@ -27,6 +27,19 @@
     <!--C3 Chart-->
     <link href="../../resources/js/c3-chart/c3.css" rel="stylesheet"/>
 
+    <!-- blueimp Gallery styles -->
+    <link rel="stylesheet" href="../../resources/blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="../../resources/js/file-uploader/css/jquery.fileupload.css">
+    <link rel="stylesheet" href="../../resources/js/file-uploader/css/jquery.fileupload-ui.css">
+    <!-- CSS adjustments for browsers with JavaScript disabled -->
+    <noscript>
+        <link rel="stylesheet" href="../../resources/js/file-uploader/css/jquery.fileupload-noscript.css">
+    </noscript>
+    <noscript>
+        <link rel="stylesheet" href="../../resources/js/file-uploader/css/jquery.fileupload-ui-noscript.css">
+    </noscript>
+
     <!-- Custom styles for this template -->
     <link href="../../resources/css/style.css" rel="stylesheet">
     <link href="../../resources/css/style-responsive.css" rel="stylesheet"/>
@@ -42,11 +55,11 @@
 
 <section id="container">
     <!--header start-->
-    <header class="header fixed-top clearfix">
+    <header class="header fixed-top clearfix" style="background: #32323a;">
         <!--logo start-->
         <div class="brand">
 
-            <a href="" class="logo">
+            <a href="/home" class="logo">
                 <img src="../../resources/images/logo_web.png" alt="">
             </a>
         </div>
@@ -55,11 +68,92 @@
     </header>
     <!--header end-->
 
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse">
+            <!-- sidebar menu start-->
+            <div class="leftside-navigation">
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <li>
+                        <a class="active" href="/home">
+                            <i class="fa fa-upload"></i>
+                            <span>Upload File</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-laptop"></i>
+                            <span>Analysis JFR</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="/error">Memory Analysis</a></li>
+                            <li><a href="/error">CPU Analysis</a></li>
+                            <li><a href="/error">IO Analysis</a></li>
+                            <li><a href="/error">Network Analysis</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
     <!--main content start-->
-    <section id="main-content" class="merge-left">
+    <section id="main-content">
         <section class="wrapper">
             <!-- page start-->
 
+            <!-- File upload Start -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">JFR File Uploader</h3>
+                </div>
+                <div class="panel-body">
+                    <h2 class="lead">Upload your JFR files here</h2>
+
+                    <form id="upload_file">
+                        <div class="col-lg-7">
+                            <div class="form-group">
+                                <%--<label for="input_file">File input</label>--%>
+                                <span class="btn btn-success fileinput-button">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                    <span>Add file</span>
+                                    <input type="file" id="input_file" name="file" required>
+                                </span>
+                                <button type="submit" class="btn btn-primary start" onclick="submitAll()">
+                                    <i class="glyphicon glyphicon-upload"></i>
+                                    <span>Start upload</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <br>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <%--<h3 class="panel-title">Notes</h3>--%>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                <li>The maximum file size for uploads in this is <strong>20 MB</strong></li>
+                                <li>Only <strong>JFR</strong> files are allowed in this
+                                </li>
+                                <li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage
+                                    (see <a href="https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support">Browser
+                                        support</a>).
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File upload end -->
+
+            <!-- Graph Start -->
             <div class="row">
                 <div class="col-sm-12">
                     <section class="panel">
@@ -79,20 +173,6 @@
 
             <!-- page end-->
         </section>
-
-        <form id="upload_file">
-            <div class="position-center">
-                <div class="form-group">
-                    <label for="input_file">File input</label>
-                    <input type="file" id="input_file" name="file" required>
-
-                    <p class="help-block">Max file size: 20Mb</p>
-                </div>
-            </div>
-        </form>
-        <div class="col-sm-offset-1">
-            <button type="button" onclick="submitAll()" class="btn btn-info">Submit</button>
-        </div>
     </section>
     <!--main content end-->
 </section>
@@ -119,7 +199,6 @@
 <script src="../../resources/js/d3js.org/d3.v3.min.js"></script>
 <script src="../../resources/js/c3-chart/c3.js"></script>
 <script src="../../resources/js/c3-chart.init.js"></script>
-
 
 <!--common script init for all pages-->
 <script src="../../resources/js/scripts.js"></script>

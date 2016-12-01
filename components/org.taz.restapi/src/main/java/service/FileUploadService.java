@@ -1,4 +1,4 @@
-package com.taz.service;
+package service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 /**
  * @author kokulan k
- * @Created on 11/28/2016
+ * @Created on 11/26/2016
  */
 @Service
 public class FileUploadService {
@@ -23,7 +23,7 @@ public class FileUploadService {
         try {
             // Creating the directory to store file
             File dir = new File(rootPath + File.separator);
-            String nameNew = file.getOriginalFilename();
+            String nameNew = UUID.randomUUID().toString() + '.' + ext;
             // Create the file on server
             File serverFile = new File(dir.getAbsolutePath()
                     + File.separator + nameNew);
