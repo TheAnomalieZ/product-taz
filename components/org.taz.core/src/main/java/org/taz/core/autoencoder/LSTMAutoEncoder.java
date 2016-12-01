@@ -5,15 +5,11 @@ package org.taz.core.autoencoder;
  */
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 
 
-import org.deeplearning4j.eval.Evaluation;
-import org.deeplearning4j.nn.api.Layer.TrainingMode;
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
 import org.deeplearning4j.nn.conf.GradientNormalization;
-import org.deeplearning4j.nn.conf.LearningRatePolicy;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration.ListBuilder;
@@ -28,10 +24,8 @@ import org.deeplearning4j.nn.weights.WeightInit;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
 
-import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
-import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
 import org.nd4j.linalg.lossfunctions.LossFunctions.LossFunction;
 
@@ -39,10 +33,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
-import java.util.List;
 
-public class AutoEncoder {
-    private static Logger log = LoggerFactory.getLogger(AutoEncoder.class);
+public class LSTMAutoEncoder {
+    private static Logger log = LoggerFactory.getLogger(LSTMAutoEncoder.class);
 
     private final MultiLayerNetwork model ;
     private final int chunk = 50;
@@ -50,41 +43,41 @@ public class AutoEncoder {
 
 
 
-    public AutoEncoder(Path target,int layerSizes[] ) throws Exception {
-            int seed = 123;
-            int iterations = 3 ;
-            int listenerFreq = 1 ;
-            this.layers = layerSizes ;
+    public LSTMAutoEncoder(Path target, int layerSizes[]) throws Exception {
+        int seed = 123;
+        int iterations = 3 ;
+        int listenerFreq = 1 ;
+        this.layers = layerSizes ;
 
 
-            MultiLayerNetwork model = ModelPersistence.loadModel( target ) ;
-            if( model == null ) {
+        MultiLayerNetwork model = ModelPersistence.loadModel( target ) ;
+        if( model == null ) {
 
-                log.info("Build model....");
-                ListBuilder lb = new NeuralNetConfiguration.Builder()
-                        .seed(seed)
-                        .iterations(iterations)
-                        .learningRate( .001 )
-                        .optimizationAlgo(OptimizationAlgorithm.LBFGS )
-                        .regularization(true).l2(1e-4)
-                        .list() ;
+            log.info("Build model....");
+            ListBuilder lb = new NeuralNetConfiguration.Builder()
+                    .seed(seed)
+                    .iterations(iterations)
+                    .learningRate( .001 )
+                    .optimizationAlgo(OptimizationAlgorithm.LBFGS )
+                    .regularization(true).l2(1e-4)
+                    .list() ;
 
-                Layer[] layers = makeLayers(layerSizes) ;
-                for( int l=0 ; l<layers.length ; l++ ) {
-                    lb.layer(l, layers[l] ) ;
-                }
-
-                MultiLayerConfiguration conf = lb
-                        .pretrain(true)
-                        .backprop(true)
-                        .build() ;
-
-                model = new MultiLayerNetwork(conf);
-                model.init();
+            Layer[] layers = makeLayers(layerSizes) ;
+            for( int l=0 ; l<layers.length ; l++ ) {
+                lb.layer(l, layers[l] ) ;
             }
-            this.model = model ;
-            model.setListeners(Collections.singletonList((IterationListener) new ScoreIterationListener(listenerFreq)));
+
+            MultiLayerConfiguration conf = lb
+                    .pretrain(true)
+                    .backprop(true)
+                    .build() ;
+
+            model = new MultiLayerNetwork(conf);
+            model.init();
         }
+        this.model = model ;
+        model.setListeners(Collections.singletonList((IterationListener) new ScoreIterationListener(listenerFreq)));
+    }
 
 
 
@@ -107,6 +100,13 @@ public class AutoEncoder {
                 .nIn( n[1] )
                 .nOut( n[0] )
                 .build() ;
+
+
+        (0, new LSTMAutoEncoder.Builder().nIn(numRows * numColumns).nOut(500)
+                .weightInit(WeightInit.XAVIER).lossFunction(LossFunction.RMSE_XENT)
+                .corruptionLevel(0.3)
+                .build()
+
 
         return rc ;
     }
@@ -138,46 +138,11 @@ public class AutoEncoder {
         }
     }
 
-    public byte [] classify( int [] data ) {
-
-        long cs = 0 ;
-        INDArray input = Nd4j.create( chunk ) ;
-        for( int i=0 ; i<data.length ; i++ ) {
-            cs <<= 1 ;
-            cs += data[i] ;
-            input.putScalar(i, data[i] ) ;
-        }
-        log.info("Classify data requested. checksum: {}", cs );
-
-        //  model.feedForward( input )
-        INDArray output ;
-        List<INDArray> outputs ;
-        synchronized( this ) {
-            log.info("Lock acquired. Classify data sent." );
-            //			output = model.output(input, TrainingMode.TEST ) ;
-
-            outputs = model.feedForward( input, false ) ;
-        }
-        //		byte rc[] = new byte[ data.length ] ;
-        //		for( int i=0 ; i<rc.length ; i++ ) {
-        //			rc[i] = (byte)( output.getFloat( i ) * 255.0 );
-        //		}
-
-        int bytesToSend = 0 ;
-        for( int i=0 ; i<outputs.size() ; i++ ) {
-            bytesToSend += outputs.get(i).length() ;
-        }
-
-        byte rc[] = new byte[ bytesToSend ] ;
-
-        for( int i=0, ix=0 ; i<outputs.size() ; i++ ) {
-            for( int j=0 ; j<outputs.get(i).length() ; j++, ix++ ) {
-                rc[ix] = (byte)( outputs.get(i).getFloat( j ) * 250.0 );
-            }
-        }
-
-        return rc ;
+    public void test(DataSetIterator iter){
+        log.info("Evaluate the model ...");
+        model.evaluate(iter);
     }
+
 
     public void save( Path target ) throws IOException {
         ModelPersistence.saveModel( model, target ) ;
