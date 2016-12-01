@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 
+import org.deeplearning4j.api.storage.StatsStorage;
 import org.deeplearning4j.nn.api.OptimizationAlgorithm;
 import org.deeplearning4j.nn.conf.GradientNormalization;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
@@ -24,6 +25,7 @@ import org.deeplearning4j.nn.weights.WeightInit;
 import org.deeplearning4j.optimize.api.IterationListener;
 import org.deeplearning4j.optimize.listeners.ScoreIterationListener;
 
+import org.deeplearning4j.ui.stats.StatsListener;
 import org.nd4j.linalg.dataset.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 import org.nd4j.linalg.lossfunctions.LossFunctions;
@@ -101,13 +103,6 @@ public class LSTMAutoEncoder {
                 .nOut( n[0] )
                 .build() ;
 
-
-        (0, new LSTMAutoEncoder.Builder().nIn(numRows * numColumns).nOut(500)
-                .weightInit(WeightInit.XAVIER).lossFunction(LossFunction.RMSE_XENT)
-                .corruptionLevel(0.3)
-                .build()
-
-
         return rc ;
     }
 
@@ -148,4 +143,7 @@ public class LSTMAutoEncoder {
         ModelPersistence.saveModel( model, target ) ;
     }
 
+    public void setListener(StatsStorage statsStorage){
+        model.setListeners(new StatsListener(statsStorage));
+    }
 }

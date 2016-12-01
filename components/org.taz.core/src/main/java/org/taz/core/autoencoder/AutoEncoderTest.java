@@ -45,7 +45,7 @@ public class AutoEncoderTest {
             Files.createDirectories( target ) ;
         }
 
-        AutoEncoder ae = new AutoEncoder( target, layers ) ;
+        LSTMAutoEncoder ae = new LSTMAutoEncoder( target, layers ) ;
 
 
 

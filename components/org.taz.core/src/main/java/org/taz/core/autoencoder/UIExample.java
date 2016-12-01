@@ -55,7 +55,7 @@ public class UIExample {
         StatsStorage statsStorage = new InMemoryStatsStorage();
 
 
-        ae.setListener(new StatsListener(statsStorage));
+        ae.setListener(statsStorage);
 
         //Attach the StatsStorage instance to the UI: this allows the contents of the StatsStorage to be visualized
         uiServer.attach(statsStorage);
