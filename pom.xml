@@ -17,9 +17,19 @@
     </modules>
     <dependencies>
         <dependency>
-   	  <groupId>org.slf4j</groupId>
-    	  <artifactId>slf4j-simple</artifactId>
-          <version>${sl4j.simple.version}</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${sl4j.simple.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty</artifactId>
+            <version>${io.netty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${com.google.guava.version}</version>
         </dependency>
     </dependencies>
 
@@ -31,6 +41,11 @@
         <jmc.version>5.5.0.165303</jmc.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <cassandra.datastax.driver.version>3.1.0</cassandra.datastax.driver.version>
+        <org.apache.cassandra.version>3.9</org.apache.cassandra.version>
+        <io.netty.version>3.9.0.Final</io.netty.version>
+        <com.google.guava.version>16.0.1</com.google.guava.version>
+        <com.codahale.metrics.version>3.0.2</com.codahale.metrics.version>
     </properties>
 
 
