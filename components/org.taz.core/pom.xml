@@ -49,8 +49,6 @@
 
     <properties>
         <nd4j.backend>nd4j-native-platform</nd4j.backend>
-        <nd4j.version>0.7.0</nd4j.version>
-        <dl4j.version>0.7.0</dl4j.version>
     </properties>
 
 </project>

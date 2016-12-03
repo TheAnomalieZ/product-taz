@@ -46,6 +46,8 @@
         <io.netty.version>3.9.0.Final</io.netty.version>
         <com.google.guava.version>16.0.1</com.google.guava.version>
         <com.codahale.metrics.version>3.0.2</com.codahale.metrics.version>
+        <nd4j.version>0.7.0</nd4j.version>
+        <dl4j.version>0.7.0</dl4j.version>
     </properties>
 
 
