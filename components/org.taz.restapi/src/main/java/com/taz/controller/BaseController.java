@@ -11,6 +11,7 @@ public class BaseController {
     private static final String VIEW_ANALYZER = "jfr_analyzer";
     private static final String ERROR = "error";
     private static final String WELCOME = "welcome";
+    private static final String OVERVIEW = "overview";
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String jfrAnalyzer(ModelMap model) {
@@ -26,5 +27,10 @@ public class BaseController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcomePage(ModelMap model) {
         return WELCOME;
+    }
+
+    @RequestMapping(value = "/overview", method = RequestMethod.GET)
+    public String overviewPage(ModelMap model) {
+        return OVERVIEW;
     }
 }
