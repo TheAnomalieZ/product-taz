@@ -72,7 +72,7 @@
     <!--header end-->
 
     <!--sidebar start-->
-    <%@include file="page_elements/sidebar.jsp"%>
+    <%@include file="page_elements/sidebar.jsp" %>
     <!--sidebar end-->
 
     <!--main content start-->
@@ -127,25 +127,6 @@
             </div>
 
             <!-- File upload end -->
-
-            <!-- Graph Start -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <section class="panel">
-                        <header class="panel-heading">
-                            ${chart_title}
-                        </header>
-                        <div class="panel-body">
-
-                            <div class="chart">
-                                <div id="chart"></div>
-                            </div>
-
-                        </div>
-                    </section>
-                </div>
-            </div>
-
             <!-- page end-->
         </section>
     </section>
