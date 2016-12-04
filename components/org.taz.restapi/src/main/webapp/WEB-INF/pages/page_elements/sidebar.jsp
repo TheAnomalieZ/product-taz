@@ -18,7 +18,7 @@
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
-                        <i class="fa fa-laptop"></i>
+                        <i class="fa fa-dashboard"></i>
                         <span>General</span>
                     </a>
                     <ul class="sub">

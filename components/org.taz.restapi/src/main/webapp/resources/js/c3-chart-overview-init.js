@@ -151,6 +151,40 @@ var heapUsageLineChart = c3.generate({
     }
 });
 
+var cpuUsageLineChartRaw = [["x", "Machine Total", "JVM + Application (User)", "JVM + Application (Kernel)"]];
+
+var cpu_usage_line_chart = c3.generate({
+    bindto: '#cpu-usage-line-chart',
+    data: {
+        x: 'x',
+        rows: cpuUsageLineChartRaw,
+        type: 'area'
+    },
+    axis: {
+        x: {
+            type: 'timeseries',
+            tick: {
+                format: "%H:%M:%S" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
+            }
+        },
+        y: {
+            min: 10,
+            max: 90
+        }
+    }
+});
+
+
+var loadCpuUsageLineChart = function (value) {
+    cpuUsageLineChartRaw = cpuUsageLineChartRaw.concat(value.sort(function (a, b) {
+        return a[0] - b[0];
+    }));
+
+    //cpu_usage_line_chart.axis.range({max: {y: 100}, min: {y: 0}});
+    cpu_usage_line_chart.load({
+        rows: cpuUsageLineChartRaw
+    });
+};
 
 var loadHeapUsageLineChart = function (value) {
     heapUsageRows = heapUsageRows.concat(value.sort(function (a, b) {

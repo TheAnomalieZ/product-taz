@@ -156,7 +156,12 @@
                             General
                         </header>
                         <div class="panel-body">
-
+                            <div class="text-left">
+                                JVM Start Time:  <span>${jvmStartTime}</span>
+                            </div>
+                            <div class="text-left">
+                                JVM Version:  <span>${jvmVersion}</span>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -192,6 +197,7 @@
     loadCpuUsage(${totalCpuUsage.data.get(0)});
     loadGCPauseTime(${gcData.data.get(0)});
     loadHeapUsageLineChart(${heapUsageData.tenpData});
+    loadCpuUsageLineChart(${totalCpuUsage.tempCpuUsage});
 </script>
 
 

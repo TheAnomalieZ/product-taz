@@ -10,6 +10,16 @@ public class CpuUsage {
     private double avg;
     private ArrayList<Double> data;
 
+    public String getTempCpuUsage() {
+        return tempCpuUsage;
+    }
+
+    public void setTempCpuUsage(String tempCpuUsage) {
+        this.tempCpuUsage = tempCpuUsage;
+    }
+
+    private String tempCpuUsage;
+
     public CpuUsage(){
         this.max = 0;
         this.avg = 0;
