@@ -30,6 +30,10 @@
     <link href="../../resources/css/style.css" rel="stylesheet">
     <link href="../../resources/css/style-responsive.css" rel="stylesheet"/>
 
+    <!--iron slider-->
+    <link href="../../resources/js/ion.rangeSlider-1.8.2/css/ion.rangeSlider.css" rel="stylesheet" />
+    <link href="../../resources/js/ion.rangeSlider-1.8.2/css/ion.rangeSlider.skinFlat.css" rel="stylesheet"/>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https:/oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -114,6 +118,28 @@
 
             <!-- Gauge view end-->
 
+            <%--Slider start--%>
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Slider
+                        </header>
+                        <div class="panel-body">
+                            <table class="table slider-table">
+                                <tr>
+                                    <td>
+                                        <input id="range_1" type="text" name="range_1" value="" />
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <%--Slider end--%>
+
             <!-- heap usage start-->
             <div class="row">
                 <div class="col-lg-12">
@@ -182,6 +208,8 @@
 <script src="../../resources/js/jquery.scrollTo.min.js"></script>
 <script src="../../resources/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
 <script src="../../resources/js/jquery.nicescroll.js"></script>
+<%--Slider--%>
+<script src="../../resources/js/ion.rangeSlider-1.8.2/js/ion-rangeSlider/ion.rangeSlider.min.js" type="text/javascript"></script>
 
 <!--C3 Chart-->
 <script src="../../resources/js/d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -198,6 +226,18 @@
     loadGCPauseTime(${gcData.data.get(0)});
     loadHeapUsageLineChart(${heapUsageData.tenpData});
     loadCpuUsageLineChart(${totalCpuUsage.tempCpuUsage});
+
+    $("#range_1").ionRangeSlider({
+        min: 0,
+        max: 5000,
+        from: 1000,
+        to: 4000,
+        type: 'double',
+        step: 1,
+        prefix: "",
+        prettify: false,
+        hasGrid: true
+    });
 </script>
 
 
