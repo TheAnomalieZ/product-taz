@@ -24,8 +24,11 @@
     <link href="../../resources/css/bootstrap-reset.css" rel="stylesheet">
     <link href="../../resources/font-awesome/css/font-awesome.css" rel="stylesheet"/>
 
+    <!-- Load c3.css -->
+    <link href="../../resources/c3-0.4.11/c3.css" rel="stylesheet" type="text/css">
+
     <!--C3 Chart-->
-    <link href="../../resources/js/c3-chart/c3.css" rel="stylesheet"/>
+    <%--<link href="../../resources/js/c3-chart/c3.css" rel="stylesheet"/>--%>
 
     <!-- blueimp Gallery styles -->
     <link rel="stylesheet" href="../../resources/blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
@@ -69,35 +72,7 @@
     <!--header end-->
 
     <!--sidebar start-->
-    <aside>
-        <div id="sidebar" class="nav-collapse">
-            <!-- sidebar menu start-->
-            <div class="leftside-navigation">
-                <ul class="sidebar-menu" id="nav-accordion">
-                    <li>
-                        <a class="active" href="/home">
-                            <i class="fa fa-upload"></i>
-                            <span>Upload File</span>
-                        </a>
-                    </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-laptop"></i>
-                            <span>Analysis JFR</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="/error">Memory Analysis</a></li>
-                            <li><a href="/error">CPU Analysis</a></li>
-                            <li><a href="/error">IO Analysis</a></li>
-                            <li><a href="/error">Network Analysis</a></li>
-
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- sidebar menu end-->
-        </div>
-    </aside>
+    <%@include file="page_elements/sidebar.jsp" %>
     <!--sidebar end-->
 
     <!--main content start-->
@@ -152,25 +127,6 @@
             </div>
 
             <!-- File upload end -->
-
-            <!-- Graph Start -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <section class="panel">
-                        <header class="panel-heading">
-                            ${chart_title}
-                        </header>
-                        <div class="panel-body">
-
-                            <div class="chart">
-                                <div id="chart"></div>
-                            </div>
-
-                        </div>
-                    </section>
-                </div>
-            </div>
-
             <!-- page end-->
         </section>
     </section>
@@ -195,9 +151,10 @@
 <script src="../../resources/js/flot-chart/jquery.flot.tooltip.min.js"></script>
 <script src="../../resources/js/flot-chart/jquery.flot.resize.js"></script>
 <script src="../../resources/js/flot-chart/jquery.flot.pie.resize.js"></script>
-<!--C3 Chart-->
+
+<!-- Load d3.js and c3.js -->
+<script src="../../resources/c3-0.4.11/c3.min.js"></script>
 <script src="../../resources/js/d3js.org/d3.v3.min.js"></script>
-<script src="../../resources/js/c3-chart/c3.js"></script>
 <script src="../../resources/js/c3-chart.init.js"></script>
 
 <!--common script init for all pages-->
