@@ -21,12 +21,18 @@ public class GUI extends JFrame {
     private JTextArea textArea = new JTextArea();
     private ArrayList<String> filepaths = new ArrayList<String>();
     private JButton refreshFileListButton = new JButton();
-    private JFileChooser chooser = new JFileChooser();
+    private JFileChooser jfrChooser = new JFileChooser();
+    private  JFileChooser chooser;
+
+    private ArrayList<Integer> GCSequence;
+    private CSVWriter csvWriter;
+
 
     private JFRReader jfrReader;
 
     public GUI() {
         jfrReader = JFRReader.getInstance();
+        csvWriter = CSVWriter.getInstance();
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setBounds(20,50,450,200);
@@ -37,9 +43,9 @@ public class GUI extends JFrame {
         refreshFileListButton.setBounds(500, 150, 200,100);
         refreshFileListButton.setText("Refresh");
         memoryAnalyzeButton.setBounds(150, 300, 200,100);
-        memoryAnalyzeButton.setText("Memory for HMM");
+        memoryAnalyzeButton.setText("Memory sequence");
         cpuAnalyzeButton.setBounds(400, 300, 200,100);
-        cpuAnalyzeButton.setText("Memory for AE");
+        cpuAnalyzeButton.setText("CPU");
 
         panel1 = new JPanel(new BorderLayout());
         memoryAnalyzeButton.setEnabled(false);
@@ -56,7 +62,7 @@ public class GUI extends JFrame {
         // Adding to JFrame
         panel1.add(uploadAFileButton);
         panel1.add(memoryAnalyzeButton);
-        panel1.add(cpuAnalyzeButton);
+//        panel1.add(cpuAnalyzeButton);
         panel1.add(refreshFileListButton);
 //        panel1.add(textArea);
         panel1.add(scrollPane);
@@ -70,15 +76,15 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-        chooser.setDialogTitle("Choose JFR files");
-        chooser.setMultiSelectionEnabled(true);
+        jfrChooser.setDialogTitle("Choose JFR files");
+        jfrChooser.setMultiSelectionEnabled(true);
 
         uploadAFileButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println(e.getActionCommand());
-                chooser.showOpenDialog(panel1);
-                File[] files = chooser.getSelectedFiles();
+                jfrChooser.showOpenDialog(panel1);
+                File[] files = jfrChooser.getSelectedFiles();
                 for (File file : files)
                     try {
                         textArea.append(file.getCanonicalPath()+" \n");
@@ -94,11 +100,26 @@ public class GUI extends JFrame {
         });
 
         memoryAnalyzeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 System.out.println(e.getActionCommand());
-                if(jfrReader != null)
-                    jfrReader.getGCStates(0);
+
+                String fileName = "/home/mani/jfr/save.csv";
+
+                if (jfrReader != null)
+                    GCSequence = jfrReader.getGCStates();
+
+                for(Integer state:GCSequence)
+                    textArea.append(state.toString()+"\n");
+
+                chooser = new JFileChooser();
+                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                if( chooser.showOpenDialog( panel1 ) == JFileChooser.APPROVE_OPTION )
+                {
+                     fileName=chooser.getSelectedFile().getAbsolutePath();
+                }
+
+                File file = new File(fileName);
+                csvWriter.generateGCStates(GCSequence, file);
             }
         });
 
@@ -107,7 +128,7 @@ public class GUI extends JFrame {
             {
                 System.out.println(e.getActionCommand());
                 if(jfrReader != null)
-                    jfrReader.getGCStates(1);
+                    jfrReader.getGCStates();
             }
         });
 

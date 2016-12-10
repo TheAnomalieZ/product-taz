@@ -15,16 +15,13 @@ import java.util.HashSet;
 public class CSVWriter {
     private static final Logger logger = LoggerFactory.getLogger(JFRReader.class);
 
-    private static File courseCSV = new File("/home/mani/jfr/GCStates.csv");
-
-    private static File trainCSV = new File("/home/mani/jfr/manitrain.csv");
-
-    private static ArrayList<Integer> list= new ArrayList<Integer>();
-
-    private static CSVWriter csvWriter = new CSVWriter();
-    private static HashSet<String> set = new HashSet<String>();
+    private static CSVWriter csvWriter;
+    private static ArrayList<Integer> list;
 
     public static CSVWriter getInstance() {
+
+        if(csvWriter==null)
+            csvWriter = new CSVWriter();
         return csvWriter;
     }
 
@@ -32,22 +29,11 @@ public class CSVWriter {
     }
 
 
-    public void getGCStates(ArrayList<Integer> stateSequence, String index) {
-        if (!set.contains(index)) {
-            set.add(index);
-
-            for (int i = 0; i < stateSequence.size(); i++) {
-                list.add(stateSequence.get(i));
-            }
-
-        }
-    }
-
-    public void getHMMGCSequence(){
-        logger.info("HMM GC state sequences");
+    public void generateGCStates(ArrayList<Integer> list,File file){
+        logger.info("GC state sequences");
         PrintWriter outfile = null;
         try {
-            outfile = new PrintWriter(trainCSV);
+            outfile = new PrintWriter(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -60,12 +46,11 @@ public class CSVWriter {
 
     }
 
-
-    public void getAEGCSequence(){
+    public void getAEGCSequence(ArrayList<Integer> list,File file){
         logger.info("AE GC state sequences");
         PrintWriter outfile = null;
         try {
-            outfile = new PrintWriter(trainCSV);
+            outfile = new PrintWriter(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

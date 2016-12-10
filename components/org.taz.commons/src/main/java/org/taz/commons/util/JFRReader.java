@@ -10,21 +10,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.taz.commons.parser.util.EventHandlerFactory;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class JFRReader {
 
     private static ArrayList<JFRParser> jfrList = new ArrayList<JFRParser>();
-    private static JFRReader jfrReader = new JFRReader();
-    private static CSVWriter csvWriter;
-    private static EventHandlerFactory eventHandlerFactory;
+    private static JFRReader jfrReader;
+    private static ArrayList<Integer> memoryList= new ArrayList<Integer>();
+    private static HashSet<String> set = new HashSet<String>();
 
     private static final Logger logger = LoggerFactory.getLogger(JFRReader.class);
 
     public static JFRReader getInstance() {
-        logger.debug("");
-        csvWriter = CSVWriter.getInstance();
-        eventHandlerFactory = new EventHandlerFactory();
+        if(jfrReader==null)
+            jfrReader = new JFRReader();
         return jfrReader;
     }
 
@@ -49,21 +50,25 @@ public class JFRReader {
     }
 
 
-    public void getGCStates(int select){
-        logger.info("Reading GC Events for HMM");
+    public ArrayList<Integer> getGCStates(){
+        logger.info("Reading GC Events");
         for (JFRParser parser:jfrList) {
             String index = Integer.toString(jfrList.indexOf(parser));
             ArrayList<Integer> stateSequence = parser.getMemoryStates();
-            csvWriter.getGCStates(stateSequence,index);
-        }
+            if (!set.contains(index)) {
+                set.add(index);
 
-        if(select ==0){
-            csvWriter.getHMMGCSequence();
-        }else{
-            csvWriter.getAEGCSequence();
+                for (int i = 0; i < stateSequence.size(); i++) {
+                    memoryList.add(stateSequence.get(i));
+                }
+
+            }
         }
+        return memoryList;
+
 
     }
+
 
 
     public void refreshViewList(){
