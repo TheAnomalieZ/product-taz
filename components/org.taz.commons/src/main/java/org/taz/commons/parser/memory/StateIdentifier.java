@@ -32,8 +32,7 @@ public class StateIdentifier {
                 tempLastGCEndTime = memEvent.getEndTimestamp();
                 tempLastUsedMem = memEvent.getUsedHeap();
 
-            }
-            else{
+            }else{
                 MemEvent memEvent = memEventEntry.getValue();
                 long memDif = memEvent.getUsedHeap() - tempLastUsedMem;
                 long gcGap = memEvent.getStartTimestamp() - tempLastGCEndTime;

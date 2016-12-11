@@ -22,7 +22,12 @@ public class GCTimeHandler extends EventHandler {
                 MemEvent memEvent = new MemEvent();
                 memEvent.setStartTimestamp(event.getStartTimestamp());
                 memEvent.setEndTimestamp(event.getEndTimestamp());
+
                 memEvent.setGcId(Long.parseLong(event.getValue(JFRConstants.GCID).toString()));
+                memEvent.setType(event.getValue(JFRConstants.GCTYPE).toString());
+                memEvent.setCause(event.getValue(JFRConstants.GCREASON).toString());
+                memEvent.setPauseTime(Long.parseLong(event.getValue(JFRConstants.GCPAUSETIME).toString()));
+
                 if(!eventMap.containsKey(memEvent.getGcId())){
                     eventMap.put(memEvent.getGcId(),memEvent);
                 }

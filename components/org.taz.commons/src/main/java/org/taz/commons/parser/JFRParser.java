@@ -2,6 +2,7 @@ package org.taz.commons.parser;
 
 import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
+import org.taz.commons.parser.memory.MemEvent;
 import org.taz.commons.parser.util.EventNode;
 
 import java.util.ArrayList;
@@ -14,6 +15,12 @@ public interface JFRParser {
      * @return ArrayList object of states
      */
     public ArrayList<Integer> getMemoryStates();
+
+    /**
+     * Method to retrieve all GC related attributes
+     * @return Map of gcID and MemEvent
+     */
+    public Map<Long,MemEvent> getGCEvents();
 
     /**
      * Get all JFR Attributes

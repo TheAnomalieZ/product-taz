@@ -9,6 +9,7 @@ import org.taz.commons.constants.TAZConstants;
 import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
 import org.taz.commons.parser.memory.GCTimeSeriesModel;
+import org.taz.commons.parser.memory.MemEvent;
 import org.taz.commons.parser.util.EventNode;
 
 import java.io.File;
@@ -34,6 +35,11 @@ public class JFRParserV18 implements JFRParser {
     public ArrayList<Integer> getMemoryStates() {
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
         return gcTimeSeriesModel.getStateSequence();
+    }
+
+    public Map<Long,MemEvent> getGCEvents(){
+        GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
+        return gcTimeSeriesModel.getGCFeatures();
     }
 
     public ArrayList<EventNode> getAllJFRAttributes() {

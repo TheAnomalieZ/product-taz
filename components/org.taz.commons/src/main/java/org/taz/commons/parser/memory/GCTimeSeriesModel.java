@@ -10,22 +10,25 @@ import java.util.Map;
 
 public class GCTimeSeriesModel extends EventHandler {
     private Map<Long,MemEvent> eventMap;
+    private GCTimeHandler gcTimeHandler;
+    private GCMemoryHandler gcMemoryHandler;
+    private StateIdentifier stateIdentifier;
 
     public GCTimeSeriesModel(IView view){
         super(view, JFRConstants.GCHANDLER);
         eventMap = new LinkedHashMap<Long, MemEvent>();
-    }
 
-    public ArrayList<Integer> getStateSequence(){
-        GCTimeHandler gcTimeHandler;
-        GCMemoryHandler gcMemoryHandler;
-        StateIdentifier stateIdentifier;
-        ArrayList<Integer> stateSequence;
         gcTimeHandler= new GCTimeHandler(view, eventMap);
         gcTimeHandler.configureEventGCTime();
 
         gcMemoryHandler= new GCMemoryHandler(view, eventMap);
         gcMemoryHandler.configureGCMemory();
+
+    }
+
+    public ArrayList<Integer> getStateSequence(){
+
+        ArrayList<Integer> stateSequence;
 
         stateIdentifier= new StateIdentifier(eventMap);
         stateSequence = stateIdentifier.configureStates();
@@ -33,7 +36,9 @@ public class GCTimeSeriesModel extends EventHandler {
         return stateSequence;
     }
 
-    public void getOutputTwo(){
-
+    public Map<Long,MemEvent> getGCFeatures(){
+        return eventMap;
     }
+
+
 }
