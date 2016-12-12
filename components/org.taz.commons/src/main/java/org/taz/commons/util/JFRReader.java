@@ -9,7 +9,7 @@ import org.taz.commons.parser.JFRParserV18;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.taz.commons.parser.memory.MemEvent;
-import org.taz.commons.parser.util.EventNode;
+
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -72,12 +72,36 @@ public class JFRReader {
     }
 
     public void getGCAttributes(){
-        Map<Long,MemEvent> map;
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
+            ArrayList<ArrayList<String>> attriList = gcAttributes(parser.getValue().getGCEvents());
+            csvWriter.generateGCAttributes(attriList,parser.getKey());
+        }
+    }
+
+    public ArrayList<ArrayList<String>> gcAttributes(Map<Long,MemEvent> map){
+        ArrayList<ArrayList<String>> attriList = new ArrayList<ArrayList<String>>();
+        ArrayList<String> tempList = new ArrayList<String>();
+        tempList.add("GCId");
+        tempList.add("Type");
+        tempList.add("Cause");
+        tempList.add("UsedHeap");
+        tempList.add("PauseTime");
+        attriList.add(tempList);
+        for (Map.Entry<Long, MemEvent> memEvent :map.entrySet()) {
+            MemEvent me = memEvent.getValue();
+            tempList = new ArrayList<String>();
+            tempList.add(Long.toString(me.getGcId()));
+            tempList.add(me.getType());
+            tempList.add(me.getCause());
+            tempList.add(Long.toString(me.getUsedHeap()));
+            tempList.add(Long.toString(me.getPauseTime()));
+
+            attriList.add(tempList);
 
         }
-
+        return attriList;
     }
+
 
     public void refreshViewList(){
         logger.info("Erase old JFR loadings");

@@ -175,30 +175,19 @@ public class GUI extends JFrame {
 
     public void getGCStates(){
         if (jfrReader != null) {
-           jfrReader.getGCStates();
+            jfrReader.getGCStates();
         }
     }
 
     public void getGCAttributes(){
         if (jfrReader != null) {
-//            gcAttributes = jfrReader.getGCAttributes();
-//
-//            chooser = new JFileChooser();
-//            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-//            if (chooser.showOpenDialog(panel1) == JFileChooser.APPROVE_OPTION) {
-//                fileName = chooser.getSelectedFile().getAbsolutePath();
-//            }
-//
-//            File file = new File(fileName);
-//            csvWriter.generateGCAttributes(gcAttributes, file);
+            jfrReader.getGCAttributes();
         }
     }
-
 
     public void getPauseTimeSeries(){
         if (jfrReader != null) {
             jfrReader.getPauseTimeSeries();
-
         }
 
     }
