@@ -27,13 +27,12 @@ public class StateIdentifier {
         int mod = 0;
         int count = 1;
         for (Map.Entry<Long, MemEvent> memEventEntry : eventMap.entrySet()) {
-            if (count % 2 != 0) {
+            if (count == 1) {
                 MemEvent memEvent = memEventEntry.getValue();
                 tempLastGCEndTime = memEvent.getEndTimestamp();
                 tempLastUsedMem = memEvent.getUsedHeap();
 
-            }
-            if (count % 2 == 0) {
+            }else{
                 MemEvent memEvent = memEventEntry.getValue();
                 long memDif = memEvent.getUsedHeap() - tempLastUsedMem;
                 long gcGap = memEvent.getStartTimestamp() - tempLastGCEndTime;
@@ -46,6 +45,8 @@ public class StateIdentifier {
                     lastMemoryDif = memDif;
                     lastGCTimeDif = gcGap;
                 }
+                tempLastGCEndTime = memEvent.getEndTimestamp();
+                tempLastUsedMem = memEvent.getUsedHeap();
 
             }
             count++;
@@ -64,15 +65,16 @@ public class StateIdentifier {
             state =2;
             stateSequence.add(1);
         }
-        if(currGCTimeDiff<lastGCTimeDiff && currGCTimeDiff<lastGCTimeDiff) {
+        if(currGCTimeDiff<lastGCTimeDiff && currMemDiff<lastMemDiff) {
             state =3;
             stateSequence.add(2);
         }
-        if(currGCTimeDiff<lastGCTimeDiff && currGCTimeDiff>lastGCTimeDiff) {
+        if(currGCTimeDiff<lastGCTimeDiff && currMemDiff>lastMemDiff) {
             state =4;
             stateSequence.add(3);
         }
 
     }
+
 
 }

@@ -2,17 +2,21 @@ package org.taz.commons.parser;
 
 import com.jrockit.mc.flightrecorder.FlightRecording;
 import com.jrockit.mc.flightrecorder.FlightRecordingLoader;
+import com.jrockit.mc.flightrecorder.spi.IEvent;
 import com.jrockit.mc.flightrecorder.spi.IEventType;
 import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.TAZConstants;
+import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
-import org.taz.commons.parser.JFRParser;
 import org.taz.commons.parser.memory.GCTimeSeriesModel;
+import org.taz.commons.parser.memory.MemEvent;
 import org.taz.commons.parser.util.EventNode;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by vithulan on 11/29/16.
@@ -31,6 +35,11 @@ public class JFRParserV18 implements JFRParser {
     public ArrayList<Integer> getMemoryStates() {
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
         return gcTimeSeriesModel.getStateSequence();
+    }
+
+    public Map<Long,MemEvent> getGCEvents(){
+        GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
+        return gcTimeSeriesModel.getGCFeatures();
     }
 
     public ArrayList<EventNode> getAllJFRAttributes() {
@@ -74,5 +83,38 @@ public class JFRParserV18 implements JFRParser {
         FlightRecording recording = FlightRecordingLoader.loadFile(new File(FILE_PATH));
         iView = recording.createView();
         ieventtypes = iView.getEventTypes();
+    }
+
+    @Override
+    public Map<String, ArrayList<Object>> getAttributeValues(String eventName, ArrayList<String> attributes) throws
+            EventNotFoundException, AttributeNotFoundException {
+        Map<String,ArrayList<Object>> eventAttributeValMap = new HashMap<>();
+        boolean isEventAvailable = false;
+        for(IEvent event : iView){
+            if(eventName.equals(event.getEventType().getName())){
+                isEventAvailable = true;
+                for(String attribute : attributes){
+                    if(eventAttributeValMap.containsKey(attribute)){
+                        ArrayList<Object> attributeValues = eventAttributeValMap.get(attribute);
+                        Object value = event.getValue(attribute);
+                        if(value==null)
+                            throw new AttributeNotFoundException(eventName,attribute);
+                        attributeValues.add(value);
+                        eventAttributeValMap.put(attribute,attributeValues);
+                    }
+                    else{
+                        ArrayList<Object> attributeValues = new ArrayList<>();
+                        Object value = event.getValue(attribute);
+                        if(value==null)
+                            throw new AttributeNotFoundException(eventName,attribute);
+                        attributeValues.add(value);
+                        eventAttributeValMap.put(attribute,attributeValues);
+                    }
+                }
+            }
+        }
+        if(!isEventAvailable)
+            throw new EventNotFoundException(eventName);
+        return eventAttributeValMap;
     }
 }
