@@ -13,12 +13,14 @@ import org.taz.commons.parser.util.EventNode;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class JFRReader {
 
-    private static ArrayList<JFRParser> jfrList = new ArrayList<JFRParser>();
+    private static Map<String,JFRParser> jfrList = new LinkedHashMap<String,JFRParser>();
     private static JFRReader jfrReader;
+    private CSVWriter csvWriter;
     private static ArrayList<Integer> memoryList= new ArrayList<Integer>();
     private static HashSet<String> set = new HashSet<String>();
 
@@ -31,17 +33,21 @@ public class JFRReader {
     }
 
     private JFRReader() {
+        csvWriter = CSVWriter.getInstance();
     }
 
-    public void readJFR(ArrayList<String> filePaths){
-        for (String filePath:filePaths) {
-            logger.info("Loading file"+ filePath);
-            jfrList.add(new JFRParserV18(filePath));
+    public void readJFR(Map<String,String> filePaths){
+        for (Map.Entry<String, String> fileEntry :filePaths.entrySet()) {
+            logger.info("Loading file"+ fileEntry.getValue());
+            String fileName = fileEntry.getKey();
+            int index = fileName.lastIndexOf('.');
+            fileName = fileName.substring(0,index);
+            jfrList.put(fileName,new JFRParserV18(fileEntry.getValue()));
         }
     }
 
 
-    public ArrayList<JFRParser> getJFRRecording() {
+    public Map<String,JFRParser>  getJFRRecording() {
         if (jfrList.size() == 0){
             logger.warn("No JFR loaded");
             return null;
@@ -51,34 +57,30 @@ public class JFRReader {
     }
 
 
-    public ArrayList<Integer> getGCStates(){
+    public  void getGCStates(){
         logger.info("Reading GC Events");
-        for (JFRParser parser:jfrList) {
-            String index = Integer.toString(jfrList.indexOf(parser));
-            ArrayList<Integer> stateSequence = parser.getMemoryStates();
-            if (!set.contains(index)) {
-                set.add(index);
-
-                for (int i = 0; i < stateSequence.size(); i++) {
-                    memoryList.add(stateSequence.get(i));
-                }
-
-            }
+        for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
+            ArrayList<Integer> stateSequence = parser.getValue().getMemoryStates();
+            csvWriter.generateGCStates(stateSequence,parser.getKey());
         }
-        return memoryList;
-
 
     }
-    public Map<Long,Long> getPauseTimeSeries(){
-        for (JFRParser parser:jfrList) {
-            return parser.getPauseTimeSeries();
+    public void getPauseTimeSeries(){
+        for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
+            csvWriter.generatePauseTimeSeries(parser.getValue().getPauseTimeSeries(),parser.getKey());
         }
-        return null;
+    }
+
+    public void getGCAttributes(){
+        Map<Long,MemEvent> map;
+        for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
+
+        }
+
     }
 
     public void refreshViewList(){
         logger.info("Erase old JFR loadings");
-        jfrList = new ArrayList<JFRParser>();
-        set = new HashSet<>();
+        jfrList = new LinkedHashMap<String,JFRParser>();
     }
 }

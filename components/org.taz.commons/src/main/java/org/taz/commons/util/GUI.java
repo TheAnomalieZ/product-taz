@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class GUI extends JFrame {
@@ -21,9 +22,10 @@ public class GUI extends JFrame {
     private JButton memoryStateButton = new JButton();
     private JButton cpuAnalyzeButton = new JButton();
     private JButton pauseTimeButton = new JButton();
+    private JButton gcEventButton = new JButton();
 
     private JTextArea textArea = new JTextArea();
-    private ArrayList<String> filepaths = new ArrayList<String>();
+    private Map<String,String> filepaths = new LinkedHashMap<String,String>();
     private JButton refreshFileListButton = new JButton();
     private JFileChooser jfrChooser = new JFileChooser();
     private  JFileChooser chooser;
@@ -31,6 +33,7 @@ public class GUI extends JFrame {
     private ArrayList<Integer> GCSequence;
     private Map<Long,Long> pauseTimeSeries;
     private Map<Long,Long> cpuTimeSeries;
+    private ArrayList<ArrayList<String>> gcAttributes;
 
     private CSVWriter csvWriter;
     private JFRReader jfrReader;
@@ -43,21 +46,21 @@ public class GUI extends JFrame {
         csvWriter = CSVWriter.getInstance();
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBounds(20,50,600,250);
+        scrollPane.setBounds(20,40,600,250);
 
         // Buttons setbounds
         uploadAFileButton.setBounds(650, 50, 200,100);
         uploadAFileButton.setText("Upload JFRs");
         refreshFileListButton.setBounds(650, 150, 200,100);
         refreshFileListButton.setText("Refresh");
-        memoryStateButton.setBounds(50, 300, 200,100);
+        memoryStateButton.setBounds(40, 300, 200,80);
         memoryStateButton.setText("Memory sequence");
-
-        pauseTimeButton.setBounds(50,400,200,100);
+        pauseTimeButton.setBounds(40,400,200,80);
         pauseTimeButton.setText("pause Time series");
-
-        cpuAnalyzeButton.setBounds(250, 300, 200,100);
+        cpuAnalyzeButton.setBounds(260, 300, 200,80);
         cpuAnalyzeButton.setText("CPU");
+        gcEventButton.setBounds(260,400,200,80);
+        gcEventButton.setText("All gc attributes");
 
 
 
@@ -65,6 +68,7 @@ public class GUI extends JFrame {
         memoryStateButton.setEnabled(false);
         cpuAnalyzeButton.setEnabled(false);
         pauseTimeButton.setEnabled(false);
+        gcEventButton.setEnabled(false);
 
         // JPanel bounds
         panel1.setBounds(0, 0, 1000, 600);
@@ -80,7 +84,8 @@ public class GUI extends JFrame {
         panel1.add(cpuAnalyzeButton);
         panel1.add(pauseTimeButton);
         panel1.add(refreshFileListButton);
-//        panel1.add(textArea);
+        panel1.add(gcEventButton);
+
         panel1.add(scrollPane);
         add(panel1);
 
@@ -88,7 +93,6 @@ public class GUI extends JFrame {
         setSize(1000, 600);
         setBackground(Color.BLACK);
         setTitle("TAZ JFR Parser");
-//        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
@@ -104,7 +108,7 @@ public class GUI extends JFrame {
                 for (File file : files)
                     try {
                         textArea.append(file.getCanonicalPath()+" \n");
-                        filepaths.add(file.getCanonicalPath());
+                        filepaths.put(file.getName(),file.getCanonicalPath());
                     } catch (IOException e1) {
                         e1.printStackTrace();
                     }
@@ -113,6 +117,8 @@ public class GUI extends JFrame {
                 memoryStateButton.setEnabled(true);
                 cpuAnalyzeButton.setEnabled(true);
                 pauseTimeButton.setEnabled(true);
+                gcEventButton.setEnabled(true);
+
             }
         });
 
@@ -129,66 +135,70 @@ public class GUI extends JFrame {
                 System.out.println(e.getActionCommand());
                 getPauseTimeSeries();
 
-                }
-            });
+            }
+        });
+
+        gcEventButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(e.getActionCommand());
+                getGCAttributes();
+
+            }
+        });
 
         cpuAnalyzeButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e)
-                {
-                    System.out.println(e.getActionCommand());
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println(e.getActionCommand());
 
-                }
-            });
+            }
+        });
 
 
         refreshFileListButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e)
-                {
-                    System.out.println(e.getActionCommand());
-                    textArea.setText("");
-                    filepaths = new ArrayList<String>();
-                    if(jfrReader != null)
-                        jfrReader.refreshViewList();
-                    memoryStateButton.setEnabled(false);
-                    cpuAnalyzeButton.setEnabled(false);
-                }
-            });
+            public void actionPerformed(ActionEvent e)
+            {
+                System.out.println(e.getActionCommand());
+                textArea.setText("");
+                filepaths = new LinkedHashMap<String,String>();
+                if(jfrReader != null)
+                    jfrReader.refreshViewList();
+                memoryStateButton.setEnabled(false);
+                cpuAnalyzeButton.setEnabled(false);
+                gcEventButton.setEnabled(false);
+                pauseTimeButton.setEnabled(false);
 
-        }
+            }
+        });
+
+    }
 
     public void getGCStates(){
         if (jfrReader != null) {
-            GCSequence = jfrReader.getGCStates();
-
-            for (Integer state : GCSequence)
-                textArea.append(state.toString() + "\n");
-
-            chooser = new JFileChooser();
-            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            if (chooser.showOpenDialog(panel1) == JFileChooser.APPROVE_OPTION) {
-                fileName = chooser.getSelectedFile().getAbsolutePath();
-            }
-
-            File file = new File(fileName);
-            csvWriter.generateGCStates(GCSequence, file);
+           jfrReader.getGCStates();
         }
     }
 
+    public void getGCAttributes(){
+        if (jfrReader != null) {
+//            gcAttributes = jfrReader.getGCAttributes();
+//
+//            chooser = new JFileChooser();
+//            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+//            if (chooser.showOpenDialog(panel1) == JFileChooser.APPROVE_OPTION) {
+//                fileName = chooser.getSelectedFile().getAbsolutePath();
+//            }
+//
+//            File file = new File(fileName);
+//            csvWriter.generateGCAttributes(gcAttributes, file);
+        }
+    }
+
+
     public void getPauseTimeSeries(){
         if (jfrReader != null) {
-            pauseTimeSeries = jfrReader.getPauseTimeSeries();
+            jfrReader.getPauseTimeSeries();
 
-//           textArea.append(Arrays.toString(pauseTimeSeries.entrySet().toArray()));
-
-            chooser = new JFileChooser();
-            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            if( chooser.showOpenDialog( panel1 ) == JFileChooser.APPROVE_OPTION )
-            {
-                fileName=chooser.getSelectedFile().getAbsolutePath();
-            }
-
-            File file = new File(fileName);
-            csvWriter.generatePauseTimeSeries(pauseTimeSeries,file);
         }
 
     }

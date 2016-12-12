@@ -8,48 +8,44 @@ import java.util.Map;
  */
 public class GCPauseTimeSeries {
     private final Map<Long, MemEvent> eventMap;
-    private Map<Long,Long> pauseTimeSeries = new LinkedHashMap<Long,Long>();
+    private Map<Long,Long> pauseTimeSeries;
     private long startTime;
     private long endTime;
+
     public GCPauseTimeSeries(Map<Long, MemEvent> eventMap,long startTime) {
         this.eventMap = eventMap;
         this.startTime = startTime;
+        pauseTimeSeries = new LinkedHashMap<Long,Long>();
     }
 
     public Map<Long,Long> configureTimeSeries(){
+        Map<Long,Long> tempSeries = new LinkedHashMap<Long,Long>();
         for (Map.Entry<Long, MemEvent> memEventEntry : eventMap.entrySet()) {
             MemEvent memEvent = memEventEntry.getValue();
 
             long time = (memEvent.getStartTimestamp()-startTime)/1000000;
             long pauseTime =memEvent.getPauseTime()/1000000;
-            pauseTimeSeries.put(time,pauseTime);
+            tempSeries.put(time,pauseTime);
             endTime = time;
             System.out.println(memEvent.getStartTimestamp()+"-"+startTime+"="+time);
             System.out.println("pause Time: "+pauseTime);
         }
 
-        pauseTimeSeries = fix();
+
+        long i=1;
+        while(i<=endTime){
+            try{
+                long tempPauseTime = tempSeries.get(i);
+                for (int j = 0; j < tempPauseTime; j++) {
+                    pauseTimeSeries.put(i++, tempPauseTime);
+                }
+
+            }catch(NullPointerException ex){
+                pauseTimeSeries.put(i++,0L);
+            }
+        }
 
         return pauseTimeSeries;
     }
 
-    public Map<Long,Long> fix(){
-        Map<Long,Long> newSeries = new LinkedHashMap<Long,Long>();
-        long i=1;
-        while(i<=endTime){
-            try{
-                long tempPauseTime = pauseTimeSeries.get(i);
-                for (int j = 0; j < tempPauseTime; j++) {
-                    newSeries.put(i++, tempPauseTime);
-                }
-
-            }catch(NullPointerException ex){
-                newSeries.put(i++,0L);
-            }
-
-
-        }
-
-        return newSeries;
-    }
 }

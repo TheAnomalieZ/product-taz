@@ -29,11 +29,11 @@ public class CSVWriter {
     }
 
 
-    public void generateGCStates(ArrayList<Integer> list,File file){
+    public void generateGCStates(ArrayList<Integer> list,String fileName){
         logger.info("GC state sequences");
         PrintWriter outfile = null;
         try {
-            outfile = new PrintWriter(file);
+            outfile = new PrintWriter(new File(fileName+"_states.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -46,11 +46,11 @@ public class CSVWriter {
 
     }
 
-    public void getAEGCSequence(ArrayList<Integer> list,File file){
+    public void getAEGCSequence(ArrayList<Integer> list,File fileName){
         logger.info("AE GC state sequences");
         PrintWriter outfile = null;
         try {
-            outfile = new PrintWriter(file);
+            outfile = new PrintWriter(fileName+".csv");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -77,12 +77,12 @@ public class CSVWriter {
 
     }
 
-    public void generatePauseTimeSeries(Map<Long,Long> series, File file){
+    public void generatePauseTimeSeries(Map<Long,Long> series, String fileName){
 
         logger.info("Pause Time Series");
         PrintWriter outfile = null;
         try {
-            outfile = new PrintWriter(file);
+            outfile = new PrintWriter(new File(fileName+"_pausetime.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
