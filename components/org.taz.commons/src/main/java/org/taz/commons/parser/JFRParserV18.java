@@ -42,6 +42,11 @@ public class JFRParserV18 implements JFRParser {
         return gcTimeSeriesModel.getGCFeatures();
     }
 
+    public Map<Long,Long> getPauseTimeSeries(){
+        GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
+        return gcTimeSeriesModel.getPauseTimeSeries();
+    }
+
     public ArrayList<EventNode> getAllJFRAttributes() {
         ArrayList<EventNode> eventNodes = new ArrayList<EventNode>();
         for(IEventType iEventType : ieventtypes){

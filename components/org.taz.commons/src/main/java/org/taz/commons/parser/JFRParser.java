@@ -36,6 +36,8 @@ public interface JFRParser {
      */
     public EventNode getJFRAttributes(String eventName) throws EventNotFoundException;
 
+    public Map<Long,Long> getPauseTimeSeries();
+
     /**
      * Initiate Flight recorder parser
      * @param path file path

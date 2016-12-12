@@ -8,11 +8,12 @@ import org.taz.commons.parser.JFRParser;
 import org.taz.commons.parser.JFRParserV18;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.taz.commons.parser.util.EventHandlerFactory;
+import org.taz.commons.parser.memory.MemEvent;
+import org.taz.commons.parser.util.EventNode;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 
 public class JFRReader {
 
@@ -68,11 +69,16 @@ public class JFRReader {
 
 
     }
-
-
+    public Map<Long,Long> getPauseTimeSeries(){
+        for (JFRParser parser:jfrList) {
+            return parser.getPauseTimeSeries();
+        }
+        return null;
+    }
 
     public void refreshViewList(){
         logger.info("Erase old JFR loadings");
         jfrList = new ArrayList<JFRParser>();
+        set = new HashSet<>();
     }
 }

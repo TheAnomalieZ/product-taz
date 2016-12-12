@@ -2,6 +2,7 @@ package org.taz.commons.parser.memory;
 
 import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.JFRConstants;
+import org.taz.commons.parser.info.RecordingEventHandler;
 import org.taz.commons.parser.util.EventHandler;
 
 import java.util.ArrayList;
@@ -12,7 +13,13 @@ public class GCTimeSeriesModel extends EventHandler {
     private Map<Long,MemEvent> eventMap;
     private GCTimeHandler gcTimeHandler;
     private GCMemoryHandler gcMemoryHandler;
+    private RecordingEventHandler recordingEventHandler;
     private StateIdentifier stateIdentifier;
+    private GCPauseTimeSeries pauseTimeModel;
+
+    private long startTime;
+
+
 
     public GCTimeSeriesModel(IView view){
         super(view, JFRConstants.GCHANDLER);
@@ -24,6 +31,18 @@ public class GCTimeSeriesModel extends EventHandler {
         gcMemoryHandler= new GCMemoryHandler(view, eventMap);
         gcMemoryHandler.configureGCMemory();
 
+        recordingEventHandler = new RecordingEventHandler(view);
+        startTime = recordingEventHandler.getRecordingEvent().getStartTime();
+
+
+    }
+
+    public Map<Long,Long> getPauseTimeSeries(){
+        Map<Long,Long> pauseTimeSeries;
+        pauseTimeModel = new GCPauseTimeSeries(eventMap,startTime);
+        pauseTimeSeries = pauseTimeModel.configureTimeSeries();
+
+        return pauseTimeSeries;
     }
 
     public ArrayList<Integer> getStateSequence(){

@@ -11,12 +11,12 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 
 public class CSVWriter {
     private static final Logger logger = LoggerFactory.getLogger(JFRReader.class);
 
     private static CSVWriter csvWriter;
-    private static ArrayList<Integer> list;
 
     public static CSVWriter getInstance() {
 
@@ -75,6 +75,27 @@ public class CSVWriter {
 
         outfile.close();
 
+    }
+
+    public void generatePauseTimeSeries(Map<Long,Long> series, File file){
+
+        logger.info("Pause Time Series");
+        PrintWriter outfile = null;
+        try {
+            outfile = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Long i=0L;
+        Long temp;
+        while(i<series.size()) {
+            temp = series.get(++i);
+            System.out.print(i+","+temp + "\n");
+            outfile.append(i+","+temp + "\n");
+
+        }
+        outfile.close();
     }
 }
 

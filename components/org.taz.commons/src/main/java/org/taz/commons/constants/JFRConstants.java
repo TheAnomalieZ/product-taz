@@ -1,6 +1,14 @@
 package org.taz.commons.constants;
 
 public class JFRConstants {
+    public static String RECORDING = "Flight Recording";
+    public static String RECORDINGHANDLER = "Flight Recording";
+    public static String ID = "id";
+    public static String DURATION = "duration";
+    public static String STARTTIME = "startTime";
+    public static String RECORDINGNAME = "name";
+
+
     public static String CPULOAD = "CPU Load";
     public static String JVMUSER = "jvmUser";
     public static String JVMSYSTEM = "jvmSystem";
@@ -16,6 +24,7 @@ public class JFRConstants {
     public static String GCPAUSETIME = "sumOfPauses";
     public static String GARBAGECOLLECTION = "Garbage Collection";
     public static String GCHANDLER = "GC Handler";
+    public static String GCPAUSETIMEHANDLER = "GC Pause Time Handler";
 
     public static String GCOBJECTCOUNT= "Object Count after GC";
     public static String COUNT= "count";
