@@ -19,6 +19,7 @@ public class GCTimeSeriesModel extends EventHandler {
     private GCPauseTimeSeries pauseTimeModel;
 
     private long startTime;
+    private long duration;
 
 
 
@@ -34,13 +35,14 @@ public class GCTimeSeriesModel extends EventHandler {
 
         recordingEventHandler = new RecordingEventHandler(view);
         startTime = recordingEventHandler.getRecordingEvent().getStartTime();
+        duration = recordingEventHandler.getRecordingEvent().getDuration();
 
 
     }
 
-    public Map<Long,Long> getPauseTimeSeries(){
-        Map<Long,Long> pauseTimeSeries;
-        pauseTimeModel = new GCPauseTimeSeries(eventMap,startTime);
+    public Map<Long,Double> getPauseTimeSeries(){
+        Map<Long,Double> pauseTimeSeries;
+        pauseTimeModel = new GCPauseTimeSeries(eventMap,startTime,duration);
         pauseTimeSeries = pauseTimeModel.configureTimeSeries();
 
         return pauseTimeSeries;

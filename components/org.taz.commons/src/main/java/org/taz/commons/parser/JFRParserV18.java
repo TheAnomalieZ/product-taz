@@ -42,7 +42,7 @@ public class JFRParserV18 implements JFRParser {
         return gcTimeSeriesModel.getGCFeatures();
     }
 
-    public Map<Long,Long> getPauseTimeSeries(){
+    public Map<Long,Double> getPauseTimeSeries(){
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
         return gcTimeSeriesModel.getPauseTimeSeries();
     }

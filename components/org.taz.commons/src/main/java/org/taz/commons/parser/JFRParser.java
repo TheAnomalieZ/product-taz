@@ -40,7 +40,7 @@ public interface JFRParser {
      * Method to retrieve paust time series
      * @return Map of time and pausetime interval
      */
-    public Map<Long,Long> getPauseTimeSeries();
+    public Map<Long,Double> getPauseTimeSeries();
 
     /**
      * Initiate Flight recorder parser

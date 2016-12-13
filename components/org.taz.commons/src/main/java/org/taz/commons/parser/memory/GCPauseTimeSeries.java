@@ -1,5 +1,6 @@
 package org.taz.commons.parser.memory;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -8,25 +9,37 @@ import java.util.Map;
  */
 public class GCPauseTimeSeries {
     private final Map<Long, MemEvent> eventMap;
-    private Map<Long,Long> pauseTimeSeries;
+    private Map<Long,Double> pauseTimeSeries;
     private long startTime;
-    private long endTime;
+    private double endTime;
+    private long duration;
 
-    public GCPauseTimeSeries(Map<Long, MemEvent> eventMap,long startTime) {
+    public GCPauseTimeSeries(Map<Long, MemEvent> eventMap,long startTime,long duration) {
         this.eventMap = eventMap;
         this.startTime = startTime;
-        pauseTimeSeries = new LinkedHashMap<Long,Long>();
+        this.duration = duration;
+        pauseTimeSeries = new LinkedHashMap<Long,Double>();
     }
 
-    public Map<Long,Long> configureTimeSeries(){
-        Map<Long,Long> tempSeries = new LinkedHashMap<Long,Long>();
+    public Map<Long,Double> configureTimeSeries(){
+        Map<Long,Double> tempSeries = new LinkedHashMap<Long,Double>();
+
         for (Map.Entry<Long, MemEvent> memEventEntry : eventMap.entrySet()) {
             MemEvent memEvent = memEventEntry.getValue();
 
-            long time = (memEvent.getStartTimestamp()-startTime)/1000000;
-            long pauseTime =memEvent.getPauseTime()/1000;
+            long time = memEvent.getStartTimestamp()-startTime;
+            time= Math.round(time/1000000000);
+            double pauseTime =memEvent.getPauseTime()/1000000;
+
+            double tempPauseTime = pauseTime;
+            if(time==0)
+                while(tempPauseTime>0){
+                    time+=1;
+                    tempPauseTime-=1000;
+                }
+
             tempSeries.put(time,pauseTime);
-            endTime = time;
+            endTime = time+pauseTime/1000;
             System.out.println(memEvent.getStartTimestamp()+"-"+startTime+"="+time);
             System.out.println("pause Time: "+pauseTime);
         }
@@ -35,13 +48,17 @@ public class GCPauseTimeSeries {
         long i=1;
         while(i<=endTime){
             try{
-                long tempPauseTime = tempSeries.get(i);
-                for (int j = 0; j < tempPauseTime; j++) {
-                    pauseTimeSeries.put(i++, tempPauseTime);
-                }
+                double tempPauseTime = tempSeries.get(i);
 
+                pauseTimeSeries.put(i++, tempPauseTime);
+
+                double secondTemp=Math.round(tempPauseTime/1000);
+
+                for(int j=1;j<secondTemp;j++){
+                        pauseTimeSeries.put(i++, tempPauseTime);
+                    }
             }catch(NullPointerException ex){
-                pauseTimeSeries.put(i++,0L);
+                pauseTimeSeries.put(i++,0d);
             }
         }
 
