@@ -7,6 +7,7 @@ public class MemEvent extends JFREvent {
 
     private long gcId;
     private long usedHeap;
+    private long heapDiff;
     private long pauseTime;
     private String type;
     private String cause;
@@ -63,9 +64,5 @@ public class MemEvent extends JFREvent {
     public void setDuration(long duration) {
         this.duration = duration;
     }
-
-
-
-
 
 }

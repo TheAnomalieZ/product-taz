@@ -11,12 +11,12 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 
 public class CSVWriter {
     private static final Logger logger = LoggerFactory.getLogger(JFRReader.class);
 
     private static CSVWriter csvWriter;
-    private static ArrayList<Integer> list;
 
     public static CSVWriter getInstance() {
 
@@ -29,11 +29,11 @@ public class CSVWriter {
     }
 
 
-    public void generateGCStates(ArrayList<Integer> list,File file){
+    public void generateGCStates(ArrayList<Integer> list,String fileName){
         logger.info("GC state sequences");
         PrintWriter outfile = null;
         try {
-            outfile = new PrintWriter(file);
+            outfile = new PrintWriter(new File(fileName+"_states.csv"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -46,11 +46,11 @@ public class CSVWriter {
 
     }
 
-    public void getAEGCSequence(ArrayList<Integer> list,File file){
+    public void getAEGCSequence(ArrayList<Integer> list,File fileName){
         logger.info("AE GC state sequences");
         PrintWriter outfile = null;
         try {
-            outfile = new PrintWriter(file);
+            outfile = new PrintWriter(fileName+".csv");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -76,6 +76,55 @@ public class CSVWriter {
         outfile.close();
 
     }
+
+    public void generatePauseTimeSeries(Map<Long,Long> series, String fileName){
+
+        logger.info("Pause Time Series");
+        PrintWriter outfile = null;
+        try {
+            outfile = new PrintWriter(new File(fileName+"_pausetime.csv"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Long i=0L;
+        Long temp;
+        while(i<series.size()) {
+            temp = series.get(++i);
+            System.out.print(i+","+temp + "\n");
+            outfile.append(i+","+temp + "\n");
+
+        }
+        outfile.close();
+    }
+
+    public void generateGCAttributes(ArrayList<ArrayList<String>> list, String fileName){
+
+        logger.info("All GC attributes");
+        PrintWriter outfile = null;
+        try {
+            outfile = new PrintWriter(new File(fileName+"_gc_at.csv"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        for(ArrayList<String> sublist:list){
+            for(String attri:sublist){
+                if(sublist.indexOf(attri)==0){
+                    System.out.print(attri);
+                    outfile.append(attri);
+                }else{
+                    System.out.print(","+attri);
+                    outfile.append(","+attri);
+                }
+            }
+            System.out.print("\n");
+            outfile.append("\n");
+        }
+        outfile.close();
+    }
+
+
 }
 
 
