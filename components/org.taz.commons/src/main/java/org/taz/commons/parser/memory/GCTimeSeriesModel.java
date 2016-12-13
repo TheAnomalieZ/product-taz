@@ -8,6 +8,7 @@ import org.taz.commons.parser.util.EventHandler;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class GCTimeSeriesModel extends EventHandler {
     private Map<Long,MemEvent> eventMap;
@@ -23,7 +24,7 @@ public class GCTimeSeriesModel extends EventHandler {
 
     public GCTimeSeriesModel(IView view){
         super(view, JFRConstants.GCHANDLER);
-        eventMap = new LinkedHashMap<Long, MemEvent>();
+        eventMap = new TreeMap<Long, MemEvent>();
 
         gcTimeHandler= new GCTimeHandler(view, eventMap);
         gcTimeHandler.configureEventGCTime();

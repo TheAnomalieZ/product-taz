@@ -29,8 +29,8 @@ public class RecordingEventHandler extends EventHandler {
 //                recordingEvent.setStartTime(event.getStartTimestamp());
                 recordingEvent.setName(event.getValue(JFRConstants.RECORDINGNAME).toString());
 
-                System.out.println(recordingEvent.getDuration());
-                System.out.println(recordingEvent.getName());
+//                System.out.println(recordingEvent.getDuration());
+//                System.out.println(recordingEvent.getName());
 
             }
         }

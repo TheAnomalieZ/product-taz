@@ -24,7 +24,7 @@ public class GCPauseTimeSeries {
             MemEvent memEvent = memEventEntry.getValue();
 
             long time = (memEvent.getStartTimestamp()-startTime)/1000000;
-            long pauseTime =memEvent.getPauseTime()/1000000;
+            long pauseTime =memEvent.getPauseTime()/1000;
             tempSeries.put(time,pauseTime);
             endTime = time;
             System.out.println(memEvent.getStartTimestamp()+"-"+startTime+"="+time);
