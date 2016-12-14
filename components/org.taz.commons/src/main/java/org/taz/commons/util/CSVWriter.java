@@ -97,6 +97,27 @@ public class CSVWriter {
         outfile.close();
     }
 
+    public void generateGCTimeSeries(Map<Long,ArrayList<Double>> series, String fileName){
+
+        logger.info("Pause Time Series");
+        PrintWriter outfile = null;
+        try {
+            outfile = new PrintWriter(new File(fileName+"GC_series.csv"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Long i=0L;
+        ArrayList<Double> temp;
+        for (Map.Entry<Long, ArrayList<Double>> a : series.entrySet()) {
+            temp = a.getValue();
+            System.out.print(temp.get(0)+","+temp.get(1) + "\n");
+            outfile.append(temp.get(0)+","+temp.get(1) + "\n");
+        }
+        outfile.close();
+    }
+
+
     public void generateGCAttributes(ArrayList<ArrayList<String>> list, String fileName){
 
         logger.info("All GC attributes");

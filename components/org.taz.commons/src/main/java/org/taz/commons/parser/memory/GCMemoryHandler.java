@@ -24,12 +24,26 @@ public class GCMemoryHandler extends EventHandler {
                     if (eventMap.containsKey(gcID)){
                         MemEvent memEvent = eventMap.get(gcID);
                         memEvent.setUsedHeap(Long.parseLong(event.getValue(JFRConstants.HEAPUSED).toString()));
+                        memEvent.setStartHeap(Long.parseLong(event.getValue(JFRConstants.HEAPUSED).toString()));
+                    }
+                    else {
+                        System.out.println("gcID doesn't exist!");
+                    }
+                }
+
+                if(event.getValue(JFRConstants.WHEN).toString().equals(JFRConstants.AFTERGC)){
+                    long gcID = Long.parseLong(event.getValue(JFRConstants.GCID).toString());
+                    if (eventMap.containsKey(gcID)){
+                        MemEvent memEvent = eventMap.get(gcID);
+                        memEvent.setEndHeap(Long.parseLong(event.getValue(JFRConstants.HEAPUSED).toString()));
                     }
                     else {
                         System.out.println("gcID doesn't exist!");
                     }
                 }
             }
+
         }
     }
 }
+

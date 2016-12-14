@@ -7,11 +7,29 @@ public class MemEvent extends JFREvent {
 
     private long gcId;
     private long usedHeap;
-    private long heapDiff;
+    private long startHeap;
+    private long endHeap;
+
     private long pauseTime;
     private String type;
     private String cause;
     private long duration;
+
+    public long getStartHeap() {
+        return startHeap;
+    }
+
+    public void setStartHeap(long startHeap) {
+        this.startHeap = startHeap;
+    }
+
+    public long getEndHeap() {
+        return endHeap;
+    }
+
+    public void setEndHeap(long endHeap) {
+        this.endHeap = endHeap;
+    }
 
     public MemEvent(){
         super(JFRConstants.GARBAGECOLLECTION);

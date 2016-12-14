@@ -22,6 +22,7 @@ public class GUI extends JFrame {
     private JButton memoryStateButton = new JButton();
     private JButton cpuAnalyzeButton = new JButton();
     private JButton pauseTimeButton = new JButton();
+    private JButton fullGCSeriesButton = new JButton();
     private JButton gcEventButton = new JButton();
 
     private JTextArea textArea = new JTextArea();
@@ -62,6 +63,9 @@ public class GUI extends JFrame {
         gcEventButton.setBounds(260,400,200,80);
         gcEventButton.setText("All gc attributes");
 
+        fullGCSeriesButton.setBounds(480,300,200,80);
+        fullGCSeriesButton.setText("GC Time Series");
+
 
 
         panel1 = new JPanel(new BorderLayout());
@@ -69,6 +73,7 @@ public class GUI extends JFrame {
         cpuAnalyzeButton.setEnabled(false);
         pauseTimeButton.setEnabled(false);
         gcEventButton.setEnabled(false);
+        fullGCSeriesButton.setEnabled(false);
 
         // JPanel bounds
         panel1.setBounds(0, 0, 1000, 600);
@@ -85,6 +90,7 @@ public class GUI extends JFrame {
         panel1.add(pauseTimeButton);
         panel1.add(refreshFileListButton);
         panel1.add(gcEventButton);
+        panel1.add(fullGCSeriesButton);
 
         panel1.add(scrollPane);
         add(panel1);
@@ -118,6 +124,8 @@ public class GUI extends JFrame {
                 cpuAnalyzeButton.setEnabled(true);
                 pauseTimeButton.setEnabled(true);
                 gcEventButton.setEnabled(true);
+                fullGCSeriesButton.setEnabled(true);
+
 
             }
         });
@@ -134,6 +142,14 @@ public class GUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 System.out.println(e.getActionCommand());
                 getPauseTimeSeries();
+
+            }
+        });
+
+        fullGCSeriesButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(e.getActionCommand());
+                getGCTimeSeries();
 
             }
         });
@@ -167,6 +183,8 @@ public class GUI extends JFrame {
                 cpuAnalyzeButton.setEnabled(false);
                 gcEventButton.setEnabled(false);
                 pauseTimeButton.setEnabled(false);
+                fullGCSeriesButton.setEnabled(false);
+
 
             }
         });
@@ -188,6 +206,13 @@ public class GUI extends JFrame {
     public void getPauseTimeSeries(){
         if (jfrReader != null) {
             jfrReader.getPauseTimeSeries();
+        }
+
+    }
+
+    public void getGCTimeSeries(){
+        if (jfrReader != null) {
+            jfrReader.getGCTimeSeries();
         }
 
     }

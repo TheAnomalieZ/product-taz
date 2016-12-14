@@ -70,6 +70,13 @@ public class JFRReader {
             csvWriter.generatePauseTimeSeries(parser.getValue().getPauseTimeSeries(),parser.getKey());
         }
     }
+    public void getGCTimeSeries(){
+        for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
+            csvWriter.generateGCTimeSeries(parser.getValue().getGCTimeSeries(),parser.getKey());
+        }
+    }
+
+
 
     public void getGCAttributes(){
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {

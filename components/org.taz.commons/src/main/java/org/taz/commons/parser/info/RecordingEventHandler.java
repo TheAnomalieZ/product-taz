@@ -23,15 +23,11 @@ public class RecordingEventHandler extends EventHandler {
     public void init(){
         for (IEvent event : view) {
             if (EVENT_TYPE.equals(event.getEventType().getName())) {
-                long id = Long.parseLong(event.getValue(JFRConstants.ID).toString());
+                recordingEvent.setId(Long.parseLong(event.getValue(JFRConstants.ID).toString()));
                 recordingEvent.setDuration(Long.parseLong(event.getValue(JFRConstants.DURATION).toString()));
                 recordingEvent.setStartTime(Long.parseLong(event.getValue(JFRConstants.STARTTIME).toString()));
 //                recordingEvent.setStartTime(event.getStartTimestamp());
                 recordingEvent.setName(event.getValue(JFRConstants.RECORDINGNAME).toString());
-
-//                System.out.println(recordingEvent.getDuration());
-//                System.out.println(recordingEvent.getName());
-
             }
         }
     }
