@@ -77,7 +77,7 @@ public class CSVWriter {
 
     }
 
-    public void generatePauseTimeSeries(Map<Long,Long> series, String fileName){
+    public void generatePauseTimeSeries(Map<Long,Double> series, String fileName){
 
         logger.info("Pause Time Series");
         PrintWriter outfile = null;
@@ -88,12 +88,11 @@ public class CSVWriter {
         }
 
         Long i=0L;
-        Long temp;
-        while(i<series.size()) {
-            temp = series.get(++i);
-            System.out.print(i+","+temp + "\n");
-            outfile.append(i+","+temp + "\n");
-
+        double temp;
+        for (Map.Entry<Long, Double> a : series.entrySet()) {
+            temp = a.getValue();
+            System.out.print(temp + "\n");
+            outfile.append(temp + "\n");
         }
         outfile.close();
     }

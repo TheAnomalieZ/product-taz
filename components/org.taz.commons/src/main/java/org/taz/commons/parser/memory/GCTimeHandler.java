@@ -7,9 +7,10 @@ import org.taz.commons.parser.util.EventHandler;
 
 
 import java.util.Map;
+import java.util.TreeMap;
 
 public class GCTimeHandler extends EventHandler {
-    private final Map<Long,MemEvent> eventMap;
+    private Map<Long,MemEvent> eventMap;
 
     public GCTimeHandler(IView view, Map<Long,MemEvent> eventMap){
         super(view, JFRConstants.GARBAGECOLLECTION);
@@ -36,5 +37,11 @@ public class GCTimeHandler extends EventHandler {
                 }
             }
         }
+//        sortGCMap();
+    }
+
+    public void sortGCMap(){
+        Map<Long, MemEvent> treeEventMap = new TreeMap<Long, MemEvent>(eventMap);
+        eventMap = treeEventMap;
     }
 }

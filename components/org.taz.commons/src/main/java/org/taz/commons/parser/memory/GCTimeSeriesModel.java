@@ -8,6 +8,7 @@ import org.taz.commons.parser.util.EventHandler;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class GCTimeSeriesModel extends EventHandler {
     private Map<Long,MemEvent> eventMap;
@@ -18,12 +19,13 @@ public class GCTimeSeriesModel extends EventHandler {
     private GCPauseTimeSeries pauseTimeModel;
 
     private long startTime;
+    private long duration;
 
 
 
     public GCTimeSeriesModel(IView view){
         super(view, JFRConstants.GCHANDLER);
-        eventMap = new LinkedHashMap<Long, MemEvent>();
+        eventMap = new TreeMap<Long, MemEvent>();
 
         gcTimeHandler= new GCTimeHandler(view, eventMap);
         gcTimeHandler.configureEventGCTime();
@@ -33,13 +35,14 @@ public class GCTimeSeriesModel extends EventHandler {
 
         recordingEventHandler = new RecordingEventHandler(view);
         startTime = recordingEventHandler.getRecordingEvent().getStartTime();
+        duration = recordingEventHandler.getRecordingEvent().getDuration();
 
 
     }
 
-    public Map<Long,Long> getPauseTimeSeries(){
-        Map<Long,Long> pauseTimeSeries;
-        pauseTimeModel = new GCPauseTimeSeries(eventMap,startTime);
+    public Map<Long,Double> getPauseTimeSeries(){
+        Map<Long,Double> pauseTimeSeries;
+        pauseTimeModel = new GCPauseTimeSeries(eventMap,startTime,duration);
         pauseTimeSeries = pauseTimeModel.configureTimeSeries();
 
         return pauseTimeSeries;
