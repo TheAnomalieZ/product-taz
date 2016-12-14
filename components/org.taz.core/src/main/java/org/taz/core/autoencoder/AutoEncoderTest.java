@@ -37,23 +37,23 @@ public class AutoEncoderTest {
     public static void main(String[] args) throws Exception {
 
         int batchSize = 100 ;
-        int chunkSize = 30 ;
+        int chunkSize = 20 ;
         int layers[] = { chunkSize, 100, 70, 50 } ;
 
 
-//        Path target = Paths.get( "/home/mani/model/" ) ;
-//        if( !Files.exists(target) ) {
-//            log.info( "Creating {}", target ) ;
-//            Files.createDirectories( target ) ;
-//        }
-//
-//        System.out.println();
-//
-//        AE ae = new LSTMAutoEncoder( target, layers ) ;
+        Path target = Paths.get( "/home/mani/JFR_CSV/Models/RBM" ) ;
+        if( !Files.exists(target) ) {
+            log.info( "Creating {}", target ) ;
+            Files.createDirectories( target ) ;
+        }
+
+        System.out.println();
+
+        AE ae = new RBMAutoEncoder( target, layers ) ;
 
         //Load the training data:
-        RecordReader trainRecordReader = new CSVRecordReader(0,"\n");
-        trainRecordReader.initialize(new FileSplit(new File("/home/mani/1.csv/cep/ceptrain.csv")));
+        RecordReader trainRecordReader = new CSVRecordReader(0,",");
+        trainRecordReader.initialize(new FileSplit(new File("/home/mani/JFR_CSV/cep/pausetimeseries/ceptrainnew.csv")));
         DataSetIterator trainIter = new RecordReaderDataSetIterator(trainRecordReader,30);
 
         while(trainIter.hasNext()) {
@@ -61,10 +61,10 @@ public class AutoEncoderTest {
             System.out.println(s);
         }
 
-//        //Load the test data
-//        RecordReader testRecordReader = new CSVRecordReader(0,",");
-//        testRecordReader.initialize(new FileSplit(new File("/home/mani/jfr/soma.csv")));
-//        DataSetIterator testIter = new RecordReaderDataSetIterator(testRecordReader,1);
+        //Load the test data
+        RecordReader testRecordReader = new CSVRecordReader(0,",");
+        testRecordReader.initialize(new FileSplit(new File("/home/mani/JFR_CSV/cep/pausetimeseries/ceptest.csv")));
+        DataSetIterator testIter = new RecordReaderDataSetIterator(testRecordReader,1);
 //
 //        SequenceRecordReader trainFeatures = new CSVSequenceRecordReader();
 //        trainFeatures.initialize(new FileSplit(new File("/home/mani/jfr/mama.csv")));
@@ -91,30 +91,30 @@ public class AutoEncoderTest {
 **/
 
         log.info("Load datasets ... ");
-//         ae.train(trainIter);
+         ae.train(trainIter);
 
 
-//        List<INDArray> featuresTest = new ArrayList<>();
-//
-//        Random r = new Random(12345);
-//        while(testIter.hasNext()){
-//            DataSet ds = testIter.next();
-//            featuresTest.add(ds.getFeatures());
-//        }
-//
-//        ArrayList<ImmutableTriple<Double,Integer,INDArray>> l = ae.calScore(featuresTest);
-//
-//        for(ImmutableTriple<Double,Integer,INDArray> m :l){
-//            System.out.println(m);
-//        }
-//
-//
-//        System.out.println(ae.getModel().score());
-//
-//        ae.test(testIter);
-//
-//        log.info("Saving params ...");
-//        ae.save( target );
+        List<INDArray> featuresTest = new ArrayList<>();
+
+        Random r = new Random(12345);
+        while(testIter.hasNext()){
+            DataSet ds = testIter.next();
+            featuresTest.add(ds.getFeatures());
+        }
+
+        ArrayList<ImmutableTriple<Double,Integer,INDArray>> l = ae.calScore(featuresTest);
+
+        for(ImmutableTriple<Double,Integer,INDArray> m :l){
+            System.out.println(m);
+        }
+
+
+        System.out.println(ae.getModel().score());
+
+        ae.test(testIter);
+
+        log.info("Saving params ...");
+        ae.save( target );
 
     }
 

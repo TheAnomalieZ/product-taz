@@ -41,6 +41,11 @@ public interface JFRParser {
      * @return Map of time and pausetime interval
      */
     public Map<Long,Double> getPauseTimeSeries();
+    /**
+     * Method to retrieve whole gc time series
+     * @return Map of time and heap and pause time
+     */
+    public Map<Long,ArrayList<Double>> getGCTimeSeries();
 
     /**
      * Initiate Flight recorder parser
