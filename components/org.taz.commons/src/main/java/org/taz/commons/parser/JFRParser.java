@@ -2,6 +2,7 @@ package org.taz.commons.parser;
 
 import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
+import org.taz.commons.parser.cpu.CPULoadEvent;
 import org.taz.commons.parser.memory.MemEvent;
 import org.taz.commons.parser.util.EventNode;
 
@@ -46,6 +47,12 @@ public interface JFRParser {
      * @return Map of time and heap and pause time
      */
     public Map<Long,ArrayList<Double>> getGCTimeSeries();
+
+    /**
+     * Method to retrieve CPU Events
+     * @return Map of time and pausetime interval
+     */
+    public ArrayList<CPULoadEvent> getCPUEvents();
 
     /**
      * Initiate Flight recorder parser

@@ -78,6 +78,12 @@ public class JFRReader {
 
 
 
+    public void getCPUEvents(){
+        for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
+            csvWriter.generateCPUEvent(parser.getValue().getCPUEvents(),parser.getKey());
+        }
+    }
+
     public void getGCAttributes(){
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
             ArrayList<ArrayList<String>> attriList = gcAttributes(parser.getValue().getGCEvents());

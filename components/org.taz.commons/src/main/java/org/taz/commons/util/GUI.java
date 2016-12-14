@@ -166,6 +166,7 @@ public class GUI extends JFrame {
             public void actionPerformed(ActionEvent e)
             {
                 System.out.println(e.getActionCommand());
+                getCPUEvents();
 
             }
         });
@@ -206,6 +207,13 @@ public class GUI extends JFrame {
     public void getPauseTimeSeries(){
         if (jfrReader != null) {
             jfrReader.getPauseTimeSeries();
+        }
+
+    }
+
+    public void getCPUEvents(){
+        if (jfrReader != null) {
+            jfrReader.getCPUEvents();
         }
 
     }

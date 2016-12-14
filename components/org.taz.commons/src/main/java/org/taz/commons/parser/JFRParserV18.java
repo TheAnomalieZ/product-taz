@@ -8,6 +8,8 @@ import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.TAZConstants;
 import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
+import org.taz.commons.parser.cpu.CPULoadEvent;
+import org.taz.commons.parser.cpu.CPULoadHandler;
 import org.taz.commons.parser.memory.GCTimeSeriesModel;
 import org.taz.commons.parser.memory.MemEvent;
 import org.taz.commons.parser.util.EventNode;
@@ -45,6 +47,11 @@ public class JFRParserV18 implements JFRParser {
     public Map<Long,Double> getPauseTimeSeries(){
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
         return gcTimeSeriesModel.getPauseTimeSeries();
+    }
+
+    public ArrayList<CPULoadEvent> getCPUEvents() {
+        CPULoadHandler cpuLoadHandler = new CPULoadHandler(iView);
+        return cpuLoadHandler.getEventSeries();
     }
 
     public Map<Long,ArrayList<Double>> getGCTimeSeries(){

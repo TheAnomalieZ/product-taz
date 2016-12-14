@@ -5,6 +5,7 @@ package org.taz.commons.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.taz.commons.parser.cpu.CPULoadEvent;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -96,6 +97,28 @@ public class CSVWriter {
         }
         outfile.close();
     }
+
+    public void generateCPUEvent(ArrayList<CPULoadEvent> cpuLoadEvents, String fileName){
+
+        logger.info("CPU Event Series");
+        PrintWriter outfile = null;
+        try {
+            outfile = new PrintWriter(new File(fileName+"_CPU_Event.csv"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Long i=0L;
+        String  temp;
+        for (CPULoadEvent iterator : cpuLoadEvents) {
+            temp = iterator.getJvmUser()+','+iterator.getMachineTotal();
+            System.out.print(temp + "\n");
+            outfile.append(temp + "\n");
+        }
+        outfile.close();
+    }
+
+
 
     public void generateGCTimeSeries(Map<Long,ArrayList<Double>> series, String fileName){
 
