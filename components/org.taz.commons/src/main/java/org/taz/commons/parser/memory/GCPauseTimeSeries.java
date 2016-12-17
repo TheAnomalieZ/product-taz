@@ -25,12 +25,14 @@ public class GCPauseTimeSeries {
         Map<Long,Double> tempSeries = new LinkedHashMap<Long,Double>();
         double previousTime = recordStartTime;
         long timeCount=1;
+        double endTime;
+        double startTime;
 
         for (Map.Entry<Long, MemEvent> memEventEntry : eventMap.entrySet()) {
             MemEvent memEvent = memEventEntry.getValue();
 
-            double endTime = memEvent.getEndTimestamp();
-            double startTime = memEvent.getStartTimestamp();
+            endTime = memEvent.getEndTimestamp();
+            startTime = memEvent.getStartTimestamp();
 
             double previousTimeGap = (startTime-previousTime)/1000000000;
 
@@ -55,7 +57,6 @@ public class GCPauseTimeSeries {
 
         return tempSeries;
     }
-
 
 
     public Map<Long,ArrayList<Double>> heapAndPauseTime(){

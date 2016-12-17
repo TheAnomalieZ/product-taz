@@ -15,7 +15,7 @@ public class RecordingEventHandler extends EventHandler {
     RecordingEvent recordingEvent;
 
     public RecordingEventHandler(IView view) {
-        super(view, JFRConstants.RECORDINGHANDLER);
+        super(view, JFRConstants.RECORDING);
         recordingEvent = new RecordingEvent();
         init();
     }

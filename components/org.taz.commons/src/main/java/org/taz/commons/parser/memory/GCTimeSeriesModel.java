@@ -46,6 +46,8 @@ public class GCTimeSeriesModel extends EventHandler {
         return pauseTimeSeries;
     }
 
+
+
     public Map<Long,ArrayList<Double>> getHeapandPauseSeries(){
         Map<Long,ArrayList<Double>> timeSeries;
         pauseTimeModel = new GCPauseTimeSeries(eventMap,startTime);

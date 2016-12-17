@@ -98,6 +98,25 @@ public class CSVWriter {
         outfile.close();
     }
 
+    public void generatePauseTimeSeries(ArrayList<Integer> series, String fileName){
+
+        logger.info("Pause Time Series");
+        PrintWriter outfile = null;
+        try {
+            outfile = new PrintWriter(new File(fileName+"_pausetime.csv"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Long i=0L;
+        double temp;
+        for (Integer a : series) {;
+            System.out.print(a + "\n");
+            outfile.append(a + "\n");
+        }
+        outfile.close();
+    }
+
     public void generateCPUEvent(ArrayList<CPULoadEvent> cpuLoadEvents, String fileName){
 
         logger.info("CPU Event Series");

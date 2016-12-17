@@ -67,7 +67,9 @@ public class JFRReader {
     }
     public void getPauseTimeSeries(){
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
-            csvWriter.generatePauseTimeSeries(parser.getValue().getPauseTimeSeries(),parser.getKey());
+            ArrayList<Integer> convertedSeries = convertPauseTimeSeries(parser.getValue().getPauseTimeSeries());
+
+            csvWriter.generatePauseTimeSeries(convertedSeries,parser.getKey());
         }
     }
     public void getGCTimeSeries(){
@@ -86,12 +88,25 @@ public class JFRReader {
 
     public void getGCAttributes(){
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
-            ArrayList<ArrayList<String>> attriList = gcAttributes(parser.getValue().getGCEvents());
+            ArrayList<ArrayList<String>> attriList = convertGCAttributes(parser.getValue().getGCEvents());
             csvWriter.generateGCAttributes(attriList,parser.getKey());
         }
     }
 
-    public ArrayList<ArrayList<String>> gcAttributes(Map<Long,MemEvent> map){
+    private ArrayList<Integer> convertPauseTimeSeries(Map<Long,Double> series){
+        ArrayList<Integer> convertedSeries = new ArrayList<Integer>();
+        Map<Long,Double> tempSeries = series;
+        for(Map.Entry<Long,Double> point:tempSeries.entrySet()) {
+            if(point.getValue()>0){
+                convertedSeries.add(1);
+            }else{
+                convertedSeries.add(0);
+            }
+        }
+        return convertedSeries;
+    }
+
+    private ArrayList<ArrayList<String>> convertGCAttributes(Map<Long,MemEvent> map){
         ArrayList<ArrayList<String>> attriList = new ArrayList<ArrayList<String>>();
         ArrayList<String> tempList = new ArrayList<String>();
         tempList.add("GCId");

@@ -2,7 +2,6 @@ package org.taz.commons.constants;
 
 public class JFRConstants {
     public static String RECORDING = "Flight Recording";
-    public static String RECORDINGHANDLER = "Flight Recording";
     public static String ID = "id";
     public static String DURATION = "duration";
     public static String STARTTIME = "startTime";
