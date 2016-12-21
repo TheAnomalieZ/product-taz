@@ -12,8 +12,8 @@
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
                     <a class="active" href="/home">
-                        <i class="fa fa-upload"></i>
-                        <span>Upload File</span>
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
                     </a>
                 </li>
                 <li class="sub-menu">
@@ -22,7 +22,7 @@
                         <span>General</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/overview">Overview</a></li>
+                        <li><a href="/overview?fileName=${fileName}">Overview</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

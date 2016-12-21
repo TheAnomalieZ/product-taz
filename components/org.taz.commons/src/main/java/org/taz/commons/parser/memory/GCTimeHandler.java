@@ -28,6 +28,7 @@ public class GCTimeHandler extends EventHandler {
                 memEvent.setType(event.getValue(JFRConstants.GCTYPE).toString());
                 memEvent.setCause(event.getValue(JFRConstants.GCREASON).toString());
                 memEvent.setPauseTime(Long.parseLong(event.getValue(JFRConstants.GCPAUSETIME).toString()));
+                memEvent.setLongestPause(event.getValue(JFRConstants.GC_LONGEST_PAUSE).toString());
 
                 if(!eventMap.containsKey(memEvent.getGcId())){
                     eventMap.put(memEvent.getGcId(),memEvent);

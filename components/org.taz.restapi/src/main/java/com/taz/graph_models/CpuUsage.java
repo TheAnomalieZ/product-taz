@@ -8,17 +8,16 @@ import java.util.ArrayList;
 public class CpuUsage {
     private double max;
     private double avg;
+    private String cpuUsageData;
     private ArrayList<Double> data;
 
-    public String getTempCpuUsage() {
-        return tempCpuUsage;
+    public String getCpuUsageData() {
+        return cpuUsageData;
     }
 
-    public void setTempCpuUsage(String tempCpuUsage) {
-        this.tempCpuUsage = tempCpuUsage;
+    public void setCpuUsageData(String cpuUsageData) {
+        this.cpuUsageData = cpuUsageData;
     }
-
-    private String tempCpuUsage;
 
     public CpuUsage(){
         this.max = 0;

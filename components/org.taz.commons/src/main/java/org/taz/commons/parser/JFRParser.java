@@ -2,7 +2,10 @@ package org.taz.commons.parser;
 
 import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
+import org.taz.commons.parser.JVM.JVMInformationEvent;
 import org.taz.commons.parser.cpu.CPULoadEvent;
+import org.taz.commons.parser.memory.GarbageCollectionEvent;
+import org.taz.commons.parser.memory.HeapSummaryEvent;
 import org.taz.commons.parser.memory.MemEvent;
 import org.taz.commons.parser.util.EventNode;
 
@@ -53,6 +56,24 @@ public interface JFRParser {
      * @return Map of time and pausetime interval
      */
     public ArrayList<CPULoadEvent> getCPUEvents();
+
+    /**
+     * Method to retrieve Heap summary Events
+     * @return Map of time and pausetime interval
+     */
+    public ArrayList<HeapSummaryEvent> getHeapSummaryEvents();
+
+    /**
+     * Method to retrieve Heap summary Events
+     * @return Map of time and pausetime interval
+     */
+    public ArrayList<GarbageCollectionEvent> getGarbageCollectionEvents();
+
+    /**
+     * Method to retrieve JVM Information Event
+     * @return Map of time and pausetime interval
+     */
+    public JVMInformationEvent getJVMInformationEvent();
 
     /**
      * Initiate Flight recorder parser

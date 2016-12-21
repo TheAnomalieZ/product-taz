@@ -6,16 +6,7 @@ var heap_usage = c3.generate({
         columns: [
             ['data', 0.0]
         ],
-        type: 'gauge',
-        onclick: function (d, i) {
-            console.log("onclick", d, i);
-        },
-        onmouseover: function (d, i) {
-            console.log("onmouseover", d, i);
-        },
-        onmouseout: function (d, i) {
-            console.log("onmouseout", d, i);
-        }
+        type: 'gauge'
     },
     gauge: {
         label: {
@@ -28,14 +19,6 @@ var heap_usage = c3.generate({
         max: 100, // 100 is default
         units: 'MiB',
         width: 50 // for adjusting arc thickness
-    },
-    color: {
-        pattern: ['#60B044', '#F6C600', '#F97600', '#FF0000'], // the three color levels for the percentage values.
-        threshold: {
-            unit: 'value', // percentage is default
-            max: 100, // 100 is default
-            values: [30, 60, 90, 100]
-        }
     },
     size: {
         height: 180
@@ -51,16 +34,7 @@ var cpu_usage = c3.generate({
         columns: [
             ['data', 0.0]
         ],
-        type: 'gauge',
-        onclick: function (d, i) {
-            console.log("onclick", d, i);
-        },
-        onmouseover: function (d, i) {
-            console.log("onmouseover", d, i);
-        },
-        onmouseout: function (d, i) {
-            console.log("onmouseout", d, i);
-        }
+        type: 'gauge'
     },
     gauge: {
         label: {
@@ -96,16 +70,7 @@ var gc_pause_time = c3.generate({
         columns: [
             ['data', 0.0]
         ],
-        type: 'gauge',
-        onclick: function (d, i) {
-            console.log("onclick", d, i);
-        },
-        onmouseover: function (d, i) {
-            console.log("onmouseover", d, i);
-        },
-        onmouseout: function (d, i) {
-            console.log("onmouseout", d, i);
-        }
+        type: 'gauge'
     },
     gauge: {
         label: {
@@ -119,14 +84,6 @@ var gc_pause_time = c3.generate({
         units: 'ms',
         width: 50 // for adjusting arc thickness
     },
-    color: {
-        pattern: ['#60B044', '#F6C600', '#F97600', '#FF0000'], // the three color levels for the percentage values.
-        threshold: {
-            unit: 'value', // percentage is default
-            max: 100, // 100 is default
-            values: [30, 60, 90, 100]
-        }
-    },
     size: {
         height: 180
     }
@@ -139,6 +96,7 @@ var heapUsageLineChart = c3.generate({
     bindto: '#heap-usage-line-chart',
     data: {
         x: 'x',
+        xFormat : "%H:%M:%S",
         rows: heapUsageRows
     },
     axis: {
@@ -146,9 +104,24 @@ var heapUsageLineChart = c3.generate({
             type: 'timeseries',
             tick: {
                 format: "%H:%M:%S" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
-            }
+            },
+            label: 'time'
+        },
+        y: {
+            min: 0,
+            label: 'MB'
         }
-    }
+    },
+    zoom: {
+        enabled: true,
+        onzoomstart: function (event) {
+            console.log("onzoomstart", event);
+        },
+        onzoomend: function (domain) {
+            console.log("onzoomend", domain);
+        }
+    },
+    subchart: { show: true }
 });
 
 var cpuUsageLineChartRaw = [["x", "Machine Total", "JVM + Application (User)", "JVM + Application (Kernel)"]];
@@ -165,20 +138,33 @@ var cpu_usage_line_chart = c3.generate({
             type: 'timeseries',
             tick: {
                 format: "%H:%M:%S" // https://github.com/mbostock/d3/wiki/Time-Formatting#wiki-format
-            }
+            },
+            label: 'time'
         },
         y: {
             min: 10,
-            max: 90
+            max: 90,
+            label: '%'
         }
-    }
+    },
+    zoom: {
+        enabled: true,
+        onzoomstart: function (event) {
+            console.log("onzoomstart", event);
+        },
+        onzoomend: function (domain) {
+            console.log("onzoomend", domain);
+        }
+    },
+    subchart: { show: true }
 });
 
 
 var loadCpuUsageLineChart = function (value) {
-    cpuUsageLineChartRaw = cpuUsageLineChartRaw.concat(value.sort(function (a, b) {
-        return a[0] - b[0];
-    }));
+    //cpuUsageLineChartRaw = cpuUsageLineChartRaw.concat(value.sort(function (a, b) {
+    //    return a[0] - b[0];
+    //}));
+    cpuUsageLineChartRaw = cpuUsageLineChartRaw.concat(value);
 
     //cpu_usage_line_chart.axis.range({max: {y: 100}, min: {y: 0}});
     cpu_usage_line_chart.load({
@@ -187,30 +173,29 @@ var loadCpuUsageLineChart = function (value) {
 };
 
 var loadHeapUsageLineChart = function (value) {
-    heapUsageRows = heapUsageRows.concat(value.sort(function (a, b) {
-        return a[0] - b[0];
-    }));
-
+    heapUsageRows = heapUsageRows.concat(value);
     heapUsageLineChart.load({
         rows: heapUsageRows
     });
 };
 
-var loadHeapUsage = function (value) {
+var loadHeapUsage = function (value, maxValue) {
+    heap_usage.internal.config.gauge_max = maxValue;
     heap_usage.load({
-        columns: [['data', value]]
+        columns: [['data', value.toFixed(2)]]
     });
 };
 
 var loadCpuUsage = function (value) {
     cpu_usage.load({
-        columns: [['data', value]]
+        columns: [['data', value.toFixed(2)]]
     });
 };
 
-var loadGCPauseTime = function (value) {
+var loadGCPauseTime = function (value, maxValue) {
+    gc_pause_time.internal.config.gauge_max = maxValue;
     gc_pause_time.load({
-        columns: [['data', value]]
+        columns: [['data', value.toFixed(2)]]
     });
 };
 

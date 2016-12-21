@@ -7,7 +7,7 @@ package com.taz.controller;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.taz.service.FileUploadService;
+import com.taz.service.FileService;
 import com.taz.util.Response;
 import com.taz.util.ResponseStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class FileController {
 
 
     @Autowired
-    FileUploadService fileUploadService;
+    FileService fileService;
 
     private ObjectMapper objectMapper = new ObjectMapper(new JsonFactory());;
 
@@ -36,7 +36,7 @@ public class FileController {
             String fileType = file.getContentType();
             String[] content = fileType.split("/");
             if (content[0].equalsIgnoreCase("application") && file.getOriginalFilename().toLowerCase().contains(".jfr")) {
-                String id = fileUploadService.uploadJFR(content[1], file);
+                String id = fileService.uploadJFR(content[1], file);
                 if (id != null) {
                     response.setContent(id);
                     response.setType("jfr");
@@ -48,5 +48,15 @@ public class FileController {
             response.setStatus(ResponseStatus.EMPTY_FILE);
         }
         return objectMapper.writeValueAsString(response);
+    }
+
+
+    @RequestMapping(value = "/deleteFile", method = RequestMethod.GET)
+    public boolean deleteFile(@RequestParam("fileName") String fileNeme){
+        boolean deleted = false;
+        if (!fileNeme.isEmpty()) {
+           deleted = fileService.deleteFile(fileNeme);
+        }
+        return deleted;
     }
 }

@@ -9,6 +9,7 @@ public class GcData {
     private double max;
     private double avg;
     private ArrayList<Double> data;
+    private int gaugeMax = 100;
 
     public GcData(){
         this.max = 0;
@@ -38,5 +39,13 @@ public class GcData {
 
     public void setData(double data) {
         this.data.add(0,data);
+    }
+
+    public int getGaugeMax() {
+        return gaugeMax;
+    }
+
+    public void setGaugeMax(int gaugeMax) {
+        this.gaugeMax = gaugeMax;
     }
 }

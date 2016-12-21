@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.util.UUID;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 /**
@@ -13,8 +13,8 @@ import java.util.logging.Logger;
  * @Created on 11/28/2016
  */
 @Service
-public class FileUploadService {
-    private static Logger log = Logger.getLogger(FileUploadService.class.getName());
+public class FileService {
+    private static Logger log = Logger.getLogger(FileService.class.getName());
 
     @Value("${service.file.path}")
     private String rootPath;
@@ -34,5 +34,26 @@ public class FileUploadService {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public ArrayList<String> getAllFileNames(){
+        ArrayList<String> fileNames = new ArrayList<>();
+        File folder = new File(rootPath);
+        File [] files = folder.listFiles();
+        for(File file: files){
+          fileNames.add(file.getName());
+        }
+        return fileNames;
+    }
+
+    public boolean deleteFile(String fileName){
+        boolean deleted = false;
+        try{
+            File file = new File(rootPath+"/"+fileName);
+            deleted = file.delete();
+        } catch (Exception e){
+
+        }
+        return deleted;
     }
 }

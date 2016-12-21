@@ -9,11 +9,21 @@ public class MemEvent extends JFREvent {
     private long usedHeap;
     private long startHeap;
     private long endHeap;
+    private long committedHeap;
 
     private long pauseTime;
     private String type;
     private String cause;
+    private String longestPause;
     private long duration;
+
+    public long getCommittedHeap() {
+        return committedHeap;
+    }
+
+    public void setCommittedHeap(long committedHeap) {
+        this.committedHeap = committedHeap;
+    }
 
     public long getStartHeap() {
         return startHeap;
@@ -83,4 +93,11 @@ public class MemEvent extends JFREvent {
         this.duration = duration;
     }
 
+    public String getLongestPause() {
+        return longestPause;
+    }
+
+    public void setLongestPause(String longestPause) {
+        this.longestPause = longestPause;
+    }
 }

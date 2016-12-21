@@ -8,6 +8,10 @@ import org.taz.commons.parser.JFRParser;
 import org.taz.commons.parser.JFRParserV18;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.taz.commons.parser.JVM.JVMInformationEvent;
+import org.taz.commons.parser.cpu.CPULoadEvent;
+import org.taz.commons.parser.memory.GarbageCollectionEvent;
+import org.taz.commons.parser.memory.HeapSummaryEvent;
 import org.taz.commons.parser.memory.MemEvent;
 
 
@@ -23,6 +27,7 @@ public class JFRReader {
     private CSVWriter csvWriter;
     private static ArrayList<Integer> memoryList= new ArrayList<Integer>();
     private static HashSet<String> set = new HashSet<String>();
+    private static JFRParser parser;
 
     private static final Logger logger = LoggerFactory.getLogger(JFRReader.class);
 
@@ -46,6 +51,13 @@ public class JFRReader {
         }
     }
 
+    public JFRParserV18 readSingleJFR(String filePath){
+            logger.info("Loading file"+ filePath);
+            String fileName = filePath;
+            int index = fileName.lastIndexOf('.');
+            fileName = fileName.substring(0,index);
+            return new JFRParserV18(filePath);
+    }
 
     public Map<String,JFRParser>  getJFRRecording() {
         if (jfrList.size() == 0){
@@ -84,6 +96,26 @@ public class JFRReader {
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
             csvWriter.generateCPUEvent(parser.getValue().getCPUEvents(),parser.getKey());
         }
+    }
+
+    public ArrayList<HeapSummaryEvent> getHeapSummaryDashboard(String filePath){
+        parser = readSingleJFR(filePath);
+        return parser.getHeapSummaryEvents();
+    }
+
+    public ArrayList<CPULoadEvent> getCPUEventsDashboard(String filePath){
+        parser = readSingleJFR(filePath);
+        return parser.getCPUEvents();
+    }
+
+    public ArrayList<GarbageCollectionEvent> getGarbageCollectionEventDashboard(String filePath){
+        parser = readSingleJFR(filePath);
+        return parser.getGarbageCollectionEvents();
+    }
+
+    public JVMInformationEvent getJVMInformationEventDashboard(String filePath){
+        parser = readSingleJFR(filePath);
+        return parser.getJVMInformationEvent();
     }
 
     public void getGCAttributes(){

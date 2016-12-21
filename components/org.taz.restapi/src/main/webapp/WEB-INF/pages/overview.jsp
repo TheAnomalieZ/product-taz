@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: K.Kokulan
@@ -29,10 +30,6 @@
     <!-- Custom styles for this template -->
     <link href="../../resources/css/style.css" rel="stylesheet">
     <link href="../../resources/css/style-responsive.css" rel="stylesheet"/>
-
-    <!--iron slider-->
-    <link href="../../resources/js/ion.rangeSlider-1.8.2/css/ion.rangeSlider.css" rel="stylesheet" />
-    <link href="../../resources/js/ion.rangeSlider-1.8.2/css/ion.rangeSlider.skinFlat.css" rel="stylesheet"/>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -79,7 +76,7 @@
                                 <div id="heap_usage"></div>
                             </div>
                             <div class="text-center">
-                                Avg : ${heapUsageData.avg} MiB, Max : ${heapUsageData.max} MiB
+                                Avg : <fmt:formatNumber value="${heapUsageData.avg}" type="number" maxFractionDigits="2"/> MiB, Max : <fmt:formatNumber value="${heapUsageData.max}" type="number" maxFractionDigits="2"/> MiB
                             </div>
                         </div>
                     </section>
@@ -94,7 +91,7 @@
                                 <div id="cpu-usage"></div>
                             </div>
                             <div class="text-center">
-                                Avg : ${totalCpuUsage.avg} %, Max : ${totalCpuUsage.max} %
+                                Avg : <fmt:formatNumber value="${totalCpuUsage.avg}" type="number" maxFractionDigits="2"/> %, Max : <fmt:formatNumber value="${totalCpuUsage.max}" type="number" maxFractionDigits="2"/> %
                             </div>
                         </div>
                     </section>
@@ -109,7 +106,7 @@
                                 <div id="gc-pause-time"></div>
                             </div>
                             <div class="text-center">
-                                Avg : ${gcData.avg} ms, Max : ${gcData.max} ms
+                                Avg : <fmt:formatNumber value="${gcData.avg}" type="number" maxFractionDigits="2"/> ms, Max : <fmt:formatNumber type="number" value="${gcData.max}" maxFractionDigits="2"/> ms
                             </div>
                         </div>
                     </section>
@@ -117,28 +114,6 @@
             </div>
 
             <!-- Gauge view end-->
-
-            <%--Slider start--%>
-            <div class="row">
-                <div class="col-lg-12">
-                    <section class="panel">
-                        <header class="panel-heading">
-                            Slider
-                        </header>
-                        <div class="panel-body">
-                            <table class="table slider-table">
-                                <tr>
-                                    <td>
-                                        <input id="range_1" type="text" name="range_1" value="" />
-                                    </td>
-                                </tr>
-                            </table>
-
-                        </div>
-                    </section>
-                </div>
-            </div>
-            <%--Slider end--%>
 
             <!-- heap usage start-->
             <div class="row">
@@ -183,10 +158,10 @@
                         </header>
                         <div class="panel-body">
                             <div class="text-left">
-                                JVM Start Time:  <span>${jvmStartTime}</span>
+                                <b>JVM Start Time:</b>  <span>${jvmInformation.jvmStartTime}</span>
                             </div>
                             <div class="text-left">
-                                JVM Version:  <span>${jvmVersion}</span>
+                                <b>JVM Version:</b>  <span>${jvmInformation.jvmVersion}</span>
                             </div>
                         </div>
                     </section>
@@ -208,9 +183,6 @@
 <script src="../../resources/js/jquery.scrollTo.min.js"></script>
 <script src="../../resources/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
 <script src="../../resources/js/jquery.nicescroll.js"></script>
-<%--Slider--%>
-<script src="../../resources/js/ion.rangeSlider-1.8.2/js/ion-rangeSlider/ion.rangeSlider.min.js" type="text/javascript"></script>
-
 <!--C3 Chart-->
 <script src="../../resources/js/d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <%--<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>--%>
@@ -221,23 +193,11 @@
 <script src="../../resources/js/scripts.js"></script>
 
 <script type="text/javascript">
-    loadHeapUsage(${heapUsageData.data.get(0)});
+    loadHeapUsage(${heapUsageData.data.get(0)}, ${heapUsageData.gaugeMax});
     loadCpuUsage(${totalCpuUsage.data.get(0)});
-    loadGCPauseTime(${gcData.data.get(0)});
+    loadGCPauseTime(${gcData.data.get(0)}, ${gcData.gaugeMax});
     loadHeapUsageLineChart(${heapUsageData.tenpData});
-    loadCpuUsageLineChart(${totalCpuUsage.tempCpuUsage});
-
-    $("#range_1").ionRangeSlider({
-        min: 0,
-        max: 5000,
-        from: 1000,
-        to: 4000,
-        type: 'double',
-        step: 1,
-        prefix: "",
-        prettify: false,
-        hasGrid: true
-    });
+    loadCpuUsageLineChart(${totalCpuUsage.cpuUsageData});
 </script>
 
 

@@ -3,10 +3,20 @@ package com.taz.service;
 import com.taz.graph_models.CpuUsage;
 import com.taz.graph_models.GcData;
 import com.taz.graph_models.HeapUsage;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.taz.graph_models.JVMInformation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
+import org.taz.commons.parser.JVM.JVMInformationEvent;
+import org.taz.commons.parser.cpu.CPULoadEvent;
+import org.taz.commons.parser.memory.GarbageCollectionEvent;
+import org.taz.commons.parser.memory.HeapSummaryEvent;
+import org.taz.commons.util.JFRReader;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 
 /**
  * Created by K.Kokulan on 12/3/2016.
@@ -14,42 +24,128 @@ import java.util.ArrayList;
 
 @Service
 public class GraphDataService {
+    private JFRReader jfrReader;
 
+    @Value("${service.file.path}")
+    private String rootPath;
 
-    public HeapUsage getHeapUsageData() {
+    public GraphDataService() {
+        jfrReader = JFRReader.getInstance();
+    }
+
+    public void getOverviewModel(ModelMap model, String name) {
+        model.addAttribute("totalCpuUsage", getCpuUsageData(name));
+        model.addAttribute("heapUsageData", getHeapUsageData(name));
+        model.addAttribute("jvmInformation", getJVMInformation(name));
+        model.addAttribute("gcData", getGcData(name));
+        model.addAttribute("fileName",name);
+    }
+
+    public HeapUsage getHeapUsageData(String fileName) {
+        String filePath = rootPath + "/" + fileName;
         HeapUsage heapUsage = new HeapUsage();
-        heapUsage.setMax(60);
-        heapUsage.setAvg(30);
-        heapUsage.setData(60);
+        ArrayList<HeapSummaryEvent> heapSummaryEventArrayList = jfrReader.getHeapSummaryDashboard(filePath);
 
-        String sample= "[[1398709800000,780,136],[1398450600000,812,134],[1399401000000,784,154],[1399228200000,786,135],[1399573800000,802,131],"+
-        "[1399487400000,773,166],[1399314600000,787,146],[1399919400000,1496,309],[1399833000000,767,138],[1399746600000,797,141],"+
-        "[1399660200000,796,146],[1398623400000,779,143],[1399055400000,794,140],[1398969000000,791,140],[1398882600000,825,107],"+
-        "[1399141800000,786,136],[1398537000000,773,143],[1398796200000,783,154],[1400005800000,1754,284]]";
-        heapUsage.setTenpData(sample);
+        if (!heapSummaryEventArrayList.isEmpty()) {
+            StringBuilder heapSummaryData = new StringBuilder();
+            ArrayList<Double> heapUsedArrayList = new ArrayList<>();
+            double sumOfHeapUsed = 0d;
+            heapSummaryData.append("[");
+
+            for (HeapSummaryEvent heapSummaryEvent : heapSummaryEventArrayList) {
+                double heapUsed = Double.parseDouble(heapSummaryEvent.getHeapUsed()) / (1024 * 1024);
+                double committedHeap = Double.parseDouble(heapSummaryEvent.getHeapSpaceCommittedSize()) / (1024 * 1024);
+//                long time = (heapSummaryEvent.getStartTimestamp() + heapSummaryEvent.getEndTimestamp())/2000000;
+                long time = heapSummaryEvent.getStartTimestamp() / 1000000;
+
+                sumOfHeapUsed += heapUsed;
+                heapUsedArrayList.add(heapUsed);
+
+                heapSummaryData.append("[" + time + ',' + committedHeap + ',' + heapUsed + "],");
+            }
+            heapSummaryData.append("]");
+
+            double max = Collections.max(heapUsedArrayList);
+
+            double tenthPower = Math.floor(Math.log10(max));
+            double place = Math.pow(10, tenthPower);
+
+            heapUsage.setGaugeMax((int) place * 10);
+            heapUsage.setMax(max);
+            heapUsage.setAvg(sumOfHeapUsed / heapUsedArrayList.size());
+            heapUsage.setData(max);
+            heapUsage.setTenpData(heapSummaryData.toString());
+        }
+
         return heapUsage;
     }
 
-    public CpuUsage getCpuUsageData(){
+    public CpuUsage getCpuUsageData(String fileName) {
+        String filePath = rootPath + "/" + fileName;
         CpuUsage cpuUsage = new CpuUsage();
-        cpuUsage.setMax(28);
-        cpuUsage.setAvg(20);
-        cpuUsage.setData(28);
+        ArrayList<CPULoadEvent> cpuLoadEvents = jfrReader.getCPUEventsDashboard(filePath);
 
-        String sample= "[[1398709800000,10,15, 20],[1398450600000,8,13,22],[1399401000000,13,14,18],[1399228200000,16,20,18],[1399573800000,9,15,19],"+
-                "[1399487400000,13,22,18],[1399314600000,8,6,12],[1399919400000,22,10,16],[1399833000000,21,13,11],[1399746600000,16,22,17]]";
+        if (!cpuLoadEvents.isEmpty()) {
+            double sumOfMachineTotal = 0d;
+            StringBuilder cpuData = new StringBuilder();
+            ArrayList<Double> machineTotalList = new ArrayList<>();
 
-        cpuUsage.setTempCpuUsage(sample);
+            cpuData.append("[");
+            for (CPULoadEvent iterator : cpuLoadEvents) {
+                long time = (iterator.getStartTimestamp() + iterator.getEndTimestamp()) / 2000000;
+                double machineTotal = Double.parseDouble(iterator.getMachineTotal()) * 100;
+                double jvmAppAndUser = Double.parseDouble(iterator.getJvmUser()) * 100;
+                double jvmSystem = Double.parseDouble(iterator.getJvmUser()) * 100;
+                sumOfMachineTotal += machineTotal;
+                machineTotalList.add(machineTotal);
+
+                cpuData.append("[" + time + ',' + machineTotal + ',' + jvmAppAndUser + "," + jvmSystem + "],");
+            }
+            cpuData.append("]");
+            double maxCpu = Collections.max(machineTotalList);
+            double avg = sumOfMachineTotal / cpuLoadEvents.size();
+            cpuUsage.setMax(maxCpu);
+            cpuUsage.setAvg(avg);
+            cpuUsage.setData(maxCpu);
+            cpuUsage.setCpuUsageData(cpuData.toString());
+        }
 
         return cpuUsage;
     }
 
-    public GcData getGcData(){
+    public GcData getGcData(String fileName) {
+        String filePath = rootPath + "/" + fileName;
+        ArrayList<GarbageCollectionEvent> garbageCollectionEventArrayList = jfrReader.getGarbageCollectionEventDashboard(filePath);
+
+        ArrayList<Double> longestPausesList = new ArrayList<>();
+        double totalSmOfPauses = 0d;
+        for (GarbageCollectionEvent garbageCollectionEvent : garbageCollectionEventArrayList) {
+            longestPausesList.add(Double.parseDouble(garbageCollectionEvent.getLongestPause()));
+            totalSmOfPauses += Double.parseDouble(garbageCollectionEvent.getSumOfPauses());
+        }
+
+        double max = Collections.max(longestPausesList);
+        double avg = totalSmOfPauses / longestPausesList.size();
+        double tenthPower = Math.floor(Math.log10(max / 1000000));
+        double place = Math.pow(10, tenthPower);
+
         GcData gcData = new GcData();
-        gcData.setMax(90);
-        gcData.setAvg(80);
-        gcData.setData(90);
+        gcData.setGaugeMax((int) place * 10);
+        gcData.setMax(max / 1000000);
+        gcData.setAvg(avg / 1000000);
+        gcData.setData(max / 1000000);
 
         return gcData;
+    }
+
+    public JVMInformation getJVMInformation(String fileName) {
+        String filePath = rootPath + "/" + fileName;
+        JVMInformationEvent jvmInformationEvent = jfrReader.getJVMInformationEventDashboard(filePath);
+
+        JVMInformation jvmInformation = new JVMInformation();
+        Date d = new Date(Long.parseLong(jvmInformationEvent.getJvmStartTime())/1000000);
+        jvmInformation.setJvmStartTime(d.toString());
+        jvmInformation.setJvmVersion(jvmInformationEvent.getJvmVersion());
+        return jvmInformation;
     }
 }

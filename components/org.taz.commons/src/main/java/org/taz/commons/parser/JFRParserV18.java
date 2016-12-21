@@ -8,10 +8,11 @@ import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.TAZConstants;
 import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
+import org.taz.commons.parser.JVM.JVMInformationEvent;
+import org.taz.commons.parser.JVM.JVMInformationEventHandler;
 import org.taz.commons.parser.cpu.CPULoadEvent;
 import org.taz.commons.parser.cpu.CPULoadHandler;
-import org.taz.commons.parser.memory.GCTimeSeriesModel;
-import org.taz.commons.parser.memory.MemEvent;
+import org.taz.commons.parser.memory.*;
 import org.taz.commons.parser.util.EventNode;
 
 import java.io.File;
@@ -53,6 +54,23 @@ public class JFRParserV18 implements JFRParser {
         CPULoadHandler cpuLoadHandler = new CPULoadHandler(iView);
         return cpuLoadHandler.getEventSeries();
     }
+
+    public ArrayList<HeapSummaryEvent> getHeapSummaryEvents() {
+        HeapSummaryEventHandler heapSummaryEventHandler = new HeapSummaryEventHandler(iView);
+        return heapSummaryEventHandler.getEventSeries();
+    }
+
+    public ArrayList<GarbageCollectionEvent> getGarbageCollectionEvents() {
+        GarbageCollectionEventHandler garbageCollectionEventHandler = new GarbageCollectionEventHandler(iView);
+        return garbageCollectionEventHandler.getEventSeries();
+    }
+
+    public JVMInformationEvent getJVMInformationEvent(){
+        JVMInformationEventHandler jvmInformationEventHandler = new JVMInformationEventHandler(iView);
+        return jvmInformationEventHandler.getEvent();
+    }
+
+
 
     public Map<Long,ArrayList<Double>> getGCTimeSeries(){
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);

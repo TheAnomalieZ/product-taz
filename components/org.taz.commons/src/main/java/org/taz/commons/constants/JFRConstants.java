@@ -1,6 +1,12 @@
 package org.taz.commons.constants;
 
 public class JFRConstants {
+    public static final String HEAP_SPACE_COMMITTED_SIZE ="heapSpace:committedSize" ;
+    public static final String JVM_INFORMATION = "JVM Information" ;
+    public static final String JVM_VERSION = "jvmVersion" ;
+    public static final String JVM_START_TIME = "jvmStartTime";
+    public static final String GC_LONGEST_PAUSE = "longestPause";
+    public static final String GCNAME = "name";
     public static String RECORDING = "Flight Recording";
     public static String ID = "id";
     public static String DURATION = "duration";

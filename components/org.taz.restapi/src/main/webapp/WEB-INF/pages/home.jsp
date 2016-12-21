@@ -72,7 +72,7 @@
     <!--header end-->
 
     <!--sidebar start-->
-    <%@include file="page_elements/sidebar.jsp" %>
+    <%@include file="page_elements/fileUploadSidebar.jsp" %>
     <!--sidebar end-->
 
     <!--main content start-->
@@ -127,6 +127,40 @@
             </div>
 
             <!-- File upload end -->
+            <%--File view start--%>
+            <div class="panel panel-default">
+                <header class="panel-heading">
+                    Available JFR Files
+                </header>
+                <div class="panel-body">
+                    <table class="table  table-hover general-table">
+                        <thead>
+                        <tr>
+                            <th> File Name</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${AvailableFileNames}" var="fileName" varStatus="status">
+                            <tr>
+                                <td>${fileName}</td>
+                                <td>
+                                    <button type="button" class="btn btn-success" onclick="location.href='/overview?fileName=${fileName}'">
+                                        Analyze
+                                    </button>
+                                    <span>
+                                    <button type="button" class="btn btn-danger" onclick="deleteFile('${fileName}')">
+                                        Delete
+                                    </button>
+                                    </span>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <%--File view end--%>
             <!-- page end-->
         </section>
     </section>
@@ -197,6 +231,17 @@
         } else {
             alert("You Should Upload a JFR")
         }
+    }
+
+    function deleteFile(fileName) {
+        $.ajax({
+            type: 'GET',
+            url: 'file/deleteFile?fileName=' + fileName,
+            success: function (data) {
+                console.log("Successfully deleted");
+                location.reload(true);
+            }
+        });
     }
 
 </script>

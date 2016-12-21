@@ -10,6 +10,7 @@ public class HeapUsage {
     private double avg;
     private ArrayList<Double> data;
     private ArrayList<ArrayList> lineChartData;
+    private int gaugeMax = 100;
 
     public String getTenpData() {
         return tenpData;
@@ -28,6 +29,14 @@ public class HeapUsage {
         this.avg = 0;
         this.data = new ArrayList<>(1);
         this.lineChartData = new ArrayList<>();
+    }
+
+    public int getGaugeMax() {
+        return gaugeMax;
+    }
+
+    public void setGaugeMax(int gaugeMax) {
+        this.gaugeMax = gaugeMax;
     }
 
     public double getMax() {

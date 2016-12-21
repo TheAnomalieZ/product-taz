@@ -130,7 +130,7 @@ public class CSVWriter {
         Long i=0L;
         String  temp;
         for (CPULoadEvent iterator : cpuLoadEvents) {
-            temp = iterator.getJvmUser()+','+iterator.getMachineTotal();
+            temp = iterator.getJvmUser()+','+iterator.getMachineTotal()+","+iterator.getJvmSystem();
             System.out.print(temp + "\n");
             outfile.append(temp + "\n");
         }
@@ -155,6 +155,9 @@ public class CSVWriter {
             temp = a.getValue();
             System.out.print(temp.get(0)+","+temp.get(1) + "\n");
             outfile.append(temp.get(0)+","+temp.get(1) + "\n");
+
+//            System.out.print(temp.get(0)+","+temp.get(1) + "," + temp.get(2) + "\n");
+//            outfile.append(temp.get(0)+","+temp.get(1) + "," + temp.get(2) + "\n");
         }
         outfile.close();
     }

@@ -73,6 +73,8 @@ public class GCPauseTimeSeries {
             double endTime = memEvent.getEndTimestamp();
             double startTime = memEvent.getStartTimestamp();
 
+            double gcType = memEvent.getType().hashCode() + 0d;
+
             double heapIncre;
 
 
@@ -82,6 +84,7 @@ public class GCPauseTimeSeries {
             heapIncre =previousHeap;
             while(previousTimeGap>0){
                 ArrayList<Double> list= new ArrayList<>();
+//                list.add(gcType);
                 list.add(heapIncre/1000000);
                 heapIncre += unitHeapIncre;
                 list.add(0d);
@@ -99,6 +102,7 @@ public class GCPauseTimeSeries {
             heapIncre =startHeap;
             while(gcTimeGap>0 && heapIncre>0){
                 ArrayList<Double> list= new ArrayList<>();
+//                list.add(gcType);
                 list.add(heapIncre/1000000);
                 heapIncre-= unitHeapIncre;
                 list.add(pauseTime);

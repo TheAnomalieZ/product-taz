@@ -25,6 +25,7 @@ public class GCMemoryHandler extends EventHandler {
                         MemEvent memEvent = eventMap.get(gcID);
                         memEvent.setUsedHeap(Long.parseLong(event.getValue(JFRConstants.HEAPUSED).toString()));
                         memEvent.setStartHeap(Long.parseLong(event.getValue(JFRConstants.HEAPUSED).toString()));
+                        memEvent.setCommittedHeap(Long.parseLong(event.getValue(JFRConstants.HEAP_SPACE_COMMITTED_SIZE).toString()));
                     }
                     else {
                         System.out.println("gcID doesn't exist!");
@@ -36,6 +37,7 @@ public class GCMemoryHandler extends EventHandler {
                     if (eventMap.containsKey(gcID)){
                         MemEvent memEvent = eventMap.get(gcID);
                         memEvent.setEndHeap(Long.parseLong(event.getValue(JFRConstants.HEAPUSED).toString()));
+                        memEvent.setCommittedHeap(Long.parseLong(event.getValue(JFRConstants.HEAP_SPACE_COMMITTED_SIZE).toString()));
                     }
                     else {
                         System.out.println("gcID doesn't exist!");
@@ -45,5 +47,7 @@ public class GCMemoryHandler extends EventHandler {
 
         }
     }
+
+
 }
 
