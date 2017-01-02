@@ -1,7 +1,6 @@
 package com.taz.controller;
 
-import com.taz.service.FileService;
-import com.taz.service.GraphDataService;
+import com.taz.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,15 +12,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BaseController {
 
     @Autowired
-    GraphDataService graphDataService;
+    OverviewPageService overviewPageService;
+
+    @Autowired
+    JVMInformationPageService jvmInformationPageService;
+
+    @Autowired
+    RecordingPageService recordingPageService;
 
     @Autowired
     FileService fileService;
+
+    @Autowired
+    GarbageCollectionPageService garbageCollectionPageService;
 
     private static final String HOME = "home";
     private static final String ERROR = "error";
     private static final String WELCOME = "welcome";
     private static final String OVERVIEW = "overview";
+    private static final String JVM_INFORMATION = "jvmInformation";
+    private static final String RECORDING = "recordings";
+    private static final String GARBAGE_COLLECTION = "GarbageCollection";
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String jfrAnalyzer(ModelMap model) {
@@ -43,8 +54,26 @@ public class BaseController {
     @RequestMapping(value = "/overview", method = RequestMethod.GET)
     public String overviewPage(@RequestParam("fileName")String fileName, ModelMap model) {
         if(!fileName.isEmpty()){
-            graphDataService.getOverviewModel(model, fileName);
+            overviewPageService.getOverviewModel(model, fileName);
         }
         return OVERVIEW;
+    }
+
+    @RequestMapping(value = "/jvm_information", method = RequestMethod.GET)
+    public String jvmInformationPage(@RequestParam("fileName")String fileName, ModelMap model) {
+        jvmInformationPageService.configureJVMInformation(fileName, model);
+        return JVM_INFORMATION;
+    }
+
+    @RequestMapping(value = "/recording", method = RequestMethod.GET)
+    public String recordingPage(@RequestParam("fileName")String fileName, ModelMap model) {
+        recordingPageService.configureRecording(fileName, model);
+        return RECORDING;
+    }
+
+    @RequestMapping(value = "/garbage_collection", method = RequestMethod.GET)
+    public String gcPage(@RequestParam("fileName")String fileName, ModelMap model) {
+        garbageCollectionPageService.configureGCAttributes(fileName, model);
+        return GARBAGE_COLLECTION;
     }
 }

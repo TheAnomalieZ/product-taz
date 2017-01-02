@@ -5,13 +5,12 @@ package org.taz.commons.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.taz.commons.parser.cpu.CPULoadEvent;
+import org.taz.commons.parser.events.CPULoadEvent;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Map;
 
 public class CSVWriter {

@@ -1,4 +1,4 @@
-package org.taz.commons.parser.memory;
+package org.taz.commons.parser.events;
 
 import org.taz.commons.constants.JFRConstants;
 import org.taz.commons.parser.util.JFREvent;
@@ -8,7 +8,7 @@ import org.taz.commons.parser.util.JFREvent;
  */
 public class HeapSummaryEvent extends JFREvent {
 
-    private int gcId;
+    private String gcId;
     private String when;
     private String heapSpaceStart;
     private String heapSpaceCommittedEnd;
@@ -21,11 +21,11 @@ public class HeapSummaryEvent extends JFREvent {
         super(JFRConstants.HEAPSUMMARY);
     }
 
-    public int getGcId() {
+    public String getGcId() {
         return gcId;
     }
 
-    public void setGcId(int gcId) {
+    public void setGcId(String gcId) {
         this.gcId = gcId;
     }
 

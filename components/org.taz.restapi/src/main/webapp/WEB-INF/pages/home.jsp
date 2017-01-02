@@ -58,7 +58,7 @@
 
 <section id="container">
     <!--header start-->
-    <header class="header fixed-top clearfix" style="background: #32323a;">
+    <header class="header fixed-top clearfix">
         <!--logo start-->
         <div class="brand">
 
@@ -68,6 +68,16 @@
         </div>
         <!--logo end-->
 
+        <div class="nav notify-row" id="top_menu">
+            <ul class="breadcrumbs-alt">
+                <%--<li>--%>
+                <%--<a class="active-trail active" href="#">Pages</a>--%>
+                <%--</li>--%>
+                <li>
+                    <a class="current" href="/home">Home</a>
+                </li>
+            </ul>
+        </div>
     </header>
     <!--header end-->
 
@@ -113,7 +123,7 @@
                         </div>
                         <div class="panel-body">
                             <ul>
-                                <li>The maximum file size for uploads in this is <strong>20 MB</strong></li>
+                                <li>The maximum file size for uploads in this is <strong>200 MB</strong></li>
                                 <li>Only <strong>JFR</strong> files are allowed in this
                                 </li>
                                 <li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage
@@ -145,7 +155,7 @@
                             <tr>
                                 <td>${fileName}</td>
                                 <td>
-                                    <button type="button" class="btn btn-success" onclick="location.href='/overview?fileName=${fileName}'">
+                                    <button type="button" class="btn btn-success" onclick="location.href='/garbage_collection?fileName=${fileName}'">
                                         Analyze
                                     </button>
                                     <span>

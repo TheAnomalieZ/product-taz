@@ -1,4 +1,4 @@
-package org.taz.commons.parser.memory;
+package org.taz.commons.parser.events;
 
 import org.taz.commons.constants.JFRConstants;
 import org.taz.commons.parser.util.JFREvent;
@@ -12,6 +12,9 @@ public class GarbageCollectionEvent extends JFREvent {
     private String cause;
     private String sumOfPauses;
     private String longestPause;
+    private String startTimeString;
+    private String endTimeString;
+    private String durationString;
 
     public GarbageCollectionEvent(){
         super(JFRConstants.GARBAGECOLLECTION);
@@ -55,5 +58,29 @@ public class GarbageCollectionEvent extends JFREvent {
 
     public void setLongestPause(String longestPause) {
         this.longestPause = longestPause;
+    }
+
+    public String getStartTimeString() {
+        return startTimeString;
+    }
+
+    public void setStartTimeString(String startTimeString) {
+        this.startTimeString = startTimeString;
+    }
+
+    public String getEndTimeString() {
+        return endTimeString;
+    }
+
+    public void setEndTimeString(String endTimeString) {
+        this.endTimeString = endTimeString;
+    }
+
+    public String getDurationString() {
+        return durationString;
+    }
+
+    public void setDurationString(String durationString) {
+        this.durationString = durationString;
     }
 }

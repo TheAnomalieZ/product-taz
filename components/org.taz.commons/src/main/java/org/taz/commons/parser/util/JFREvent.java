@@ -4,6 +4,7 @@ public abstract class JFREvent {
     private long startTimestamp;
     private long endTimestamp;
     private String EVENT_TYPE;
+    private long duration;
 
     public JFREvent(String eventType) {
         this.EVENT_TYPE = eventType;
@@ -23,6 +24,14 @@ public abstract class JFREvent {
 
     public void setEndTimestamp(long endTimestamp) {
         this.endTimestamp = endTimestamp;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
     }
 
     @Override

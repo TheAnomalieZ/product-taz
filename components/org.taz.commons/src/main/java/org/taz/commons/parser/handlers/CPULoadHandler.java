@@ -1,8 +1,9 @@
-package org.taz.commons.parser.cpu;
+package org.taz.commons.parser.handlers;
 
 import com.jrockit.mc.flightrecorder.spi.IEvent;
 import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.JFRConstants;
+import org.taz.commons.parser.events.CPULoadEvent;
 import org.taz.commons.parser.util.EventHandler;
 
 import java.util.ArrayList;

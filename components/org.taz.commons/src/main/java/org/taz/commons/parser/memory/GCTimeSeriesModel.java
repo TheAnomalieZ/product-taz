@@ -2,11 +2,10 @@ package org.taz.commons.parser.memory;
 
 import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.JFRConstants;
-import org.taz.commons.parser.info.RecordingEventHandler;
+import org.taz.commons.parser.handlers.RecordingEventHandler;
 import org.taz.commons.parser.util.EventHandler;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.TreeMap;
 

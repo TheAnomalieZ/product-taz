@@ -8,11 +8,10 @@ import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.TAZConstants;
 import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
-import org.taz.commons.parser.JVM.JVMInformationEvent;
-import org.taz.commons.parser.JVM.JVMInformationEventHandler;
-import org.taz.commons.parser.cpu.CPULoadEvent;
-import org.taz.commons.parser.cpu.CPULoadHandler;
+import org.taz.commons.parser.events.*;
+import org.taz.commons.parser.handlers.*;
 import org.taz.commons.parser.memory.*;
+import org.taz.commons.parser.models.GCEventsModel;
 import org.taz.commons.parser.util.EventNode;
 
 import java.io.File;
@@ -70,7 +69,25 @@ public class JFRParserV18 implements JFRParser {
         return jvmInformationEventHandler.getEvent();
     }
 
+    public ArrayList<JVMInformationEvent> getJVMInformationEventList(){
+        JVMInformationEventHandler jvmInformationEventHandler = new JVMInformationEventHandler(iView);
+        return jvmInformationEventHandler.getEventList();
+    }
 
+    public ArrayList<InitialSystemPropertyEvent> getInitialSystemPropertyEventList(){
+        InitialSystemPropertyEventHandler initialSystemPropertyEventHandler = new InitialSystemPropertyEventHandler(iView);
+        return initialSystemPropertyEventHandler.getEventSeries();
+    }
+
+    public ArrayList<RecordingSettingEvent> getRecordingSettingEventList(){
+        RecordingSettingEventHandler recordingSettingEventHandler = new RecordingSettingEventHandler(iView);
+        return recordingSettingEventHandler.getEventsList();
+    }
+    
+    public GCEventsModel getGCEventModel(){
+        GCEventsModelHandler gcEventsModelHandler = new GCEventsModelHandler(iView);
+        return gcEventsModelHandler.getGCEventModel();
+    }
 
     public Map<Long,ArrayList<Double>> getGCTimeSeries(){
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);

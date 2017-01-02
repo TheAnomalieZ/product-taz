@@ -1,7 +1,7 @@
 package org.taz.commons.parser.util;
 
 import com.jrockit.mc.flightrecorder.spi.IView;
-import org.taz.commons.parser.cpu.CPULoadHandler;
+import org.taz.commons.parser.handlers.CPULoadHandler;
 import org.taz.commons.parser.memory.GCTimeSeriesModel;
 
 public class EventHandlerFactory {

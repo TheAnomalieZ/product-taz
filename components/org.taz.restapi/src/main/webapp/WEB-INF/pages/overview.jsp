@@ -42,7 +42,7 @@
 
 <section id="container">
     <!--header start-->
-    <header class="header fixed-top clearfix" style="background: #32323a;">
+    <header class="header fixed-top clearfix">
         <!--logo start-->
         <div class="brand">
 
@@ -51,7 +51,19 @@
             </a>
         </div>
         <!--logo end-->
-
+        <div class="nav notify-row" id="top_menu">
+            <ul class="breadcrumbs-alt">
+                <li>
+                    <a href="/home">Home</a>
+                </li>
+                <%--<li>--%>
+                <%--<a class="active-trail active" href="#">Pages</a>--%>
+                <%--</li>--%>
+                <li>
+                    <a class="current" href="">Overview</a>
+                </li>
+            </ul>
+        </div>
     </header>
     <!--header end-->
 
@@ -63,7 +75,6 @@
     <section id="main-content">
         <section class="wrapper">
             <!-- page start-->
-
             <!-- Gauge view-->
             <div class="row">
                 <div class="col-lg-4">
@@ -76,7 +87,9 @@
                                 <div id="heap_usage"></div>
                             </div>
                             <div class="text-center">
-                                Avg : <fmt:formatNumber value="${heapUsageData.avg}" type="number" maxFractionDigits="2"/> MiB, Max : <fmt:formatNumber value="${heapUsageData.max}" type="number" maxFractionDigits="2"/> MiB
+                                Avg : <fmt:formatNumber value="${heapUsageData.avg}" type="number"
+                                                        maxFractionDigits="2"/> MiB, Max : <fmt:formatNumber
+                                    value="${heapUsageData.max}" type="number" maxFractionDigits="2"/> MiB
                             </div>
                         </div>
                     </section>
@@ -91,7 +104,9 @@
                                 <div id="cpu-usage"></div>
                             </div>
                             <div class="text-center">
-                                Avg : <fmt:formatNumber value="${totalCpuUsage.avg}" type="number" maxFractionDigits="2"/> %, Max : <fmt:formatNumber value="${totalCpuUsage.max}" type="number" maxFractionDigits="2"/> %
+                                Avg : <fmt:formatNumber value="${totalCpuUsage.avg}" type="number"
+                                                        maxFractionDigits="2"/> %, Max : <fmt:formatNumber
+                                    value="${totalCpuUsage.max}" type="number" maxFractionDigits="2"/> %
                             </div>
                         </div>
                     </section>
@@ -106,7 +121,8 @@
                                 <div id="gc-pause-time"></div>
                             </div>
                             <div class="text-center">
-                                Avg : <fmt:formatNumber value="${gcData.avg}" type="number" maxFractionDigits="2"/> ms, Max : <fmt:formatNumber type="number" value="${gcData.max}" maxFractionDigits="2"/> ms
+                                Avg : <fmt:formatNumber value="${gcData.avg}" type="number" maxFractionDigits="2"/> ms,
+                                Max : <fmt:formatNumber type="number" value="${gcData.max}" maxFractionDigits="2"/> ms
                             </div>
                         </div>
                     </section>
@@ -121,6 +137,9 @@
                     <section class="panel">
                         <header class="panel-heading">
                             Heap Usage
+                            <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                             </span>
                         </header>
                         <div class="panel-body">
                             <div class="chart">
@@ -138,6 +157,9 @@
                     <section class="panel">
                         <header class="panel-heading">
                             CPU Usage
+                            <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                             </span>
                         </header>
                         <div class="panel-body">
                             <div class="chart">
@@ -158,10 +180,10 @@
                         </header>
                         <div class="panel-body">
                             <div class="text-left">
-                                <b>JVM Start Time:</b>  <span>${jvmInformation.jvmStartTime}</span>
+                                <b>JVM Start Time:</b> <span>${jvmInformation.jvmStartTime}</span>
                             </div>
                             <div class="text-left">
-                                <b>JVM Version:</b>  <span>${jvmInformation.jvmVersion}</span>
+                                <b>JVM Version:</b> <span>${jvmInformation.jvmVersion}</span>
                             </div>
                         </div>
                     </section>
@@ -178,6 +200,7 @@
 
 <!--Core js-->
 <script src="../../resources/js/jquery.js"></script>
+<script src="../../resources/js/jquery-1.8.3.min.js"></script>
 <script src="../../resources/js/bs3/js/bootstrap.min.js"></script>
 <script class="include" type="text/javascript" src="../../resources/js/jquery.dcjqaccordion.2.7.js"></script>
 <script src="../../resources/js/jquery.scrollTo.min.js"></script>

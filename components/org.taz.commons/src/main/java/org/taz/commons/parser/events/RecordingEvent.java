@@ -1,4 +1,4 @@
-package org.taz.commons.parser.info;
+package org.taz.commons.parser.events;
 
 import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.JFRConstants;

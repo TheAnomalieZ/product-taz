@@ -1,4 +1,4 @@
-package org.taz.commons.parser.info;
+package org.taz.commons.parser.events;
 
 /**
  * Created by  Maninesan on 12/12/16.

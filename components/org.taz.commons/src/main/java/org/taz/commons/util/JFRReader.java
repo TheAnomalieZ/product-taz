@@ -4,21 +4,17 @@ package org.taz.commons.util;
  * Created by  Maninesan on 12/06/16.
  */
 
+import org.taz.commons.constants.TAZConstants;
 import org.taz.commons.parser.JFRParser;
 import org.taz.commons.parser.JFRParserV18;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.taz.commons.parser.JVM.JVMInformationEvent;
-import org.taz.commons.parser.cpu.CPULoadEvent;
-import org.taz.commons.parser.memory.GarbageCollectionEvent;
-import org.taz.commons.parser.memory.HeapSummaryEvent;
+import org.taz.commons.parser.events.*;
 import org.taz.commons.parser.memory.MemEvent;
+import org.taz.commons.parser.models.GCEventsModel;
 
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class JFRReader {
 
@@ -81,12 +77,12 @@ public class JFRReader {
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
             ArrayList<Integer> convertedSeries = convertPauseTimeSeries(parser.getValue().getPauseTimeSeries());
 
-            csvWriter.generatePauseTimeSeries(convertedSeries,parser.getKey());
+            csvWriter.generatePauseTimeSeries(convertedSeries, parser.getKey());
         }
     }
     public void getGCTimeSeries(){
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
-            csvWriter.generateGCTimeSeries(parser.getValue().getGCTimeSeries(),parser.getKey());
+            csvWriter.generateGCTimeSeries(parser.getValue().getGCTimeSeries(), parser.getKey());
         }
     }
 
@@ -94,7 +90,7 @@ public class JFRReader {
 
     public void getCPUEvents(){
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
-            csvWriter.generateCPUEvent(parser.getValue().getCPUEvents(),parser.getKey());
+            csvWriter.generateCPUEvent(parser.getValue().getCPUEvents(), parser.getKey());
         }
     }
 
@@ -116,6 +112,35 @@ public class JFRReader {
     public JVMInformationEvent getJVMInformationEventDashboard(String filePath){
         parser = readSingleJFR(filePath);
         return parser.getJVMInformationEvent();
+    }
+    public ArrayList<JVMInformationEvent> getJVMInformationEventListDashboard(String filePath){
+        parser = readSingleJFR(filePath);
+        return parser.getJVMInformationEventList();
+    }
+
+    public ArrayList<InitialSystemPropertyEvent> getInitSystemPropertyEventList(String filePath){
+        parser = readSingleJFR(filePath);
+        return parser.getInitialSystemPropertyEventList();
+    }
+
+    public ArrayList<RecordingSettingEvent> getRecordingSettingList(String filePath){
+        parser = readSingleJFR(filePath);
+        return parser.getRecordingSettingEventList();
+    }
+
+    public GCEventsModel getGCEventModel(String filePath){
+        parser = readSingleJFR(filePath);
+        return parser.getGCEventModel();
+    }
+
+    public HashMap<String, Object> getEventsForOverviewPage(String filePath){
+        HashMap<String, Object> eventMap = new HashMap<>(4);
+        parser = readSingleJFR(filePath);
+        eventMap.put(TAZConstants.HEAP_SUMMARY_EVENT, parser.getHeapSummaryEvents());
+        eventMap.put(TAZConstants.CPU_LOAD_EVENT, parser.getCPUEvents());
+        eventMap.put(TAZConstants.GC_EVENT, parser.getGarbageCollectionEvents());
+        eventMap.put(TAZConstants.JVM_INFORMATION, parser.getJVMInformationEvent());
+        return eventMap;
     }
 
     public void getGCAttributes(){

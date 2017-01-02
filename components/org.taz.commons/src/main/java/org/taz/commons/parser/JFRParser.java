@@ -2,11 +2,9 @@ package org.taz.commons.parser;
 
 import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
-import org.taz.commons.parser.JVM.JVMInformationEvent;
-import org.taz.commons.parser.cpu.CPULoadEvent;
-import org.taz.commons.parser.memory.GarbageCollectionEvent;
-import org.taz.commons.parser.memory.HeapSummaryEvent;
+import org.taz.commons.parser.events.*;
 import org.taz.commons.parser.memory.MemEvent;
+import org.taz.commons.parser.models.GCEventsModel;
 import org.taz.commons.parser.util.EventNode;
 
 import java.util.ArrayList;
@@ -74,6 +72,31 @@ public interface JFRParser {
      * @return Map of time and pausetime interval
      */
     public JVMInformationEvent getJVMInformationEvent();
+
+
+    /**
+     * Method to retrieve JVM Information Event List
+     * @return Map of time and pausetime interval
+     */
+    public ArrayList<JVMInformationEvent> getJVMInformationEventList();
+
+    /**
+     * Method to retrieve initial System property Event List
+     * @return Arraylist of init sys property event
+     */
+    public ArrayList<InitialSystemPropertyEvent> getInitialSystemPropertyEventList();
+
+    /**
+     * Method to retrieve initial System property Event List
+     * @return Arraylist of recording setting event
+     */
+    public ArrayList<RecordingSettingEvent> getRecordingSettingEventList();
+
+    /**
+     * Method to retrieve GC Event Model
+     * @return GC Event Model
+     */
+    public GCEventsModel getGCEventModel();
 
     /**
      * Initiate Flight recorder parser

@@ -1,4 +1,4 @@
-package org.taz.commons.parser.JVM;
+package org.taz.commons.parser.events;
 
 import org.taz.commons.constants.JFRConstants;
 import org.taz.commons.parser.util.JFREvent;

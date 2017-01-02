@@ -7,44 +7,51 @@ import com.taz.graph_models.JVMInformation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
-import org.taz.commons.parser.JVM.JVMInformationEvent;
-import org.taz.commons.parser.cpu.CPULoadEvent;
-import org.taz.commons.parser.memory.GarbageCollectionEvent;
-import org.taz.commons.parser.memory.HeapSummaryEvent;
+import org.taz.commons.constants.TAZConstants;
+import org.taz.commons.parser.events.JVMInformationEvent;
+import org.taz.commons.parser.events.CPULoadEvent;
+import org.taz.commons.parser.events.GarbageCollectionEvent;
+import org.taz.commons.parser.events.HeapSummaryEvent;
 import org.taz.commons.util.JFRReader;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by K.Kokulan on 12/3/2016.
  */
 
 @Service
-public class GraphDataService {
+public class OverviewPageService {
     private JFRReader jfrReader;
 
     @Value("${service.file.path}")
     private String rootPath;
 
-    public GraphDataService() {
+    public OverviewPageService() {
         jfrReader = JFRReader.getInstance();
     }
 
     public void getOverviewModel(ModelMap model, String name) {
-        model.addAttribute("totalCpuUsage", getCpuUsageData(name));
-        model.addAttribute("heapUsageData", getHeapUsageData(name));
-        model.addAttribute("jvmInformation", getJVMInformation(name));
-        model.addAttribute("gcData", getGcData(name));
+        String filePath = rootPath + "/" + name;
+        HashMap<String, Object> overviewDataMap = jfrReader.getEventsForOverviewPage(filePath);
+
+        ArrayList<HeapSummaryEvent> heapSummaryEvents = (ArrayList<HeapSummaryEvent>) overviewDataMap.get(TAZConstants.HEAP_SUMMARY_EVENT);
+        ArrayList<CPULoadEvent> cpuLoadEventsList = (ArrayList<CPULoadEvent>) overviewDataMap.get(TAZConstants.CPU_LOAD_EVENT);
+        ArrayList<GarbageCollectionEvent> garbageCollectionEvents = (ArrayList<GarbageCollectionEvent>)overviewDataMap.get(TAZConstants.GC_EVENT);
+        JVMInformationEvent jvmInformationEvent = (JVMInformationEvent) overviewDataMap.get(TAZConstants.JVM_INFORMATION);
+
+        model.addAttribute("totalCpuUsage", getCpuUsageData(cpuLoadEventsList));
+        model.addAttribute("heapUsageData", getHeapUsageData(heapSummaryEvents));
+        model.addAttribute("jvmInformation", getJVMInformation(jvmInformationEvent));
+        model.addAttribute("gcData", getGcData(garbageCollectionEvents));
         model.addAttribute("fileName",name);
     }
 
-    public HeapUsage getHeapUsageData(String fileName) {
-        String filePath = rootPath + "/" + fileName;
+    public HeapUsage getHeapUsageData(ArrayList<HeapSummaryEvent> heapSummaryEvents) {
+//        String filePath = rootPath + "/" + fileName;
         HeapUsage heapUsage = new HeapUsage();
-        ArrayList<HeapSummaryEvent> heapSummaryEventArrayList = jfrReader.getHeapSummaryDashboard(filePath);
+//        ArrayList<HeapSummaryEvent> heapSummaryEventArrayList = jfrReader.getHeapSummaryDashboard(filePath);
+        ArrayList<HeapSummaryEvent> heapSummaryEventArrayList = heapSummaryEvents;
 
         if (!heapSummaryEventArrayList.isEmpty()) {
             StringBuilder heapSummaryData = new StringBuilder();
@@ -80,10 +87,11 @@ public class GraphDataService {
         return heapUsage;
     }
 
-    public CpuUsage getCpuUsageData(String fileName) {
-        String filePath = rootPath + "/" + fileName;
+    public CpuUsage getCpuUsageData( ArrayList<CPULoadEvent> cpuLoadEventsList) {
+//        String filePath = rootPath + "/" + fileName;
         CpuUsage cpuUsage = new CpuUsage();
-        ArrayList<CPULoadEvent> cpuLoadEvents = jfrReader.getCPUEventsDashboard(filePath);
+//        ArrayList<CPULoadEvent> cpuLoadEvents = jfrReader.getCPUEventsDashboard(filePath);
+        ArrayList<CPULoadEvent> cpuLoadEvents = cpuLoadEventsList;
 
         if (!cpuLoadEvents.isEmpty()) {
             double sumOfMachineTotal = 0d;
@@ -113,9 +121,10 @@ public class GraphDataService {
         return cpuUsage;
     }
 
-    public GcData getGcData(String fileName) {
-        String filePath = rootPath + "/" + fileName;
-        ArrayList<GarbageCollectionEvent> garbageCollectionEventArrayList = jfrReader.getGarbageCollectionEventDashboard(filePath);
+    public GcData getGcData(ArrayList<GarbageCollectionEvent> garbageCollectionEvents) {
+//        String filePath = rootPath + "/" + fileName;
+//        ArrayList<GarbageCollectionEvent> garbageCollectionEventArrayList = jfrReader.getGarbageCollectionEventDashboard(filePath);
+        ArrayList<GarbageCollectionEvent> garbageCollectionEventArrayList = garbageCollectionEvents;
 
         ArrayList<Double> longestPausesList = new ArrayList<>();
         double totalSmOfPauses = 0d;
@@ -138,10 +147,8 @@ public class GraphDataService {
         return gcData;
     }
 
-    public JVMInformation getJVMInformation(String fileName) {
-        String filePath = rootPath + "/" + fileName;
-        JVMInformationEvent jvmInformationEvent = jfrReader.getJVMInformationEventDashboard(filePath);
-
+    public JVMInformation getJVMInformation(JVMInformationEvent jvmInformationEvent) {
+//        String filePath = rootPath + "/" + fileName;
         JVMInformation jvmInformation = new JVMInformation();
         Date d = new Date(Long.parseLong(jvmInformationEvent.getJvmStartTime())/1000000);
         jvmInformation.setJvmStartTime(d.toString());

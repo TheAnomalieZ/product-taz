@@ -1,12 +1,10 @@
-package org.taz.commons.parser.info;
+package org.taz.commons.parser.handlers;
 
 import com.jrockit.mc.flightrecorder.spi.IEvent;
 import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.constants.JFRConstants;
-import org.taz.commons.parser.memory.MemEvent;
+import org.taz.commons.parser.events.RecordingEvent;
 import org.taz.commons.parser.util.EventHandler;
-
-import java.util.Map;
 
 /**
  * Created by  Maninesan on 12/12/16.

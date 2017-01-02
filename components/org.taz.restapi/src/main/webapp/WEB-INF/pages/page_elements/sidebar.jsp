@@ -11,7 +11,7 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="/home">
+                    <a href="/home">
                         <i class="fa fa-home"></i>
                         <span>Home</span>
                     </a>
@@ -23,6 +23,22 @@
                     </a>
                     <ul class="sub">
                         <li><a href="/overview?fileName=${fileName}">Overview</a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li><a href="/jvm_information?fileName=${fileName}">JVM Information</a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li><a href="/recording?fileName=${fileName}">Recording</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-hdd-o"></i>
+                        <span>Memory</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="/garbage_collection?fileName=${fileName}">Garbage Collection</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
