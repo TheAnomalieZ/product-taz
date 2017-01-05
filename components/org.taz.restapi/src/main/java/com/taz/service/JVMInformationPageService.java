@@ -21,7 +21,7 @@ public class JVMInformationPageService {
     private JFRReader jfrReader;
 
     @Value("${service.file.path}")
-    private String rootPath;
+    private String  rootPath;
 
     public JVMInformationPageService() {
         jfrReader = JFRReader.getInstance();
