@@ -24,7 +24,11 @@
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>product-taz</groupId>
+            <artifactId>org.taz.commons</artifactId>
+            <version>${product.taz.version}</version>
+        </dependency>
         <!-- Unit Test -->
         <dependency>
             <groupId>junit</groupId>
