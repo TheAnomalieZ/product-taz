@@ -37,18 +37,15 @@ public class GCTimeSeriesModel extends EventHandler {
 
     }
 
-    public Map<Long,Double> getPauseTimeSeries(){
-        Map<Long,Double> pauseTimeSeries;
+    public ArrayList<Short> getPauseTimeSeries(){
         pauseTimeModel = new GCPauseTimeSeries(eventMap,startTime);
-        pauseTimeSeries = pauseTimeModel.configureTimeSeries();
-
-        return pauseTimeSeries;
+        return  pauseTimeModel.configureTimeSeries();
     }
 
 
 
-    public Map<Long,ArrayList<Double>> getHeapandPauseSeries(){
-        Map<Long,ArrayList<Double>> timeSeries;
+    public ArrayList<Double> getHeapandPauseSeries(){
+        ArrayList<Double> timeSeries;
         pauseTimeModel = new GCPauseTimeSeries(eventMap,startTime);
         timeSeries = pauseTimeModel.heapAndPauseTime();
 

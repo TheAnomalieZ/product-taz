@@ -75,9 +75,7 @@ public class JFRReader {
     }
     public void getPauseTimeSeries(){
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
-            ArrayList<Integer> convertedSeries = convertPauseTimeSeries(parser.getValue().getPauseTimeSeries());
-
-            csvWriter.generatePauseTimeSeries(convertedSeries, parser.getKey());
+                csvWriter.generatePauseTimeSeries(parser.getValue().getPauseTimeSeries(), parser.getKey());
         }
     }
     public void getGCTimeSeries(){

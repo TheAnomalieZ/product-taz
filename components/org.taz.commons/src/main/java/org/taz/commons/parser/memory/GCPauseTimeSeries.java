@@ -20,7 +20,7 @@ public class GCPauseTimeSeries {
         pauseTimeSeries = new LinkedHashMap<Long,Double>();
         heapAndPauseSeries = new LinkedHashMap<Long,ArrayList<Double>>();
     }
-
+/*
     public Map<Long,Double> configureTimeSeries(){
         Map<Long,Double> tempSeries = new LinkedHashMap<Long,Double>();
         double previousTime = recordStartTime;
@@ -34,31 +34,65 @@ public class GCPauseTimeSeries {
             endTime = memEvent.getEndTimestamp();
             startTime = memEvent.getStartTimestamp();
 
-            double previousTimeGap = (startTime-previousTime)/1000000000;
+            double previousTimeGap = (startTime-previousTime)/1000000;
 
             while(previousTimeGap>0){
                 tempSeries.put(timeCount++,0d);
                 previousTimeGap--;
             }
 
-            double pauseTime =memEvent.getPauseTime()/1000000;
-            double gcTimeGap = (endTime - startTime)/1000000000;
+//            double pauseTime =memEvent.getPauseTime()/1000000;
+            double gcTimeGap = (endTime - startTime)/1000000;
             System.out.println(startTime+"-"+previousTime+"="+gcTimeGap);
-            System.out.println("pause Time: "+pauseTime);
+//            System.out.println("pause Time: "+pauseTime);
 
             while(gcTimeGap>0){
-                tempSeries.put(timeCount++,pauseTime);
+                tempSeries.put(timeCount++,1d);
                 gcTimeGap--;
             }
-
 
             previousTime =endTime;
         }
 
         return tempSeries;
     }
+*/
+public ArrayList<Short> configureTimeSeries(){
+    ArrayList<Short> tempSeries = new  ArrayList<Short> ();
+    double previousTime = recordStartTime;
+    long timeCount=1;
+    double endTime;
+    double startTime;
 
+    for (Map.Entry<Long, MemEvent> memEventEntry : eventMap.entrySet()) {
+        MemEvent memEvent = memEventEntry.getValue();
 
+        endTime = memEvent.getEndTimestamp();
+        startTime = memEvent.getStartTimestamp();
+
+        double previousTimeGap = (startTime-previousTime)/1000000;
+
+        while(previousTimeGap>0){
+            tempSeries.add((short) 0);
+            previousTimeGap--;
+        }
+
+//            double pauseTime =memEvent.getPauseTime()/1000000;
+        double gcTimeGap = (endTime - startTime)/1000000;
+//        System.out.println(startTime+"-"+previousTime+"="+gcTimeGap);
+//            System.out.println("pause Time: "+pauseTime);
+
+        while(gcTimeGap>0){
+            tempSeries.add((short) 1);
+            gcTimeGap--;
+        }
+
+        previousTime =endTime;
+    }
+
+    return tempSeries;
+}
+/*
     public Map<Long,ArrayList<Double>> heapAndPauseTime(){
         Map<Long,ArrayList<Double>> tempSeries = new LinkedHashMap<Long,ArrayList<Double>>();
         double previousTime = recordStartTime;
@@ -112,6 +146,60 @@ public class GCPauseTimeSeries {
 
             System.out.println(startTime+"-"+previousTime+"="+gcTimeGap);
             System.out.println("pause Time: "+pauseTime);
+
+            previousHeap = endHeap;
+            previousTime =endTime;
+
+        }
+        return tempSeries;
+    }
+
+*/
+    public ArrayList<Double> heapAndPauseTime(){
+        ArrayList<Double> tempSeries = new ArrayList<Double>();
+        double previousTime = recordStartTime;
+        double previousHeap = 0;
+        long timeCount=1;
+        double startHeap;
+        double endHeap;
+        double endTime;
+        double startTime;
+        double heapIncre;
+        double previousTimeGap;
+        double previousHeapGap;
+        double unitHeapIncre;
+        double gcHeapGap;
+        double gcTimeGap;
+        for (Map.Entry<Long, MemEvent> memEventEntry : eventMap.entrySet()) {
+            MemEvent memEvent = memEventEntry.getValue();
+            startHeap=memEvent.getStartHeap();
+            endHeap = memEvent.getEndHeap();
+
+            endTime = memEvent.getEndTimestamp();
+            startTime = memEvent.getStartTimestamp();
+
+
+            previousTimeGap = (startTime-previousTime)/1000000;
+            previousHeapGap = startHeap-previousHeap;
+            unitHeapIncre = previousHeapGap/previousTimeGap;
+            heapIncre =previousHeap;
+            while(previousTimeGap>0){
+                tempSeries.add(heapIncre/1000000);
+                heapIncre += unitHeapIncre;
+                previousTimeGap--;
+            }
+
+
+
+            gcTimeGap = (endTime - startTime)/1000000;
+            gcHeapGap = startHeap-endHeap;
+            unitHeapIncre = gcHeapGap/gcTimeGap;
+            heapIncre =startHeap;
+            while(gcTimeGap>0 && heapIncre>0){
+                tempSeries.add(heapIncre/1000000);
+               heapIncre-= unitHeapIncre;
+                gcTimeGap--;
+            }
 
             previousHeap = endHeap;
             previousTime =endTime;

@@ -29,7 +29,7 @@ public class StateIdentifier {
         for (Map.Entry<Long, MemEvent> memEventEntry : eventMap.entrySet()) {
             if (count == 1) {
                 MemEvent memEvent = memEventEntry.getValue();
-                tempLastGCEndTime = memEvent.getEndTimestamp();
+                tempLastGCEndTime = memEvent.getStartTimestamp();
                 tempLastUsedMem = memEvent.getUsedHeap();
 
             }else{
@@ -45,7 +45,7 @@ public class StateIdentifier {
                     lastMemoryDif = memDif;
                     lastGCTimeDif = gcGap;
                 }
-                tempLastGCEndTime = memEvent.getEndTimestamp();
+                tempLastGCEndTime = memEvent.getStartTimestamp();
                 tempLastUsedMem = memEvent.getUsedHeap();
 
             }
