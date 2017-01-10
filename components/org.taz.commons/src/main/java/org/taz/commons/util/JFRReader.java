@@ -151,10 +151,10 @@ public class JFRReader {
     private ArrayList<Double> convertGCTimeSeries(ArrayList<Double> series){
         ArrayList<Double> convertedSeries = new ArrayList<Double>();
         ArrayList<Double> tempSeries = series;
-        int i =0;
+        int i =1000;
 
         while(i<series.size()){
-            convertedSeries.add(tempSeries.get(i));
+            convertedSeries.add(Math.round(tempSeries.get(i)*10.0)/10.0);
             i+=1000;
         }
         return convertedSeries;
