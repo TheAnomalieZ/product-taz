@@ -123,7 +123,7 @@ public class AE {
 
     public void train( DataSetIterator iter ) {
 
-        for( int i=0 ; i<40 ; i++ ) {
+        for( int i=0 ; i<10 ; i++ ) {
             log.info("Train model : Loop "+i);
             while(iter.hasNext()) {
                     DataSet next = iter.next();

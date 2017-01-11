@@ -25,6 +25,7 @@ import org.datavec.api.records.reader.impl.csv.CSVRecordReader;
 import org.datavec.api.records.reader.impl.csv.CSVSequenceRecordReader;
 import org.datavec.api.split.FileSplit;
 import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
+import org.deeplearning4j.datasets.datavec.SequenceRecordReaderDataSetIterator;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.api.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
@@ -38,10 +39,10 @@ public class AutoEncoderTest {
 
         int batchSize = 100 ;
         int chunkSize = 20 ;
-        int layers[] = { chunkSize, 100, 70, 50 } ;
+        int layers[] = { 20, 20 } ;
 
 
-        Path target = Paths.get( "/home/mani/JFR_CSV/Models/RBM" ) ;
+        Path target = Paths.get( "/home/garth/FYP/Model/RBM" ) ;
         if( !Files.exists(target) ) {
             log.info( "Creating {}", target ) ;
             Files.createDirectories( target ) ;
@@ -52,9 +53,11 @@ public class AutoEncoderTest {
         AE ae = new RBMAutoEncoder( target, layers ) ;
 
         //Load the training data:
-        RecordReader trainRecordReader = new CSVRecordReader(0,",");
-        trainRecordReader.initialize(new FileSplit(new File("/home/mani/JFR_CSV/cep/pausetimeseries/ceptrainnew.csv")));
-        DataSetIterator trainIter = new RecordReaderDataSetIterator(trainRecordReader,30);
+        RecordReader trainRecordReader = new CSVSequenceRecordReader(0);
+        trainRecordReader.initialize(new FileSplit(new File("/home/garth/FYP/JFR_CSV/pausetime.csv")));
+        DataSetIterator trainIter = new RecordReaderDataSetIterator(trainRecordReader,20);
+//        DataSetIterator trainIter = new SequenceRecordReaderDataSetIterator(Iterator(trainRecordReader,20);
+
 
         while(trainIter.hasNext()) {
             DataSet s= trainIter.next();
@@ -62,8 +65,8 @@ public class AutoEncoderTest {
         }
 
         //Load the test data
-        RecordReader testRecordReader = new CSVRecordReader(0,",");
-        testRecordReader.initialize(new FileSplit(new File("/home/mani/JFR_CSV/cep/pausetimeseries/ceptest.csv")));
+        RecordReader testRecordReader = new CSVRecordReader(0);
+        testRecordReader.initialize(new FileSplit(new File("/home/garth/FYP/JFR_CSV/anomaly.csv")));
         DataSetIterator testIter = new RecordReaderDataSetIterator(testRecordReader,1);
 //
 //        SequenceRecordReader trainFeatures = new CSVSequenceRecordReader();
