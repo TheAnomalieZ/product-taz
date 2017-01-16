@@ -40,14 +40,17 @@ public interface JFRParser {
 
     /**
      * Method to retrieve paust time series
-     * @return Map of time and pausetime interval
+     * @return List of pausetime interval
      */
-    public Map<Long,Double> getPauseTimeSeries();
+    public ArrayList<Short> getPauseTimeSeries();
+
+
+
     /**
      * Method to retrieve whole gc time series
      * @return Map of time and heap and pause time
      */
-    public Map<Long,ArrayList<Double>> getGCTimeSeries();
+    public ArrayList<Double> getGCTimeSeries();
 
     /**
      * Method to retrieve CPU Events

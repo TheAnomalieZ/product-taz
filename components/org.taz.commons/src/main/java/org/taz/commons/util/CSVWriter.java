@@ -97,7 +97,7 @@ public class CSVWriter {
         outfile.close();
     }
 
-    public void generatePauseTimeSeries(ArrayList<Integer> series, String fileName){
+    public void generatePauseTimeSeries(ArrayList<Short> series, String fileName){
 
         logger.info("Pause Time Series");
         PrintWriter outfile = null;
@@ -106,10 +106,7 @@ public class CSVWriter {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        Long i=0L;
-        double temp;
-        for (Integer a : series) {;
+        for (Short a : series) {;
             System.out.print(a + "\n");
             outfile.append(a + "\n");
         }
@@ -138,7 +135,7 @@ public class CSVWriter {
 
 
 
-    public void generateGCTimeSeries(Map<Long,ArrayList<Double>> series, String fileName){
+    public void generateGCTimeSeries(ArrayList<Double> series, String fileName){
 
         logger.info("Pause Time Series");
         PrintWriter outfile = null;
@@ -148,15 +145,9 @@ public class CSVWriter {
             e.printStackTrace();
         }
 
-        Long i=0L;
-        ArrayList<Double> temp;
-        for (Map.Entry<Long, ArrayList<Double>> a : series.entrySet()) {
-            temp = a.getValue();
-            System.out.print(temp.get(0)+","+temp.get(1) + "\n");
-            outfile.append(temp.get(0)+","+temp.get(1) + "\n");
-
-//            System.out.print(temp.get(0)+","+temp.get(1) + "," + temp.get(2) + "\n");
-//            outfile.append(temp.get(0)+","+temp.get(1) + "," + temp.get(2) + "\n");
+        for (double a : series) {
+            System.out.print(a + "\n");
+            outfile.append(a + "\n");
         }
         outfile.close();
     }

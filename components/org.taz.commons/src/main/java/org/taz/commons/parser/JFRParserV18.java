@@ -44,7 +44,7 @@ public class JFRParserV18 implements JFRParser {
         return gcTimeSeriesModel.getGCFeatures();
     }
 
-    public Map<Long,Double> getPauseTimeSeries(){
+    public ArrayList<Short> getPauseTimeSeries(){
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
         return gcTimeSeriesModel.getPauseTimeSeries();
     }
@@ -89,7 +89,7 @@ public class JFRParserV18 implements JFRParser {
         return gcEventsModelHandler.getGCEventModel();
     }
 
-    public Map<Long,ArrayList<Double>> getGCTimeSeries(){
+    public ArrayList<Double> getGCTimeSeries(){
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
         return gcTimeSeriesModel.getHeapandPauseSeries();
     }

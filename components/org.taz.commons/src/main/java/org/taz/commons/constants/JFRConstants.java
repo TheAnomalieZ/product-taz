@@ -65,6 +65,10 @@ public class JFRConstants {
     public static String PERMGENSUMMARY= "Perm Gen Summary";
     public static String GCCONFIGURATION= "GC Configuration";
     public static String GCHEAPCONFIGURATION= "GC Heap Configuration";
+    public static String INITIALSIZE= "initialSize";
+    public static String MINSIZE= "minSize";
+    public static String MAXSIZE= "maxSize";
+
 
     public static String CPUINFORMATION= "CPU Information";
     public static String OSINFORMATION= "OS Information";

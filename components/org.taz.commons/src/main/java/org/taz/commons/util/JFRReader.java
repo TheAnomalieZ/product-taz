@@ -48,11 +48,11 @@ public class JFRReader {
     }
 
     public JFRParserV18 readSingleJFR(String filePath){
-            logger.info("Loading file"+ filePath);
-            String fileName = filePath;
-            int index = fileName.lastIndexOf('.');
-            fileName = fileName.substring(0,index);
-            return new JFRParserV18(filePath);
+        logger.info("Loading file"+ filePath);
+        String fileName = filePath;
+        int index = fileName.lastIndexOf('.');
+        fileName = fileName.substring(0,index);
+        return new JFRParserV18(filePath);
     }
 
     public Map<String,JFRParser>  getJFRRecording() {
@@ -75,14 +75,12 @@ public class JFRReader {
     }
     public void getPauseTimeSeries(){
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
-            ArrayList<Integer> convertedSeries = convertPauseTimeSeries(parser.getValue().getPauseTimeSeries());
-
-            csvWriter.generatePauseTimeSeries(convertedSeries, parser.getKey());
+            csvWriter.generatePauseTimeSeries(parser.getValue().getPauseTimeSeries(), parser.getKey());
         }
     }
     public void getGCTimeSeries(){
         for (Map.Entry<String, JFRParser> parser :jfrList.entrySet()) {
-            csvWriter.generateGCTimeSeries(parser.getValue().getGCTimeSeries(), parser.getKey());
+            csvWriter.generateGCTimeSeries(convertGCTimeSeries(parser.getValue().getGCTimeSeries()), parser.getKey());
         }
     }
 
@@ -148,6 +146,18 @@ public class JFRReader {
             ArrayList<ArrayList<String>> attriList = convertGCAttributes(parser.getValue().getGCEvents());
             csvWriter.generateGCAttributes(attriList,parser.getKey());
         }
+    }
+
+    private ArrayList<Double> convertGCTimeSeries(ArrayList<Double> series){
+        ArrayList<Double> convertedSeries = new ArrayList<Double>();
+        ArrayList<Double> tempSeries = series;
+        int i =1000;
+
+        while(i<series.size()){
+            convertedSeries.add(Math.round(tempSeries.get(i)*10.0)/10.0);
+            i+=1000;
+        }
+        return convertedSeries;
     }
 
     private ArrayList<Integer> convertPauseTimeSeries(Map<Long,Double> series){
