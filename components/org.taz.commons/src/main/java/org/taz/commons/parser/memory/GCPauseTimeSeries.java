@@ -11,12 +11,14 @@ public class GCPauseTimeSeries {
     private final Map<Long, MemEvent> eventMap;
     private Map<Long,Double> pauseTimeSeries;
     private Map<Long,ArrayList<Double>> heapAndPauseSeries;
-    private long recordStartTime;
+    private long recordStartTime,maxHeap,minHeap;
 
 
-    public GCPauseTimeSeries(Map<Long, MemEvent> eventMap,long startTime) {
+    public GCPauseTimeSeries(Map<Long, MemEvent> eventMap,long startTime,long minHeap,long maxHeap) {
         this.eventMap = eventMap;
         this.recordStartTime = startTime;
+        this.minHeap = minHeap;
+        this.maxHeap = maxHeap;
         pauseTimeSeries = new LinkedHashMap<Long,Double>();
         heapAndPauseSeries = new LinkedHashMap<Long,ArrayList<Double>>();
     }
@@ -170,6 +172,8 @@ public ArrayList<Short> configureTimeSeries(){
         double unitHeapIncre;
         double gcHeapGap;
         double gcTimeGap;
+        maxHeap = maxHeap/1000000;
+        minHeap = minHeap/1000000;
         for (Map.Entry<Long, MemEvent> memEventEntry : eventMap.entrySet()) {
             MemEvent memEvent = memEventEntry.getValue();
             startHeap=memEvent.getStartHeap();
@@ -184,7 +188,8 @@ public ArrayList<Short> configureTimeSeries(){
             unitHeapIncre = previousHeapGap/previousTimeGap;
             heapIncre =previousHeap;
             while(previousTimeGap>0){
-                tempSeries.add(heapIncre/1000000);
+                tempSeries.add((((1000-1)*((heapIncre/1000000)))/maxHeap)+1);
+//                tempSeries.add(heapIncre/1000000);
                 heapIncre += unitHeapIncre;
                 previousTimeGap--;
             }
@@ -196,7 +201,8 @@ public ArrayList<Short> configureTimeSeries(){
             unitHeapIncre = gcHeapGap/gcTimeGap;
             heapIncre =startHeap;
             while(gcTimeGap>0 && heapIncre>0){
-                tempSeries.add(heapIncre/1000000);
+                tempSeries.add((((1000-1)*((heapIncre/1000000)))/maxHeap)+1);
+//                tempSeries.add(heapIncre/1000000);
                heapIncre-= unitHeapIncre;
                 gcTimeGap--;
             }
