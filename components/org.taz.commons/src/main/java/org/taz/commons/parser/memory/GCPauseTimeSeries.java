@@ -7,6 +7,7 @@ import java.util.Map;
 /**
  * Created by  Maninesan on 12/12/16.
  */
+
 public class GCPauseTimeSeries {
     private final Map<Long, MemEvent> eventMap;
     private Map<Long,Double> pauseTimeSeries;
@@ -188,8 +189,8 @@ public ArrayList<Short> configureTimeSeries(){
             unitHeapIncre = previousHeapGap/previousTimeGap;
             heapIncre =previousHeap;
             while(previousTimeGap>0){
-                tempSeries.add((((1000-1)*((heapIncre/1000000)))/maxHeap)+1);
-//                tempSeries.add(heapIncre/1000000);
+//                tempSeries.add((((1000-1)*((heapIncre/1000000)))/maxHeap)+1);
+                tempSeries.add(heapIncre/1000000);
                 heapIncre += unitHeapIncre;
                 previousTimeGap--;
             }
@@ -201,8 +202,8 @@ public ArrayList<Short> configureTimeSeries(){
             unitHeapIncre = gcHeapGap/gcTimeGap;
             heapIncre =startHeap;
             while(gcTimeGap>0 && heapIncre>0){
-                tempSeries.add((((1000-1)*((heapIncre/1000000)))/maxHeap)+1);
-//                tempSeries.add(heapIncre/1000000);
+//                tempSeries.add((((1000-1)*((heapIncre/1000000)))/maxHeap)+1);
+                tempSeries.add(heapIncre/1000000);
                heapIncre-= unitHeapIncre;
                 gcTimeGap--;
             }
