@@ -46,13 +46,6 @@
         </dependency>
 
         <dependency>
-            <groupId>net.sf.javaml</groupId>
-            <artifactId>javaml</artifactId>
-            <version>0.1.4</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/src/main/libs/javaml-0.1.4.jar</systemPath>
-        </dependency>
-        <dependency>
             <groupId>de.lmu.ifi.dbs.elki</groupId>
             <artifactId>elki</artifactId>
             <version>0.7.1</version>
