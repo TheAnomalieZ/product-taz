@@ -149,24 +149,24 @@ public class JFRParserV18 implements JFRParser {
                     if(eventAttributeValMap.containsKey(attribute)){
                         ArrayList<Object> attributeValues = eventAttributeValMap.get(attribute);
                         Object value = event.getValue(attribute);
-                        if(value==null)
-                            throw new AttributeNotFoundException(eventName,attribute);
+                       /* if(value==null)
+                            throw new AttributeNotFoundException(eventName,attribute);*/
                         attributeValues.add(value);
                         eventAttributeValMap.put(attribute,attributeValues);
                     }
                     else{
                         ArrayList<Object> attributeValues = new ArrayList<>();
                         Object value = event.getValue(attribute);
-                        if(value==null)
-                            throw new AttributeNotFoundException(eventName,attribute);
+                        /*if(value==null)
+                           throw new AttributeNotFoundException(eventName,attribute);*/
                         attributeValues.add(value);
                         eventAttributeValMap.put(attribute,attributeValues);
                     }
                 }
             }
         }
-        if(!isEventAvailable)
-            throw new EventNotFoundException(eventName);
+        //if(!isEventAvailable)
+        //    throw new EventNotFoundException(eventName);
         return eventAttributeValMap;
     }
 }
