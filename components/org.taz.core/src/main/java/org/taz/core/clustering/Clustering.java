@@ -1,7 +1,6 @@
 package org.taz.core.clustering;
 
 import de.lmu.ifi.dbs.elki.algorithm.clustering.optics.AbstractOPTICS;
-import de.lmu.ifi.dbs.elki.algorithm.clustering.optics.OPTICSHeap;
 import de.lmu.ifi.dbs.elki.algorithm.outlier.OPTICSOF;
 import de.lmu.ifi.dbs.elki.data.DoubleVector;
 import de.lmu.ifi.dbs.elki.database.Database;
@@ -11,13 +10,12 @@ import de.lmu.ifi.dbs.elki.database.relation.DoubleRelation;
 import de.lmu.ifi.dbs.elki.result.outlier.OutlierResult;
 import de.lmu.ifi.dbs.elki.utilities.ClassGenericsUtil;
 import de.lmu.ifi.dbs.elki.utilities.optionhandling.parameterization.ListParameterization;
-import net.sf.javaml.clustering.Clusterer;
-import net.sf.javaml.clustering.OPTICS;
+import org.taz.core.clustering.util.DatabaseHandler;
 
 /**
  * Created by vithulan on 11/25/16.
  */
-public class Clustering extends DatabaseHandler{
+public class Clustering extends DatabaseHandler {
     //Clusterer clusterer = new OPTICS(5.0,3);
     public void cluster(){
         Database db = makeSimpleDatabase(FILE_PATH,550);
