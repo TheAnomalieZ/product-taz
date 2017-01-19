@@ -57,19 +57,19 @@ public class StateIdentifier {
 
     private void identifyState(long lastMemDiff, long lastGCTimeDiff, long currMemDiff, long currGCTimeDiff) {
         int state = 0;
-        if(currGCTimeDiff>=lastGCTimeDiff && currMemDiff>=lastMemDiff) {
+        if(currGCTimeDiff>lastGCTimeDiff && currMemDiff>lastMemDiff) {
             state =1;
             stateSequence.add(0);
         }
-        if(currGCTimeDiff>lastGCTimeDiff && currMemDiff<lastMemDiff) {
+        if(currGCTimeDiff>lastGCTimeDiff && currMemDiff<=lastMemDiff) {
             state =2;
             stateSequence.add(1);
         }
-        if(currGCTimeDiff<lastGCTimeDiff && currMemDiff<lastMemDiff) {
+        if(currGCTimeDiff<=lastGCTimeDiff && currMemDiff<=lastMemDiff) {
             state =3;
             stateSequence.add(2);
         }
-        if(currGCTimeDiff<lastGCTimeDiff && currMemDiff>lastMemDiff) {
+        if(currGCTimeDiff<=lastGCTimeDiff && currMemDiff>lastMemDiff) {
             state =4;
             stateSequence.add(3);
         }
