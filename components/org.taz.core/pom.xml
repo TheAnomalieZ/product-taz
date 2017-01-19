@@ -57,7 +57,11 @@
             <artifactId>elki</artifactId>
             <version>0.7.1</version>
         </dependency>
-
+        <dependency>
+            <groupId>product-taz</groupId>
+            <artifactId>org.taz.commons</artifactId>
+            <version>${product.taz.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
