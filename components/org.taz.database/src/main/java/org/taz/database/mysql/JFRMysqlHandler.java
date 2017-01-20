@@ -1,5 +1,8 @@
 package org.taz.database.mysql;
 
+import com.jrockit.mc.flightrecorder.spi.IEvent;
+import com.jrockit.mc.flightrecorder.spi.IEventType;
+import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
 import org.taz.commons.parser.JFRParserV18;
@@ -34,7 +37,8 @@ public class JFRMysqlHandler {
     public void generateDatabase() {
         createConnection();
         createTable();
-        insertValues();
+        //insertParsedValues();
+        insertIViewValues();
     }
 
     private void createTable() {
@@ -47,7 +51,7 @@ public class JFRMysqlHandler {
         }
     }
 
-    private void insertValues() {
+    private void insertParsedValues() {
         ArrayList<EventNode> eventNodes = jfrParser.getAllJFRAttributes();
         for (EventNode eventNode : eventNodes) {
             try {
@@ -60,16 +64,15 @@ public class JFRMysqlHandler {
                     int valueSize = eventMap.get(attributes.get(0)).size();
                     System.out.println(valueSize);
                     int i = 0;
-                    for(i=0;i<valueSize;i++){
+                    for (i = 0; i < valueSize; i++) {
                         for (String attribute : attributes) {
-                            if(eventMap.get(attribute).get(i)==null){
+                            if (eventMap.get(attribute).get(i) == null) {
                                 valueList.add("NULL");
-                            }
-                            else{
+                            } else {
                                 valueList.add(eventMap.get(attribute).get(i).toString());
                             }
                         }
-                        String query = sqlQueryGenerator.getInsertionQuery(eventNode.getEventName(),attributes,valueList);
+                        String query = sqlQueryGenerator.getInsertionQuery(eventNode.getEventName(), attributes, valueList);
                         mysqlConnector.executeQuery(query);
                         valueList = new ArrayList<>();
                     }
@@ -82,4 +85,26 @@ public class JFRMysqlHandler {
             }
         }
     }
+
+    public void insertIViewValues() {
+        IView iView = jfrParser.getIView();
+        for (IEvent event : iView) {
+            IEventType iEventType = event.getEventType();
+            ArrayList<String> attributes = new ArrayList<String>(iEventType.getFieldIdentifiers());
+            ArrayList<String> values = new ArrayList<>();
+            for (String attribute : attributes) {
+                Object value = event.getValue(attribute);
+                if (value == null) {
+                    values.add("NULL");
+                } else {
+                    values.add(value.toString());
+                }
+            }
+            String query = sqlQueryGenerator.getInsertionQuery(iEventType.getName(),attributes,values);
+            mysqlConnector.executeQuery(query);
+            //System.out.println(query);
+           // break;
+        }
+    }
+
 }
