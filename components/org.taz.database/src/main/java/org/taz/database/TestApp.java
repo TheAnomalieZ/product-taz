@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class TestApp {
     public static void main(String[] args) {
         final String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/JFR/CEP/cep-2016_12_17_06_16_26.jfr";
+        //final String FILE_PATH = "/home/vithulan/Documents/jfr/Anomaly/ano1.jfr";
         /*CassandraConnection cassandraConnection = new CassandraConnection();
         cassandraConnection.createKeySpace("Tempo");*/
        /* CassandraConnection cassandraConnection = new CassandraConnection();
@@ -34,11 +35,15 @@ public class TestApp {
         /*MysqlConnector mysqlConnector = new MysqlConnector("localhost","3306","JFR_Collection");
         mysqlConnector.createConnection();*/
 
-        JFRMysqlHandler jfrMysqlHandler = new JFRMysqlHandler(FILE_PATH,"localhost","3306","JFR_Sample");
-        jfrMysqlHandler.generateDatabase();
+        /*JFRMysqlHandler jfrMysqlHandler = new JFRMysqlHandler(FILE_PATH,"localhost","3306","JFR_Sample3");
+        jfrMysqlHandler.generateDatabase();*/
+
 
         /*MysqlConnector mysqlConnector = new MysqlConnector("localhost","3306","JFR_Sample");
         mysqlConnector.createConnection();
         mysqlConnector.executeQuery(query1);*/
+
+        JFRMysqlHandler jfrMysqlHandler = new JFRMysqlHandler(FILE_PATH,"localhost","3306","JFR_Sample4");
+        jfrMysqlHandler.generateDatabase();
     }
 }

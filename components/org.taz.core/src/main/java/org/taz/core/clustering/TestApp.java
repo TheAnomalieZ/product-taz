@@ -23,15 +23,15 @@ public class TestApp {
     public static void main(String[] args) {
         String file_path = "/home/vithulan/JFRs/Clustering/data.csv";
 
-        /*Clustering clustering  = new Clustering();
-        clustering.cluster();*/
+        Clustering clustering  = new Clustering();
+        clustering.cluster();
 
        // OpticsHeap opticsHeap = new OpticsHeap(file_path);
        // opticsHeap.run();
 
-        ParserAPI parserAPI = new ParserAPI();
+        /*ParserAPI parserAPI = new ParserAPI();
         parserAPI.getAttributes();
-
+*/
 
         //LoggingConfiguration.setStatistics();
 
