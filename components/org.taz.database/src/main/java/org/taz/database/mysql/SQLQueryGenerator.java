@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class SQLQueryGenerator {
     private String database;
-    private final String varchar = "varchar(255)";
+    private final String data_type = "text";
     private final String space = " ";
     public SQLQueryGenerator (String database){
         this.database = database;
@@ -18,7 +18,7 @@ public class SQLQueryGenerator {
         String subQuery = "";
         int count = 1;
         for(String column : columns){
-            subQuery = subQuery+space+""+trimmer(column)+""+space+varchar;
+            subQuery = subQuery+space+""+trimmer(column)+""+space+data_type;
             if(count<columns.size()){
                 subQuery = subQuery+",";
             }
