@@ -169,4 +169,10 @@ public class JFRParserV18 implements JFRParser {
         //    throw new EventNotFoundException(eventName);
         return eventAttributeValMap;
     }
+
+    @Override
+    public IView getIView() {
+        return iView;
+    }
+
 }

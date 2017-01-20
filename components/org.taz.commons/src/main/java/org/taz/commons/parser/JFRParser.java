@@ -1,5 +1,6 @@
 package org.taz.commons.parser;
 
+import com.jrockit.mc.flightrecorder.spi.IView;
 import org.taz.commons.exceptions.AttributeNotFoundException;
 import org.taz.commons.exceptions.EventNotFoundException;
 import org.taz.commons.parser.events.*;
@@ -117,4 +118,6 @@ public interface JFRParser {
      */
     public Map<String,ArrayList<Object>> getAttributeValues(String eventName, ArrayList<String> attributes)
             throws EventNotFoundException, AttributeNotFoundException;
+
+    public IView getIView();
 }
