@@ -55,10 +55,28 @@
             <artifactId>org.taz.commons</artifactId>
             <version>${product.taz.version}</version>
         </dependency>
+
+        <!-- Jython Standalone -->
+        <dependency>
+            <groupId>org.python</groupId>
+            <artifactId>jython-standalone</artifactId>
+            <version>${jython.standalone.version}</version>
+        </dependency>
+
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <properties>
         <nd4j.backend>nd4j-native-platform</nd4j.backend>
+        <jython.standalone.version>2.7.0</jython.standalone.version>
+        <junit.version>4.12</junit.version>
     </properties>
     <!--<repositories>
         <repository>
@@ -66,5 +84,7 @@
             <url>file://${project.basedir}/src/main/libs/</url>
         </repository>
     </repositories>-->
+
+
 
 </project>
