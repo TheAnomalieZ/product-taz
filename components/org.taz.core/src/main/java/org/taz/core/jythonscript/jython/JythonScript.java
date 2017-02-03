@@ -1,0 +1,399 @@
+package org.taz.core.jythonscript.jython;
+
+import org.taz.core.jythonscript.jython.exception.JythonResultNotFoundException;
+import org.taz.core.jythonscript.jython.exception.JythonScriptException;
+import org.taz.core.jythonscript.jython.exception.JythonScriptNotFoundException;
+import org.taz.core.jythonscript.util.FileUtil;
+import org.taz.core.jythonscript.util.StringUtil;
+import org.python.core.*;
+import org.python.util.PythonInterpreter;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+public class JythonScript {
+
+    private static PythonInterpreter INTERPRETER = new PythonInterpreter();
+
+    private static final String EVALUATION_RESULT_LOCAL_VARIABLE = "result";
+
+    /**
+     * Compiles the Jython script at the given {@code filePath} into a {@link PyCode} object.
+     *
+     * @param filePath the absolute path of the Jython file to compile
+     * @return a compiled Jython script
+     * @throws JythonScriptException when the given file path is empty or null
+     */
+    public static PyCode compile(String filePath) throws JythonScriptException {
+        // Make sure the file path is is not null or empty
+        if (StringUtil.isBlank(filePath)) {
+            throw new JythonScriptException("Given path is not a file. path=[" + filePath + "]");
+        }
+
+        // Compile the script
+        return compile(new File(filePath));
+    }
+
+    /**
+     * Compiles the given Jython script into a {@link PyCode} object.
+     *
+     * @param file the Jython file to compile
+     * @return a compiled Jython script
+     * @throws JythonScriptException when the given file is null or is not a file (i.e. a directory)
+     */
+    public static PyCode compile(File file) throws JythonScriptException {
+        if (file == null) {
+            throw new JythonScriptException("Given file is null; cannot be compiled into PyCode.");
+        }
+
+        // Make sure the file is actually a valid file
+        if (!file.isFile()) {
+            throw new JythonScriptException("Given file object is not a file. Is it a directory? file=[" +
+                    file.getAbsolutePath() + "]");
+        }
+
+        // Compile the file, returning the associated PyCode object
+        try {
+            return INTERPRETER.compile(FileUtil.readFully(file));
+        } catch (IOException e) {
+            throw new JythonScriptException("Could not compile the given file. file=[" +
+                    file.getAbsolutePath() + "]", e);
+        }
+    }
+
+    /**
+     * Evaluates the Jython script at the given {@code scriptPath}, returning the result as it's equivalent Java type.
+     * Accepts optional arguments to be passed to the script at runtime.
+     *
+     * @param scriptPath the fully qualified path of the Jython script to execute
+     * @param args arguments to be passed to the script
+     * @return the result from executing the given script
+     * @throws JythonScriptException when the given file path is null, a directory, or cannot be found
+     */
+    public static Object evaluate(String scriptPath, Object... args) throws JythonScriptException {
+        // Ensure that the scriptRelativePath is not null or empty
+        if (StringUtil.isBlank(scriptPath)) {
+            throw new JythonScriptNotFoundException("File not found at path=[" + scriptPath + "]");
+        }
+
+        // Open an InputStream for the file
+        InputStream inputStream;
+        try {
+            inputStream = FileUtil.getFileInputStream(scriptPath);
+        } catch (Exception e) {
+            throw new JythonScriptNotFoundException("Could not open Jython script from location=[" + scriptPath + "]", e);
+        }
+
+        return evaluate(inputStream, args);
+    }
+
+    /**
+     * Evaluates the given Jython script, returning the result as it's equivalent Java type. Accepts optional arguments
+     * to be passed to the script at runtime.
+     *
+     * @param scriptFile the Jython script to execute
+     * @param args arguments to be passed to the script
+     * @return the result from executing the given script
+     * @throws JythonScriptException when the given file is null, a directory, or cannot be found
+     */
+    public static Object evaluate(File scriptFile, Object... args) throws JythonScriptException {
+        // Ensure that the script is not null
+        if (scriptFile == null) {
+            throw new JythonScriptNotFoundException("Could not open Jython script, the file was null.");
+        }
+
+        // Open an InputStream for the file
+        InputStream inputStream;
+        try {
+            inputStream = FileUtil.getFileInputStream(scriptFile);
+        } catch (Exception e) {
+            throw new JythonScriptNotFoundException("Could not open Jython script from location=[" + scriptFile.getAbsolutePath() + "]", e);
+        }
+
+        // Execute the script
+        return evaluate(inputStream, args);
+    }
+
+    /**
+     * Evaluates the given Jython script, returning the result as it's equivalent Java type. Accepts optional arguments
+     * to be passed to the script at runtime.
+     *
+     * @param inputStream the {@link InputStream} that represents the Jython script to be executed
+     * @param args arguments to be passed to the script
+     * @return the result from executing the given script
+     * @throws JythonScriptException when a script execution error occurs or when a local Python variable named 'result' is not found
+     */
+    public static Object evaluate(InputStream inputStream, Object... args) throws JythonScriptException {
+        // Execute the script
+        execute(inputStream, args);
+
+        // Obtain the value of a local variable named 'result' from the executed script
+        PyObject result = INTERPRETER.get(EVALUATION_RESULT_LOCAL_VARIABLE);
+
+        if (result == null) {
+            throw new JythonResultNotFoundException("Local variable 'result' not found during script execution.");
+        }
+
+        return parseResult(result);
+    }
+
+    /**
+     * Evaluates the given Jython script, returning the result as it's equivalent Java type. Accepts optional arguments
+     * to be passed to the script at runtime.
+     *
+     * @param pyCode the compiled Jython script to evaluate
+     * @param args arguments to be passed to the script
+     * @return the result from executing the given script
+     * @throws JythonScriptException when a script execution error occurs or when a local Python variable named 'result' is not found
+     */
+    public static Object evaluate(PyCode pyCode, Object... args) throws JythonScriptException {
+        // Execute the script
+        execute(pyCode, args);
+
+        // Obtain the value of a local variable named 'result' from the executed script
+        PyObject result = INTERPRETER.get(EVALUATION_RESULT_LOCAL_VARIABLE);
+
+        if (result == null) {
+            throw new JythonResultNotFoundException("Local variable 'result' not found during script execution.");
+        }
+
+        return parseResult(result);
+    }
+
+    /**
+     * Executes the Jython script at the given {@code scriptPath} with optional arguments passed to the script at
+     * runtime.
+     *
+     * @param scriptPath the fully qualified path of the Jython script to execute
+     * @param args arguments to be passed to the script
+     * @throws JythonScriptException when the given file path is null, a directory, or cannot be found
+     */
+    public static void execute(String scriptPath, Object... args) throws JythonScriptException {
+        // Ensure that the scriptRelativePath is not null or empty
+        if (StringUtil.isBlank(scriptPath)) {
+            throw new JythonScriptNotFoundException("File not found at path=[" + scriptPath + "]");
+        }
+
+        // Open an InputStream for the file
+        InputStream inputStream;
+        try {
+            inputStream = FileUtil.getFileInputStream(scriptPath);
+        } catch (Exception e) {
+            throw new JythonScriptNotFoundException("Could not open Jython script from location=[" + scriptPath + "]", e);
+        }
+
+        // Execute the script
+        execute(inputStream, args);
+    }
+
+    /**
+     * Executes the given Jython script with optional arguments passed to the script at runtime.
+     *
+     * @param scriptFile the Jython script to execute
+     * @param args arguments to be passed to the script
+     * @throws JythonScriptException when the given file is null, a directory, or cannot be found
+     */
+    public static void execute(File scriptFile, Object... args) throws JythonScriptException {
+        // Ensure that the script is not null
+        if (scriptFile == null) {
+            throw new JythonScriptNotFoundException("Could not open Jython script, the file was null.");
+        }
+
+        // Open an InputStream for the file
+        InputStream inputStream;
+        try {
+            inputStream = FileUtil.getFileInputStream(scriptFile);
+        } catch (Exception e) {
+            throw new JythonScriptNotFoundException("Could not open Jython script from location=[" + scriptFile.getAbsolutePath() + "]", e);
+        }
+
+        // Execute the script
+        execute(inputStream, args);
+    }
+
+    /**
+     * Executes the given Jython script with optional arguments passed to the script at runtime.
+     *
+     * @param inputStream the {@link InputStream} that represents the Jython script to be executed
+     * @param args arguments to be passed to the script
+     * @throws JythonScriptException when the given inputstream is null or a script execution error occurs
+     */
+    public static void execute(InputStream inputStream, Object... args) throws JythonScriptException {
+        if (inputStream == null) {
+            throw new JythonScriptException("Cannot execute a Jython script that doesn't exist! InputStream is null.");
+        }
+
+        // Set the arguments on the Python System State
+        updateInterpreterState(args);
+
+        try {
+            // Execute the script
+            INTERPRETER.execfile(inputStream);
+        } catch (Exception e) {
+            throw new JythonScriptException("An error occurred during script execution. cause=[\n\t" + e.toString() + "]");
+        }
+    }
+
+    /**
+     * Executes the given Jython script with optional arguments passed to the script at runtime.
+     *
+     * @param pyCode the compiled Jython script to evaluate
+     * @param args arguments to be passed to the script
+     * @throws JythonScriptException when the given PyCode is null or a script execution error occurs
+     */
+    public static void execute(PyCode pyCode, Object... args) throws JythonScriptException {
+        if (pyCode == null) {
+            throw new JythonScriptException("Cannot execute a Jython script that doesn't exist! InputStream is null.");
+        }
+
+        // Set the arguments on the Python System State
+        updateInterpreterState(args);
+
+        try {
+            // Execute the script
+            INTERPRETER.exec(pyCode);
+        } catch (Exception e) {
+            throw new JythonScriptException("An error occurred during script execution. cause=[\n\t" + e.toString() + "]");
+        }
+    }
+
+    /**
+     * Updates the {@link PythonInterpreter}s {@link PySystemState} by adding the given {@code args}. These arguments
+     * may be accessed from within Jython scripts via the 'sys.argv' parameters, beginning at the second index (i.e.
+     * sys.argv[1]). Note: the first index is reserved.
+     *
+     * @param args the arguments to set on the {@link PySystemState} for the current {@link PythonInterpreter}
+     */
+    private static void updateInterpreterState(Object... args) {
+        // Setup the Python System State by appending the given arguments
+        PySystemState state = parseArguments(args);
+
+        // Add the arguments to the PythonInterpreter
+        INTERPRETER = new PythonInterpreter(null, state);
+    }
+
+    /**
+     * Given an arbitrary set of arguments, parses each individually into it's correct Jython type, before appending the
+     * value to the set of arguments to be passed to the executing script.
+     *
+     * @param args the arguments to parse before being sent to a Python script
+     */
+    private static PySystemState parseArguments(Object... args) {
+        PySystemState systemState = new PySystemState();
+
+        for (Object arg : args) {
+            systemState.argv.append(Py.java2py(arg));
+        }
+
+        return systemState;
+    }
+
+    /**
+     * Given a {@link PyObject} attempts to convert the object to it's Java representation. If an equivalent java type
+     * cannot be found, the original PyObject is returned.
+     *
+     * Current supported type conversions:
+     * <ul>
+     *     <li>{@link PyBoolean} to boolean</li>
+     *     <li>{@link PyInteger} to int</li>
+     *     <li>{@link PyString} to {@link String}</li>
+     *     <li>{@link PyFloat} to float</li>
+     *     <li>{@link PyLong} to long</li>
+     *     <li>{@link PyList} to an array of {@link Object}s</li>
+     *     <li>{@link PyDictionary} to a {@link Map} of {@link Object}s</li>
+     *     <li>{@link PySet} to a {@link Set} of {@link Object}s</li>
+     * </ul>
+     *
+     * @param object the object to convert to it's equivalent Java type, if supported; otherwise, returns the unconverted {@link PyObject}
+     * @return the Java type representation of the given {@link PyObject}
+     */
+    private static Object parseResult(PyObject object) {
+        if (object == null) {
+            // We should never get here since evaluate provides this check; but, just incase.
+            return null;
+        }
+
+        if (object instanceof PyBoolean) {
+            return Py.py2boolean(object);
+        } else if (object instanceof PyInteger) {
+            return Py.py2int(object);
+        } else if (object instanceof PyString) {
+            return ((PyString) object).getString();
+        } else if (object instanceof PyFloat) {
+            return Py.py2float(object);
+        } else if (object instanceof PyLong) {
+            return Py.py2long(object);
+        } else if (object instanceof PyList) {
+            return parsePyObjectList(((PyList) object).getArray());
+        } else if (object instanceof PyDictionary) {
+            return parsePyObjectDict(((PyDictionary) object).getMap());
+        } else if (object instanceof PySet) {
+            return parsePyObjectSet(((PySet) object).getSet());
+        }
+
+        return object;
+    }
+
+    /**
+     * Converts the given array of {@link PyObject}s to an array of the corresponding Java types for each value in the array.
+     *
+     * @param pyObjects an array of {@link PyObject}s to parse
+     * @return a new array of {@link Object}s
+     */
+    private static Object[] parsePyObjectList(PyObject[] pyObjects) {
+        Object[] objects = new Object[pyObjects.length];
+
+        int index = 0;
+        for (PyObject pyObject : pyObjects) {
+            objects[index] = parseResult(pyObject);
+
+            index++;
+        }
+
+        return objects;
+    }
+
+    /**
+     * Converts the given {@link Map} of {@link PyObject}s to a Map of the corresponding Java types.
+     *
+     * @param pyDict the dictionary to parse
+     * @return a new {@link Map} of {@link Object}s
+     */
+    private static Map<Object, Object> parsePyObjectDict(Map<PyObject, PyObject> pyDict) {
+        Map<Object, Object> objects = new HashMap<>();
+
+        for (Map.Entry entry : pyDict.entrySet()) {
+            Object key = parseResult((PyObject) entry.getKey());
+            Object value = parseResult((PyObject) entry.getValue());
+
+            objects.put(key, value);
+        }
+
+        return objects;
+    }
+
+    /**
+     * Converts the given {@link Set} of {@link PyObject}s to a Set of the corresponding Java types.
+     *
+     * @param pySet the set to parse
+     * @return a new {@link Set} of {@link Object}s
+     */
+    private static Set<Object> parsePyObjectSet(Set<PyObject> pySet) {
+        Set<Object> objects = new HashSet<>();
+
+        for (PyObject pyObject : pySet) {
+            objects.add(parseResult(pyObject));
+        }
+
+        return objects;
+    }
+
+    // Don't allow this class to be instantiated
+    private JythonScript() { }
+
+}
