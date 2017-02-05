@@ -71,12 +71,17 @@
             <scope>test</scope>
         </dependency>
 
+
+
+
     </dependencies>
+
 
     <properties>
         <nd4j.backend>nd4j-native-platform</nd4j.backend>
         <jython.standalone.version>2.7.0</jython.standalone.version>
         <junit.version>4.12</junit.version>
+        <!--<jackson.version>2.7.0</jackson.version>-->
     </properties>
     <!--<repositories>
         <repository>

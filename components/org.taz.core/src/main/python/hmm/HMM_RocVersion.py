@@ -7,7 +7,7 @@ import time
 from linked_list import LinkedList
 from sklearn.externals import joblib
 import sys
-
+print('mani')
 n1 = int(sys.argv[1])
 n2 = int(sys.argv[2])
 n3 = int(sys.argv[3])
@@ -16,7 +16,7 @@ n4 = int(sys.argv[4])
 np.random.seed(42)
 
 #training part
-f = open('normallarge.csv')
+f = open('./components/org.taz.core/src/main/python/hmm/normallarge.csv')
 try:
     reader = C.reader(f)
     floats = []
@@ -24,14 +24,14 @@ try:
         floats.append(map(int, row))
 finally:
     f.close()
-
+print('mani')
 train_data = np.array(floats)
 model = hmm.MultinomialHMM(n_components=n1)
 model.fit(train_data)
 
 def testing(filename, n, p):
     scorelist = []
-    f = open(filename)
+    f = open("./components/org.taz.core/src/main/python/hmm/"+filename)
     try:
         reader = C.reader(f)
         floats = []
@@ -115,6 +115,7 @@ def drawROC(score, y, size):
 
 
 scorelist0 = testing('normal1_states.csv',n2, n3)
+print('mani')
 
 for i in range(1, 6):
     size = i*10
