@@ -1,0 +1,142 @@
+Job launching after 0.54 seconds in submission.
+Running python job.
+Changed into dir /home/garth/FYP/taz/experiments/gcstate
+Importing o.py
+Running o.main()
+gcstate
+gcstate
+gcstate
+gcstate
+I 2017-01-26 23:16:36 theanets.layers.base:371 layer Input "in": 1 inputs
+I 2017-01-26 23:16:36 theanets.layers.base:207 layer LSTM "hid1": (in:out)1 -> 20, sigmoid, 1820 parameters
+I 2017-01-26 23:16:36 theanets.layers.base:207 layer Feedforward "out": (hid1:out)20 -> 1, linear, 21 parameters
+I 2017-01-26 23:16:36 theanets.graph:94 network has 1841 total parameters
+stateit 2
+it 100000
+I 2017-01-26 23:16:36 downhill.dataset:118 valid: 97 mini-batches from callable
+I 2017-01-26 23:16:36 downhill.dataset:118 train: 290 mini-batches from callable
+I 2017-01-26 23:16:36 theanets.graph:447 building computation graph
+I 2017-01-26 23:16:36 theanets.losses:67 using loss: 1.0 * MeanSquaredError (output out:out)
+I 2017-01-26 23:16:36 theanets.regularizers:711 regularizer: 0.384273380041 * GaussianNoise(('in:out',))
+I 2017-01-26 23:16:41 downhill.base:389 -- patience = 5
+I 2017-01-26 23:16:41 downhill.base:390 -- validate_every = 1
+I 2017-01-26 23:16:41 downhill.base:391 -- max_updates = None
+I 2017-01-26 23:16:41 downhill.base:392 -- min_improvement = 0.005
+I 2017-01-26 23:16:41 downhill.base:393 -- max_gradient_norm = 0
+I 2017-01-26 23:16:41 downhill.base:394 -- max_gradient_elem = 0
+I 2017-01-26 23:16:41 downhill.base:395 -- learning_rate = 0.0001
+I 2017-01-26 23:16:41 downhill.base:396 -- momentum = 0
+I 2017-01-26 23:16:41 downhill.base:397 -- nesterov = True
+I 2017-01-26 23:16:41 downhill.adaptive:220 -- rms_halflife = 14
+I 2017-01-26 23:16:41 downhill.adaptive:221 -- rms_regularizer = 1e-08
+I 2017-01-26 23:16:41 downhill.base:118 compiling evaluation function
+I 2017-01-26 23:16:47 downhill.base:124 compiling RMSProp function
+I 2017-01-26 23:20:16 downhill.base:232 validation 0 loss=3.386805 err=3.386805 *
+I 2017-01-26 23:39:00 downhill.base:232 RMSProp 1 loss=0.952115 err=0.952115
+I 2017-01-26 23:39:00 theanets.graph:626 /tmp/tmpj1Aogg.tmp: saved model
+I 2017-01-26 23:39:00 theanets.graph:643 /tmp/tmpj1Aogg.tmp: loaded model
+I 2017-01-26 23:41:20 downhill.base:232 validation 1 loss=0.227670 err=0.227670 *
+I 2017-01-27 00:00:13 downhill.base:232 RMSProp 2 loss=0.179854 err=0.179854
+I 2017-01-27 00:00:13 theanets.graph:626 /tmp/tmpzXmS52.tmp: saved model
+I 2017-01-27 00:00:13 theanets.graph:643 /tmp/tmpzXmS52.tmp: loaded model
+I 2017-01-27 00:02:37 downhill.base:232 validation 2 loss=0.117669 err=0.117669 *
+I 2017-01-27 00:21:28 downhill.base:232 RMSProp 3 loss=0.094417 err=0.094417
+I 2017-01-27 00:21:28 theanets.graph:626 /tmp/tmpRgW46V.tmp: saved model
+I 2017-01-27 00:21:28 theanets.graph:643 /tmp/tmpRgW46V.tmp: loaded model
+I 2017-01-27 00:23:53 downhill.base:232 validation 3 loss=0.089977 err=0.089977 *
+I 2017-01-27 00:42:45 downhill.base:232 RMSProp 4 loss=0.089334 err=0.089334
+I 2017-01-27 00:42:45 theanets.graph:626 /tmp/tmpK2gi8F.tmp: saved model
+I 2017-01-27 00:42:45 theanets.graph:643 /tmp/tmpK2gi8F.tmp: loaded model
+I 2017-01-27 00:45:09 downhill.base:232 validation 4 loss=0.088582 err=0.088582 *
+I 2017-01-27 01:03:54 downhill.base:232 RMSProp 5 loss=0.088037 err=0.088037
+I 2017-01-27 01:03:54 theanets.graph:626 /tmp/tmpbk5MFX.tmp: saved model
+I 2017-01-27 01:03:54 theanets.graph:643 /tmp/tmpbk5MFX.tmp: loaded model
+I 2017-01-27 01:06:16 downhill.base:232 validation 5 loss=0.087403 err=0.087403 *
+I 2017-01-27 01:24:56 downhill.base:232 RMSProp 6 loss=0.086808 err=0.086808
+I 2017-01-27 01:24:56 theanets.graph:626 /tmp/tmpoyJw70.tmp: saved model
+I 2017-01-27 01:24:56 theanets.graph:643 /tmp/tmpoyJw70.tmp: loaded model
+I 2017-01-27 01:27:16 downhill.base:232 validation 6 loss=0.086291 err=0.086291 *
+I 2017-01-27 01:46:07 downhill.base:232 RMSProp 7 loss=0.085714 err=0.085714
+I 2017-01-27 01:46:07 theanets.graph:626 /tmp/tmph4jlvG.tmp: saved model
+I 2017-01-27 01:46:07 theanets.graph:643 /tmp/tmph4jlvG.tmp: loaded model
+I 2017-01-27 01:48:32 downhill.base:232 validation 7 loss=0.085243 err=0.085243 *
+I 2017-01-27 02:07:36 downhill.base:232 RMSProp 8 loss=0.084682 err=0.084682
+I 2017-01-27 02:07:37 theanets.graph:626 /tmp/tmpUpSPvb.tmp: saved model
+I 2017-01-27 02:07:37 theanets.graph:643 /tmp/tmpUpSPvb.tmp: loaded model
+I 2017-01-27 02:10:02 downhill.base:232 validation 8 loss=0.084006 err=0.084006 *
+I 2017-01-27 02:28:44 downhill.base:232 RMSProp 9 loss=0.083371 err=0.083371
+I 2017-01-27 02:28:44 theanets.graph:626 /tmp/tmp1yOYW0.tmp: saved model
+I 2017-01-27 02:28:44 theanets.graph:643 /tmp/tmp1yOYW0.tmp: loaded model
+I 2017-01-27 02:31:02 downhill.base:232 validation 9 loss=0.082779 err=0.082779 *
+I 2017-01-27 02:49:58 downhill.base:232 RMSProp 10 loss=0.082017 err=0.082017
+I 2017-01-27 02:49:58 theanets.graph:626 /tmp/tmplRQE0z.tmp: saved model
+I 2017-01-27 02:49:58 theanets.graph:643 /tmp/tmplRQE0z.tmp: loaded model
+I 2017-01-27 02:52:18 downhill.base:232 validation 10 loss=0.081347 err=0.081347 *
+I 2017-01-27 03:11:01 downhill.base:232 RMSProp 11 loss=0.080693 err=0.080693
+I 2017-01-27 03:11:01 theanets.graph:626 /tmp/tmpXtM_m6.tmp: saved model
+I 2017-01-27 03:11:01 theanets.graph:643 /tmp/tmpXtM_m6.tmp: loaded model
+I 2017-01-27 03:13:20 downhill.base:232 validation 11 loss=0.080160 err=0.080160 *
+I 2017-01-27 03:32:07 downhill.base:232 RMSProp 12 loss=0.079283 err=0.079283
+I 2017-01-27 03:32:07 theanets.graph:626 /tmp/tmpOiTbrc.tmp: saved model
+I 2017-01-27 03:32:07 theanets.graph:643 /tmp/tmpOiTbrc.tmp: loaded model
+I 2017-01-27 03:34:27 downhill.base:232 validation 12 loss=0.078675 err=0.078675 *
+I 2017-01-27 03:53:03 downhill.base:232 RMSProp 13 loss=0.077927 err=0.077927
+I 2017-01-27 03:53:03 theanets.graph:626 /tmp/tmph4EYFn.tmp: saved model
+I 2017-01-27 03:53:03 theanets.graph:643 /tmp/tmph4EYFn.tmp: loaded model
+I 2017-01-27 03:55:22 downhill.base:232 validation 13 loss=0.077385 err=0.077385 *
+I 2017-01-27 04:14:13 downhill.base:232 RMSProp 14 loss=0.076842 err=0.076842
+I 2017-01-27 04:14:13 theanets.graph:626 /tmp/tmp1UEfmI.tmp: saved model
+I 2017-01-27 04:14:13 theanets.graph:643 /tmp/tmp1UEfmI.tmp: loaded model
+I 2017-01-27 04:16:33 downhill.base:232 validation 14 loss=0.075956 err=0.075956 *
+I 2017-01-27 04:35:26 downhill.base:232 RMSProp 15 loss=0.075740 err=0.075740
+I 2017-01-27 04:35:26 theanets.graph:626 /tmp/tmpXWP0be.tmp: saved model
+I 2017-01-27 04:35:26 theanets.graph:643 /tmp/tmpXWP0be.tmp: loaded model
+I 2017-01-27 04:37:46 downhill.base:232 validation 15 loss=0.075409 err=0.075409 *
+I 2017-01-27 04:56:34 downhill.base:232 RMSProp 16 loss=0.074835 err=0.074835
+I 2017-01-27 04:56:34 theanets.graph:626 /tmp/tmp8AyL4f.tmp: saved model
+I 2017-01-27 04:56:34 theanets.graph:643 /tmp/tmp8AyL4f.tmp: loaded model
+I 2017-01-27 04:58:56 downhill.base:232 validation 16 loss=0.074349 err=0.074349 *
+I 2017-01-27 05:18:00 downhill.base:232 RMSProp 17 loss=0.074384 err=0.074384
+I 2017-01-27 05:18:00 theanets.graph:626 /tmp/tmpIk147D.tmp: saved model
+I 2017-01-27 05:18:00 theanets.graph:643 /tmp/tmpIk147D.tmp: loaded model
+I 2017-01-27 05:20:22 downhill.base:232 validation 17 loss=0.073889 err=0.073889 *
+I 2017-01-27 05:38:22 downhill.base:419 interrupted!
+Traceback (most recent call last):
+  File "/home/garth/FYP/Spearmint/spearmint/launcher.py", line 243, in launch
+    result = python_launcher(job)
+  File "/home/garth/FYP/Spearmint/spearmint/launcher.py", line 327, in python_launcher
+    result = module.main(job['id'], params)
+  File "../../omain.py", line 20, in main
+    o=float(rnn.function(no_array,run_id=job_id))
+  File "../../rnn.py", line 126, in function
+    except StopIteration: pass
+KeyboardInterrupt
+Problem executing the function
+Job failed in 22910.58 seconds.
+(<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0x7f14256d8050>)
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib64/python2.7/site-packages/pymongo/periodic_executor.py", line 167, in _shutdown_executors
+    executor.join(1)
+  File "/usr/lib64/python2.7/site-packages/pymongo/periodic_executor.py", line 96, in join
+    self._thread.join(timeout)
+  File "/usr/lib64/python2.7/threading.py", line 954, in join
+    self.__block.wait(delay, balancing)
+  File "/usr/lib64/python2.7/threading.py", line 362, in wait
+    _sleep(delay)
+KeyboardInterrupt
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib64/python2.7/site-packages/pymongo/periodic_executor.py", line 167, in _shutdown_executors
+    executor.join(1)
+  File "/usr/lib64/python2.7/site-packages/pymongo/periodic_executor.py", line 96, in join
+    self._thread.join(timeout)
+  File "/usr/lib64/python2.7/threading.py", line 954, in join
+    self.__block.wait(delay, balancing)
+  File "/usr/lib64/python2.7/threading.py", line 362, in wait
+    _sleep(delay)
+KeyboardInterrupt

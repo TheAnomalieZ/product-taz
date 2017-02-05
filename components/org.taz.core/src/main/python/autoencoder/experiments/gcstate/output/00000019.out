@@ -1,0 +1,58 @@
+Job launching after 0.58 seconds in submission.
+Running python job.
+Changed into dir /home/garth/FYP/taz/experiments/gcstate
+Importing o.py
+Running o.main()
+gcstate
+gcstate
+gcstate
+gcstate
+I 2017-01-26 22:31:04 theanets.graph:643 /home/garth/FYP/taz/tmpgJI_56.tmp: loaded model
+stateit 3
+it 6
+I 2017-01-26 22:31:04 downhill.dataset:118 valid: 97 mini-batches from callable
+I 2017-01-26 22:31:04 downhill.dataset:118 train: 290 mini-batches from callable
+I 2017-01-26 22:31:04 theanets.graph:447 building computation graph
+I 2017-01-26 22:31:04 theanets.losses:67 using loss: 1.0 * MeanSquaredError (output out:out)
+I 2017-01-26 22:31:04 theanets.regularizers:711 regularizer: 0.384273380041 * GaussianNoise(('in:out',))
+I 2017-01-26 22:31:10 downhill.base:389 -- patience = 5
+I 2017-01-26 22:31:10 downhill.base:390 -- validate_every = 1
+I 2017-01-26 22:31:10 downhill.base:391 -- max_updates = None
+I 2017-01-26 22:31:10 downhill.base:392 -- min_improvement = 0.005
+I 2017-01-26 22:31:10 downhill.base:393 -- max_gradient_norm = 0
+I 2017-01-26 22:31:10 downhill.base:394 -- max_gradient_elem = 0
+I 2017-01-26 22:31:10 downhill.base:395 -- learning_rate = 0.0001
+I 2017-01-26 22:31:10 downhill.base:396 -- momentum = 0
+I 2017-01-26 22:31:10 downhill.base:397 -- nesterov = True
+I 2017-01-26 22:31:10 downhill.adaptive:220 -- rms_halflife = 14
+I 2017-01-26 22:31:10 downhill.adaptive:221 -- rms_regularizer = 1e-08
+I 2017-01-26 22:31:10 downhill.base:118 compiling evaluation function
+I 2017-01-26 22:31:22 downhill.base:124 compiling RMSProp function
+I 2017-01-26 22:38:12 downhill.base:232 validation 0 loss=0.222195 err=0.222195 *
+I 2017-01-26 23:17:54 downhill.base:232 RMSProp 1 loss=0.160185 err=0.160185
+I 2017-01-26 23:17:54 theanets.graph:626 /tmp/tmpH3EueL.tmp: saved model
+I 2017-01-26 23:17:54 theanets.graph:643 /tmp/tmpH3EueL.tmp: loaded model
+I 2017-01-26 23:22:51 downhill.base:232 validation 1 loss=0.090546 err=0.090546 *
+I 2017-01-27 00:00:52 downhill.base:232 RMSProp 2 loss=0.084448 err=0.084448
+I 2017-01-27 00:00:52 theanets.graph:626 /tmp/tmpEz1u65.tmp: saved model
+I 2017-01-27 00:00:52 theanets.graph:643 /tmp/tmpEz1u65.tmp: loaded model
+I 2017-01-27 00:05:52 downhill.base:232 validation 2 loss=0.081951 err=0.081951 *
+I 2017-01-27 00:44:05 downhill.base:232 RMSProp 3 loss=0.080487 err=0.080487
+I 2017-01-27 00:44:05 theanets.graph:626 /tmp/tmpIWHaFV.tmp: saved model
+I 2017-01-27 00:44:05 theanets.graph:643 /tmp/tmpIWHaFV.tmp: loaded model
+I 2017-01-27 00:49:03 downhill.base:232 validation 3 loss=0.078574 err=0.078574 *
+I 2017-01-27 01:26:50 downhill.base:232 RMSProp 4 loss=0.077132 err=0.077132
+I 2017-01-27 01:26:50 theanets.graph:626 /tmp/tmpDk787G.tmp: saved model
+I 2017-01-27 01:26:50 theanets.graph:643 /tmp/tmpDk787G.tmp: loaded model
+I 2017-01-27 01:31:47 downhill.base:232 validation 4 loss=0.075852 err=0.075852 *
+I 2017-01-27 02:10:17 downhill.base:232 RMSProp 5 loss=0.074493 err=0.074493
+I 2017-01-27 02:10:17 theanets.graph:626 /tmp/tmpJ6iHcM.tmp: saved model
+I 2017-01-27 02:10:17 theanets.graph:643 /tmp/tmpJ6iHcM.tmp: loaded model
+I 2017-01-27 02:15:12 downhill.base:232 validation 5 loss=0.073642 err=0.073642 *
+I 2017-01-27 02:53:14 downhill.base:232 RMSProp 6 loss=0.072980 err=0.072980
+I 2017-01-27 02:53:14 theanets.graph:626 /tmp/tmpzcR4hu.tmp: saved model
+I 2017-01-27 02:53:14 theanets.graph:643 /tmp/tmpzcR4hu.tmp: loaded model
+I 2017-01-27 02:53:14 theanets.graph:626 /tmp/tmpZ66Erc.tmp: saved model
+I 2017-01-27 02:53:14 theanets.graph:643 /tmp/tmpZ66Erc.tmp: loaded model
+Got result {'main': 0.07364158599657515}
+Completed successfully in 15736.32 seconds. [{'main': 0.07364158599657515}]

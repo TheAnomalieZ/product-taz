@@ -1,0 +1,97 @@
+Job launching after 0.93 seconds in submission.
+Running python job.
+Changed into dir /home/garth/FYP/taz/experiments/gcstate
+Importing o.py
+Running o.main()
+gcstate
+gcstate
+gcstate
+gcstate
+I 2017-01-25 15:46:25 theanets.graph:643 /home/garth/FYP/taz/tmpRT_7If.tmp: loaded model
+stateit 3
+it 99989
+I 2017-01-25 15:46:25 downhill.dataset:118 valid: 97 mini-batches from callable
+I 2017-01-25 15:46:25 downhill.dataset:118 train: 290 mini-batches from callable
+I 2017-01-25 15:46:25 theanets.graph:447 building computation graph
+I 2017-01-25 15:46:25 theanets.losses:67 using loss: 1.0 * MeanSquaredError (output out:out)
+I 2017-01-25 15:46:25 theanets.regularizers:711 regularizer: 0.384273380041 * GaussianNoise(('in:out',))
+I 2017-01-25 15:46:47 downhill.base:389 -- patience = 5
+I 2017-01-25 15:46:47 downhill.base:390 -- validate_every = 1
+I 2017-01-25 15:46:47 downhill.base:391 -- max_updates = None
+I 2017-01-25 15:46:47 downhill.base:392 -- min_improvement = 0.005
+I 2017-01-25 15:46:47 downhill.base:393 -- max_gradient_norm = 0
+I 2017-01-25 15:46:47 downhill.base:394 -- max_gradient_elem = 0
+I 2017-01-25 15:46:47 downhill.base:395 -- learning_rate = 0.0001
+I 2017-01-25 15:46:47 downhill.base:396 -- momentum = 0
+I 2017-01-25 15:46:47 downhill.base:397 -- nesterov = True
+I 2017-01-25 15:46:47 downhill.adaptive:220 -- rms_halflife = 14
+I 2017-01-25 15:46:47 downhill.adaptive:221 -- rms_regularizer = 1e-08
+I 2017-01-25 15:46:47 downhill.base:118 compiling evaluation function
+I 2017-01-25 15:47:10 downhill.base:124 compiling RMSProp function
+I 2017-01-25 15:57:06 downhill.base:232 validation 0 loss=0.082352 err=0.082352 *
+I 2017-01-25 16:45:13 downhill.base:232 RMSProp 1 loss=0.080990 err=0.080990
+I 2017-01-25 16:45:13 theanets.graph:626 /tmp/tmp_KjLhU.tmp: saved model
+I 2017-01-25 16:45:13 theanets.graph:643 /tmp/tmp_KjLhU.tmp: loaded model
+I 2017-01-25 16:50:36 downhill.base:232 validation 1 loss=0.079439 err=0.079439 *
+I 2017-01-25 17:30:26 downhill.base:232 RMSProp 2 loss=0.077959 err=0.077959
+I 2017-01-25 17:30:26 theanets.graph:626 /tmp/tmpSHDPlL.tmp: saved model
+I 2017-01-25 17:30:26 theanets.graph:643 /tmp/tmpSHDPlL.tmp: loaded model
+I 2017-01-25 17:35:42 downhill.base:232 validation 2 loss=0.076099 err=0.076099 *
+I 2017-01-25 18:15:23 downhill.base:232 RMSProp 3 loss=0.075160 err=0.075160
+I 2017-01-25 18:15:23 theanets.graph:626 /tmp/tmpdEKOAm.tmp: saved model
+I 2017-01-25 18:15:23 theanets.graph:643 /tmp/tmpdEKOAm.tmp: loaded model
+I 2017-01-25 18:20:40 downhill.base:232 validation 3 loss=0.074050 err=0.074050 *
+I 2017-01-25 19:00:27 downhill.base:232 RMSProp 4 loss=0.073375 err=0.073375
+I 2017-01-25 19:00:27 theanets.graph:626 /tmp/tmpMuPNdI.tmp: saved model
+I 2017-01-25 19:00:27 theanets.graph:643 /tmp/tmpMuPNdI.tmp: loaded model
+I 2017-01-25 19:05:44 downhill.base:232 validation 4 loss=0.072681 err=0.072681 *
+I 2017-01-25 19:45:28 downhill.base:232 RMSProp 5 loss=0.072555 err=0.072555
+I 2017-01-25 19:45:28 theanets.graph:626 /tmp/tmpOpl_7J.tmp: saved model
+I 2017-01-25 19:45:28 theanets.graph:643 /tmp/tmpOpl_7J.tmp: loaded model
+I 2017-01-25 19:50:45 downhill.base:232 validation 5 loss=0.072315 err=0.072315 *
+I 2017-01-25 20:30:30 downhill.base:232 RMSProp 6 loss=0.072049 err=0.072049
+I 2017-01-25 20:30:30 theanets.graph:626 /tmp/tmpidZDqI.tmp: saved model
+I 2017-01-25 20:30:30 theanets.graph:643 /tmp/tmpidZDqI.tmp: loaded model
+I 2017-01-25 20:35:48 downhill.base:232 validation 6 loss=0.071762 err=0.071762 *
+I 2017-01-25 21:15:30 downhill.base:232 RMSProp 7 loss=0.071824 err=0.071824
+I 2017-01-25 21:15:30 theanets.graph:626 /tmp/tmpClDX3Q.tmp: saved model
+I 2017-01-25 21:15:30 theanets.graph:643 /tmp/tmpClDX3Q.tmp: loaded model
+I 2017-01-25 21:20:46 downhill.base:232 validation 7 loss=0.071729 err=0.071729
+I 2017-01-25 22:00:28 downhill.base:232 RMSProp 8 loss=0.071802 err=0.071802
+I 2017-01-25 22:00:28 theanets.graph:626 /tmp/tmpwMjBYY.tmp: saved model
+I 2017-01-25 22:00:28 theanets.graph:643 /tmp/tmpwMjBYY.tmp: loaded model
+I 2017-01-25 22:05:46 downhill.base:232 validation 8 loss=0.071302 err=0.071302 *
+I 2017-01-25 22:45:32 downhill.base:232 RMSProp 9 loss=0.071656 err=0.071656
+I 2017-01-25 22:45:32 theanets.graph:626 /tmp/tmpL1MEx6.tmp: saved model
+I 2017-01-25 22:45:32 theanets.graph:643 /tmp/tmpL1MEx6.tmp: loaded model
+I 2017-01-25 22:50:49 downhill.base:232 validation 9 loss=0.071556 err=0.071556
+I 2017-01-25 23:30:31 downhill.base:232 RMSProp 10 loss=0.071526 err=0.071526
+I 2017-01-25 23:30:31 theanets.graph:626 /tmp/tmpeOX70T.tmp: saved model
+I 2017-01-25 23:30:31 theanets.graph:643 /tmp/tmpeOX70T.tmp: loaded model
+I 2017-01-25 23:35:48 downhill.base:232 validation 10 loss=0.071547 err=0.071547
+I 2017-01-26 00:15:36 downhill.base:232 RMSProp 11 loss=0.071631 err=0.071631
+I 2017-01-26 00:15:36 theanets.graph:626 /tmp/tmpTFWMGc.tmp: saved model
+I 2017-01-26 00:15:36 theanets.graph:643 /tmp/tmpTFWMGc.tmp: loaded model
+I 2017-01-26 00:20:53 downhill.base:232 validation 11 loss=0.071769 err=0.071769
+I 2017-01-26 01:00:36 downhill.base:232 RMSProp 12 loss=0.071571 err=0.071571
+I 2017-01-26 01:00:36 theanets.graph:626 /tmp/tmpJQKjeH.tmp: saved model
+I 2017-01-26 01:00:36 theanets.graph:643 /tmp/tmpJQKjeH.tmp: loaded model
+I 2017-01-26 01:05:52 downhill.base:232 validation 12 loss=0.071244 err=0.071244
+I 2017-01-26 01:45:32 downhill.base:232 RMSProp 13 loss=0.071350 err=0.071350
+I 2017-01-26 01:45:32 theanets.graph:626 /tmp/tmp3inla5.tmp: saved model
+I 2017-01-26 01:45:32 theanets.graph:643 /tmp/tmp3inla5.tmp: loaded model
+I 2017-01-26 01:50:48 downhill.base:232 validation 13 loss=0.071382 err=0.071382
+I 2017-01-26 01:59:09 downhill.base:419 interrupted!
+Traceback (most recent call last):
+  File "/home/garth/FYP/Spearmint/spearmint/launcher.py", line 243, in launch
+    result = python_launcher(job)
+  File "/home/garth/FYP/Spearmint/spearmint/launcher.py", line 327, in python_launcher
+    result = module.main(job['id'], params)
+  File "../../omain.py", line 20, in main
+    o=float(rnn.function(no_array,run_id=job_id))
+  File "../../rnn.py", line 122, in function
+    o= xpit.next()[1]['loss']
+KeyboardInterrupt
+Problem executing the function
+Job failed in 36775.38 seconds.
+(<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0x7f662a0afc20>)

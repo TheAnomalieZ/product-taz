@@ -1,0 +1,131 @@
+Job launching after 0.65 seconds in submission.
+Running python job.
+Changed into dir /home/garth/FYP/taz/experiments/gctime
+Importing o.py
+Running o.main()
+gctime
+gctime
+gctime
+gctime
+I 2017-01-17 16:11:57 theanets.layers.base:371 layer Input "in": 1 inputs
+I 2017-01-17 16:11:57 theanets.layers.base:207 layer LSTM "hid1": (in:out)1 -> 10, sigmoid, 510 parameters
+I 2017-01-17 16:11:57 theanets.layers.base:207 layer LSTM "hid2": (hid1:out)10 -> 10, sigmoid, 870 parameters
+I 2017-01-17 16:11:57 theanets.layers.base:207 layer Feedforward "out": (hid2:out)10 -> 1, linear, 11 parameters
+I 2017-01-17 16:11:57 theanets.graph:94 network has 1391 total parameters
+stateit 0
+it 100000
+I 2017-01-17 16:11:57 downhill.dataset:118 valid: 95 mini-batches from callable
+I 2017-01-17 16:11:57 downhill.dataset:118 train: 283 mini-batches from callable
+I 2017-01-17 16:11:57 theanets.graph:447 building computation graph
+I 2017-01-17 16:11:57 theanets.losses:67 using loss: 1.0 * MeanSquaredError (output out:out)
+I 2017-01-17 16:11:57 theanets.regularizers:711 regularizer: 5.24051177502 * GaussianNoise(('in:out',))
+Traceback (most recent call last):
+  File "/home/garth/FYP/Spearmint/spearmint/launcher.py", line 243, in launch
+    result = python_launcher(job)
+  File "/home/garth/FYP/Spearmint/spearmint/launcher.py", line 327, in python_launcher
+    result = module.main(job['id'], params)
+  File "../../omain.py", line 20, in main
+    o=float(rnn.function(no_array,run_id=job_id))
+  File "../../rnn.py", line 122, in function
+    o= xpit.next()[1]['loss']
+  File "/usr/lib/python2.7/site-packages/theanets/graph.py", line 378, in itertrain
+    for i, monitors in enumerate(algo.itertrain(train, valid, **kwargs)):
+  File "/usr/lib/python2.7/site-packages/theanets/trainer.py", line 60, in itertrain
+    loss=self.network.loss(**kwargs),
+  File "/usr/lib/python2.7/site-packages/theanets/graph.py", line 662, in loss
+    outputs, _ = self.build_graph(regs)
+  File "/usr/lib/python2.7/site-packages/theanets/graph.py", line 457, in build_graph
+    reg.modify_graph(out)
+  File "/usr/lib/python2.7/site-packages/theanets/regularizers.py", line 717, in modify_graph
+    size=expr.shape, std=self.weight, dtype=util.FLOAT)
+  File "/usr/lib/python2.7/site-packages/theano/sandbox/rng_mrg.py", line 1511, in normal
+    nstreams=nstreams)
+  File "/usr/lib/python2.7/site-packages/theano/sandbox/rng_mrg.py", line 1321, in uniform
+    rstates = self.get_substream_rstates(nstreams, dtype)
+  File "/usr/lib/python2.7/site-packages/theano/sandbox/rng_mrg.py", line 1223, in get_substream_rstates
+    multMatVect(rval[0], A1p72, M1, A2p72, M2)
+  File "/usr/lib/python2.7/site-packages/theano/sandbox/rng_mrg.py", line 64, in multMatVect
+    [A_sym, s_sym, m_sym, A2_sym, s2_sym, m2_sym], o, profile=False)
+  File "/usr/lib/python2.7/site-packages/theano/compile/function.py", line 320, in function
+    output_keys=output_keys)
+  File "/usr/lib/python2.7/site-packages/theano/compile/pfunc.py", line 479, in pfunc
+    output_keys=output_keys)
+  File "/usr/lib/python2.7/site-packages/theano/compile/function_module.py", line 1777, in orig_function
+    defaults)
+  File "/usr/lib/python2.7/site-packages/theano/compile/function_module.py", line 1641, in create
+    input_storage=input_storage_lists, storage_map=storage_map)
+  File "/usr/lib/python2.7/site-packages/theano/gof/link.py", line 690, in make_thunk
+    storage_map=storage_map)[:3]
+  File "/usr/lib/python2.7/site-packages/theano/g    return self.optimize(fgraph)
+     no_recycling))
+  File "/usr/lib/python2.7/site-packages/theano/gof/op.py", line 970, in make_thunk
+    no_recycling)
+  File "/usr/lib/python2.7/site-packages/theano/gof/op.py", line 879, in make_c_thunk
+    output_storage=node_output_storage)
+  File "/usr/lib/python2.7/site-packages/theano/gof/cc.py", line 1200, in make_thunk
+    keep_lock=keep_lock)
+  File "/usr/lib/python2.7/site-packages/theano/gof/cc.py", line 1143, in __compile__
+    keep_lock=keep_lock)
+  File "/usr/lib/python2.7/site-packages/theano/gof/cc.py", line 1594, in cthunk_factory
+    module = get_module_cache().module_from_key(
+  File "/usr/lib/python2.7/site-packages/theano/gof/cc.py", line 48, in get_module_cache
+    return cmodule.get_module_cache(config.compiledir, init_args=init_args)
+  File "/usr/lib/python2.7/site-packages/theano/gof/cmodule.py",    node = self.process_node(fgraph, node)
+  File "/usr/lib/python2.7/site-packages/theano/scan_module/scan_opt.py", line 745, in process_node
+    node, args)
+  File "/usr/lib/python2.7/site-packages/theano/scan_module/scan_opt.py", line 854, in push_out_inner_vars
+    add_as_nitsots)
+  File "/usr/lib/python2.7/site-packages/theano/scan_module/scan_opt.py", line 888, in add_nitsot_outputs
+    new_scan_args.info)
+  File "/usr/lib/python2.7/site-packages/theano/scan_module/scan_op.py", line 215, in __init__
+    self._hash_inner_graph = hash(self._cmodule_key)
+  File "/usr/lib/python2.7/site-packages/theano/tensor/type.py", line 408, in __hash__
+    return hashtype(self) ^ hash(self.dtype) ^ hash(self.broadcastable)
+  File "/usr/lib/python2.7/site-packages/theano/gof/utils.py", line 116, in hashtype
+    return hash(t.__name__) ^ hash(t.__module__)
+KeyboardInterrupt
+Problem executing the function
+Job failed in 52.57 seconds.
+(<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0x7f9624953a28>)
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib64/python2.7/site-packages/pymongo/periodic_executor.py", line 167, in _shutdown_executors
+    executor.join(1)
+  File "/usr/lib64/python2.7/site-packages/pymongo/periodic_executor.py", line 96, in join
+    self._thread.join(timeout)
+  File "/usr/lib64/python2.7/threading.py", line 954, in join
+    self.__block.wait(delay, balancing)
+  File "/usr/lib64/python2.7/threading.py", line 362, in wait
+    _sleep(delay)
+KeyboardInterrupt
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib64/python2.7/site-packages/pymongo/periodic_executor.py", line 167, in _shutdown_executors
+    executor.join(1)
+  File "/usr/lib64/python2.7/site-packages/pymongo/periodic_executor.py", line 96, in join
+    self._thread.join(timeout)
+  File "/usr/lib64/python2.7/threading.py", line 954, in join
+    self.__block.wait(delay, balancing)
+  File "/usr/lib64/python2.7/threading.py", line 362, in wait
+    _sleep(delay)
+KeyboardInterrupt
+sr/lib64/python2.7/threading.py", line 362, in wait
+    _sleep(delay)
+KeyboardInterrupt
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File "/usr/lib64/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+  File "/usr/lib64/python2.7/site-packages/pymongo/periodic_executor.py", line 167, in _shutdown_executors
+    executor.join(1)
+  File "/usr/lib64/python2.7/site-packages/pymongo/periodic_executor.py", line 96, in join
+    self._thread.join(timeout)
+  File "/usr/lib64/python2.7/threading.py", line 954, in join
+    self.__block.wait(delay, balancing)
+  File "/usr/lib64/python2.7/threading.py", line 362, in wait
+    _sleep(delay)
+KeyboardInterrupt

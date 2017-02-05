@@ -24,7 +24,6 @@ try:
         floats.append(map(int, row))
 finally:
     f.close()
-print('mani')
 train_data = np.array(floats)
 model = hmm.MultinomialHMM(n_components=n1)
 model.fit(train_data)
