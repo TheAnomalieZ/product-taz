@@ -207,18 +207,6 @@ class erfig(recon):
 
 
 # @register
-# class er_ecg(erfig):
-#     xl=1280;xu=1840
-#     wins=[0,50,150,200]
-#     al=1565
-
-# @register
-# class er_power(erfig):
-#     xl=1800;xu=3000
-#     wins=[0,200,300]
-#     al=2466
-
-# @register
 # class er_gctime(erfig):
 #    xl=1000;xu=1900
 #    wins=[0,10,50,100,1000]
@@ -321,14 +309,6 @@ class bo(fig):
 
     def data(self):
         return analysis.bo_diag(self.name.replace('bo_',''))
-
-
-
-# @register
-# class bo_power(bo):pass
-
-# @register
-# class bo_ecg(bo): pass
 
 # @register
 # class bo_gctime(bo): pass

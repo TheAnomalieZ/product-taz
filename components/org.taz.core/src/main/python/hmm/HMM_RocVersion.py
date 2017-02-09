@@ -114,7 +114,6 @@ def drawROC(score, y, size):
 
 
 scorelist0 = testing('normal1_states.csv',n2, n3)
-print('mani')
 
 for i in range(1, 6):
     size = i*10

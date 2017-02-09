@@ -34,7 +34,9 @@ def get_series(id):
     elif 'gcstate'== id:
     # print txtrdr()[::,None]
         return txtrdr()[::,None]
-
+    elif 'gcsequence'== id:
+    # print txtrdr()[::,None]
+        return txtrdr()[::,None]
 
     elif 'pausetime'== id:
         # print txtrdr()[::,None]
