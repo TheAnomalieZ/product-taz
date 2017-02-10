@@ -47,6 +47,17 @@ def get_series(id):
         print txtrdr(id,delimiter=',')[::,0,None]
         return txtrdr(id,delimiter=',')[::,0,None]
 
+    elif 'App1_gctime'== id:
+    # print txtrdr()[::,None]
+        return txtrdr()[::,None]
+
+    elif 'App2_gcstate'== id:
+    # print txtrdr()[::,None]
+        return txtrdr()[::,None]
+
+    elif 'gcsequence'== id:
+    # print txtrdr()[::,None]
+        return txtrdr()[::,None]
 
     #should not be here
     raise KeyError('series not found')
