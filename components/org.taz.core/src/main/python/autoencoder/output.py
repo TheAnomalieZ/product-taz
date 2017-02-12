@@ -21,7 +21,7 @@ def mserror(ts_id,win,**kwargs):
                       ,mse
                       ,center=True
         )
-name ="gcstate"
+name ="App1_gctime"
 # wins = [10]
 # er=[mserror(name,awin) for awin in wins ]
 
@@ -92,16 +92,40 @@ def drawROC(score, y, size):
     plt.plot(roc_x, roc_y, label ='Size '+str(size))
 
 
-for i in range(10, 100, 10):
+for i in range(1, 100, 20):
     size = i
     aer = mserror(name,i)
-    dic = aer.to_dict()
-    scorelist = dic.values()
+    print aer
+    print aer.size
+    # aer =np.array( mserror(name,i), dtype=pd.Series)
+
+    # dic = aer.to_dict()
+    # scorelist = aer.values.tolist()
+    scorelist = aer
     scorelist = [0 if math.isnan(x) else x for x in scorelist]
     # print scorelist
     # scorelist= [list1[x:x+1] for x in xrange(0, len(list1), 1)]
-    labellist = labeling(180,350, scorelist)
-    print labellist
+    # labellist = labeling(448,574, scorelist)
+    # labellist = relabeling(1138,1388, labellist)
+    # labellist = relabeling(1926,2037, labellist)
+    # labellist = relabeling(2692,2889, labellist)
+    # labellist = relabeling(3406,3501, labellist)
+    # labellist = relabeling(3852,3888, labellist)
+    # labellist = relabeling(4368,4497, labellist)
+    # labellist = relabeling(5335,5605, labellist)
+    # labellist = relabeling(6151,6623, labellist)
+
+    labellist = labeling(270,330, scorelist)
+    labellist = relabeling(590,660, labellist)
+    labellist = relabeling(920,980, labellist)
+    labellist = relabeling(1340,1410, labellist)
+    labellist = relabeling(1680,1720, labellist)
+    labellist = relabeling(1970,2020, labellist)
+    labellist = relabeling(2280,2320, labellist)
+    labellist = relabeling(2700,2760, labellist)
+    labellist = relabeling(3070,3156, labellist)
+
+    # print labellist
 
     drawROC(scorelist, labellist, i)
 
@@ -111,3 +135,8 @@ plt.xlabel('FPR')
 plt.ylabel('TPR')
 plt.legend()
 plt.show()
+
+
+
+
+

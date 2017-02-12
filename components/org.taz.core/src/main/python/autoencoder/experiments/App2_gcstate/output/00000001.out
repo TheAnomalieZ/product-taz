@@ -1,0 +1,37 @@
+Job launching after 0.67 seconds in submission.
+Running python job.
+Changed into dir /home/taz/fyp/product-taz/components/org.taz.core/src/main/python/autoencoder/experiments/App2_gcstate
+Importing o.py
+Running o.main()
+I 2017-02-11 05:39:19 theanets.layers.base:371 layer Input "in": 1 inputs
+I 2017-02-11 05:39:19 theanets.layers.base:207 layer LSTM "hid1": (in:out)1 -> 1, sigmoid, 15 parameters
+I 2017-02-11 05:39:19 theanets.layers.base:207 layer Feedforward "out": (hid1:out)1 -> 1, linear, 2 parameters
+I 2017-02-11 05:39:19 theanets.graph:94 network has 17 total parameters
+stateit 0
+it 1
+I 2017-02-11 05:39:19 downhill.dataset:118 valid: 95 mini-batches from callable
+I 2017-02-11 05:39:19 downhill.dataset:118 train: 283 mini-batches from callable
+I 2017-02-11 05:39:19 theanets.graph:447 building computation graph
+I 2017-02-11 05:39:19 theanets.losses:67 using loss: 1.0 * MeanSquaredError (output out:out)
+I 2017-02-11 05:39:19 theanets.regularizers:711 regularizer: 0.377278268337 * GaussianNoise(('in:out',))
+I 2017-02-11 05:39:20 downhill.base:389 -- patience = 5
+I 2017-02-11 05:39:20 downhill.base:390 -- validate_every = 1
+I 2017-02-11 05:39:20 downhill.base:391 -- max_updates = None
+I 2017-02-11 05:39:20 downhill.base:392 -- min_improvement = 0.005
+I 2017-02-11 05:39:20 downhill.base:393 -- max_gradient_norm = 0
+I 2017-02-11 05:39:20 downhill.base:394 -- max_gradient_elem = 0
+I 2017-02-11 05:39:20 downhill.base:395 -- learning_rate = 0.0001
+I 2017-02-11 05:39:20 downhill.base:396 -- momentum = 0
+I 2017-02-11 05:39:20 downhill.base:397 -- nesterov = True
+I 2017-02-11 05:39:20 downhill.adaptive:220 -- rms_halflife = 14
+I 2017-02-11 05:39:20 downhill.adaptive:221 -- rms_regularizer = 1e-08
+I 2017-02-11 05:39:20 downhill.base:118 compiling evaluation function
+I 2017-02-11 05:39:21 downhill.base:124 compiling RMSProp function
+I 2017-02-11 05:40:13 downhill.base:232 validation 0 loss=1.812974 err=1.812974 *
+I 2017-02-11 05:50:49 downhill.base:232 RMSProp 1 loss=1.282837 err=1.282837
+I 2017-02-11 05:50:53 theanets.graph:626 /tmp/tmpuwe4Uy.tmp: saved model
+I 2017-02-11 05:50:54 theanets.graph:643 /tmp/tmpuwe4Uy.tmp: loaded model
+I 2017-02-11 05:50:56 theanets.graph:626 /tmp/tmpMmnWin.tmp: saved model
+I 2017-02-11 05:50:56 theanets.graph:643 /tmp/tmpMmnWin.tmp: loaded model
+Got result {'main': 1.812973630003624}
+Completed successfully in 698.51 seconds. [{'main': 1.812973630003624}]

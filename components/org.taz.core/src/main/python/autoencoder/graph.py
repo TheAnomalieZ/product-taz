@@ -21,7 +21,7 @@ def mserror(ts_id,win,**kwargs):
                       ,mse
                       ,center=True
         )
-name ="gcstate"
+name ="App1_gctime"
 
 
 aer = mserror(name,30)

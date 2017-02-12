@@ -212,12 +212,22 @@ class erfig(recon):
 #    wins=[0,10,50,100,1000]
 #    al=1350
 
+# @register
+# class er_gcstate(erfig):
+#    xl=1;xu=1100
+#    wins=[0,10,50,100]
+#    al=550
 @register
-class er_gcstate(erfig):
-   xl=1;xu=1100
+class er_App1_gcstate(erfig):
+   xl=1;xu=2000
    wins=[0,10,50,100]
    al=550
 
+@register
+class er_App1_gctime(erfig):
+   xl=1;xu=2000
+   wins=[0,10,50,100]
+   al=550
 
 # BAYESIAN OPT ANALYSIS
 
@@ -313,8 +323,11 @@ class bo(fig):
 # @register
 # class bo_gctime(bo): pass
 
+@register
+class bo_App1_gctime(bo): pass
 
-
+@register
+class bo_App1_gcstate(bo): pass
 # VALIDATION and TRAINING ERROR
 
 class trn(fig):
@@ -342,6 +355,12 @@ class trn(fig):
 
 # @register
 # class trn_gctime(trn):pass
+
+@register
+class trn_App1_gctime(trn):pass
+
+@register
+class trn_App1_gcstate(trn):pass
 
 # @register
 # class trn_ecg(trn):pass
@@ -387,7 +406,7 @@ def latexify(fig_width=None
 #low priority todo: gmu preamble?
     params = {'backend': 'ps',
               'text.latex.preamble': [
-                  r'\input{%s/custom}' % os.path.join(os.getcwd(),'').replace('\\','/') #%
+                  r'\input{%s/custom}' % os.path.join(os.getcwd(),'autoencoder').replace('\\','/') #%
               ],
               'axes.labelsize': 10, # fontsize for x and y labels (was 10)
               'axes.titlesize': 10,

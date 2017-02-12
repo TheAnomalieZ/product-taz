@@ -1,0 +1,852 @@
+Job launching after 24.28 seconds in submission.
+Running python job.
+Changed into dir /home/taz/fyp/product-taz/components/org.taz.core/src/main/python/autoencoder/experiments/App2_gctime
+Importing o.py
+Running o.main()
+I 2017-02-11 16:21:43 theanets.graph:643 /home/taz/fyp/product-taz/components/org.taz.core/src/main/python/autoencoder/tmpyzBZq7.tmp: loaded model
+stateit 3
+it 99999
+I 2017-02-11 16:21:43 downhill.dataset:118 valid: 95 mini-batches from callable
+I 2017-02-11 16:21:43 downhill.dataset:118 train: 283 mini-batches from callable
+I 2017-02-11 16:21:43 theanets.graph:447 building computation graph
+I 2017-02-11 16:21:43 theanets.losses:67 using loss: 1.0 * MeanSquaredError (output out:out)
+I 2017-02-11 16:21:43 theanets.regularizers:711 regularizer: 39.0313682556 * GaussianNoise(('in:out',))
+I 2017-02-11 16:22:13 downhill.base:389 -- patience = 5
+I 2017-02-11 16:22:13 downhill.base:390 -- validate_every = 1
+I 2017-02-11 16:22:13 downhill.base:391 -- max_updates = None
+I 2017-02-11 16:22:13 downhill.base:392 -- min_improvement = 0.005
+I 2017-02-11 16:22:13 downhill.base:393 -- max_gradient_norm = 0
+I 2017-02-11 16:22:13 downhill.base:394 -- max_gradient_elem = 0
+I 2017-02-11 16:22:13 downhill.base:395 -- learning_rate = 0.0001
+I 2017-02-11 16:22:13 downhill.base:396 -- momentum = 0
+I 2017-02-11 16:22:13 downhill.base:397 -- nesterov = True
+I 2017-02-11 16:22:13 downhill.adaptive:220 -- rms_halflife = 14
+I 2017-02-11 16:22:13 downhill.adaptive:221 -- rms_regularizer = 1e-08
+I 2017-02-11 16:22:13 downhill.base:118 compiling evaluation function
+I 2017-02-11 16:22:17 downhill.base:124 compiling RMSProp function
+I 2017-02-11 16:22:43 downhill.base:232 validation 0 loss=10607.336320 err=10607.336320 *
+I 2017-02-11 16:24:11 downhill.base:232 RMSProp 1 loss=10504.622286 err=10504.622286
+I 2017-02-11 16:24:12 theanets.graph:626 /tmp/tmpa7oxPr.tmp: saved model
+I 2017-02-11 16:24:12 theanets.graph:643 /tmp/tmpa7oxPr.tmp: loaded model
+I 2017-02-11 16:24:23 downhill.base:232 validation 1 loss=10169.825431 err=10169.825431 *
+I 2017-02-11 16:25:53 downhill.base:232 RMSProp 2 loss=9651.800076 err=9651.800076
+I 2017-02-11 16:25:54 theanets.graph:626 /tmp/tmp35S6n6.tmp: saved model
+I 2017-02-11 16:25:54 theanets.graph:643 /tmp/tmp35S6n6.tmp: loaded model
+I 2017-02-11 16:26:03 downhill.base:232 validation 2 loss=9102.805845 err=9102.805845 *
+I 2017-02-11 16:28:00 downhill.base:232 RMSProp 3 loss=8620.916666 err=8620.916666
+I 2017-02-11 16:28:16 theanets.graph:626 /tmp/tmpLSVJvy.tmp: saved model
+I 2017-02-11 16:28:18 theanets.graph:643 /tmp/tmpLSVJvy.tmp: loaded model
+I 2017-02-11 16:28:33 downhill.base:232 validation 3 loss=8144.072353 err=8144.072353 *
+I 2017-02-11 16:32:45 downhill.base:232 RMSProp 4 loss=7679.487350 err=7679.487350
+I 2017-02-11 16:32:51 theanets.graph:626 /tmp/tmp0aCLGp.tmp: saved model
+I 2017-02-11 16:32:52 theanets.graph:643 /tmp/tmp0aCLGp.tmp: loaded model
+I 2017-02-11 16:33:18 downhill.base:232 validation 4 loss=7205.387756 err=7205.387756 *
+I 2017-02-11 16:35:39 downhill.base:232 RMSProp 5 loss=6766.618374 err=6766.618374
+I 2017-02-11 16:35:39 theanets.graph:626 /tmp/tmpykON4t.tmp: saved model
+I 2017-02-11 16:35:40 theanets.graph:643 /tmp/tmpykON4t.tmp: loaded model
+I 2017-02-11 16:35:53 downhill.base:232 validation 5 loss=6328.298590 err=6328.298590 *
+I 2017-02-11 16:37:43 downhill.base:232 RMSProp 6 loss=5949.675929 err=5949.675929
+I 2017-02-11 16:37:43 theanets.graph:626 /tmp/tmpTTw4N7.tmp: saved model
+I 2017-02-11 16:37:43 theanets.graph:643 /tmp/tmpTTw4N7.tmp: loaded model
+I 2017-02-11 16:37:56 downhill.base:232 validation 6 loss=5583.228609 err=5583.228609 *
+I 2017-02-11 16:41:18 downhill.base:232 RMSProp 7 loss=5275.283202 err=5275.283202
+I 2017-02-11 16:41:21 theanets.graph:626 /tmp/tmpK9uw2b.tmp: saved model
+I 2017-02-11 16:41:23 theanets.graph:643 /tmp/tmpK9uw2b.tmp: loaded model
+I 2017-02-11 16:41:50 downhill.base:232 validation 7 loss=4968.138314 err=4968.138314 *
+I 2017-02-11 16:45:10 downhill.base:232 RMSProp 8 loss=4705.326794 err=4705.326794
+I 2017-02-11 16:45:11 theanets.graph:626 /tmp/tmp9a_Fbe.tmp: saved model
+I 2017-02-11 16:45:36 theanets.graph:643 /tmp/tmp9a_Fbe.tmp: loaded model
+I 2017-02-11 16:46:35 downhill.base:232 validation 8 loss=4438.016442 err=4438.016442 *
+I 2017-02-11 16:50:06 downhill.base:232 RMSProp 9 loss=4216.237199 err=4216.237199
+I 2017-02-11 16:50:07 theanets.graph:626 /tmp/tmpPzWMVE.tmp: saved model
+I 2017-02-11 16:50:08 theanets.graph:643 /tmp/tmpPzWMVE.tmp: loaded model
+I 2017-02-11 16:50:26 downhill.base:232 validation 9 loss=3996.316299 err=3996.316299 *
+I 2017-02-11 16:52:48 downhill.base:232 RMSProp 10 loss=3819.910625 err=3819.910625
+I 2017-02-11 16:52:48 theanets.graph:626 /tmp/tmpTcnkVc.tmp: saved model
+I 2017-02-11 16:52:49 theanets.graph:643 /tmp/tmpTcnkVc.tmp: loaded model
+I 2017-02-11 16:53:04 downhill.base:232 validation 10 loss=3649.247080 err=3649.247080 *
+I 2017-02-11 16:56:14 downhill.base:232 RMSProp 11 loss=3520.274583 err=3520.274583
+I 2017-02-11 16:56:16 theanets.graph:626 /tmp/tmp_CJ0fD.tmp: saved model
+I 2017-02-11 16:56:17 theanets.graph:643 /tmp/tmp_CJ0fD.tmp: loaded model
+I 2017-02-11 16:56:40 downhill.base:232 validation 11 loss=3393.178828 err=3393.178828 *
+I 2017-02-11 16:59:08 downhill.base:232 RMSProp 12 loss=3295.445377 err=3295.445377
+I 2017-02-11 16:59:14 theanets.graph:626 /tmp/tmpW7b6m_.tmp: saved model
+I 2017-02-11 16:59:16 theanets.graph:643 /tmp/tmpW7b6m_.tmp: loaded model
+I 2017-02-11 17:00:09 downhill.base:232 validation 12 loss=3196.009054 err=3196.009054 *
+I 2017-02-11 17:02:19 downhill.base:232 RMSProp 13 loss=3122.963089 err=3122.963089
+I 2017-02-11 17:02:20 theanets.graph:626 /tmp/tmp_7ReIj.tmp: saved model
+I 2017-02-11 17:02:21 theanets.graph:643 /tmp/tmp_7ReIj.tmp: loaded model
+I 2017-02-11 17:02:42 downhill.base:232 validation 13 loss=3044.260550 err=3044.260550 *
+I 2017-02-11 17:04:34 downhill.base:232 RMSProp 14 loss=2988.455420 err=2988.455420
+I 2017-02-11 17:04:35 theanets.graph:626 /tmp/tmpQYtj3d.tmp: saved model
+I 2017-02-11 17:04:35 theanets.graph:643 /tmp/tmpQYtj3d.tmp: loaded model
+I 2017-02-11 17:05:31 downhill.base:232 validation 14 loss=2920.834728 err=2920.834728 *
+I 2017-02-11 17:08:32 downhill.base:232 RMSProp 15 loss=2875.827726 err=2875.827726
+I 2017-02-11 17:08:33 theanets.graph:626 /tmp/tmpR1KuSF.tmp: saved model
+I 2017-02-11 17:08:34 theanets.graph:643 /tmp/tmpR1KuSF.tmp: loaded model
+I 2017-02-11 17:08:54 downhill.base:232 validation 15 loss=2818.396122 err=2818.396122 *
+I 2017-02-11 17:11:23 downhill.base:232 RMSProp 16 loss=2780.177488 err=2780.177488
+I 2017-02-11 17:11:23 theanets.graph:626 /tmp/tmplT5gDJ.tmp: saved model
+I 2017-02-11 17:11:24 theanets.graph:643 /tmp/tmplT5gDJ.tmp: loaded model
+I 2017-02-11 17:11:42 downhill.base:232 validation 16 loss=2728.920091 err=2728.920091 *
+I 2017-02-11 17:14:29 downhill.base:232 RMSProp 17 loss=2698.206341 err=2698.206341
+I 2017-02-11 17:14:31 theanets.graph:626 /tmp/tmpyToXN3.tmp: saved model
+I 2017-02-11 17:14:32 theanets.graph:643 /tmp/tmpyToXN3.tmp: loaded model
+I 2017-02-11 17:14:53 downhill.base:232 validation 17 loss=2652.116145 err=2652.116145 *
+I 2017-02-11 17:18:44 downhill.base:232 RMSProp 18 loss=2626.253031 err=2626.253031
+I 2017-02-11 17:18:49 theanets.graph:626 /tmp/tmp6mBqVm.tmp: saved model
+I 2017-02-11 17:18:51 theanets.graph:643 /tmp/tmp6mBqVm.tmp: loaded model
+I 2017-02-11 17:19:24 downhill.base:232 validation 18 loss=2584.877173 err=2584.877173 *
+I 2017-02-11 17:22:13 downhill.base:232 RMSProp 19 loss=2562.037518 err=2562.037518
+I 2017-02-11 17:22:13 theanets.graph:626 /tmp/tmpCWemB0.tmp: saved model
+I 2017-02-11 17:22:13 theanets.graph:643 /tmp/tmpCWemB0.tmp: loaded model
+I 2017-02-11 17:22:28 downhill.base:232 validation 19 loss=2524.043673 err=2524.043673 *
+I 2017-02-11 17:26:24 downhill.base:232 RMSProp 20 loss=2505.166260 err=2505.166260
+I 2017-02-11 17:26:40 theanets.graph:626 /tmp/tmpSPK_RK.tmp: saved model
+I 2017-02-11 17:26:47 theanets.graph:643 /tmp/tmpSPK_RK.tmp: loaded model
+I 2017-02-11 17:28:17 downhill.base:232 validation 20 loss=2470.104989 err=2470.104989 *
+I 2017-02-11 17:31:03 downhill.base:232 RMSProp 21 loss=2455.151183 err=2455.151183
+I 2017-02-11 17:31:08 theanets.graph:626 /tmp/tmp1xmixh.tmp: saved model
+I 2017-02-11 17:31:11 theanets.graph:643 /tmp/tmp1xmixh.tmp: loaded model
+I 2017-02-11 17:32:11 downhill.base:232 validation 21 loss=2422.098763 err=2422.098763 *
+I 2017-02-11 17:34:09 downhill.base:232 RMSProp 22 loss=2408.625755 err=2408.625755
+I 2017-02-11 17:34:09 theanets.graph:626 /tmp/tmp8gUB75.tmp: saved model
+I 2017-02-11 17:34:10 theanets.graph:643 /tmp/tmp8gUB75.tmp: loaded model
+I 2017-02-11 17:34:18 downhill.base:232 validation 22 loss=2377.169609 err=2377.169609 *
+I 2017-02-11 17:35:42 downhill.base:232 RMSProp 23 loss=2365.662497 err=2365.662497
+I 2017-02-11 17:35:42 theanets.graph:626 /tmp/tmp12T_O1.tmp: saved model
+I 2017-02-11 17:35:43 theanets.graph:643 /tmp/tmp12T_O1.tmp: loaded model
+I 2017-02-11 17:35:52 downhill.base:232 validation 23 loss=2336.202786 err=2336.202786 *
+I 2017-02-11 17:39:07 downhill.base:232 RMSProp 24 loss=2327.515632 err=2327.515632
+I 2017-02-11 17:39:08 theanets.graph:626 /tmp/tmpST0Vq3.tmp: saved model
+I 2017-02-11 17:39:09 theanets.graph:643 /tmp/tmpST0Vq3.tmp: loaded model
+I 2017-02-11 17:39:19 downhill.base:232 validation 24 loss=2298.759249 err=2298.759249 *
+I 2017-02-11 17:43:58 downhill.base:232 RMSProp 25 loss=2291.704230 err=2291.704230
+I 2017-02-11 17:44:05 theanets.graph:626 /tmp/tmp5BJ6AL.tmp: saved model
+I 2017-02-11 17:44:10 theanets.graph:643 /tmp/tmp5BJ6AL.tmp: loaded model
+I 2017-02-11 17:45:01 downhill.base:232 validation 25 loss=2264.161170 err=2264.161170 *
+I 2017-02-11 17:50:45 downhill.base:232 RMSProp 26 loss=2257.952250 err=2257.952250
+I 2017-02-11 17:51:04 theanets.graph:626 /tmp/tmpSrrAuH.tmp: saved model
+I 2017-02-11 17:51:09 theanets.graph:643 /tmp/tmpSrrAuH.tmp: loaded model
+I 2017-02-11 17:52:21 downhill.base:232 validation 26 loss=2231.189564 err=2231.189564 *
+I 2017-02-11 17:54:17 downhill.base:232 RMSProp 27 loss=2226.691483 err=2226.691483
+I 2017-02-11 17:54:17 theanets.graph:626 /tmp/tmpWuzSeS.tmp: saved model
+I 2017-02-11 17:54:18 theanets.graph:643 /tmp/tmpWuzSeS.tmp: loaded model
+I 2017-02-11 17:54:26 downhill.base:232 validation 27 loss=2201.951492 err=2201.951492 *
+I 2017-02-11 17:55:51 downhill.base:232 RMSProp 28 loss=2198.499994 err=2198.499994
+I 2017-02-11 17:55:51 theanets.graph:626 /tmp/tmpIaMWWK.tmp: saved model
+I 2017-02-11 17:55:52 theanets.graph:643 /tmp/tmpIaMWWK.tmp: loaded model
+I 2017-02-11 17:56:00 downhill.base:232 validation 28 loss=2173.018112 err=2173.018112 *
+I 2017-02-11 17:58:21 downhill.base:232 RMSProp 29 loss=2171.182665 err=2171.182665
+I 2017-02-11 17:58:23 theanets.graph:626 /tmp/tmpszO18K.tmp: saved model
+I 2017-02-11 17:58:23 theanets.graph:643 /tmp/tmpszO18K.tmp: loaded model
+I 2017-02-11 17:58:42 downhill.base:232 validation 29 loss=2147.991546 err=2147.991546 *
+I 2017-02-11 18:00:37 downhill.base:232 RMSProp 30 loss=2145.592948 err=2145.592948
+I 2017-02-11 18:00:37 theanets.graph:626 /tmp/tmpEtLizC.tmp: saved model
+I 2017-02-11 18:00:37 theanets.graph:643 /tmp/tmpEtLizC.tmp: loaded model
+I 2017-02-11 18:00:46 downhill.base:232 validation 30 loss=2123.190118 err=2123.190118 *
+I 2017-02-11 18:05:13 downhill.base:232 RMSProp 31 loss=2121.093626 err=2121.093626
+I 2017-02-11 18:05:26 theanets.graph:626 /tmp/tmpQbDgN7.tmp: saved model
+I 2017-02-11 18:05:28 theanets.graph:643 /tmp/tmpQbDgN7.tmp: loaded model
+I 2017-02-11 18:06:55 downhill.base:232 validation 31 loss=2097.494230 err=2097.494230 *
+I 2017-02-11 18:09:48 downhill.base:232 RMSProp 32 loss=2098.378971 err=2098.378971
+I 2017-02-11 18:09:48 theanets.graph:626 /tmp/tmpErAsKa.tmp: saved model
+I 2017-02-11 18:09:48 theanets.graph:643 /tmp/tmpErAsKa.tmp: loaded model
+I 2017-02-11 18:10:44 downhill.base:232 validation 32 loss=2077.166498 err=2077.166498 *
+I 2017-02-11 18:13:03 downhill.base:232 RMSProp 33 loss=2077.431882 err=2077.431882
+I 2017-02-11 18:13:06 theanets.graph:626 /tmp/tmpy3wi0p.tmp: saved model
+I 2017-02-11 18:13:07 theanets.graph:643 /tmp/tmpy3wi0p.tmp: loaded model
+I 2017-02-11 18:13:26 downhill.base:232 validation 33 loss=2054.462479 err=2054.462479 *
+I 2017-02-11 18:14:54 downhill.base:232 RMSProp 34 loss=2056.282605 err=2056.282605
+I 2017-02-11 18:14:54 theanets.graph:626 /tmp/tmpY_q897.tmp: saved model
+I 2017-02-11 18:14:55 theanets.graph:643 /tmp/tmpY_q897.tmp: loaded model
+I 2017-02-11 18:15:04 downhill.base:232 validation 34 loss=2035.372181 err=2035.372181 *
+I 2017-02-11 18:16:33 downhill.base:232 RMSProp 35 loss=2037.211537 err=2037.211537
+I 2017-02-11 18:16:33 theanets.graph:626 /tmp/tmpHvysMZ.tmp: saved model
+I 2017-02-11 18:16:33 theanets.graph:643 /tmp/tmpHvysMZ.tmp: loaded model
+I 2017-02-11 18:16:41 downhill.base:232 validation 35 loss=2015.491475 err=2015.491475 *
+I 2017-02-11 18:17:58 downhill.base:232 RMSProp 36 loss=2019.188448 err=2019.188448
+I 2017-02-11 18:17:58 theanets.graph:626 /tmp/tmp8FcZl6.tmp: saved model
+I 2017-02-11 18:17:58 theanets.graph:643 /tmp/tmp8FcZl6.tmp: loaded model
+I 2017-02-11 18:18:07 downhill.base:232 validation 36 loss=1997.444546 err=1997.444546 *
+I 2017-02-11 18:19:35 downhill.base:232 RMSProp 37 loss=2002.304585 err=2002.304585
+I 2017-02-11 18:19:35 theanets.graph:626 /tmp/tmpgdaUAV.tmp: saved model
+I 2017-02-11 18:19:35 theanets.graph:643 /tmp/tmpgdaUAV.tmp: loaded model
+I 2017-02-11 18:19:45 downhill.base:232 validation 37 loss=1980.202013 err=1980.202013 *
+I 2017-02-11 18:22:16 downhill.base:232 RMSProp 38 loss=1984.405033 err=1984.405033
+I 2017-02-11 18:22:20 theanets.graph:626 /tmp/tmpkWG1eT.tmp: saved model
+I 2017-02-11 18:22:22 theanets.graph:643 /tmp/tmpkWG1eT.tmp: loaded model
+I 2017-02-11 18:23:42 downhill.base:232 validation 38 loss=1964.072092 err=1964.072092 *
+I 2017-02-11 18:26:56 downhill.base:232 RMSProp 39 loss=1968.414904 err=1968.414904
+I 2017-02-11 18:26:56 theanets.graph:626 /tmp/tmpMegybr.tmp: saved model
+I 2017-02-11 18:26:57 theanets.graph:643 /tmp/tmpMegybr.tmp: loaded model
+I 2017-02-11 18:27:12 downhill.base:232 validation 39 loss=1946.970085 err=1946.970085 *
+I 2017-02-11 18:29:44 downhill.base:232 RMSProp 40 loss=1953.562366 err=1953.562366
+I 2017-02-11 18:29:45 theanets.graph:626 /tmp/tmp29XTEd.tmp: saved model
+I 2017-02-11 18:29:47 theanets.graph:643 /tmp/tmp29XTEd.tmp: loaded model
+I 2017-02-11 18:30:31 downhill.base:232 validation 40 loss=1931.641695 err=1931.641695 *
+I 2017-02-11 18:33:58 downhill.base:232 RMSProp 41 loss=1938.269466 err=1938.269466
+I 2017-02-11 18:33:58 theanets.graph:626 /tmp/tmpPiH62J.tmp: saved model
+I 2017-02-11 18:33:59 theanets.graph:643 /tmp/tmpPiH62J.tmp: loaded model
+I 2017-02-11 18:34:19 downhill.base:232 validation 41 loss=1918.934720 err=1918.934720 *
+I 2017-02-11 18:35:56 downhill.base:232 RMSProp 42 loss=1923.294592 err=1923.294592
+I 2017-02-11 18:35:56 theanets.graph:626 /tmp/tmpHAZm7t.tmp: saved model
+I 2017-02-11 18:35:57 theanets.graph:643 /tmp/tmpHAZm7t.tmp: loaded model
+I 2017-02-11 18:36:09 downhill.base:232 validation 42 loss=1904.395273 err=1904.395273 *
+I 2017-02-11 18:38:12 downhill.base:232 RMSProp 43 loss=1910.985246 err=1910.985246
+I 2017-02-11 18:38:13 theanets.graph:626 /tmp/tmpZkM4Ez.tmp: saved model
+I 2017-02-11 18:38:13 theanets.graph:643 /tmp/tmpZkM4Ez.tmp: loaded model
+I 2017-02-11 18:38:26 downhill.base:232 validation 43 loss=1890.327025 err=1890.327025 *
+I 2017-02-11 18:41:07 downhill.base:232 RMSProp 44 loss=1896.976573 err=1896.976573
+I 2017-02-11 18:41:11 theanets.graph:626 /tmp/tmpMr63S1.tmp: saved model
+I 2017-02-11 18:41:12 theanets.graph:643 /tmp/tmpMr63S1.tmp: loaded model
+I 2017-02-11 18:42:49 downhill.base:232 validation 44 loss=1876.525733 err=1876.525733 *
+I 2017-02-11 18:45:34 downhill.base:232 RMSProp 45 loss=1883.333191 err=1883.333191
+I 2017-02-11 18:45:37 theanets.graph:626 /tmp/tmpQD7KH3.tmp: saved model
+I 2017-02-11 18:45:38 theanets.graph:643 /tmp/tmpQD7KH3.tmp: loaded model
+I 2017-02-11 18:46:03 downhill.base:232 validation 45 loss=1865.015381 err=1865.015381 *
+I 2017-02-11 18:47:58 downhill.base:232 RMSProp 46 loss=1871.880335 err=1871.880335
+I 2017-02-11 18:47:58 theanets.graph:626 /tmp/tmp_GjrUC.tmp: saved model
+I 2017-02-11 18:47:59 theanets.graph:643 /tmp/tmp_GjrUC.tmp: loaded model
+I 2017-02-11 18:48:08 downhill.base:232 validation 46 loss=1853.189446 err=1853.189446 *
+I 2017-02-11 18:49:39 downhill.base:232 RMSProp 47 loss=1859.207059 err=1859.207059
+I 2017-02-11 18:49:40 theanets.graph:626 /tmp/tmp1gTe0d.tmp: saved model
+I 2017-02-11 18:49:40 theanets.graph:643 /tmp/tmp1gTe0d.tmp: loaded model
+I 2017-02-11 18:49:51 downhill.base:232 validation 47 loss=1841.040018 err=1841.040018 *
+I 2017-02-11 18:51:18 downhill.base:232 RMSProp 48 loss=1849.414427 err=1849.414427
+I 2017-02-11 18:51:18 theanets.graph:626 /tmp/tmpKXyn5n.tmp: saved model
+I 2017-02-11 18:51:18 theanets.graph:643 /tmp/tmpKXyn5n.tmp: loaded model
+I 2017-02-11 18:51:29 downhill.base:232 validation 48 loss=1829.700429 err=1829.700429 *
+I 2017-02-11 18:54:57 downhill.base:232 RMSProp 49 loss=1837.228566 err=1837.228566
+I 2017-02-11 18:55:09 theanets.graph:626 /tmp/tmpIW0N1D.tmp: saved model
+I 2017-02-11 18:55:13 theanets.graph:643 /tmp/tmpIW0N1D.tmp: loaded model
+I 2017-02-11 18:55:49 downhill.base:232 validation 49 loss=1816.855423 err=1816.855423 *
+I 2017-02-11 18:58:58 downhill.base:232 RMSProp 50 loss=1825.042929 err=1825.042929
+I 2017-02-11 18:59:00 theanets.graph:626 /tmp/tmp8tWlz7.tmp: saved model
+I 2017-02-11 18:59:01 theanets.graph:643 /tmp/tmp8tWlz7.tmp: loaded model
+I 2017-02-11 18:59:21 downhill.base:232 validation 50 loss=1807.892827 err=1807.892827
+I 2017-02-11 19:01:16 downhill.base:232 RMSProp 51 loss=1814.375828 err=1814.375828
+I 2017-02-11 19:01:17 theanets.graph:626 /tmp/tmpWVQ2bK.tmp: saved model
+I 2017-02-11 19:01:18 theanets.graph:643 /tmp/tmpWVQ2bK.tmp: loaded model
+I 2017-02-11 19:01:31 downhill.base:232 validation 51 loss=1796.610363 err=1796.610363 *
+I 2017-02-11 19:03:22 downhill.base:232 RMSProp 52 loss=1802.833872 err=1802.833872
+I 2017-02-11 19:03:22 theanets.graph:626 /tmp/tmps4LD19.tmp: saved model
+I 2017-02-11 19:03:22 theanets.graph:643 /tmp/tmps4LD19.tmp: loaded model
+I 2017-02-11 19:03:37 downhill.base:232 validation 52 loss=1787.705728 err=1787.705728
+I 2017-02-11 19:05:34 downhill.base:232 RMSProp 53 loss=1794.020277 err=1794.020277
+I 2017-02-11 19:05:34 theanets.graph:626 /tmp/tmpP8OGcd.tmp: saved model
+I 2017-02-11 19:05:34 theanets.graph:643 /tmp/tmpP8OGcd.tmp: loaded model
+I 2017-02-11 19:05:46 downhill.base:232 validation 53 loss=1774.467115 err=1774.467115 *
+I 2017-02-11 19:08:17 downhill.base:232 RMSProp 54 loss=1784.630046 err=1784.630046
+I 2017-02-11 19:08:17 theanets.graph:626 /tmp/tmp1ZsqYo.tmp: saved model
+I 2017-02-11 19:08:17 theanets.graph:643 /tmp/tmp1ZsqYo.tmp: loaded model
+I 2017-02-11 19:08:33 downhill.base:232 validation 54 loss=1765.487291 err=1765.487291 *
+I 2017-02-11 19:13:19 downhill.base:232 RMSProp 55 loss=1774.955486 err=1774.955486
+I 2017-02-11 19:13:23 theanets.graph:626 /tmp/tmp5LmQBE.tmp: saved model
+I 2017-02-11 19:13:56 theanets.graph:643 /tmp/tmp5LmQBE.tmp: loaded model
+I 2017-02-11 19:16:55 downhill.base:232 validation 55 loss=1756.320277 err=1756.320277 *
+I 2017-02-11 19:20:38 downhill.base:232 RMSProp 56 loss=1764.520488 err=1764.520488
+I 2017-02-11 19:20:53 theanets.graph:626 /tmp/tmpqb3Mav.tmp: saved model
+I 2017-02-11 19:20:56 theanets.graph:643 /tmp/tmpqb3Mav.tmp: loaded model
+I 2017-02-11 19:22:29 downhill.base:232 validation 56 loss=1746.422385 err=1746.422385 *
+I 2017-02-11 19:25:53 downhill.base:232 RMSProp 57 loss=1755.252583 err=1755.252583
+I 2017-02-11 19:25:53 theanets.graph:626 /tmp/tmp3je6UU.tmp: saved model
+I 2017-02-11 19:25:54 theanets.graph:643 /tmp/tmp3je6UU.tmp: loaded model
+I 2017-02-11 19:26:05 downhill.base:232 validation 57 loss=1739.139046 err=1739.139046
+I 2017-02-11 19:27:44 downhill.base:232 RMSProp 58 loss=1747.123993 err=1747.123993
+I 2017-02-11 19:27:44 theanets.graph:626 /tmp/tmp3Fslxu.tmp: saved model
+I 2017-02-11 19:27:46 theanets.graph:643 /tmp/tmp3Fslxu.tmp: loaded model
+I 2017-02-11 19:27:58 downhill.base:232 validation 58 loss=1727.831132 err=1727.831132 *
+I 2017-02-11 19:31:51 downhill.base:232 RMSProp 59 loss=1737.838195 err=1737.838195
+I 2017-02-11 19:32:05 theanets.graph:626 /tmp/tmpXJ0As2.tmp: saved model
+I 2017-02-11 19:32:10 theanets.graph:643 /tmp/tmpXJ0As2.tmp: loaded model
+I 2017-02-11 19:32:53 downhill.base:232 validation 59 loss=1720.275934 err=1720.275934
+I 2017-02-11 19:35:37 downhill.base:232 RMSProp 60 loss=1728.720665 err=1728.720665
+I 2017-02-11 19:35:38 theanets.graph:626 /tmp/tmpyjhD8p.tmp: saved model
+I 2017-02-11 19:35:39 theanets.graph:643 /tmp/tmpyjhD8p.tmp: loaded model
+I 2017-02-11 19:35:53 downhill.base:232 validation 60 loss=1711.431235 err=1711.431235 *
+I 2017-02-11 19:38:48 downhill.base:232 RMSProp 61 loss=1720.458262 err=1720.458262
+I 2017-02-11 19:39:01 theanets.graph:626 /tmp/tmp6qLG_w.tmp: saved model
+I 2017-02-11 19:39:05 theanets.graph:643 /tmp/tmp6qLG_w.tmp: loaded model
+I 2017-02-11 19:40:27 downhill.base:232 validation 61 loss=1702.275433 err=1702.275433 *
+I 2017-02-11 19:45:21 downhill.base:232 RMSProp 62 loss=1711.262557 err=1711.262557
+I 2017-02-11 19:45:30 theanets.graph:626 /tmp/tmp9_ceUw.tmp: saved model
+I 2017-02-11 19:45:31 theanets.graph:643 /tmp/tmp9_ceUw.tmp: loaded model
+I 2017-02-11 19:45:47 downhill.base:232 validation 62 loss=1694.621666 err=1694.621666
+I 2017-02-11 19:48:01 downhill.base:232 RMSProp 63 loss=1703.845856 err=1703.845856
+I 2017-02-11 19:48:02 theanets.graph:626 /tmp/tmpEGXqZi.tmp: saved model
+I 2017-02-11 19:48:03 theanets.graph:643 /tmp/tmpEGXqZi.tmp: loaded model
+I 2017-02-11 19:48:17 downhill.base:232 validation 63 loss=1686.170162 err=1686.170162 *
+I 2017-02-11 19:50:13 downhill.base:232 RMSProp 64 loss=1693.475728 err=1693.475728
+I 2017-02-11 19:50:13 theanets.graph:626 /tmp/tmpyRM895.tmp: saved model
+I 2017-02-11 19:50:13 theanets.graph:643 /tmp/tmpyRM895.tmp: loaded model
+I 2017-02-11 19:50:27 downhill.base:232 validation 64 loss=1678.859266 err=1678.859266
+I 2017-02-11 19:52:18 downhill.base:232 RMSProp 65 loss=1686.226025 err=1686.226025
+I 2017-02-11 19:52:18 theanets.graph:626 /tmp/tmpDGmDyi.tmp: saved model
+I 2017-02-11 19:52:19 theanets.graph:643 /tmp/tmpDGmDyi.tmp: loaded model
+I 2017-02-11 19:52:53 downhill.base:232 validation 65 loss=1669.398879 err=1669.398879 *
+I 2017-02-11 19:55:15 downhill.base:232 RMSProp 66 loss=1677.103540 err=1677.103540
+I 2017-02-11 19:55:15 theanets.graph:626 /tmp/tmp2e_0kM.tmp: saved model
+I 2017-02-11 19:55:16 theanets.graph:643 /tmp/tmp2e_0kM.tmp: loaded model
+I 2017-02-11 19:55:30 downhill.base:232 validation 66 loss=1660.760022 err=1660.760022 *
+I 2017-02-11 19:57:54 downhill.base:232 RMSProp 67 loss=1670.095945 err=1670.095945
+I 2017-02-11 19:57:54 theanets.graph:626 /tmp/tmptVk8ny.tmp: saved model
+I 2017-02-11 19:57:54 theanets.graph:643 /tmp/tmptVk8ny.tmp: loaded model
+I 2017-02-11 19:58:09 downhill.base:232 validation 67 loss=1653.679155 err=1653.679155
+I 2017-02-11 20:03:16 downhill.base:232 RMSProp 68 loss=1660.916984 err=1660.916984
+I 2017-02-11 20:03:25 theanets.graph:626 /tmp/tmpyRVIU1.tmp: saved model
+I 2017-02-11 20:03:27 theanets.graph:643 /tmp/tmpyRVIU1.tmp: loaded model
+I 2017-02-11 20:04:03 downhill.base:232 validation 68 loss=1646.244486 err=1646.244486 *
+I 2017-02-11 20:05:56 downhill.base:232 RMSProp 69 loss=1653.328270 err=1653.328270
+I 2017-02-11 20:05:56 theanets.graph:626 /tmp/tmpd5wht5.tmp: saved model
+I 2017-02-11 20:05:56 theanets.graph:643 /tmp/tmpd5wht5.tmp: loaded model
+I 2017-02-11 20:06:03 downhill.base:232 validation 69 loss=1639.467010 err=1639.467010
+I 2017-02-11 20:07:24 downhill.base:232 RMSProp 70 loss=1644.819789 err=1644.819789
+I 2017-02-11 20:07:25 theanets.graph:626 /tmp/tmpFvKu_8.tmp: saved model
+I 2017-02-11 20:07:25 theanets.graph:643 /tmp/tmpFvKu_8.tmp: loaded model
+I 2017-02-11 20:07:35 downhill.base:232 validation 70 loss=1629.190094 err=1629.190094 *
+I 2017-02-11 20:09:03 downhill.base:232 RMSProp 71 loss=1636.869662 err=1636.869662
+I 2017-02-11 20:09:03 theanets.graph:626 /tmp/tmpJ5yypR.tmp: saved model
+I 2017-02-11 20:09:05 theanets.graph:643 /tmp/tmpJ5yypR.tmp: loaded model
+I 2017-02-11 20:09:14 downhill.base:232 validation 71 loss=1622.821023 err=1622.821023
+I 2017-02-11 20:10:43 downhill.base:232 RMSProp 72 loss=1629.662625 err=1629.662625
+I 2017-02-11 20:10:59 theanets.graph:626 /tmp/tmpBEE7rg.tmp: saved model
+I 2017-02-11 20:11:02 theanets.graph:643 /tmp/tmpBEE7rg.tmp: loaded model
+I 2017-02-11 20:11:47 downhill.base:232 validation 72 loss=1613.296942 err=1613.296942 *
+I 2017-02-11 20:13:21 downhill.base:232 RMSProp 73 loss=1623.628407 err=1623.628407
+I 2017-02-11 20:13:21 theanets.graph:626 /tmp/tmpb0jtQZ.tmp: saved model
+I 2017-02-11 20:13:21 theanets.graph:643 /tmp/tmpb0jtQZ.tmp: loaded model
+I 2017-02-11 20:13:29 downhill.base:232 validation 73 loss=1608.733288 err=1608.733288
+I 2017-02-11 20:16:24 downhill.base:232 RMSProp 74 loss=1615.939480 err=1615.939480
+I 2017-02-11 20:16:29 theanets.graph:626 /tmp/tmpGzebLX.tmp: saved model
+I 2017-02-11 20:16:30 theanets.graph:643 /tmp/tmpGzebLX.tmp: loaded model
+I 2017-02-11 20:17:10 downhill.base:232 validation 74 loss=1598.693812 err=1598.693812 *
+I 2017-02-11 20:19:58 downhill.base:232 RMSProp 75 loss=1608.347452 err=1608.347452
+I 2017-02-11 20:20:09 theanets.graph:626 /tmp/tmpxBx42E.tmp: saved model
+I 2017-02-11 20:20:13 theanets.graph:643 /tmp/tmpxBx42E.tmp: loaded model
+I 2017-02-11 20:21:49 downhill.base:232 validation 75 loss=1593.234219 err=1593.234219
+I 2017-02-11 20:27:31 downhill.base:232 RMSProp 76 loss=1600.280506 err=1600.280506
+I 2017-02-11 20:27:52 theanets.graph:626 /tmp/tmpXrbL4j.tmp: saved model
+I 2017-02-11 20:27:59 theanets.graph:643 /tmp/tmpXrbL4j.tmp: loaded model
+I 2017-02-11 20:29:25 downhill.base:232 validation 76 loss=1584.975556 err=1584.975556 *
+I 2017-02-11 20:31:25 downhill.base:232 RMSProp 77 loss=1592.295887 err=1592.295887
+I 2017-02-11 20:31:25 theanets.graph:626 /tmp/tmptmB3TM.tmp: saved model
+I 2017-02-11 20:31:25 theanets.graph:643 /tmp/tmptmB3TM.tmp: loaded model
+I 2017-02-11 20:31:33 downhill.base:232 validation 77 loss=1577.474705 err=1577.474705
+I 2017-02-11 20:35:33 downhill.base:232 RMSProp 78 loss=1585.093670 err=1585.093670
+I 2017-02-11 20:35:40 theanets.graph:626 /tmp/tmpQiN8wI.tmp: saved model
+I 2017-02-11 20:35:41 theanets.graph:643 /tmp/tmpQiN8wI.tmp: loaded model
+I 2017-02-11 20:36:41 downhill.base:232 validation 78 loss=1569.792437 err=1569.792437 *
+I 2017-02-11 20:38:41 downhill.base:232 RMSProp 79 loss=1576.527040 err=1576.527040
+I 2017-02-11 20:38:41 theanets.graph:626 /tmp/tmpi4WQVb.tmp: saved model
+I 2017-02-11 20:38:42 theanets.graph:643 /tmp/tmpi4WQVb.tmp: loaded model
+I 2017-02-11 20:38:50 downhill.base:232 validation 79 loss=1563.749443 err=1563.749443
+I 2017-02-11 20:41:06 downhill.base:232 RMSProp 80 loss=1569.365361 err=1569.365361
+I 2017-02-11 20:41:12 theanets.graph:626 /tmp/tmpcvD_LJ.tmp: saved model
+I 2017-02-11 20:41:15 theanets.graph:643 /tmp/tmpcvD_LJ.tmp: loaded model
+I 2017-02-11 20:41:46 downhill.base:232 validation 80 loss=1554.597289 err=1554.597289 *
+I 2017-02-11 20:43:39 downhill.base:232 RMSProp 81 loss=1562.187009 err=1562.187009
+I 2017-02-11 20:43:40 theanets.graph:626 /tmp/tmpj1wn5m.tmp: saved model
+I 2017-02-11 20:43:40 theanets.graph:643 /tmp/tmpj1wn5m.tmp: loaded model
+I 2017-02-11 20:43:49 downhill.base:232 validation 81 loss=1545.956917 err=1545.956917 *
+I 2017-02-11 20:45:08 downhill.base:232 RMSProp 82 loss=1555.154335 err=1555.154335
+I 2017-02-11 20:45:08 theanets.graph:626 /tmp/tmpfxA1HZ.tmp: saved model
+I 2017-02-11 20:45:08 theanets.graph:643 /tmp/tmpfxA1HZ.tmp: loaded model
+I 2017-02-11 20:45:15 downhill.base:232 validation 82 loss=1537.482097 err=1537.482097 *
+I 2017-02-11 20:46:28 downhill.base:232 RMSProp 83 loss=1547.639626 err=1547.639626
+I 2017-02-11 20:46:28 theanets.graph:626 /tmp/tmpxcmTya.tmp: saved model
+I 2017-02-11 20:46:28 theanets.graph:643 /tmp/tmpxcmTya.tmp: loaded model
+I 2017-02-11 20:46:35 downhill.base:232 validation 83 loss=1532.183119 err=1532.183119
+I 2017-02-11 20:47:46 downhill.base:232 RMSProp 84 loss=1539.612927 err=1539.612927
+I 2017-02-11 20:47:46 theanets.graph:626 /tmp/tmpIOSd8c.tmp: saved model
+I 2017-02-11 20:47:47 theanets.graph:643 /tmp/tmpIOSd8c.tmp: loaded model
+I 2017-02-11 20:47:54 downhill.base:232 validation 84 loss=1526.143770 err=1526.143770 *
+I 2017-02-11 20:51:17 downhill.base:232 RMSProp 85 loss=1532.210666 err=1532.210666
+I 2017-02-11 20:51:42 theanets.graph:626 /tmp/tmp9XXo8u.tmp: saved model
+I 2017-02-11 20:51:47 theanets.graph:643 /tmp/tmp9XXo8u.tmp: loaded model
+I 2017-02-11 20:53:40 downhill.base:232 validation 85 loss=1518.782249 err=1518.782249
+I 2017-02-11 20:55:35 downhill.base:232 RMSProp 86 loss=1525.577137 err=1525.577137
+I 2017-02-11 20:55:35 theanets.graph:626 /tmp/tmpEIsQOu.tmp: saved model
+I 2017-02-11 20:55:35 theanets.graph:643 /tmp/tmpEIsQOu.tmp: loaded model
+I 2017-02-11 20:55:44 downhill.base:232 validation 86 loss=1510.607011 err=1510.607011 *
+I 2017-02-11 20:57:45 downhill.base:232 RMSProp 87 loss=1518.489836 err=1518.489836
+I 2017-02-11 20:57:52 theanets.graph:626 /tmp/tmpF4Epyl.tmp: saved model
+I 2017-02-11 20:57:55 theanets.graph:643 /tmp/tmpF4Epyl.tmp: loaded model
+I 2017-02-11 20:58:31 downhill.base:232 validation 87 loss=1503.686625 err=1503.686625
+I 2017-02-11 21:00:29 downhill.base:232 RMSProp 88 loss=1509.749676 err=1509.749676
+I 2017-02-11 21:00:30 theanets.graph:626 /tmp/tmpMrXFYc.tmp: saved model
+I 2017-02-11 21:00:30 theanets.graph:643 /tmp/tmpMrXFYc.tmp: loaded model
+I 2017-02-11 21:00:44 downhill.base:232 validation 88 loss=1494.543048 err=1494.543048 *
+I 2017-02-11 21:02:12 downhill.base:232 RMSProp 89 loss=1502.667273 err=1502.667273
+I 2017-02-11 21:02:12 theanets.graph:626 /tmp/tmpGWdGB0.tmp: saved model
+I 2017-02-11 21:02:12 theanets.graph:643 /tmp/tmpGWdGB0.tmp: loaded model
+I 2017-02-11 21:02:23 downhill.base:232 validation 89 loss=1489.576608 err=1489.576608
+I 2017-02-11 21:06:00 downhill.base:232 RMSProp 90 loss=1494.458155 err=1494.458155
+I 2017-02-11 21:06:09 theanets.graph:626 /tmp/tmpbf29cR.tmp: saved model
+I 2017-02-11 21:06:15 theanets.graph:643 /tmp/tmpbf29cR.tmp: loaded model
+I 2017-02-11 21:07:43 downhill.base:232 validation 90 loss=1483.704488 err=1483.704488 *
+I 2017-02-11 21:10:14 downhill.base:232 RMSProp 91 loss=1487.025262 err=1487.025262
+I 2017-02-11 21:10:15 theanets.graph:626 /tmp/tmp2bjjPh.tmp: saved model
+I 2017-02-11 21:10:16 theanets.graph:643 /tmp/tmp2bjjPh.tmp: loaded model
+I 2017-02-11 21:10:30 downhill.base:232 validation 91 loss=1473.427682 err=1473.427682 *
+I 2017-02-11 21:13:09 downhill.base:232 RMSProp 92 loss=1479.582363 err=1479.582363
+I 2017-02-11 21:13:25 theanets.graph:626 /tmp/tmp3S4EMi.tmp: saved model
+I 2017-02-11 21:13:30 theanets.graph:643 /tmp/tmp3S4EMi.tmp: loaded model
+I 2017-02-11 21:15:43 downhill.base:232 validation 92 loss=1467.374446 err=1467.374446
+I 2017-02-11 21:18:26 downhill.base:232 RMSProp 93 loss=1473.571640 err=1473.571640
+I 2017-02-11 21:18:27 theanets.graph:626 /tmp/tmph9_c48.tmp: saved model
+I 2017-02-11 21:18:27 theanets.graph:643 /tmp/tmph9_c48.tmp: loaded model
+I 2017-02-11 21:18:41 downhill.base:232 validation 93 loss=1462.975577 err=1462.975577 *
+I 2017-02-11 21:20:14 downhill.base:232 RMSProp 94 loss=1465.915744 err=1465.915744
+I 2017-02-11 21:20:14 theanets.graph:626 /tmp/tmp4xOfMX.tmp: saved model
+I 2017-02-11 21:20:14 theanets.graph:643 /tmp/tmp4xOfMX.tmp: loaded model
+I 2017-02-11 21:20:26 downhill.base:232 validation 94 loss=1453.602384 err=1453.602384 *
+I 2017-02-11 21:25:13 downhill.base:232 RMSProp 95 loss=1458.003032 err=1458.003032
+I 2017-02-11 21:25:22 theanets.graph:626 /tmp/tmprm_FPp.tmp: saved model
+I 2017-02-11 21:25:24 theanets.graph:643 /tmp/tmprm_FPp.tmp: loaded model
+I 2017-02-11 21:26:28 downhill.base:232 validation 95 loss=1446.971341 err=1446.971341
+I 2017-02-11 21:32:42 downhill.base:232 RMSProp 96 loss=1450.006473 err=1450.006473
+I 2017-02-11 21:32:43 theanets.graph:626 /tmp/tmppXmhBD.tmp: saved model
+I 2017-02-11 21:32:44 theanets.graph:643 /tmp/tmppXmhBD.tmp: loaded model
+I 2017-02-11 21:33:11 downhill.base:232 validation 96 loss=1439.537813 err=1439.537813 *
+I 2017-02-11 21:35:38 downhill.base:232 RMSProp 97 loss=1442.647034 err=1442.647034
+I 2017-02-11 21:35:39 theanets.graph:626 /tmp/tmpBGZLMQ.tmp: saved model
+I 2017-02-11 21:35:39 theanets.graph:643 /tmp/tmpBGZLMQ.tmp: loaded model
+I 2017-02-11 21:35:50 downhill.base:232 validation 97 loss=1432.681781 err=1432.681781
+I 2017-02-11 21:37:16 downhill.base:232 RMSProp 98 loss=1435.478814 err=1435.478814
+I 2017-02-11 21:37:16 theanets.graph:626 /tmp/tmphu9Pls.tmp: saved model
+I 2017-02-11 21:37:16 theanets.graph:643 /tmp/tmphu9Pls.tmp: loaded model
+I 2017-02-11 21:37:28 downhill.base:232 validation 98 loss=1425.127469 err=1425.127469 *
+I 2017-02-11 21:39:35 downhill.base:232 RMSProp 99 loss=1429.381458 err=1429.381458
+I 2017-02-11 21:39:35 theanets.graph:626 /tmp/tmpn83EKr.tmp: saved model
+I 2017-02-11 21:39:35 theanets.graph:643 /tmp/tmpn83EKr.tmp: loaded model
+I 2017-02-11 21:39:46 downhill.base:232 validation 99 loss=1417.946007 err=1417.946007 *
+I 2017-02-11 21:42:43 downhill.base:232 RMSProp 100 loss=1420.993153 err=1420.993153
+I 2017-02-11 21:42:53 theanets.graph:626 /tmp/tmpwtDsQy.tmp: saved model
+I 2017-02-11 21:42:57 theanets.graph:643 /tmp/tmpwtDsQy.tmp: loaded model
+I 2017-02-11 21:44:04 downhill.base:232 validation 100 loss=1412.902558 err=1412.902558
+I 2017-02-11 21:46:21 downhill.base:232 RMSProp 101 loss=1415.074282 err=1415.074282
+I 2017-02-11 21:46:22 theanets.graph:626 /tmp/tmpL_vkpY.tmp: saved model
+I 2017-02-11 21:46:23 theanets.graph:643 /tmp/tmpL_vkpY.tmp: loaded model
+I 2017-02-11 21:46:35 downhill.base:232 validation 101 loss=1402.469725 err=1402.469725 *
+I 2017-02-11 21:48:41 downhill.base:232 RMSProp 102 loss=1407.633283 err=1407.633283
+I 2017-02-11 21:48:41 theanets.graph:626 /tmp/tmpsD0u7Q.tmp: saved model
+I 2017-02-11 21:48:41 theanets.graph:643 /tmp/tmpsD0u7Q.tmp: loaded model
+I 2017-02-11 21:48:48 downhill.base:232 validation 102 loss=1399.252614 err=1399.252614
+I 2017-02-11 21:50:06 downhill.base:232 RMSProp 103 loss=1400.456144 err=1400.456144
+I 2017-02-11 21:50:06 theanets.graph:626 /tmp/tmpjSCbl_.tmp: saved model
+I 2017-02-11 21:50:06 theanets.graph:643 /tmp/tmpjSCbl_.tmp: loaded model
+I 2017-02-11 21:50:16 downhill.base:232 validation 103 loss=1391.020212 err=1391.020212 *
+I 2017-02-11 21:53:09 downhill.base:232 RMSProp 104 loss=1394.060729 err=1394.060729
+I 2017-02-11 21:53:17 theanets.graph:626 /tmp/tmpxx_npb.tmp: saved model
+I 2017-02-11 21:53:18 theanets.graph:643 /tmp/tmpxx_npb.tmp: loaded model
+I 2017-02-11 21:53:50 downhill.base:232 validation 104 loss=1384.250955 err=1384.250955
+I 2017-02-11 21:55:32 downhill.base:232 RMSProp 105 loss=1387.000978 err=1387.000978
+I 2017-02-11 21:55:32 theanets.graph:626 /tmp/tmpclWXOP.tmp: saved model
+I 2017-02-11 21:55:32 theanets.graph:643 /tmp/tmpclWXOP.tmp: loaded model
+I 2017-02-11 21:55:43 downhill.base:232 validation 105 loss=1376.869508 err=1376.869508 *
+I 2017-02-11 21:58:19 downhill.base:232 RMSProp 106 loss=1381.121524 err=1381.121524
+I 2017-02-11 21:58:20 theanets.graph:626 /tmp/tmpC_v30G.tmp: saved model
+I 2017-02-11 21:58:21 theanets.graph:643 /tmp/tmpC_v30G.tmp: loaded model
+I 2017-02-11 21:58:33 downhill.base:232 validation 106 loss=1372.937517 err=1372.937517
+I 2017-02-11 22:00:11 downhill.base:232 RMSProp 107 loss=1374.301660 err=1374.301660
+I 2017-02-11 22:00:11 theanets.graph:626 /tmp/tmpUwuWDk.tmp: saved model
+I 2017-02-11 22:00:11 theanets.graph:643 /tmp/tmpUwuWDk.tmp: loaded model
+I 2017-02-11 22:00:18 downhill.base:232 validation 107 loss=1365.082564 err=1365.082564 *
+I 2017-02-11 22:01:34 downhill.base:232 RMSProp 108 loss=1367.594546 err=1367.594546
+I 2017-02-11 22:01:36 theanets.graph:626 /tmp/tmpIW7UkD.tmp: saved model
+I 2017-02-11 22:01:37 theanets.graph:643 /tmp/tmpIW7UkD.tmp: loaded model
+I 2017-02-11 22:01:46 downhill.base:232 validation 108 loss=1358.820917 err=1358.820917
+I 2017-02-11 22:02:55 downhill.base:232 RMSProp 109 loss=1360.175376 err=1360.175376
+I 2017-02-11 22:02:55 theanets.graph:626 /tmp/tmpYnndcT.tmp: saved model
+I 2017-02-11 22:02:55 theanets.graph:643 /tmp/tmpYnndcT.tmp: loaded model
+I 2017-02-11 22:03:02 downhill.base:232 validation 109 loss=1352.147795 err=1352.147795 *
+I 2017-02-11 22:04:12 downhill.base:232 RMSProp 110 loss=1352.867543 err=1352.867543
+I 2017-02-11 22:04:12 theanets.graph:626 /tmp/tmpX9GoLj.tmp: saved model
+I 2017-02-11 22:04:12 theanets.graph:643 /tmp/tmpX9GoLj.tmp: loaded model
+I 2017-02-11 22:04:20 downhill.base:232 validation 110 loss=1344.261266 err=1344.261266 *
+I 2017-02-11 22:06:27 downhill.base:232 RMSProp 111 loss=1348.254061 err=1348.254061
+I 2017-02-11 22:06:28 theanets.graph:626 /tmp/tmpx7yO4Y.tmp: saved model
+I 2017-02-11 22:06:30 theanets.graph:643 /tmp/tmpx7yO4Y.tmp: loaded model
+I 2017-02-11 22:06:50 downhill.base:232 validation 111 loss=1338.326457 err=1338.326457
+I 2017-02-11 22:10:11 downhill.base:232 RMSProp 112 loss=1340.603727 err=1340.603727
+I 2017-02-11 22:10:13 theanets.graph:626 /tmp/tmpGS0Bmi.tmp: saved model
+I 2017-02-11 22:10:14 theanets.graph:643 /tmp/tmpGS0Bmi.tmp: loaded model
+I 2017-02-11 22:10:42 downhill.base:232 validation 112 loss=1333.460716 err=1333.460716 *
+I 2017-02-11 22:12:26 downhill.base:232 RMSProp 113 loss=1333.037871 err=1333.037871
+I 2017-02-11 22:12:27 theanets.graph:626 /tmp/tmpUddT7R.tmp: saved model
+I 2017-02-11 22:12:27 theanets.graph:643 /tmp/tmpUddT7R.tmp: loaded model
+I 2017-02-11 22:12:34 downhill.base:232 validation 113 loss=1326.210162 err=1326.210162 *
+I 2017-02-11 22:13:56 downhill.base:232 RMSProp 114 loss=1325.877146 err=1325.877146
+I 2017-02-11 22:13:56 theanets.graph:626 /tmp/tmpq5EB3x.tmp: saved model
+I 2017-02-11 22:13:56 theanets.graph:643 /tmp/tmpq5EB3x.tmp: loaded model
+I 2017-02-11 22:14:03 downhill.base:232 validation 114 loss=1320.153155 err=1320.153155
+I 2017-02-11 22:15:12 downhill.base:232 RMSProp 115 loss=1321.220965 err=1321.220965
+I 2017-02-11 22:15:12 theanets.graph:626 /tmp/tmpy9FH8l.tmp: saved model
+I 2017-02-11 22:15:12 theanets.graph:643 /tmp/tmpy9FH8l.tmp: loaded model
+I 2017-02-11 22:15:19 downhill.base:232 validation 115 loss=1312.149134 err=1312.149134 *
+I 2017-02-11 22:16:28 downhill.base:232 RMSProp 116 loss=1313.794438 err=1313.794438
+I 2017-02-11 22:16:28 theanets.graph:626 /tmp/tmpUBQlY0.tmp: saved model
+I 2017-02-11 22:16:28 theanets.graph:643 /tmp/tmpUBQlY0.tmp: loaded model
+I 2017-02-11 22:16:35 downhill.base:232 validation 116 loss=1305.152005 err=1305.152005 *
+I 2017-02-11 22:17:48 downhill.base:232 RMSProp 117 loss=1307.028036 err=1307.028036
+I 2017-02-11 22:17:48 theanets.graph:626 /tmp/tmpWD0DDl.tmp: saved model
+I 2017-02-11 22:17:48 theanets.graph:643 /tmp/tmpWD0DDl.tmp: loaded model
+I 2017-02-11 22:17:58 downhill.base:232 validation 117 loss=1297.497391 err=1297.497391 *
+I 2017-02-11 22:23:31 downhill.base:232 RMSProp 118 loss=1299.324191 err=1299.324191
+I 2017-02-11 22:23:40 theanets.graph:626 /tmp/tmpATAJHq.tmp: saved model
+I 2017-02-11 22:23:43 theanets.graph:643 /tmp/tmpATAJHq.tmp: loaded model
+I 2017-02-11 22:25:06 downhill.base:232 validation 118 loss=1292.269079 err=1292.269079
+I 2017-02-11 22:27:05 downhill.base:232 RMSProp 119 loss=1292.298503 err=1292.298503
+I 2017-02-11 22:27:08 theanets.graph:626 /tmp/tmpqeKSiS.tmp: saved model
+I 2017-02-11 22:27:10 theanets.graph:643 /tmp/tmpqeKSiS.tmp: loaded model
+I 2017-02-11 22:27:27 downhill.base:232 validation 119 loss=1286.897018 err=1286.897018 *
+I 2017-02-11 22:29:54 downhill.base:232 RMSProp 120 loss=1283.929785 err=1283.929785
+I 2017-02-11 22:29:55 theanets.graph:626 /tmp/tmpQ11bK_.tmp: saved model
+I 2017-02-11 22:29:55 theanets.graph:643 /tmp/tmpQ11bK_.tmp: loaded model
+I 2017-02-11 22:30:05 downhill.base:232 validation 120 loss=1278.752351 err=1278.752351 *
+I 2017-02-11 22:31:46 downhill.base:232 RMSProp 121 loss=1277.237870 err=1277.237870
+I 2017-02-11 22:31:46 theanets.graph:626 /tmp/tmpFTuv8O.tmp: saved model
+I 2017-02-11 22:31:47 theanets.graph:643 /tmp/tmpFTuv8O.tmp: loaded model
+I 2017-02-11 22:32:06 downhill.base:232 validation 121 loss=1271.059393 err=1271.059393 *
+I 2017-02-11 22:35:13 downhill.base:232 RMSProp 122 loss=1271.656767 err=1271.656767
+I 2017-02-11 22:35:15 theanets.graph:626 /tmp/tmpZ6mbxX.tmp: saved model
+I 2017-02-11 22:35:16 theanets.graph:643 /tmp/tmpZ6mbxX.tmp: loaded model
+I 2017-02-11 22:35:59 downhill.base:232 validation 122 loss=1264.600143 err=1264.600143 *
+I 2017-02-11 22:38:39 downhill.base:232 RMSProp 123 loss=1263.701398 err=1263.701398
+I 2017-02-11 22:38:50 theanets.graph:626 /tmp/tmpE1o3bD.tmp: saved model
+I 2017-02-11 22:38:54 theanets.graph:643 /tmp/tmpE1o3bD.tmp: loaded model
+I 2017-02-11 22:39:52 downhill.base:232 validation 123 loss=1257.217965 err=1257.217965 *
+I 2017-02-11 22:41:27 downhill.base:232 RMSProp 124 loss=1257.495661 err=1257.495661
+I 2017-02-11 22:41:27 theanets.graph:626 /tmp/tmpNoKK1l.tmp: saved model
+I 2017-02-11 22:41:28 theanets.graph:643 /tmp/tmpNoKK1l.tmp: loaded model
+I 2017-02-11 22:41:36 downhill.base:232 validation 124 loss=1251.082305 err=1251.082305
+I 2017-02-11 22:43:06 downhill.base:232 RMSProp 125 loss=1250.520875 err=1250.520875
+I 2017-02-11 22:43:06 theanets.graph:626 /tmp/tmp4zlhoG.tmp: saved model
+I 2017-02-11 22:43:06 theanets.graph:643 /tmp/tmp4zlhoG.tmp: loaded model
+I 2017-02-11 22:43:14 downhill.base:232 validation 125 loss=1243.580859 err=1243.580859 *
+I 2017-02-11 22:44:23 downhill.base:232 RMSProp 126 loss=1243.379139 err=1243.379139
+I 2017-02-11 22:44:23 theanets.graph:626 /tmp/tmp1h_C0B.tmp: saved model
+I 2017-02-11 22:44:23 theanets.graph:643 /tmp/tmp1h_C0B.tmp: loaded model
+I 2017-02-11 22:44:30 downhill.base:232 validation 126 loss=1237.098167 err=1237.098167 *
+I 2017-02-11 22:45:48 downhill.base:232 RMSProp 127 loss=1235.587004 err=1235.587004
+I 2017-02-11 22:45:48 theanets.graph:626 /tmp/tmpHxeIDC.tmp: saved model
+I 2017-02-11 22:45:48 theanets.graph:643 /tmp/tmpHxeIDC.tmp: loaded model
+I 2017-02-11 22:45:55 downhill.base:232 validation 127 loss=1228.971795 err=1228.971795 *
+I 2017-02-11 22:47:06 downhill.base:232 RMSProp 128 loss=1228.628529 err=1228.628529
+I 2017-02-11 22:47:06 theanets.graph:626 /tmp/tmpUcnIxv.tmp: saved model
+I 2017-02-11 22:47:06 theanets.graph:643 /tmp/tmpUcnIxv.tmp: loaded model
+I 2017-02-11 22:47:13 downhill.base:232 validation 128 loss=1222.403819 err=1222.403819 *
+I 2017-02-11 22:48:22 downhill.base:232 RMSProp 129 loss=1219.951420 err=1219.951420
+I 2017-02-11 22:48:22 theanets.graph:626 /tmp/tmpFmKIyr.tmp: saved model
+I 2017-02-11 22:48:22 theanets.graph:643 /tmp/tmpFmKIyr.tmp: loaded model
+I 2017-02-11 22:48:29 downhill.base:232 validation 129 loss=1214.236032 err=1214.236032 *
+I 2017-02-11 22:52:33 downhill.base:232 RMSProp 130 loss=1211.928963 err=1211.928963
+I 2017-02-11 22:52:42 theanets.graph:626 /tmp/tmpGrI9UE.tmp: saved model
+I 2017-02-11 22:52:44 theanets.graph:643 /tmp/tmpGrI9UE.tmp: loaded model
+I 2017-02-11 22:54:44 downhill.base:232 validation 130 loss=1206.371196 err=1206.371196 *
+I 2017-02-11 22:57:35 downhill.base:232 RMSProp 131 loss=1200.446169 err=1200.446169
+I 2017-02-11 22:57:36 theanets.graph:626 /tmp/tmpI9WN9a.tmp: saved model
+I 2017-02-11 22:57:38 theanets.graph:643 /tmp/tmpI9WN9a.tmp: loaded model
+I 2017-02-11 22:57:56 downhill.base:232 validation 131 loss=1195.026054 err=1195.026054 *
+I 2017-02-11 22:59:30 downhill.base:232 RMSProp 132 loss=1186.780759 err=1186.780759
+I 2017-02-11 22:59:30 theanets.graph:626 /tmp/tmpc8tX8u.tmp: saved model
+I 2017-02-11 22:59:30 theanets.graph:643 /tmp/tmpc8tX8u.tmp: loaded model
+I 2017-02-11 22:59:39 downhill.base:232 validation 132 loss=1182.580411 err=1182.580411 *
+I 2017-02-11 23:01:10 downhill.base:232 RMSProp 133 loss=1176.731198 err=1176.731198
+I 2017-02-11 23:01:10 theanets.graph:626 /tmp/tmpPp9PH_.tmp: saved model
+I 2017-02-11 23:01:10 theanets.graph:643 /tmp/tmpPp9PH_.tmp: loaded model
+I 2017-02-11 23:01:22 downhill.base:232 validation 133 loss=1174.542144 err=1174.542144 *
+I 2017-02-11 23:03:13 downhill.base:232 RMSProp 134 loss=1168.299612 err=1168.299612
+I 2017-02-11 23:03:13 theanets.graph:626 /tmp/tmp6PMEae.tmp: saved model
+I 2017-02-11 23:03:13 theanets.graph:643 /tmp/tmp6PMEae.tmp: loaded model
+I 2017-02-11 23:03:24 downhill.base:232 validation 134 loss=1167.218994 err=1167.218994 *
+I 2017-02-11 23:06:49 downhill.base:232 RMSProp 135 loss=1161.013933 err=1161.013933
+I 2017-02-11 23:07:02 theanets.graph:626 /tmp/tmpeNgjDa.tmp: saved model
+I 2017-02-11 23:07:05 theanets.graph:643 /tmp/tmpeNgjDa.tmp: loaded model
+I 2017-02-11 23:08:51 downhill.base:232 validation 135 loss=1159.671337 err=1159.671337 *
+I 2017-02-11 23:10:59 downhill.base:232 RMSProp 136 loss=1154.678585 err=1154.678585
+I 2017-02-11 23:11:03 theanets.graph:626 /tmp/tmpniipGf.tmp: saved model
+I 2017-02-11 23:11:06 theanets.graph:643 /tmp/tmpniipGf.tmp: loaded model
+I 2017-02-11 23:11:24 downhill.base:232 validation 136 loss=1152.796269 err=1152.796269 *
+I 2017-02-11 23:12:45 downhill.base:232 RMSProp 137 loss=1148.082180 err=1148.082180
+I 2017-02-11 23:12:45 theanets.graph:626 /tmp/tmpYItPIg.tmp: saved model
+I 2017-02-11 23:12:45 theanets.graph:643 /tmp/tmpYItPIg.tmp: loaded model
+I 2017-02-11 23:12:56 downhill.base:232 validation 137 loss=1146.864723 err=1146.864723 *
+I 2017-02-11 23:15:20 downhill.base:232 RMSProp 138 loss=1142.102369 err=1142.102369
+I 2017-02-11 23:15:29 theanets.graph:626 /tmp/tmp195MyX.tmp: saved model
+I 2017-02-11 23:15:30 theanets.graph:643 /tmp/tmp195MyX.tmp: loaded model
+I 2017-02-11 23:16:08 downhill.base:232 validation 138 loss=1142.196090 err=1142.196090
+I 2017-02-11 23:17:56 downhill.base:232 RMSProp 139 loss=1137.075841 err=1137.075841
+I 2017-02-11 23:17:56 theanets.graph:626 /tmp/tmpB2Tko7.tmp: saved model
+I 2017-02-11 23:17:56 theanets.graph:643 /tmp/tmpB2Tko7.tmp: loaded model
+I 2017-02-11 23:18:09 downhill.base:232 validation 139 loss=1136.524902 err=1136.524902 *
+I 2017-02-11 23:20:01 downhill.base:232 RMSProp 140 loss=1130.996635 err=1130.996635
+I 2017-02-11 23:20:01 theanets.graph:626 /tmp/tmpUKU1_P.tmp: saved model
+I 2017-02-11 23:20:01 theanets.graph:643 /tmp/tmpUKU1_P.tmp: loaded model
+I 2017-02-11 23:20:12 downhill.base:232 validation 140 loss=1131.383170 err=1131.383170
+I 2017-02-11 23:22:04 downhill.base:232 RMSProp 141 loss=1126.762043 err=1126.762043
+I 2017-02-11 23:22:04 theanets.graph:626 /tmp/tmpFwTUAY.tmp: saved model
+I 2017-02-11 23:22:04 theanets.graph:643 /tmp/tmpFwTUAY.tmp: loaded model
+I 2017-02-11 23:22:16 downhill.base:232 validation 141 loss=1126.634815 err=1126.634815 *
+I 2017-02-11 23:24:38 downhill.base:232 RMSProp 142 loss=1121.472479 err=1121.472479
+I 2017-02-11 23:24:43 theanets.graph:626 /tmp/tmpE8eVfB.tmp: saved model
+I 2017-02-11 23:24:45 theanets.graph:643 /tmp/tmpE8eVfB.tmp: loaded model
+I 2017-02-11 23:25:59 downhill.base:232 validation 142 loss=1121.657629 err=1121.657629
+I 2017-02-11 23:28:37 downhill.base:232 RMSProp 143 loss=1116.646317 err=1116.646317
+I 2017-02-11 23:28:48 theanets.graph:626 /tmp/tmpLqtaeY.tmp: saved model
+I 2017-02-11 23:28:50 theanets.graph:643 /tmp/tmpLqtaeY.tmp: loaded model
+I 2017-02-11 23:29:55 downhill.base:232 validation 143 loss=1115.968626 err=1115.968626 *
+I 2017-02-11 23:32:00 downhill.base:232 RMSProp 144 loss=1111.988117 err=1111.988117
+I 2017-02-11 23:32:01 theanets.graph:626 /tmp/tmpW41maC.tmp: saved model
+I 2017-02-11 23:32:01 theanets.graph:643 /tmp/tmpW41maC.tmp: loaded model
+I 2017-02-11 23:32:14 downhill.base:232 validation 144 loss=1111.734185 err=1111.734185
+I 2017-02-11 23:33:27 downhill.base:232 RMSProp 145 loss=1107.835810 err=1107.835810
+I 2017-02-11 23:33:27 theanets.graph:626 /tmp/tmpXo0zKP.tmp: saved model
+I 2017-02-11 23:33:28 theanets.graph:643 /tmp/tmpXo0zKP.tmp: loaded model
+I 2017-02-11 23:33:35 downhill.base:232 validation 145 loss=1106.578361 err=1106.578361 *
+I 2017-02-11 23:34:41 downhill.base:232 RMSProp 146 loss=1103.503341 err=1103.503341
+I 2017-02-11 23:34:41 theanets.graph:626 /tmp/tmpBnSxFX.tmp: saved model
+I 2017-02-11 23:34:42 theanets.graph:643 /tmp/tmpBnSxFX.tmp: loaded model
+I 2017-02-11 23:34:48 downhill.base:232 validation 146 loss=1103.289347 err=1103.289347
+I 2017-02-11 23:35:56 downhill.base:232 RMSProp 147 loss=1100.368143 err=1100.368143
+I 2017-02-11 23:35:56 theanets.graph:626 /tmp/tmplUfkg_.tmp: saved model
+I 2017-02-11 23:35:56 theanets.graph:643 /tmp/tmplUfkg_.tmp: loaded model
+I 2017-02-11 23:36:03 downhill.base:232 validation 147 loss=1099.295701 err=1099.295701 *
+I 2017-02-11 23:37:28 downhill.base:232 RMSProp 148 loss=1095.976895 err=1095.976895
+I 2017-02-11 23:37:28 theanets.graph:626 /tmp/tmpzBPTev.tmp: saved model
+I 2017-02-11 23:37:28 theanets.graph:643 /tmp/tmpzBPTev.tmp: loaded model
+I 2017-02-11 23:37:37 downhill.base:232 validation 148 loss=1096.940595 err=1096.940595
+I 2017-02-11 23:41:20 downhill.base:232 RMSProp 149 loss=1092.429553 err=1092.429553
+I 2017-02-11 23:41:23 theanets.graph:626 /tmp/tmp6YAKBE.tmp: saved model
+I 2017-02-11 23:41:25 theanets.graph:643 /tmp/tmp6YAKBE.tmp: loaded model
+I 2017-02-11 23:42:34 downhill.base:232 validation 149 loss=1093.136601 err=1093.136601 *
+I 2017-02-11 23:45:57 downhill.base:232 RMSProp 150 loss=1088.136100 err=1088.136100
+I 2017-02-11 23:46:02 theanets.graph:626 /tmp/tmpy96GXf.tmp: saved model
+I 2017-02-11 23:46:04 theanets.graph:643 /tmp/tmpy96GXf.tmp: loaded model
+I 2017-02-11 23:47:01 downhill.base:232 validation 150 loss=1088.663071 err=1088.663071
+I 2017-02-11 23:48:49 downhill.base:232 RMSProp 151 loss=1084.873981 err=1084.873981
+I 2017-02-11 23:48:49 theanets.graph:626 /tmp/tmpwNBzQx.tmp: saved model
+I 2017-02-11 23:48:49 theanets.graph:643 /tmp/tmpwNBzQx.tmp: loaded model
+I 2017-02-11 23:48:56 downhill.base:232 validation 151 loss=1085.907838 err=1085.907838 *
+I 2017-02-11 23:50:08 downhill.base:232 RMSProp 152 loss=1081.623400 err=1081.623400
+I 2017-02-11 23:50:08 theanets.graph:626 /tmp/tmpH1YYFU.tmp: saved model
+I 2017-02-11 23:50:08 theanets.graph:643 /tmp/tmpH1YYFU.tmp: loaded model
+I 2017-02-11 23:50:17 downhill.base:232 validation 152 loss=1081.841170 err=1081.841170
+I 2017-02-11 23:54:25 downhill.base:232 RMSProp 153 loss=1079.341875 err=1079.341875
+I 2017-02-11 23:54:30 theanets.graph:626 /tmp/tmpBGbwA1.tmp: saved model
+I 2017-02-11 23:54:32 theanets.graph:643 /tmp/tmpBGbwA1.tmp: loaded model
+I 2017-02-11 23:55:11 downhill.base:232 validation 153 loss=1077.902199 err=1077.902199 *
+I 2017-02-11 23:57:33 downhill.base:232 RMSProp 154 loss=1075.620552 err=1075.620552
+I 2017-02-11 23:57:34 theanets.graph:626 /tmp/tmprdWRBB.tmp: saved model
+I 2017-02-11 23:57:34 theanets.graph:643 /tmp/tmprdWRBB.tmp: loaded model
+I 2017-02-11 23:57:47 downhill.base:232 validation 154 loss=1075.570185 err=1075.570185
+I 2017-02-11 23:59:56 downhill.base:232 RMSProp 155 loss=1072.403430 err=1072.403430
+I 2017-02-11 23:59:59 theanets.graph:626 /tmp/tmpByDPzI.tmp: saved model
+I 2017-02-12 00:00:00 theanets.graph:643 /tmp/tmpByDPzI.tmp: loaded model
+I 2017-02-12 00:00:47 downhill.base:232 validation 155 loss=1071.697080 err=1071.697080 *
+I 2017-02-12 00:03:52 downhill.base:232 RMSProp 156 loss=1069.573365 err=1069.573365
+I 2017-02-12 00:03:54 theanets.graph:626 /tmp/tmpQMzbbt.tmp: saved model
+I 2017-02-12 00:03:56 theanets.graph:643 /tmp/tmpQMzbbt.tmp: loaded model
+I 2017-02-12 00:04:19 downhill.base:232 validation 156 loss=1070.319119 err=1070.319119
+I 2017-02-12 00:06:38 downhill.base:232 RMSProp 157 loss=1067.575980 err=1067.575980
+I 2017-02-12 00:06:39 theanets.graph:626 /tmp/tmpRFENsX.tmp: saved model
+I 2017-02-12 00:06:39 theanets.graph:643 /tmp/tmpRFENsX.tmp: loaded model
+I 2017-02-12 00:06:52 downhill.base:232 validation 157 loss=1067.181980 err=1067.181980
+I 2017-02-12 00:09:30 downhill.base:232 RMSProp 158 loss=1064.479189 err=1064.479189
+I 2017-02-12 00:09:30 theanets.graph:626 /tmp/tmpaAkRvS.tmp: saved model
+I 2017-02-12 00:09:30 theanets.graph:643 /tmp/tmpaAkRvS.tmp: loaded model
+I 2017-02-12 00:09:49 downhill.base:232 validation 158 loss=1064.790885 err=1064.790885 *
+I 2017-02-12 00:11:28 downhill.base:232 RMSProp 159 loss=1062.323220 err=1062.323220
+I 2017-02-12 00:11:28 theanets.graph:626 /tmp/tmp_uMpph.tmp: saved model
+I 2017-02-12 00:11:28 theanets.graph:643 /tmp/tmp_uMpph.tmp: loaded model
+I 2017-02-12 00:11:41 downhill.base:232 validation 159 loss=1062.003856 err=1062.003856
+I 2017-02-12 00:13:29 downhill.base:232 RMSProp 160 loss=1059.052205 err=1059.052205
+I 2017-02-12 00:13:29 theanets.graph:626 /tmp/tmpncgNn2.tmp: saved model
+I 2017-02-12 00:13:30 theanets.graph:643 /tmp/tmpncgNn2.tmp: loaded model
+I 2017-02-12 00:14:29 downhill.base:232 validation 160 loss=1060.164229 err=1060.164229
+I 2017-02-12 00:17:34 downhill.base:232 RMSProp 161 loss=1056.962466 err=1056.962466
+I 2017-02-12 00:17:42 theanets.graph:626 /tmp/tmpRG7i41.tmp: saved model
+I 2017-02-12 00:17:43 theanets.graph:643 /tmp/tmpRG7i41.tmp: loaded model
+I 2017-02-12 00:18:15 downhill.base:232 validation 161 loss=1056.538959 err=1056.538959 *
+I 2017-02-12 00:20:05 downhill.base:232 RMSProp 162 loss=1055.289353 err=1055.289353
+I 2017-02-12 00:20:05 theanets.graph:626 /tmp/tmpud0Btr.tmp: saved model
+I 2017-02-12 00:20:05 theanets.graph:643 /tmp/tmpud0Btr.tmp: loaded model
+I 2017-02-12 00:20:18 downhill.base:232 validation 162 loss=1055.182155 err=1055.182155
+I 2017-02-12 00:22:55 downhill.base:232 RMSProp 163 loss=1052.415790 err=1052.415790
+I 2017-02-12 00:22:55 theanets.graph:626 /tmp/tmpsaMINd.tmp: saved model
+I 2017-02-12 00:22:56 theanets.graph:643 /tmp/tmpsaMINd.tmp: loaded model
+I 2017-02-12 00:23:20 downhill.base:232 validation 163 loss=1053.984657 err=1053.984657
+I 2017-02-12 00:25:03 downhill.base:232 RMSProp 164 loss=1050.712687 err=1050.712687
+I 2017-02-12 00:25:04 theanets.graph:626 /tmp/tmpE_dhXd.tmp: saved model
+I 2017-02-12 00:25:04 theanets.graph:643 /tmp/tmpE_dhXd.tmp: loaded model
+I 2017-02-12 00:25:17 downhill.base:232 validation 164 loss=1051.652145 err=1051.652145
+I 2017-02-12 00:27:09 downhill.base:232 RMSProp 165 loss=1048.748289 err=1048.748289
+I 2017-02-12 00:27:11 theanets.graph:626 /tmp/tmpAhoRRt.tmp: saved model
+I 2017-02-12 00:27:12 theanets.graph:643 /tmp/tmpAhoRRt.tmp: loaded model
+I 2017-02-12 00:27:47 downhill.base:232 validation 165 loss=1048.894244 err=1048.894244 *
+I 2017-02-12 00:29:48 downhill.base:232 RMSProp 166 loss=1046.067772 err=1046.067772
+I 2017-02-12 00:29:48 theanets.graph:626 /tmp/tmpbqeAno.tmp: saved model
+I 2017-02-12 00:29:49 theanets.graph:643 /tmp/tmpbqeAno.tmp: loaded model
+I 2017-02-12 00:29:59 downhill.base:232 validation 166 loss=1047.395805 err=1047.395805
+I 2017-02-12 00:34:24 downhill.base:232 RMSProp 167 loss=1044.248539 err=1044.248539
+I 2017-02-12 00:34:48 theanets.graph:626 /tmp/tmpzbdsvi.tmp: saved model
+I 2017-02-12 00:34:52 theanets.graph:643 /tmp/tmpzbdsvi.tmp: loaded model
+I 2017-02-12 00:36:24 downhill.base:232 validation 167 loss=1045.062709 err=1045.062709
+I 2017-02-12 00:39:35 downhill.base:232 RMSProp 168 loss=1042.766490 err=1042.766490
+I 2017-02-12 00:39:35 theanets.graph:626 /tmp/tmpPoB9JA.tmp: saved model
+I 2017-02-12 00:39:36 theanets.graph:643 /tmp/tmpPoB9JA.tmp: loaded model
+I 2017-02-12 00:39:44 downhill.base:232 validation 168 loss=1041.618752 err=1041.618752 *
+I 2017-02-12 00:42:59 downhill.base:232 RMSProp 169 loss=1039.906208 err=1039.906208
+I 2017-02-12 00:43:01 theanets.graph:626 /tmp/tmp4Xtegb.tmp: saved model
+I 2017-02-12 00:43:02 theanets.graph:643 /tmp/tmp4Xtegb.tmp: loaded model
+I 2017-02-12 00:43:19 downhill.base:232 validation 169 loss=1041.630680 err=1041.630680
+I 2017-02-12 00:45:34 downhill.base:232 RMSProp 170 loss=1038.530083 err=1038.530083
+I 2017-02-12 00:45:44 theanets.graph:626 /tmp/tmpsLGyqE.tmp: saved model
+I 2017-02-12 00:45:46 theanets.graph:643 /tmp/tmpsLGyqE.tmp: loaded model
+I 2017-02-12 00:46:27 downhill.base:232 validation 170 loss=1039.539153 err=1039.539153
+I 2017-02-12 00:48:09 downhill.base:232 RMSProp 171 loss=1036.292698 err=1036.292698
+I 2017-02-12 00:48:09 theanets.graph:626 /tmp/tmpJ0H1iC.tmp: saved model
+I 2017-02-12 00:48:09 theanets.graph:643 /tmp/tmpJ0H1iC.tmp: loaded model
+I 2017-02-12 00:48:16 downhill.base:232 validation 171 loss=1038.595681 err=1038.595681
+I 2017-02-12 00:49:29 downhill.base:232 RMSProp 172 loss=1034.829523 err=1034.829523
+I 2017-02-12 00:49:29 theanets.graph:626 /tmp/tmpWKTKKO.tmp: saved model
+I 2017-02-12 00:49:29 theanets.graph:643 /tmp/tmpWKTKKO.tmp: loaded model
+I 2017-02-12 00:49:37 downhill.base:232 validation 172 loss=1035.408545 err=1035.408545 *
+I 2017-02-12 00:50:50 downhill.base:232 RMSProp 173 loss=1033.107849 err=1033.107849
+I 2017-02-12 00:50:50 theanets.graph:626 /tmp/tmpai555g.tmp: saved model
+I 2017-02-12 00:50:50 theanets.graph:643 /tmp/tmpai555g.tmp: loaded model
+I 2017-02-12 00:50:58 downhill.base:232 validation 173 loss=1033.129598 err=1033.129598
+I 2017-02-12 00:52:48 downhill.base:232 RMSProp 174 loss=1031.456541 err=1031.456541
+I 2017-02-12 00:52:48 theanets.graph:626 /tmp/tmp8bq8sw.tmp: saved model
+I 2017-02-12 00:52:48 theanets.graph:643 /tmp/tmp8bq8sw.tmp: loaded model
+I 2017-02-12 00:53:00 downhill.base:232 validation 174 loss=1031.052373 err=1031.052373
+I 2017-02-12 00:57:03 downhill.base:232 RMSProp 175 loss=1029.842791 err=1029.842791
+I 2017-02-12 00:57:17 theanets.graph:626 /tmp/tmpPhjdWX.tmp: saved model
+I 2017-02-12 00:57:18 theanets.graph:643 /tmp/tmpPhjdWX.tmp: loaded model
+I 2017-02-12 00:58:38 downhill.base:232 validation 175 loss=1031.960851 err=1031.960851
+I 2017-02-12 01:01:04 downhill.base:232 RMSProp 176 loss=1028.609897 err=1028.609897
+I 2017-02-12 01:01:13 theanets.graph:626 /tmp/tmpbkECdW.tmp: saved model
+I 2017-02-12 01:01:17 theanets.graph:643 /tmp/tmpbkECdW.tmp: loaded model
+I 2017-02-12 01:01:44 downhill.base:232 validation 176 loss=1029.634356 err=1029.634356 *
+I 2017-02-12 01:03:15 downhill.base:232 RMSProp 177 loss=1027.082113 err=1027.082113
+I 2017-02-12 01:03:15 theanets.graph:626 /tmp/tmpsCruWZ.tmp: saved model
+I 2017-02-12 01:03:15 theanets.graph:643 /tmp/tmpsCruWZ.tmp: loaded model
+I 2017-02-12 01:03:23 downhill.base:232 validation 177 loss=1027.199900 err=1027.199900
+I 2017-02-12 01:04:34 downhill.base:232 RMSProp 178 loss=1025.559750 err=1025.559750
+I 2017-02-12 01:04:34 theanets.graph:626 /tmp/tmpuaHyDm.tmp: saved model
+I 2017-02-12 01:04:35 theanets.graph:643 /tmp/tmpuaHyDm.tmp: loaded model
+I 2017-02-12 01:04:44 downhill.base:232 validation 178 loss=1025.532462 err=1025.532462
+I 2017-02-12 01:07:40 downhill.base:232 RMSProp 179 loss=1023.784889 err=1023.784889
+I 2017-02-12 01:07:56 theanets.graph:626 /tmp/tmpJK1ywP.tmp: saved model
+I 2017-02-12 01:07:58 theanets.graph:643 /tmp/tmpJK1ywP.tmp: loaded model
+I 2017-02-12 01:09:26 downhill.base:232 validation 179 loss=1025.267759 err=1025.267759
+I 2017-02-12 01:13:09 downhill.base:232 RMSProp 180 loss=1022.694951 err=1022.694951
+I 2017-02-12 01:13:28 theanets.graph:626 /tmp/tmp32V7jP.tmp: saved model
+I 2017-02-12 01:13:35 theanets.graph:643 /tmp/tmp32V7jP.tmp: loaded model
+I 2017-02-12 01:14:33 downhill.base:232 validation 180 loss=1022.771416 err=1022.771416 *
+I 2017-02-12 01:16:12 downhill.base:232 RMSProp 181 loss=1020.400449 err=1020.400449
+I 2017-02-12 01:16:12 theanets.graph:626 /tmp/tmpbEw5qi.tmp: saved model
+I 2017-02-12 01:16:12 theanets.graph:643 /tmp/tmpbEw5qi.tmp: loaded model
+I 2017-02-12 01:16:21 downhill.base:232 validation 181 loss=1022.112232 err=1022.112232
+I 2017-02-12 01:18:24 downhill.base:232 RMSProp 182 loss=1019.621009 err=1019.621009
+I 2017-02-12 01:18:24 theanets.graph:626 /tmp/tmpOIT4sG.tmp: saved model
+I 2017-02-12 01:18:25 theanets.graph:643 /tmp/tmpOIT4sG.tmp: loaded model
+I 2017-02-12 01:18:36 downhill.base:232 validation 182 loss=1021.201378 err=1021.201378
+I 2017-02-12 01:20:11 downhill.base:232 RMSProp 183 loss=1018.502222 err=1018.502222
+I 2017-02-12 01:20:11 theanets.graph:626 /tmp/tmp70hcU3.tmp: saved model
+I 2017-02-12 01:20:11 theanets.graph:643 /tmp/tmp70hcU3.tmp: loaded model
+I 2017-02-12 01:21:03 downhill.base:232 validation 183 loss=1019.280224 err=1019.280224
+I 2017-02-12 01:23:34 downhill.base:232 RMSProp 184 loss=1017.084940 err=1017.084940
+I 2017-02-12 01:23:58 theanets.graph:626 /tmp/tmpVzNGuY.tmp: saved model
+I 2017-02-12 01:24:14 theanets.graph:643 /tmp/tmpVzNGuY.tmp: loaded model
+I 2017-02-12 01:25:09 downhill.base:232 validation 184 loss=1017.260069 err=1017.260069 *
+I 2017-02-12 01:27:27 downhill.base:232 RMSProp 185 loss=1015.677388 err=1015.677388
+I 2017-02-12 01:27:29 theanets.graph:626 /tmp/tmp4sNbvX.tmp: saved model
+I 2017-02-12 01:27:30 theanets.graph:643 /tmp/tmp4sNbvX.tmp: loaded model
+I 2017-02-12 01:27:41 downhill.base:232 validation 185 loss=1016.758781 err=1016.758781
+I 2017-02-12 01:29:53 downhill.base:232 RMSProp 186 loss=1014.668967 err=1014.668967
+I 2017-02-12 01:29:55 theanets.graph:626 /tmp/tmp_Zmn2C.tmp: saved model
+I 2017-02-12 01:29:56 theanets.graph:643 /tmp/tmp_Zmn2C.tmp: loaded model
+I 2017-02-12 01:30:34 downhill.base:232 validation 186 loss=1014.265700 err=1014.265700
+I 2017-02-12 01:32:19 downhill.base:232 RMSProp 187 loss=1012.696851 err=1012.696851
+I 2017-02-12 01:32:19 theanets.graph:626 /tmp/tmpmRsnOt.tmp: saved model
+I 2017-02-12 01:32:20 theanets.graph:643 /tmp/tmpmRsnOt.tmp: loaded model
+I 2017-02-12 01:32:32 downhill.base:232 validation 187 loss=1012.484945 err=1012.484945
+I 2017-02-12 01:34:24 downhill.base:232 RMSProp 188 loss=1011.389902 err=1011.389902
+I 2017-02-12 01:34:24 theanets.graph:626 /tmp/tmpGw96XC.tmp: saved model
+I 2017-02-12 01:34:24 theanets.graph:643 /tmp/tmpGw96XC.tmp: loaded model
+I 2017-02-12 01:34:34 downhill.base:232 validation 188 loss=1012.989681 err=1012.989681
+I 2017-02-12 01:36:28 downhill.base:232 RMSProp 189 loss=1011.769610 err=1011.769610
+I 2017-02-12 01:36:28 theanets.graph:626 /tmp/tmpFa6hVe.tmp: saved model
+I 2017-02-12 01:36:28 theanets.graph:643 /tmp/tmpFa6hVe.tmp: loaded model
+I 2017-02-12 01:36:39 downhill.base:232 validation 189 loss=1010.720356 err=1010.720356 *
+I 2017-02-12 01:40:43 downhill.base:232 RMSProp 190 loss=1009.896626 err=1009.896626
+I 2017-02-12 01:40:54 theanets.graph:626 /tmp/tmpFUD4S9.tmp: saved model
+I 2017-02-12 01:40:57 theanets.graph:643 /tmp/tmpFUD4S9.tmp: loaded model
+I 2017-02-12 01:41:37 downhill.base:232 validation 190 loss=1010.912150 err=1010.912150
+I 2017-02-12 01:43:22 downhill.base:232 RMSProp 191 loss=1007.957895 err=1007.957895
+I 2017-02-12 01:43:23 theanets.graph:626 /tmp/tmpJWz65X.tmp: saved model
+I 2017-02-12 01:43:23 theanets.graph:643 /tmp/tmpJWz65X.tmp: loaded model
+I 2017-02-12 01:43:33 downhill.base:232 validation 191 loss=1009.665193 err=1009.665193
+I 2017-02-12 01:46:50 downhill.base:232 RMSProp 192 loss=1006.543767 err=1006.543767
+I 2017-02-12 01:46:58 theanets.graph:626 /tmp/tmp835Vy3.tmp: saved model
+I 2017-02-12 01:47:00 theanets.graph:643 /tmp/tmp835Vy3.tmp: loaded model
+I 2017-02-12 01:47:53 downhill.base:232 validation 192 loss=1008.871571 err=1008.871571
+I 2017-02-12 01:50:13 downhill.base:232 RMSProp 193 loss=1006.354046 err=1006.354046
+I 2017-02-12 01:50:15 theanets.graph:626 /tmp/tmpOFhZGm.tmp: saved model
+I 2017-02-12 01:50:15 theanets.graph:643 /tmp/tmpOFhZGm.tmp: loaded model
+I 2017-02-12 01:50:28 downhill.base:232 validation 193 loss=1006.285958 err=1006.285958
+I 2017-02-12 01:53:14 downhill.base:232 RMSProp 194 loss=1005.055116 err=1005.055116
+I 2017-02-12 01:53:17 theanets.graph:626 /tmp/tmphvjdmS.tmp: saved model
+I 2017-02-12 01:53:18 theanets.graph:643 /tmp/tmphvjdmS.tmp: loaded model
+I 2017-02-12 01:53:40 downhill.base:232 validation 194 loss=1005.627106 err=1005.627106 *
+I 2017-02-12 01:55:39 downhill.base:232 RMSProp 195 loss=1004.059149 err=1004.059149
+I 2017-02-12 01:55:39 theanets.graph:626 /tmp/tmpDhStge.tmp: saved model
+I 2017-02-12 01:55:40 theanets.graph:643 /tmp/tmpDhStge.tmp: loaded model
+I 2017-02-12 01:55:51 downhill.base:232 validation 195 loss=1004.626944 err=1004.626944
+I 2017-02-12 01:57:38 downhill.base:232 RMSProp 196 loss=1002.386368 err=1002.386368
+I 2017-02-12 01:57:38 theanets.graph:626 /tmp/tmpt7wex2.tmp: saved model
+I 2017-02-12 01:57:38 theanets.graph:643 /tmp/tmpt7wex2.tmp: loaded model
+I 2017-02-12 01:57:50 downhill.base:232 validation 196 loss=1003.306502 err=1003.306502
+I 2017-02-12 01:59:41 downhill.base:232 RMSProp 197 loss=1001.110660 err=1001.110660
+I 2017-02-12 01:59:41 theanets.graph:626 /tmp/tmplFbPe1.tmp: saved model
+I 2017-02-12 01:59:41 theanets.graph:643 /tmp/tmplFbPe1.tmp: loaded model
+I 2017-02-12 01:59:54 downhill.base:232 validation 197 loss=1002.016219 err=1002.016219
+I 2017-02-12 02:02:44 downhill.base:232 RMSProp 198 loss=999.922080 err=999.922080
+I 2017-02-12 02:02:48 theanets.graph:626 /tmp/tmpSZ7cpo.tmp: saved model
+I 2017-02-12 02:02:49 theanets.graph:643 /tmp/tmpSZ7cpo.tmp: loaded model
+I 2017-02-12 02:03:08 downhill.base:232 validation 198 loss=1001.429585 err=1001.429585
+I 2017-02-12 02:06:08 downhill.base:232 RMSProp 199 loss=999.709069 err=999.709069
+I 2017-02-12 02:06:11 theanets.graph:626 /tmp/tmpWBGzfc.tmp: saved model
+I 2017-02-12 02:06:12 theanets.graph:643 /tmp/tmpWBGzfc.tmp: loaded model
+I 2017-02-12 02:06:28 downhill.base:232 validation 199 loss=999.534435 err=999.534435 *
+I 2017-02-12 02:10:19 downhill.base:232 RMSProp 200 loss=998.569737 err=998.569737
+I 2017-02-12 02:10:24 theanets.graph:626 /tmp/tmp9E9aCi.tmp: saved model
+I 2017-02-12 02:10:27 theanets.graph:643 /tmp/tmp9E9aCi.tmp: loaded model
+I 2017-02-12 02:11:41 downhill.base:232 validation 200 loss=998.711091 err=998.711091
+I 2017-02-12 02:14:21 downhill.base:232 RMSProp 201 loss=997.583058 err=997.583058
+I 2017-02-12 02:14:22 theanets.graph:626 /tmp/tmphgZi0Y.tmp: saved model
+I 2017-02-12 02:14:23 theanets.graph:643 /tmp/tmphgZi0Y.tmp: loaded model
+I 2017-02-12 02:14:38 downhill.base:232 validation 201 loss=998.559256 err=998.559256
+I 2017-02-12 02:16:14 downhill.base:232 RMSProp 202 loss=996.699313 err=996.699313
+I 2017-02-12 02:16:18 theanets.graph:626 /tmp/tmpa6MUTJ.tmp: saved model
+I 2017-02-12 02:16:20 theanets.graph:643 /tmp/tmpa6MUTJ.tmp: loaded model
+I 2017-02-12 02:16:33 downhill.base:232 validation 202 loss=997.011467 err=997.011467
+I 2017-02-12 02:20:11 downhill.base:232 RMSProp 203 loss=996.392595 err=996.392595
+I 2017-02-12 02:20:13 theanets.graph:626 /tmp/tmpdk7D08.tmp: saved model
+I 2017-02-12 02:20:13 theanets.graph:643 /tmp/tmpdk7D08.tmp: loaded model
+I 2017-02-12 02:20:33 downhill.base:232 validation 203 loss=995.593963 err=995.593963
+I 2017-02-12 02:22:50 downhill.base:232 RMSProp 204 loss=994.319907 err=994.319907
+I 2017-02-12 02:22:52 theanets.graph:626 /tmp/tmpBJUnKq.tmp: saved model
+I 2017-02-12 02:22:52 theanets.graph:643 /tmp/tmpBJUnKq.tmp: loaded model
+I 2017-02-12 02:23:13 downhill.base:232 validation 204 loss=995.651045 err=995.651045
+I 2017-02-12 02:26:01 downhill.base:232 RMSProp 205 loss=993.563100 err=993.563100
+I 2017-02-12 02:26:11 theanets.graph:626 /tmp/tmpIlkSt7.tmp: saved model
+I 2017-02-12 02:26:15 theanets.graph:643 /tmp/tmpIlkSt7.tmp: loaded model
+I 2017-02-12 02:27:07 downhill.base:232 validation 205 loss=994.723148 err=994.723148
+I 2017-02-12 02:27:07 downhill.base:414 patience elapsed!
+I 2017-02-12 02:27:42 theanets.graph:626 /tmp/tmp6Ee28x.tmp: saved model
+I 2017-02-12 02:27:43 theanets.graph:643 /tmp/tmp6Ee28x.tmp: loaded model
+Got result {'main': 995.6510453288189}
+Completed successfully in 36398.24 seconds. [{'main': 995.6510453288189}]

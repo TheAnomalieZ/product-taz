@@ -1,0 +1,34 @@
+Job launching after 0.24 seconds in submission.
+Running python job.
+Changed into dir /home/taz/fyp/product-taz/components/org.taz.core/src/main/python/autoencoder/experiments/App1_gcstate
+Importing o.py
+Running o.main()
+I 2017-02-10 19:09:55 theanets.graph:643 /home/taz/fyp/product-taz/components/org.taz.core/src/main/python/autoencoder/tmppgTPeX.tmp: loaded model
+stateit 3
+it 1
+I 2017-02-10 19:09:56 downhill.dataset:118 valid: 95 mini-batches from callable
+I 2017-02-10 19:09:56 downhill.dataset:118 train: 283 mini-batches from callable
+I 2017-02-10 19:09:56 theanets.graph:447 building computation graph
+I 2017-02-10 19:09:56 theanets.losses:67 using loss: 1.0 * MeanSquaredError (output out:out)
+I 2017-02-10 19:09:56 theanets.regularizers:711 regularizer: 0.812527924776 * GaussianNoise(('in:out',))
+I 2017-02-10 19:09:56 downhill.base:389 -- patience = 5
+I 2017-02-10 19:09:56 downhill.base:390 -- validate_every = 1
+I 2017-02-10 19:09:56 downhill.base:391 -- max_updates = None
+I 2017-02-10 19:09:56 downhill.base:392 -- min_improvement = 0.005
+I 2017-02-10 19:09:56 downhill.base:393 -- max_gradient_norm = 0
+I 2017-02-10 19:09:56 downhill.base:394 -- max_gradient_elem = 0
+I 2017-02-10 19:09:56 downhill.base:395 -- learning_rate = 0.0001
+I 2017-02-10 19:09:56 downhill.base:396 -- momentum = 0
+I 2017-02-10 19:09:56 downhill.base:397 -- nesterov = True
+I 2017-02-10 19:09:56 downhill.adaptive:220 -- rms_halflife = 14
+I 2017-02-10 19:09:56 downhill.adaptive:221 -- rms_regularizer = 1e-08
+I 2017-02-10 19:09:56 downhill.base:118 compiling evaluation function
+I 2017-02-10 19:09:58 downhill.base:124 compiling RMSProp function
+I 2017-02-10 19:10:27 downhill.base:232 validation 0 loss=2.158286 err=2.158286 *
+I 2017-02-10 19:13:14 downhill.base:232 RMSProp 1 loss=1.787560 err=1.787560
+I 2017-02-10 19:13:14 theanets.graph:626 /tmp/tmpS6ibPT.tmp: saved model
+I 2017-02-10 19:13:14 theanets.graph:643 /tmp/tmpS6ibPT.tmp: loaded model
+I 2017-02-10 19:13:14 theanets.graph:626 /tmp/tmpbrCCae.tmp: saved model
+I 2017-02-10 19:13:14 theanets.graph:643 /tmp/tmpbrCCae.tmp: loaded model
+Got result {'main': 2.1582855807579304}
+Completed successfully in 199.58 seconds. [{'main': 2.1582855807579304}]
