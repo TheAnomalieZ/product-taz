@@ -6,24 +6,22 @@ from pandas import rolling_apply
 import numpy as np
 import matplotlib.pyplot as plt
 import math
-from sklearn.metrics import roc_curve, auc
-
 
 def mserror(ts_id,win,**kwargs):
     ts=dat.get_series(ts_id)[:,0]
     tsdf=pd.Series(ts)
     bn=analysis.get_best_net(ts_id)
-    mse=lambda win:np.mean(win - bn.predict(np.array(win,dtype='float32')[:,None,None]))
+    mse=lambda win:np.mean(win - bn.predict(np.array(win,dtype='float32')[:,None,None]))**2
     if win==0: #no window. just return all errors at once
         pr= (bn.predict(ts[:,None,None])[:,0,0]-ts)**2;
         return pr
     return \
         rolling_apply(tsdf,
-                      win
+        win
                       ,mse
                       ,center=True
-                      )
-name ="App1_gctime"
+        )
+name ="App1_gcstate"
 # wins = [10]
 # er=[mserror(name,awin) for awin in wins ]
 
@@ -80,7 +78,7 @@ def drawROC(score, y, size):
     N = len(y) - P
     for (i, T) in enumerate(thr):
         for i in range(0, len(score)):
-            if (score[i] < T):
+            if (score[i] > T):
                 if (y[i]==1):
                     TP = TP + 1
                 if (y[i]==0):
@@ -91,10 +89,15 @@ def drawROC(score, y, size):
         TP=0
 
     plt.scatter(roc_x, roc_y)
-    plt.plot(roc_x, roc_y, label ='Size '+str(size))
+    print roc_y
+    area= np.trapz(roc_y,roc_x)/10000
+    if area<0:
+        area*=-1
+    print area
+    plt.plot(roc_x, roc_y,  label ='W.size:'+str(size)+' AUC:'+str(area) )
 
 
-for i in range(0, 10, 10):
+for i in range(100, 200, 10):
     size = i
     aer = mserror(name,i)
     print aer
@@ -105,33 +108,40 @@ for i in range(0, 10, 10):
     # scorelist = aer.values.tolist()
     scorelist = aer
     scorelist = [0 if math.isnan(x) else x for x in scorelist]
-    labellist = labeling(270,330, scorelist)
-    labellist = relabeling(590,660, labellist)
-    labellist = relabeling(920,980, labellist)
-    labellist = relabeling(1340,1410, labellist)
-    labellist = relabeling(1680,1720, labellist)
-    labellist = relabeling(1970,2020, labellist)
-    labellist = relabeling(2280,2320, labellist)
-    labellist = relabeling(2700,2760, labellist)
-    labellist = relabeling(3070,3156, labellist)
-    print labellist
-    false_positive_rate, true_positive_rate, thresholds = roc_curve(scorelist, labellist,pos_label=1)
-    roc_auc = auc(false_positive_rate, true_positive_rate)
-    print false_positive_rate
-    print true_positive_rate
-    plt.scatter(false_positive_rate, true_positive_rate)
-    plt.plot(false_positive_rate, true_positive_rate, 'b',
-             label='AUC = %0.2f'% roc_auc)
+    # print scorelist
+    # scorelist= [list1[x:x+1] for x in xrange(0, len(list1), 1)]
+    labellist = labeling(448,574, scorelist)
+    labellist = relabeling(1118,1388, labellist)
+    labellist = relabeling(1906,2037, labellist)
+    labellist = relabeling(2672,2889, labellist)
+    labellist = relabeling(3386,3501, labellist)
+    labellist = relabeling(3832,3888, labellist)
+    labellist = relabeling(4348,4497, labellist)
+    labellist = relabeling(5315,5605, labellist)
+    labellist = relabeling(6131,6623, labellist)
 
+    # labellist = labeling(270,330, scorelist)
+    # labellist = relabeling(590,660, labellist)
+    # labellist = relabeling(920,980, labellist)
+    # labellist = relabeling(1340,1410, labellist)
+    # labellist = relabeling(1680,1720, labellist)
+    # labellist = relabeling(1970,2020, labellist)
+    # labellist = relabeling(2280,2320, labellist)
+    # labellist = relabeling(2700,2760, labellist)
+    # labellist = relabeling(3070,3156, labellist)
 
+    # print labellist
 
-plt.title('Receiver Operating Characteristic')
+    drawROC(scorelist, labellist, i)
 
-plt.legend(loc='lower right')
-plt.plot([0,1],[0,1],'r--')
-plt.xlim([-0.1,1.1])
-plt.ylim([-0.1,1.1])
-plt.ylabel('True Positive Rate')
-plt.xlabel('False Positive Rate')
+plt.xlim(-2, 101)
+plt.ylim(-2, 101)
+plt.xlabel('FPR')
+plt.ylabel('TPR')
+plt.legend()
 plt.show()
+
+
+
+
 

@@ -11,7 +11,7 @@ def mserror(ts_id,win,**kwargs):
     ts=dat.get_series(ts_id)[:,0]
     tsdf=pd.Series(ts)
     bn=analysis.get_best_net(ts_id)
-    mse=lambda win:np.mean(win - bn.predict(np.array(win,dtype='float32')[:,None,None]))
+    mse=lambda win:np.mean(win - bn.predict(np.array(win,dtype='float32')[:,None,None]))**2
     if win==0: #no window. just return all errors at once
         pr= (bn.predict(ts[:,None,None])[:,0,0]-ts)**2;
         return pr
@@ -21,10 +21,10 @@ def mserror(ts_id,win,**kwargs):
                       ,mse
                       ,center=True
         )
-name ="App1_gctime"
+name ="App1_gcstate"
 
 
-aer = mserror(name,30)
+aer = mserror(name,100)
 dic = aer.to_dict()
 scorelist = dic.values()
 scorelist = [0 if math.isnan(x) else x for x in scorelist]
