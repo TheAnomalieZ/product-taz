@@ -15,7 +15,7 @@ public class AEPythonExecutor {
     }
 
     public static void callPythonAE(String fileName) throws IOException {
-        String filePath =  System.getProperty("user.dir")+"/components/org.taz.core/src/main/resources/"+fileName;
+        String filePath = fileName;
         System.out.println(filePath);
         File f = new File(filePath);
         if(f.exists() && !f.isDirectory()) {
@@ -24,7 +24,7 @@ public class AEPythonExecutor {
                 System.out.println("No data points, and file empty");
                 return;
             }
-//call python script
+        //call python script
             try {
                 String execution = "python " + FILE_NAME+" "+ filePath +" "+"App1_gctime";
                 Runtime r = Runtime.getRuntime();
@@ -44,6 +44,7 @@ public class AEPythonExecutor {
             System.out.println("File not found");
             return;
         }
+
     }
     private static void getExecutionResult(Process process1) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(process1.getInputStream()));
