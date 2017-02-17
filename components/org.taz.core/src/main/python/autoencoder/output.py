@@ -1,5 +1,4 @@
 import analysis
-import dat
 import sys
 import csv
 import pandas as pd
@@ -9,14 +8,15 @@ import matplotlib.pyplot as plt
 import math
 
 filepath = str(sys.argv[1])
-id = "App1_gctime"
+id       = str(sys.argv[2])
+
 def getSeries(*args,**kwargs):
     kwargs.setdefault('dtype','float32')
     print filepath
     return np.loadtxt(filepath)[::,None]
 
 
-def mserror(ts_id,win,**kwargs):
+def mserror(win,**kwargs):
     ts=getSeries()[:,0]
     tsdf=pd.Series(ts)
     bn=analysis.get_best_net(id)
@@ -31,7 +31,7 @@ def mserror(ts_id,win,**kwargs):
                       ,center=True
                       )
 
-aer = mserror(id,30)
+aer = mserror(30)
 print aer
 print aer.size
 
@@ -47,3 +47,4 @@ file = open(filepath+"_autoencoder.csv", "wb")
 writer = csv.writer(file)
 writer.writerows(scorelist)
 file.close()
+

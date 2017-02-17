@@ -21,7 +21,7 @@ def mserror(ts_id,win,**kwargs):
                       ,mse
                       ,center=True
         )
-name ="App1_gcstate"
+name ="App1_gctime"
 # wins = [10]
 # er=[mserror(name,awin) for awin in wins ]
 
@@ -71,14 +71,14 @@ def drawROC(score, y, size):
     print min_score
     print max_score
 
-    thr = np.linspace(min_score, max_score, 50)
+    thr = np.linspace(min_score, max_score, 100)
     FP=0
     TP=0
     P = sum(y)
     N = len(y) - P
     for (i, T) in enumerate(thr):
         for i in range(0, len(score)):
-            if (score[i] > T):
+            if (score[i] < T):
                 if (y[i]==1):
                     TP = TP + 1
                 if (y[i]==0):
@@ -94,10 +94,10 @@ def drawROC(score, y, size):
     if area<0:
         area*=-1
     print area
-    plt.plot(roc_x, roc_y,  label ='W.size:'+str(size)+' AUC:'+str(area) )
+    plt.plot(roc_x, roc_y,  label ='W.size:'+str(size)+'  AUC:'+str(area) )
 
 
-for i in range(100, 200, 10):
+for i in range(0, 100, 10):
     size = i
     aer = mserror(name,i)
     print aer
@@ -110,27 +110,27 @@ for i in range(100, 200, 10):
     scorelist = [0 if math.isnan(x) else x for x in scorelist]
     # print scorelist
     # scorelist= [list1[x:x+1] for x in xrange(0, len(list1), 1)]
-    labellist = labeling(448,574, scorelist)
-    labellist = relabeling(1118,1388, labellist)
-    labellist = relabeling(1906,2037, labellist)
-    labellist = relabeling(2672,2889, labellist)
-    labellist = relabeling(3386,3501, labellist)
-    labellist = relabeling(3832,3888, labellist)
-    labellist = relabeling(4348,4497, labellist)
-    labellist = relabeling(5315,5605, labellist)
-    labellist = relabeling(6131,6623, labellist)
+    # labellist = labeling(448,574, scorelist)
+    # labellist = relabeling(1118,1388, labellist)
+    # labellist = relabeling(1906,2037, labellist)
+    # labellist = relabeling(2672,2889, labellist)
+    # labellist = relabeling(3386,3501, labellist)
+    # labellist = relabeling(3832,3888, labellist)
+    # labellist = relabeling(4348,4497, labellist)
+    # labellist = relabeling(5315,5605, labellist)
+    # labellist = relabeling(6131,6623, labellist)
 
-    # labellist = labeling(270,330, scorelist)
-    # labellist = relabeling(590,660, labellist)
-    # labellist = relabeling(920,980, labellist)
-    # labellist = relabeling(1340,1410, labellist)
-    # labellist = relabeling(1680,1720, labellist)
-    # labellist = relabeling(1970,2020, labellist)
-    # labellist = relabeling(2280,2320, labellist)
-    # labellist = relabeling(2700,2760, labellist)
-    # labellist = relabeling(3070,3156, labellist)
+    labellist = labeling(270,330, scorelist)
+    labellist = relabeling(590,660, labellist)
+    labellist = relabeling(920,980, labellist)
+    labellist = relabeling(1340,1410, labellist)
+    labellist = relabeling(1680,1720, labellist)
+    labellist = relabeling(1970,2020, labellist)
+    labellist = relabeling(2280,2320, labellist)
+    labellist = relabeling(2700,2760, labellist)
+    labellist = relabeling(3070,3156, labellist)
 
-    # print labellist
+    print labellist
 
     drawROC(scorelist, labellist, i)
 

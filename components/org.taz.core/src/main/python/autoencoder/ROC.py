@@ -13,7 +13,7 @@ def mserror(ts_id,win,**kwargs):
     ts=dat.get_series(ts_id)[:,0]
     tsdf=pd.Series(ts)
     bn=analysis.get_best_net(ts_id)
-    mse=lambda win:np.mean(win - bn.predict(np.array(win,dtype='float32')[:,None,None]))
+    mse=lambda win:np.mean(win - bn.predict(np.array(win,dtype='float32')[:,None,None]))**2
     if win==0: #no window. just return all errors at once
         pr= (bn.predict(ts[:,None,None])[:,0,0]-ts)**2;
         return pr
@@ -94,10 +94,10 @@ def drawROC(score, y, size):
     plt.plot(roc_x, roc_y, label ='Size '+str(size))
 
 
-for i in range(0, 10, 10):
+for i in range(0, 100, 10):
     size = i
     aer = mserror(name,i)
-    print aer
+
     print aer.size
     # aer =np.array( mserror(name,i), dtype=pd.Series)
 
@@ -105,6 +105,7 @@ for i in range(0, 10, 10):
     # scorelist = aer.values.tolist()
     scorelist = aer
     scorelist = [0 if math.isnan(x) else x for x in scorelist]
+    print scorelist
     labellist = labeling(270,330, scorelist)
     labellist = relabeling(590,660, labellist)
     labellist = relabeling(920,980, labellist)
@@ -121,7 +122,7 @@ for i in range(0, 10, 10):
     print true_positive_rate
     plt.scatter(false_positive_rate, true_positive_rate)
     plt.plot(false_positive_rate, true_positive_rate, 'b',
-             label='AUC = %0.2f'% roc_auc)
+             label=' AUC = %0.2f'% roc_auc)
 
 
 

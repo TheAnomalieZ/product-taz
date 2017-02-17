@@ -63,7 +63,10 @@ def drawROC(score, y, size):
 
 
 for i in range(1, 10):
-    f = open('heap-duration-longest/heap_gcpause_longest_results_'+str(i*10)+'_'+str(i)+'_v1.csv')
+    # f = open('heap-duration-longest/heap_gcpause_longest_results_'+str(i*10)+'_'+str(i)+'_v1.csv')
+    # f = open('heap-duration-longest-meta/heap_meta_gcpause_longest_results_'+str(i*10)+'_'+str(i)+'_v2.csv')
+    # f = open('heap-duration-meta/heap_gcpause_meta_results_'+str(i*10)+'_'+str(i)+'_v1.csv')
+    f = open('heap-commited-duration/heap_commited_duration_results_'+str(i*10)+'_'+str(i)+'_v1.csv')
     try:
         reader = csv.reader(f)
         floats = []
