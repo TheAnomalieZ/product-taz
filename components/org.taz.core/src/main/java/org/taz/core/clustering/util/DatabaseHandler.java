@@ -23,7 +23,8 @@ import java.util.List;
  * Created by vithulan on 1/6/17.
  */
 public class DatabaseHandler {
-    public final static String FILE_PATH = "/home/vithulan/JFRs/Clustering/data.csv";
+    //public final static String FILE_PATH = "/home/vithulan/JFRs/Clustering/data.csv";
+    public final static String FILE_PATH = "/home/vithulan/JFRs/CSVs/HeapSummary_Metaspace_Pause.csv";
 
     /**
      * Notice: this is okay for tests - don't use this for frequently used

@@ -21,7 +21,8 @@ import org.taz.core.clustering.util.ParserAPI;
  */
 public class TestApp {
     public static void main(String[] args) {
-        String file_path = "/home/vithulan/JFRs/Clustering/data.csv";
+        //String file_path = "/home/vithulan/JFRs/Clustering/data.csv";
+        String file_path = "/home/vithulan/JFRs/CSVs/heapused_metaspace_dataspace.csv";
 
         Clustering clustering  = new Clustering();
         clustering.cluster();

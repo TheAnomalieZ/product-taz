@@ -12,13 +12,17 @@ import de.lmu.ifi.dbs.elki.utilities.ClassGenericsUtil;
 import de.lmu.ifi.dbs.elki.utilities.optionhandling.parameterization.ListParameterization;
 import org.taz.core.clustering.util.DatabaseHandler;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 /**
  * Created by vithulan on 11/25/16.
  */
 public class Clustering extends DatabaseHandler {
     //Clusterer clusterer = new OPTICS(5.0,3);
     public void cluster(){
-        Database db = makeSimpleDatabase(FILE_PATH,550);
+
         /*ListParameterization params = new ListParameterization();
         params.addParameter(AbstractOPTICS.Parameterizer.MINPTS_ID, 22);
 
@@ -29,18 +33,31 @@ public class Clustering extends DatabaseHandler {
       //  Database db = makeSimp
         //clusterer.cluster()
         //OPTICSHeap opticsHeap = new OPTICSHeap();
+        int minPoint = 100;
+        for (int i=1;i<10;i++) {
+            PrintWriter outfile = null;
+            try {
+                outfile = new PrintWriter(new File("heap_meta_gcpause_longest_results"+"_"+minPoint+"_"+i+".csv"));
 
-        ListParameterization params = new ListParameterization();
-        params.addParameter(AbstractOPTICS.Parameterizer.MINPTS_ID, 5);
-
-        OPTICSOF<DoubleVector> opticsof = ClassGenericsUtil.parameterizeOrAbort(OPTICSOF.class, params);
-
-        // run OPTICSOF on database
-        OutlierResult result = opticsof.run(db);
-
-        DoubleRelation scores = result.getScores();
-        for (DBIDIter iter = scores.iterDBIDs(); iter.valid(); iter.advance()) {
-            System.out.println(DBIDUtil.toString(iter) + " " + scores.doubleValue(iter));
+            Database db = makeSimpleDatabase(FILE_PATH, 8090);
+            ListParameterization params = new ListParameterization();
+            params.addParameter(AbstractOPTICS.Parameterizer.MINPTS_ID, minPoint*i);
+                System.out.println("Min point - "+minPoint*i);
+            OPTICSOF<DoubleVector> opticsof = ClassGenericsUtil.parameterizeOrAbort(OPTICSOF.class, params);
+            // run OPTICSOF on database
+            OutlierResult result = opticsof.run(db);
+            DoubleRelation scores = result.getScores();
+            for (DBIDIter iter = scores.iterDBIDs(); iter.valid(); iter.advance()) {
+                //System.out.println(DBIDUtil.toString(iter) + "," + scores.doubleValue(iter));
+                outfile.append(Double.toString(scores.doubleValue(iter))+"\n");
+                //DBIDUtil.toString(iter) + " " +
+            }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            finally {
+                outfile.close();
+            }
         }
     }
 }
