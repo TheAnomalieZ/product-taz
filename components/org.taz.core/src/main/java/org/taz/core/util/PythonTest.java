@@ -7,7 +7,7 @@ import java.io.*;
 /**
  * Created by garth on 2/3/17.
  */
-public class Test {
+public class PythonTest {
     public static final String FILE_NAME = "./components/org.taz.core/src/main/python/hmm/HMM_RocVersion.py";
 //    public static final String FILE_NAME = "./components/org.taz.core/src/main/python/mani.py";
 
