@@ -4,6 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
+
+
 def labeling(start, end, scorelist):
     labellist = []
     length = len(scorelist)
@@ -25,9 +27,7 @@ def relabeling(start, end, labellist):
             labellistn.append(label)
     return labellistn
 
-
-# f = open('heap-duration-meta/heap_gcpause_meta_results_10_1_v1.csv')
-f = open('heap-commited-duration/heap_commited_duration_results_10_1_v1.csv')
+f = open('heap-duration-longest/heap_gcpause_longest_results_10_1_v1.csv')
 try:
     reader = csv.reader(f)
     floats = []
@@ -35,16 +35,9 @@ try:
         floats.append(map(float, row))
 finally:
     f.close()
-ylist =floats
-xlist =[]
-for i in range(0,len(ylist)):
-    xlist.append(i)
-print len(ylist)
-print len(xlist)
-# plt.scatter(xlist,ylist,'r')
-plt.plot(xlist,ylist,'r')
 
-scorelist = ylist
+scorelist = floats
+
 labellist = labeling(448,574, scorelist)
 labellist = relabeling(1118,1388, labellist)
 labellist = relabeling(1906,2037, labellist)
@@ -55,16 +48,17 @@ labellist = relabeling(4348,4497, labellist)
 labellist = relabeling(5315,5605, labellist)
 labellist = relabeling(6131,6623, labellist)
 
+xlist =[]
+for i in range(0,len(labellist)):
+    xlist.append(i)
+print len(labellist)
+print len(xlist)
 
-# plt.scatter(xlist,labellist,'b')
-plt.plot(xlist,labellist,'b')
-# plt.xlim(150,400)
-
-
-
+plt.scatter(xlist,labellist,'b')
+plt.plot(xlist,labellist)
 # plt.xlim(150,400)
 plt.legend()
-plt.xlabel('time')
-plt.ylabel('error')
+plt.xlabel('gcid')
+plt.ylabel('labels')
 
 plt.show()

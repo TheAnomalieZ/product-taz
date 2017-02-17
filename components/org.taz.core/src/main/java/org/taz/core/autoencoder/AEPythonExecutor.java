@@ -26,18 +26,18 @@ public class AEPythonExecutor {
             }
 //call python script
             try {
-                String execution = "python " + FILE_NAME+" "+ filePath ;
+                String execution = "python " + FILE_NAME+" "+ filePath +" "+"App1_gctime";
                 Runtime r = Runtime.getRuntime();
                 Process p = r.exec(execution);
-                p.waitFor();
                 getExecutionResult(p);
-
+                p.waitFor();
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 System.out.println("Python script ERROR");
             }
+
 
 
         }else{
