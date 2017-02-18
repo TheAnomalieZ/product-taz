@@ -43,7 +43,7 @@ scorelist = dic.values()
 scorelist = [0 if math.isnan(x) else x for x in scorelist]
 scorelist= [scorelist[x:x+1] for x in xrange(0, len(scorelist), 1)]
 
-file = open(filepath+"_autoencoder.csv", "wb")
+file = open(filepath+"_ae_score.csv", "wb")
 writer = csv.writer(file)
 writer.writerows(scorelist)
 file.close()
