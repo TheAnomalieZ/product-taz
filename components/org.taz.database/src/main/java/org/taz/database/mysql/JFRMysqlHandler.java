@@ -43,12 +43,17 @@ public class JFRMysqlHandler {
 
     private void createTable() {
         ArrayList<EventNode> eventNodes = jfrParser.getAllJFRAttributes();
+        String query = "";
+        System.out.println("Starting create table");
         for (EventNode eventNode : eventNodes) {
-            String query = sqlQueryGenerator.getCreateTableQuery(eventNode.getEventName(),
+            query = sqlQueryGenerator.getCreateTableQuery(eventNode.getEventName(),
                     new ArrayList<String>(eventNode.getAttributes()));
             //System.out.println(query);
             mysqlConnector.executeQuery(query);
         }
+        //System.out.println(query);
+
+       // System.out.println("finishing create table");
     }
 
     private void insertParsedValues() {
@@ -87,7 +92,9 @@ public class JFRMysqlHandler {
     }
 
     public void insertIViewValues() {
+        System.out.println("Starting insertion process");
         IView iView = jfrParser.getIView();
+        String query = "";
         for (IEvent event : iView) {
             IEventType iEventType = event.getEventType();
             ArrayList<String> attributes = new ArrayList<String>(iEventType.getFieldIdentifiers());
@@ -100,11 +107,14 @@ public class JFRMysqlHandler {
                     values.add(value.toString());
                 }
             }
-            String query = sqlQueryGenerator.getInsertionQuery(iEventType.getName(),attributes,values);
+            query = sqlQueryGenerator.getInsertionQuery(iEventType.getName(),attributes,values);
             mysqlConnector.executeQuery(query);
             //System.out.println(query);
            // break;
         }
+        /*System.out.println("Sending queries to DB");
+
+        System.out.println("Finishing insertion");*/
     }
 
 }
