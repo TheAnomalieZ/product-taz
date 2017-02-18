@@ -209,7 +209,7 @@ class erfig(recon):
 # @register
 # class er_gctime(erfig):
 #    xl=1000;xu=1900
-#    wins=[0,10,50,100,1000]
+#    wins=[0,10,50]
 #    al=1350
 
 # @register
@@ -217,17 +217,25 @@ class erfig(recon):
 #    xl=1;xu=1100
 #    wins=[0,10,50,100]
 #    al=550
-@register
-class er_App2_gcstate(erfig):
-   xl=1;xu=2000
-   wins=[50]
-   al=550
+
+# @register
+# class er_App1_gcstate(erfig):
+#    xl=1;xu=2000
+#    wins=[2,10,50]
+#    al=550
 
 @register
 class er_App2_gctime(erfig):
-   xl=1;xu=2000
+   xl=1;xu=400
    wins=[0,10,50,100]
    al=550
+
+# @register
+# class er_App2_gcstate(erfig):
+#     xl=1;xu=1000
+#     wins=[0,10,50]
+#     al=550
+
 
 # BAYESIAN OPT ANALYSIS
 

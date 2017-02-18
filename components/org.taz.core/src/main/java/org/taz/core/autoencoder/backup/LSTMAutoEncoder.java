@@ -1,4 +1,4 @@
-package org.taz.core.autoencoder;
+package org.taz.core.autoencoder.backup;
 
 import org.deeplearning4j.nn.conf.layers.GravesLSTM;
 import org.deeplearning4j.nn.weights.WeightInit;

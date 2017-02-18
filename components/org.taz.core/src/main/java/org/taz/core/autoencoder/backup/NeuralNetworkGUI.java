@@ -1,18 +1,17 @@
-package org.taz.core.autoencoder;
+package org.taz.core.autoencoder.backup;
 
 import org.deeplearning4j.api.storage.StatsStorage;
 import org.deeplearning4j.ui.api.UIServer;
-import org.deeplearning4j.ui.storage.FileStatsStorage;
 import org.deeplearning4j.ui.storage.InMemoryStatsStorage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.taz.core.autoencoder.backup.AE;
+import org.taz.core.autoencoder.backup.LSTMAutoEncoder;
+import org.taz.core.autoencoder.backup.RBMAutoEncoder;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;

@@ -140,7 +140,7 @@ public class CSVWriter {
         logger.info("Pause Time Series");
         PrintWriter outfile = null;
         try {
-            outfile = new PrintWriter(new File(fileName+"GC_series.csv"));
+            outfile = new PrintWriter(new File(fileName));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

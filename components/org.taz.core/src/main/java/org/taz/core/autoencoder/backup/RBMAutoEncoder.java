@@ -1,4 +1,4 @@
-package org.taz.core.autoencoder;
+package org.taz.core.autoencoder.backup;
 
 import org.deeplearning4j.nn.conf.GradientNormalization;
 import org.deeplearning4j.nn.conf.Updater;

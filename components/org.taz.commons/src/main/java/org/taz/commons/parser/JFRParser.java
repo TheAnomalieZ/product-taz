@@ -45,6 +45,11 @@ public interface JFRParser {
      */
     public ArrayList<Short> getPauseTimeSeries();
 
+    /**
+     * Method to retrieve Heap time series
+     * @return List of heaptime interval
+     */
+    public ArrayList<Double> getHeapTimeSeries();
 
 
     /**

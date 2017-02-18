@@ -35,7 +35,7 @@ public class AETest {
     * Method to get the anomaly scores from autoencoder
     *
     */
-    public ArrayList<Double> generateScoreSeries(String filePath) {
+    public ArrayList<Double> generateScoreSeries(String filePath, String jfrType) {
         String ext = "";
         String fileName = String.format("%s%s", RandomStringUtils.randomAlphanumeric(8), ext);
 
@@ -43,11 +43,11 @@ public class AETest {
         File dir = new File(outputfileDir);
         dir.mkdir();
 
-        String outputfilePath = outputfileDir+"/gctime";
+        String outputfilePath = outputfileDir+"/"+jfrType;
         csvWriter.generateGCTimeSeries(jfrReader.getHeapTimeSeries(filePath),outputfilePath);
 
         try {
-            AEPythonExecutor.callPythonAE(outputfilePath);
+            AEPythonExecutor.callPythonAE(outputfilePath,jfrType);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Python script runtime error");
@@ -77,22 +77,11 @@ public class AETest {
 
     }
 
-    public ArrayList<Integer> getAnomalyTimes(String scorefilePath) {
-        CSVReader reader = null;
-        ArrayList<Double> scorelist = new ArrayList<Double>();
-        ArrayList<Double[]> anomalies = new ArrayList<Double[]>();
-        try {
-            reader = new CSVReader(new FileReader(scorefilePath));
-            String[] nl;
-            Double score;
-            while ((nl = reader.readNext()) != null) {
-                score = Double.parseDouble(nl[0]);
-                scorelist.add(score);
-            }
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
-        } catch (IOException e1) {
-            e1.printStackTrace();
+    public ArrayList<Integer> getAnomalyTimes( ArrayList<Double>  scorelist) {
+
+        ArrayList<Double>  anomalyScores = new ArrayList<Double>();
+        for(double a:scorelist){
+            anomalyScores.add(a);
         }
 
         double sum = 0;
@@ -100,29 +89,54 @@ public class AETest {
             sum += i;
         }
         System.out.println(sum);
-        sum *= 0.90;
+        sum *= 0.80;
+        System.out.println(sum);
         ArrayList<Double> sortlist = scorelist;
         Collections.sort(sortlist);
 
-            double count = 0;
-            int i = 0;
-            double item = 0;
-            while (count >= sum) {
-                item = sortlist.get(i++);
-                count += item;
-            }
-            System.out.println(item + ' ' + i);
-
-            ArrayList<Integer> labellist = new ArrayList<Integer>();
-            for (double d : scorelist) {
-                if (d > item) {
-                    labellist.add(0);
-                } else {
-                    labellist.add(1);
-                }
-            }
-            return labellist;
-
+        double count = 0;
+        int i = 0;
+        double item = 0;
+        while (count < sum) {
+            item = sortlist.get(i++);
+//            System.out.println(item);
+            count += item;
         }
+        System.out.println(item );
+        System.out.println(--i);
+
+        ArrayList<Integer> labellist = new ArrayList<Integer>();
+        for (double d : anomalyScores) {
+            if (d > item) {
+                labellist.add(0);
+                System.out.println(0);
+
+            } else {
+                labellist.add(1);
+                System.out.println(1);
+
+            }
+        }
+        return labellist;
 
     }
+
+    public static void calculatePercentiles( ArrayList<Double>  scorelist) {
+        for (int i = 0; i < scorelist.size(); i++) {
+            int count = 0;
+            int start = i;
+            if (i > 0) {
+                while (i > 0 && scorelist.get(i) == scorelist.get(i - 1)) {
+                    count++;
+                    i++;
+                }
+            }
+            double perc = ((start - 0) + (0.5 * count));
+            perc = perc / (scorelist.size() - 1);
+            for (int k = 0; k < count + 1; k++)
+                System.out.println("Percentile for value " + (start + k + 1)
+                        + " = " + perc * 100);
+        }
+    }
+
+}

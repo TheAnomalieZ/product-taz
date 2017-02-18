@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
  */
 public class AEROCGraph {
 
-    public static final String FILE_NAME = "./components/org.taz.core/src/main/python/autoencoder/TestValidation.py";
+    public static final String FILE_NAME = "./components/org.taz.core/src/main/python/autoencoder/TestValidation2.py";
 
     public static void main(String... args) throws InterruptedException {
         try {

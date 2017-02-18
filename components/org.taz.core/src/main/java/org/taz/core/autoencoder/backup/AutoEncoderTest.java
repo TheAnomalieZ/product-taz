@@ -1,4 +1,4 @@
-package org.taz.core.autoencoder;
+package org.taz.core.autoencoder.backup;
 
 /**Example: Anomaly Detection on JFR GC sequence using simple autoencoder without pretraining
  * The goal is to identify outliers sequences, i.e., those sequences that are unusual or
@@ -20,12 +20,10 @@ import java.util.Random;
 
 import org.apache.commons.lang3.tuple.ImmutableTriple;
 import org.datavec.api.records.reader.RecordReader;
-import org.datavec.api.records.reader.SequenceRecordReader;
 import org.datavec.api.records.reader.impl.csv.CSVRecordReader;
 import org.datavec.api.records.reader.impl.csv.CSVSequenceRecordReader;
 import org.datavec.api.split.FileSplit;
 import org.deeplearning4j.datasets.datavec.RecordReaderDataSetIterator;
-import org.deeplearning4j.datasets.datavec.SequenceRecordReaderDataSetIterator;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.dataset.api.DataSet;
 import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;

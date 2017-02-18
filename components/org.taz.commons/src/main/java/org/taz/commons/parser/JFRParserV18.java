@@ -39,6 +39,11 @@ public class JFRParserV18 implements JFRParser {
         return gcTimeSeriesModel.getStateSequence();
     }
 
+    public ArrayList<Double> getHeapTimeSeries(){
+        GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
+        return gcTimeSeriesModel.getHeapandPauseSeries();
+    }
+
     public Map<Long,MemEvent> getGCEvents(){
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
         return gcTimeSeriesModel.getGCFeatures();

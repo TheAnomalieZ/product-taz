@@ -1,17 +1,20 @@
 package org.taz.core.autoencoder;
 
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
- * Created by Maninesan on 2/5/17.
+ * Created by Maninesan on 2/18/17.
  */
-public class AEPythonExecutor {
-    public static final String FILE_NAME = "./components/org.taz.core/src/main/python/autoencoder/output.py";
-
-    public static void callPythonAE(String fileName, String jfrType) throws IOException {
-        String filePath = fileName;
+public class AETrain {
+    public static final String FILE_NAME = "./components/org.taz.core/src/main/python/Spearmint/spearmint/main.py";
+    public static final String FILE_PATH = "./components/org.taz.core/src/main/python/autoencoder/experiments/";
+    public static void setupTraining(String jfrType){
+        String outputfileDir = FILE_PATH + jfrType;
+        File dir = new File(outputfileDir);
+        dir.mkdir();
+    }
+    public static void callAETrain(String jfrType) throws IOException {
+        String filePath = jfrType;
         System.out.println(filePath);
         File f = new File(filePath);
         if(f.exists() && !f.isDirectory()) {
@@ -20,9 +23,9 @@ public class AEPythonExecutor {
                 System.out.println("No data points, and file empty");
                 return;
             }
-        //call python script
+            //call python script
             try {
-                String execution = "python " + FILE_NAME+" "+ filePath +" "+ jfrType;
+                String execution = "python " + FILE_NAME+" "+ filePath +" "+"App1_gctime";
                 Runtime r = Runtime.getRuntime();
                 Process p = r.exec(execution);
                 getExecutionResult(p);
@@ -33,7 +36,6 @@ public class AEPythonExecutor {
                 e.printStackTrace();
                 System.out.println("Python script ERROR");
             }
-
         }else{
             System.out.println("File not found");
             return;
@@ -48,7 +50,5 @@ public class AEPythonExecutor {
         }
         reader.close();
     }
-
-
 
 }

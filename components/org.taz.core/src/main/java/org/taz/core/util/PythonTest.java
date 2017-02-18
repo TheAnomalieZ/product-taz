@@ -16,9 +16,7 @@ public class PythonTest {
 
             String execution = "python " + FILE_NAME +" " + 2 +" " + 2 +" " + 500 +" " + 8;
 //          Process process1 = new ProcessBuilder("python", FILE_NAME, "" + 13, "" + 1, "" + 20, "" + 8).start();
-
 //            new ProcessBuilder("python", FILE_NAME).start();
-
             Runtime r = Runtime.getRuntime();
 
             Process p = r.exec(execution);

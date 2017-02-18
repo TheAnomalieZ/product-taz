@@ -84,6 +84,10 @@ public class JFRReader {
         }
     }
 
+    public ArrayList<Double> getHeapTimeSeries(String filePath){
+        parser = readSingleJFR(filePath);
+        return convertGCTimeSeries(parser.getHeapTimeSeries());
+    }
 
 
     public void getCPUEvents(){
