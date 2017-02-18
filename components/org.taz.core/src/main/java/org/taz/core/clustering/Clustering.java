@@ -33,16 +33,16 @@ public class Clustering extends DatabaseHandler {
       //  Database db = makeSimp
         //clusterer.cluster()
         //OPTICSHeap opticsHeap = new OPTICSHeap();
-        int minPoint = 100;
-        for (int i=1;i<10;i++) {
+        int minPoint = 400;
+        for (int i=1;i<=10;i++) {
             PrintWriter outfile = null;
             try {
-                outfile = new PrintWriter(new File("heap_meta_gcpause_longest_results"+"_"+minPoint+"_"+i+".csv"));
+                outfile = new PrintWriter(new File("heap_duration_old_gap_results"+"_"+(minPoint+i*10)+"_v2"+".csv"));
 
             Database db = makeSimpleDatabase(FILE_PATH, 8090);
             ListParameterization params = new ListParameterization();
-            params.addParameter(AbstractOPTICS.Parameterizer.MINPTS_ID, minPoint*i);
-                System.out.println("Min point - "+minPoint*i);
+            params.addParameter(AbstractOPTICS.Parameterizer.MINPTS_ID, minPoint+i*10);
+                System.out.println("Min point - "+minPoint+i*10);
             OPTICSOF<DoubleVector> opticsof = ClassGenericsUtil.parameterizeOrAbort(OPTICSOF.class, params);
             // run OPTICSOF on database
             OutlierResult result = opticsof.run(db);

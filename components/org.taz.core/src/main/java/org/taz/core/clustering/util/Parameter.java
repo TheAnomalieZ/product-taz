@@ -1,33 +1,64 @@
 package org.taz.core.clustering.util;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by vithulan on 1/16/17.
  */
 public class Parameter {
-    private String eventName;
-    private List<String> attributes = null;
+    private long heapUsed;
+    private long gCPauseDuration;
+    private long oldObjectSpaceUsed;
+    private long startTime;
+    private long endTime;
 
-    public Parameter(String eventName){
-        this.eventName = eventName;
+    public long getGcID() {
+        return gcID;
     }
 
-    public void addAttribute(String attribute){
-        if(attributes==null){
-            attributes = new ArrayList<String>();
-            attributes.add(attribute);
-        }
-        else
-            attributes.add(attribute);
+    public void setGcID(long gcID) {
+        this.gcID = gcID;
     }
 
-    public List<String> getAttributes(){
-        return attributes;
+    private long gcID;
+
+    public long getHeapUsed() {
+        return heapUsed;
     }
 
-    public String getEventName(){
-        return eventName;
+    public void setHeapUsed(long heapUsed) {
+        this.heapUsed = heapUsed;
     }
+
+    public long getgCPauseDuration() {
+        return gCPauseDuration;
+    }
+
+    public void setgCPauseDuration(long gCPauseDuration) {
+        this.gCPauseDuration = gCPauseDuration;
+    }
+
+    public long getOldObjectSpaceUsed() {
+        return oldObjectSpaceUsed;
+    }
+
+    public void setOldObjectSpaceUsed(long oldObjectSpaceUsed) {
+        this.oldObjectSpaceUsed = oldObjectSpaceUsed;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
+    }
+
 }
