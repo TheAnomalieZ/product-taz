@@ -35,8 +35,9 @@ public class JFRConstants {
 
     public static String RECORDING = "Flight Recording";
     public static String ID = "id";
-    public static String DURATION = "duration";
-    public static String STARTTIME = "startTime";
+    public static String DURATION = "(duration)";
+    public static String STARTTIME = "(startTime)";
+    public static String ENDTIME = "(endTime)";
     public static String RECORDINGNAME = "name";
 
 
@@ -68,8 +69,7 @@ public class JFRConstants {
     public static String INITIALSIZE= "initialSize";
     public static String MINSIZE= "minSize";
     public static String MAXSIZE= "maxSize";
-
-
+    public static String OLDOBJECTSPACEUSED = "oldObjectSpace:used";
     public static String CPUINFORMATION= "CPU Information";
     public static String OSINFORMATION= "OS Information";
 
