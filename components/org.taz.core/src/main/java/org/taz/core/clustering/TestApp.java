@@ -14,6 +14,7 @@ import de.lmu.ifi.dbs.elki.logging.LoggingConfiguration;
 import de.lmu.ifi.dbs.elki.result.outlier.OutlierResult;
 import de.lmu.ifi.dbs.elki.utilities.ClassGenericsUtil;
 import de.lmu.ifi.dbs.elki.utilities.optionhandling.parameterization.ListParameterization;
+import org.taz.core.clustering.util.CSVGenerator;
 import org.taz.core.clustering.util.ParserAPI;
 
 /**
@@ -23,9 +24,15 @@ public class TestApp {
     public static void main(String[] args) {
         //String file_path = "/home/vithulan/JFRs/Clustering/data.csv";
         String file_path = "/home/vithulan/JFRs/CSVs/heapused_metaspace_dataspace.csv";
+        String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/Testing/App1/anomaly_final.jfr";
 
-        Clustering clustering  = new Clustering();
-        clustering.cluster();
+        /*Clustering clustering  = new Clustering();
+        clustering.cluster();*/
+
+        ParserAPI parserAPI = new ParserAPI(FILE_PATH);
+        CSVGenerator csvGenerator = new CSVGenerator(parserAPI.generateAttributeTable());
+        csvGenerator.generateCSV();
+
 
        // OpticsHeap opticsHeap = new OpticsHeap(file_path);
        // opticsHeap.run();

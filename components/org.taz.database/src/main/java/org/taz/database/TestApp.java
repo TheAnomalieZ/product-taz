@@ -12,7 +12,9 @@ import java.util.ArrayList;
  */
 public class TestApp {
     public static void main(String[] args) {
-        final String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/JFR/CEP/cep-2016_12_17_06_16_26.jfr";
+        //final String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/JFR/CEP/cep-2016_12_17_06_16_26.jfr";
+        final String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/Testing/App1/";
+        final String FILE_NAME = "anomaly.jfr";
         //final String FILE_PATH = "/home/vithulan/Documents/jfr/Anomaly/ano1.jfr";
         /*CassandraConnection cassandraConnection = new CassandraConnection();
         cassandraConnection.createKeySpace("Tempo");*/
@@ -43,7 +45,7 @@ public class TestApp {
         mysqlConnector.createConnection();
         mysqlConnector.executeQuery(query1);*/
 
-        JFRMysqlHandler jfrMysqlHandler = new JFRMysqlHandler(FILE_PATH,"localhost","3306","JFR_Sample4");
+        JFRMysqlHandler jfrMysqlHandler = new JFRMysqlHandler(FILE_PATH+FILE_NAME,"localhost","3306","JFR_Ano25416");
         jfrMysqlHandler.generateDatabase();
     }
 }

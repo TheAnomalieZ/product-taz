@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class DatabaseHandler {
     //public final static String FILE_PATH = "/home/vithulan/JFRs/Clustering/data.csv";
-    public final static String FILE_PATH = "/home/vithulan/JFRs/CSVs/HeapSummary_Metaspace_Pause.csv";
+    public final static String FILE_PATH = "/home/vithulan/JFRs/CSVs/heap_duration_old_gap_1.csv";
 
     /**
      * Notice: this is okay for tests - don't use this for frequently used

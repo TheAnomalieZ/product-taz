@@ -62,11 +62,12 @@ def drawROC(score, y, size):
     plt.plot(roc_x, roc_y,  label =' min.pts:'+str(size)+'  AUC:'+str(area) )
 
 
-for i in range(1, 10):
+for i in range(1, 11):
     # f = open('heap-duration-longest/heap_gcpause_longest_results_'+str(i*10)+'_'+str(i)+'_v1.csv')
     # f = open('heap-duration-longest-meta/heap_meta_gcpause_longest_results_'+str(i*10)+'_'+str(i)+'_v2.csv')
     # f = open('heap-duration-meta/heap_gcpause_meta_results_'+str(i*10)+'_'+str(i)+'_v1.csv')
-    f = open('heap_duration_old_gap/heap_duration_old_gap_results_'+str(i*10)+'_'+str(i)+'_v1.csv')
+    # f = open('heap_duration_old_gap/v2/heap_duration_old_gap_results_'+str(100+i*10)+'_'+str(i)+'_v2.csv')
+    f = open('heap_duration_old_gap/v2/heap_duration_old_gap_results_'+str(400+i*10)+'_v2.csv')
     try:
         reader = csv.reader(f)
         floats = []
@@ -76,15 +77,16 @@ for i in range(1, 10):
         f.close()
 
     scorelist = floats
-    labellist = labeling(448,574, scorelist)
-    labellist = relabeling(1118,1388, labellist)
-    labellist = relabeling(1906,2037, labellist)
-    labellist = relabeling(2672,2889, labellist)
-    labellist = relabeling(3386,3501, labellist)
-    labellist = relabeling(3832,3888, labellist)
-    labellist = relabeling(4348,4497, labellist)
-    labellist = relabeling(5315,5605, labellist)
-    labellist = relabeling(6131,6623, labellist)
+    labellist = labeling(280,365, scorelist)
+    # labellist = labeling(448,574, scorelist)
+    # labellist = relabeling(1118,1388, labellist)
+    # labellist = relabeling(1906,2037, labellist)
+    # labellist = relabeling(2672,2889, labellist)
+    # labellist = relabeling(3386,3501, labellist)
+    # labellist = relabeling(3832,3888, labellist)
+    # labellist = relabeling(4348,4497, labellist)
+    # labellist = relabeling(5315,5605, labellist)
+    # labellist = relabeling(6131,6623, labellist)
 
 
     print labellist

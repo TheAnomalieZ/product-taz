@@ -27,8 +27,7 @@ def relabeling(start, end, labellist):
 
 
 # f = open('heap-duration-meta/heap_gcpause_meta_results_10_1_v1.csv')
-# f = open('heap-commited-duration/heap_commited_duration_results_10_1_v1.csv')
-f = open('heap_duration_old_gap/heap_duration_old_gap_results_10_1_v1.csv')
+f = open('heap_duration_old_gap/v2/heap_duration_old_gap_results_450_v2.csv')
 try:
     reader = csv.reader(f)
     floats = []
@@ -46,15 +45,16 @@ print len(xlist)
 plt.plot(xlist,ylist,'r')
 
 scorelist = ylist
-labellist = labeling(448,574, scorelist)
-labellist = relabeling(1118,1388, labellist)
-labellist = relabeling(1906,2037, labellist)
-labellist = relabeling(2672,2889, labellist)
-labellist = relabeling(3386,3501, labellist)
-labellist = relabeling(3832,3888, labellist)
-labellist = relabeling(4348,4497, labellist)
-labellist = relabeling(5315,5605, labellist)
-labellist = relabeling(6131,6623, labellist)
+
+labellist = labeling(280,365, scorelist)
+# labellist = relabeling(1118,1388, labellist)
+# labellist = relabeling(1906,2037, labellist)
+# labellist = relabeling(2672,2889, labellist)
+# labellist = relabeling(3386,3501, labellist)
+# labellist = relabeling(3832,3888, labellist)
+# labellist = relabeling(4348,4497, labellist)
+# labellist = relabeling(5315,5605, labellist)
+# labellist = relabeling(6131,6623, labellist)
 
 
 # plt.scatter(xlist,labellist,'b')
