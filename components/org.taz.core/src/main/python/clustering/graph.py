@@ -47,6 +47,7 @@ plt.plot(xlist,ylist,'r')
 scorelist = ylist
 
 labellist = labeling(280,365, scorelist)
+# labellist = labeling(448,574, scorelist)
 # labellist = relabeling(1118,1388, labellist)
 # labellist = relabeling(1906,2037, labellist)
 # labellist = relabeling(2672,2889, labellist)
