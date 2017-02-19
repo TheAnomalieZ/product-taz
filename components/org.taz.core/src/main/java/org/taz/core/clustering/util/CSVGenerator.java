@@ -28,8 +28,8 @@ public class CSVGenerator {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String fileName = "None";
         try {
-            String path = "files/clustering/attribute_tables/";
-            PrintWriter outfile = new PrintWriter(new File(path+"clustering_attributes_"+timeStamp+".csv"));
+            //String path = "files/clustering/attribute_tables/";
+            PrintWriter outfile = new PrintWriter(new File(Properties.ATTRIBUTE_TABLE_FILEPATH+"clustering_attributes_"+timeStamp+".csv"));
             fileName = "clustering_attributes_"+timeStamp+".csv";
             for(Map.Entry<Long,Long> entry : timeGapMap.entrySet()){
                 outfile.append(Long.toString(parameterTreeMap.get(entry.getKey()).getHeapUsed())+",");
@@ -59,6 +59,10 @@ public class CSVGenerator {
             }
 
         }
+    }
+
+    public int getTotalPoints (){
+        return timeGapMap.size();
     }
 
 
