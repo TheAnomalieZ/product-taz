@@ -62,12 +62,13 @@ def drawROC(score, y, size):
     plt.plot(roc_x, roc_y,  label =' min.pts:'+str(size)+'  AUC:'+str(area) )
 
 
-for i in range(1, 11):
+for i in range(1, 2):
     # f = open('heap-duration-longest/heap_gcpause_longest_results_'+str(i*10)+'_'+str(i)+'_v1.csv')
     # f = open('heap-duration-longest-meta/heap_meta_gcpause_longest_results_'+str(i*10)+'_'+str(i)+'_v2.csv')
     # f = open('heap-duration-meta/heap_gcpause_meta_results_'+str(i*10)+'_'+str(i)+'_v1.csv')
     # f = open('heap_duration_old_gap/v2/heap_duration_old_gap_results_'+str(100+i*10)+'_'+str(i)+'_v2.csv')
-    f = open('../minpoint_test/clustering_attributes_20170219_132644/minPointTest_'+str(390+i*10)+'_20170219_132644.csv')
+    # f = open('../minpoint_test/clustering_attributes_20170219_132644/minPointTest_'+str(390+i*10)+'_20170219_132644.csv')
+    f = open('../anomaly_scores/clustering_attributes_20170219_134208/anomaly_score_20170219_134208.csv')
     try:
         reader = csv.reader(f)
         floats = []
@@ -77,7 +78,8 @@ for i in range(1, 11):
         f.close()
 
     scorelist = floats
-    labellist = labeling(280,365, scorelist)
+    # labellist = labeling(280,365, scorelist)
+    labellist = labeling(249,326, scorelist)
 
     # labellist = labeling(448,574, scorelist)
     # labellist = labeling(448,574, scorelist)
