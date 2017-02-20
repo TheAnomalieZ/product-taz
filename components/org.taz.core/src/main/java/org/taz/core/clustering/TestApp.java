@@ -1,29 +1,64 @@
 package org.taz.core.clustering;
 
+import org.apache.commons.math3.stat.descriptive.rank.Percentile;
 import org.taz.core.clustering.util.CSVGenerator;
+import org.taz.core.clustering.util.Parameter;
 import org.taz.core.clustering.util.ParserAPI;
+
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by vithulan on 1/6/17.
  */
 public class TestApp {
     public static void main(String[] args) {
-        //String file_path = "/home/vithulan/JFRs/Clustering/data.csv";
+        //String file_path = "/home/vithulan/JFRs/OpticsOF/data.csv";
        // String file_path = "/home/vithulan/JFRs/CSVs/heapused_metaspace_dataspace.csv";
-        //String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/Testing/App1/anomaly_final.jfr";
+       // String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/Testing/App1/anomaly_final.jfr";
         String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/Testing/App1/anomaly.jfr";
 
-        /*Clustering clustering  = new Clustering();
-        clustering.cluster();*/
+        /*OpticsOF opticsOF  = new OpticsOF();
+        opticsOF.cluster();*/
 
-        ParserAPI parserAPI = new ParserAPI(FILE_PATH);
-        CSVGenerator csvGenerator = new CSVGenerator(parserAPI.generateAttributeTable());
+        ClusteringHandler clusteringHandler = new ClusteringHandler(FILE_PATH);
+        clusteringHandler.setPercentile(90.0);
+        TreeMap<Integer, Parameter> anomalyMap = clusteringHandler.getAnomalyPoints();
+        for(Map.Entry<Integer,Parameter> entry : anomalyMap.entrySet()){
+            System.out.println(entry.getValue().getGcID()+"  "+entry.getValue().getAnomalyScore());
+        }
+        /*ParserAPI parserAPI = new ParserAPI(FILE_PATH);
+        TreeMap<Long, Parameter> parameterTreeMap = parserAPI.generateAttributeTable();
+        CSVGenerator csvGenerator = new CSVGenerator(parameterTreeMap);
         String file = csvGenerator.generateCSV();
         int totalPoints = csvGenerator.getTotalPoints();
-        Clustering clustering = new Clustering(totalPoints,file);
+        OpticsOF opticsOF = new OpticsOF(totalPoints,file);
+        opticsOF.setParameterTreeMap(parameterTreeMap);
+        ArrayList<Double> anomalyScores =  opticsOF.generateAnomalyScore();
+        Percentile percentile = new Percentile();
+        //anomalyScore.getPercentile(95);
+        double[] anomalyScoreArray = new double[anomalyScores.size()];
+        //anomalyScoreArray = anomalyScores.toArray(anomalyScoreArray);
+        for(int i=0;i<anomalyScores.size();i++){
+            anomalyScoreArray[i] = anomalyScores.get(i);
+        }
+        percentile.setData(anomalyScoreArray);
+        double percentileVal = percentile.evaluate(75.00);
+        System.out.println(percentileVal);
 
-        clustering.generateAnomalyScore();
-        //clustering.runMinPointTest(400,11,10);
+        parameterTreeMap = opticsOF.getParameterTreeMap();
+
+        int i = 0;
+        int count = 0;
+        for (Map.Entry<Long,Parameter> entry: parameterTreeMap.entrySet()){
+            if(count>0) {
+                System.out.println(entry.getValue().getAnomalyScore() + " == " + anomalyScores.get(i));
+                i++;
+            }
+            count++;
+        }*/
+        //opticsOF.runMinPointTest(400,11,10);
 
        // OpticsHeap opticsHeap = new OpticsHeap(file_path);
        // opticsHeap.run();
