@@ -15,25 +15,31 @@ public class AETest {
     public static void main(String[] args) {
         AE ae = new AE();
 
-//        ae.getAnomlayTimes(ae.getAnomalyLabels(ae.generateScoreSeries("/home/garth/anomaly_validation_2.jfr","App1_gctime")));
-        String scorefilePath = "/home/garth/FYP/product-taz/components/org.taz.core/src/main/resources/K6pJ3BDB/App1_gctime_ae_score.csv";
-        CSVReader reader = null;
-        ArrayList<Double> scorelist = new ArrayList<Double>();
-        try {
-            reader = new CSVReader(new FileReader( scorefilePath));
-            String [] nextLine;
-            Double score;
-            while ((nextLine = reader.readNext()) != null) {
-                // nextLine[] is an array of values from the line
-                score = Double.parseDouble(nextLine[0]);
-                scorelist.add(score);
-            }
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        scorelist.add(36.2);
-        ae.getAnomlayTimes(ae.getAnomalyLabels(scorelist));
+        ArrayList<Double> scorelist  = ae.generateScoreSeries("/home/garth/anomaly_validation_2.jfr","App1_gctime");
+
+        ArrayList<Integer> labellist = ae.getAnomalyLabels(scorelist);
+
+        ArrayList<Double[]> times    = ae.getAnomlayTimes(labellist);
+
+
+//        String scorefilePath = "/home/garth/FYP/product-taz/components/org.taz.core/src/main/resources/K6pJ3BDB/App1_gctime_ae_score.csv";
+//        CSVReader reader = null;
+//        ArrayList<Double> scorelist = new ArrayList<Double>();
+//        try {
+//            reader = new CSVReader(new FileReader( scorefilePath));
+//            String [] nextLine;
+//            Double score;
+//            while ((nextLine = reader.readNext()) != null) {
+//                // nextLine[] is an array of values from the line
+//                score = Double.parseDouble(nextLine[0]);
+//                scorelist.add(score);
+//            }
+//        } catch (FileNotFoundException e1) {
+//            e1.printStackTrace();
+//        } catch (IOException e1) {
+//            e1.printStackTrace();
+//        }
+//        scorelist.add(36.2);
+//        ae.getAnomlayTimes(ae.getAnomalyLabels(scorelist));
     }
 }
