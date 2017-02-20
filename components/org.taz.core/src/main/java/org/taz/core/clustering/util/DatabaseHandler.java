@@ -23,8 +23,6 @@ import java.util.List;
  * Created by vithulan on 1/6/17.
  */
 public class DatabaseHandler {
-    //public final static String FILE_PATH = "/home/vithulan/JFRs/Clustering/data.csv";
-    public final static String FILE_PATH = "/home/vithulan/JFRs/CSVs/heap_duration_old_gap_1.csv";
 
     /**
      * Notice: this is okay for tests - don't use this for frequently used
@@ -97,7 +95,7 @@ public class DatabaseHandler {
      * Find a clustering result, fail if there is more than one or none.
      *
      * @param result Base result
-     * @return Clustering
+     * @return OpticsOF
      */
     protected de.lmu.ifi.dbs.elki.data.Clustering<?> findSingleClustering(Result result) {
         List<de.lmu.ifi.dbs.elki.data.Clustering<? extends Model>> clusterresults = ResultUtil.getClusteringResults(result);
@@ -110,7 +108,7 @@ public class DatabaseHandler {
      * Test the clustering result by comparing the score with an expected value.
      *
      * @param database Database to test
-     * @param clustering Clustering result
+     * @param clustering OpticsOF result
      * @param expected Expected score
      */
     protected <O> void testFMeasure(Database database, de.lmu.ifi.dbs.elki.data.Clustering<?> clustering, double expected) {
@@ -130,10 +128,10 @@ public class DatabaseHandler {
     /**
      * Validate the cluster sizes with an expected result.
      *
-     * @param clustering Clustering to test
+     * @param clustering OpticsOF to test
      * @param expected Expected cluster sizes
      */
-    /*protected void testClusterSizes(de.lmu.ifi.dbs.elki.data.Clustering<?> clustering, int[] expected) {
+    /*protected void testClusterSizes(de.lmu.ifi.dbs.elki.data.OpticsOF<?> clustering, int[] expected) {
         List<? extends Cluster<?>> clusters = clustering.getAllClusters();
         int[] sizes = new int[clusters.size()];
         for(int i = 0; i < sizes.length; ++i) {
