@@ -15,7 +15,7 @@ public class AETest {
     public static void main(String[] args) {
         AE ae = new AE();
 
-        ArrayList<Double> scorelist  = ae.generateScoreSeries("/home/garth/anomaly_validation_2.jfr","App1_gctime");
+        ArrayList<Double> scorelist  = ae.generateScoreSeries("/home/garth/FYP/anomaly.jfr","App2_gctime");
 
         ArrayList<Integer> labellist = ae.getAnomalyLabels(scorelist);
 
