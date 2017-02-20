@@ -10,6 +10,18 @@ public class Parameter {
     private long oldObjectSpaceUsed;
     private long startTime;
     private long endTime;
+    private long gcID;
+    private double anomalyScore;
+
+    public double getAnomalyScore() {
+        return anomalyScore;
+    }
+
+    public void setAnomalyScore(double anomalyScore) {
+        this.anomalyScore = anomalyScore;
+    }
+
+
 
     public long getGcID() {
         return gcID;
@@ -19,7 +31,7 @@ public class Parameter {
         this.gcID = gcID;
     }
 
-    private long gcID;
+
 
     public long getHeapUsed() {
         return heapUsed;
