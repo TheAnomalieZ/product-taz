@@ -72,16 +72,15 @@ public class AETrain {
         }
     }
 
-    public void callAETrain(String filePath, String jfrType) throws IOException {
-
-
-        String outputfilePath = FILE_PATH+jfrType;
-
-        csvWriter.generateGCTimeSeries(jfrReader.getHeapTimeSeries(filePath),DATA_PATH);
-
-        setupTraining(jfrType);
-
+    public void callAETrain(String filePath, String jfrType){
         try {
+            String outputfilePath = FILE_PATH+jfrType;
+
+            csvWriter.generateGCTimeSeries(jfrReader.getHeapTimeSeries(filePath),DATA_PATH);
+
+            setupTraining(jfrType);
+
+
             String execution = "python " + SPEARMINT_PATH +" "+ outputfilePath;
             Runtime r = Runtime.getRuntime();
             Process p = r.exec(execution);

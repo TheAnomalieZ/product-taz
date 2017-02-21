@@ -8,6 +8,7 @@ import org.taz.core.autoencoder.AETrain;
 public class AETrainTest {
     public static void main(String[] args) {
         AETrain aeTrain = new AETrain();
-        aeTrain.setupTraining("mani");
+        aeTrain.callAETrain("/home/garth/FYP/normal.jfr","mani");
+
     }
 }

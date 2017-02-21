@@ -14,61 +14,44 @@ def get_series(id):
             ,'data'
             ,id)
             ,**kwargs)
-
-    if 'ecg' in id:
-        ecg=txtrdr()[::20,None]
-        if id=='ecg':
-            return ecg
-        elif id=='ecg-anom':
-            ecg=get_series('ecg')
-            sn1=.25*ecg.shape[0]
-            sn2= .3*ecg.shape[0]
-            sn=(.2*np.sin(np.linspace(0,3*3.14,num=(sn2-sn1))))
-            #put anomaly in input
-            ecg[sn1:sn2]=sn[:,None]
-            return ecg
-
-    elif 'gctime'== id:
-        # print txtrdr()[::,None]
-        return txtrdr()[::,None]
-    elif 'gcstate'== id:
-    # print txtrdr()[::,None]
-        return txtrdr()[::,None]
-    elif 'gcsequence'== id:
-    # print txtrdr()[::,None]
-        return txtrdr()[::,None]
-
-    elif 'pausetime'== id:
-        # print txtrdr()[::,None]
-        return txtrdr()[::,None]
-
-
-    elif 'gc'== id:
-        print txtrdr(id,delimiter=',')[::,0,None]
-        return txtrdr(id,delimiter=',')[::,0,None]
-
-    elif 'App1_gctime'== id:
-    # print txtrdr()[::,None]
-        return txtrdr()[::,None]
-
-    elif 'App1_gcstate'== id:
-    # print txtrdr()[::,None]
-        return txtrdr()[::,None]
-
-    elif 'App2_gctime'== id:
-    # print txtrdr()[::,None]
-        return txtrdr()[::,None]
-
-    elif 'App2_gcstate'== id:
-    # print txtrdr()[::,None]
-        return txtrdr()[::,None]
-
-    elif 'gcsequence'== id:
-    # print txtrdr()[::,None]
-        return txtrdr()[::,None]
-
-    #should not be here
-    raise KeyError('series not found')
+    return txtrdr()[::,None]
+    # if 'gctime'== id:
+    #     # print txtrdr()[::,None]
+    #     return txtrdr()[::,None]
+    # elif 'gcstate'== id:
+    # # print txtrdr()[::,None]
+    #     return txtrdr()[::,None]
+    # elif 'gcsequence'== id:
+    # # print txtrdr()[::,None]
+    #     return txtrdr()[::,None]
+    #
+    # elif 'pausetime'== id:
+    #     # print txtrdr()[::,None]
+    #     return txtrdr()[::,None]
+    #
+    #
+    # elif 'App1_gctime'== id:
+    # # print txtrdr()[::,None]
+    #     return txtrdr()[::,None]
+    #
+    # elif 'App1_gcstate'== id:
+    # # print txtrdr()[::,None]
+    #     return txtrdr()[::,None]
+    #
+    # elif 'App2_gctime'== id:
+    # # print txtrdr()[::,None]
+    #     return txtrdr()[::,None]
+    #
+    # elif 'App2_gcstate'== id:
+    # # print txtrdr()[::,None]
+    #     return txtrdr()[::,None]
+    #
+    # elif 'gcsequence'== id:
+    # # print txtrdr()[::,None]
+    #     return txtrdr()[::,None]
+    #
+    # #should not be here
+    # raise KeyError('series not found')
 
 
 

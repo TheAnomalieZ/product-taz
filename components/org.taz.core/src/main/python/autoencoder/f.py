@@ -32,7 +32,7 @@ class fig(object):
         self.plot().figure.savefig(self.path())
     def path(self):
         pth=os.path.join(''
-                         ,self.__class__.__name__+'.png'
+                         ,self.__class__.__name__+'.pdf'
         )
         return pth
 
@@ -220,17 +220,17 @@ class erfig(recon):
 #    wins=[0,10,50,100]
 #    al=550
 
-# @register
-# class er_App1_gcstate(erfig):
-#    xl=1;xu=2000
-#    wins=[2,10,50]
-#    al=550
-
 @register
-class er_App1_gctime(erfig):
-   xl=1;xu=500
-   wins=[30]
-   al=300
+class er_App1_gcstate(erfig):
+   xl=1;xu=2000
+   wins=[2,10,50]
+   al=550
+
+# @register
+# class er_App1_gctime(erfig):
+#    xl=10;xu=410
+#    wins=[0,10,30,50]
+#    al=300
 
 # @register
 # class er_App2_gcstate(erfig):
@@ -334,13 +334,14 @@ class bo(fig):
 # class bo_gctime(bo): pass
 
 # @register
-# class bo_App1_gctime(bo): pass
-#
+# class bo_App2_gctime(bo): pass
+
 # @register
 # class bo_App1_gcstate(bo): pass
 # VALIDATION and TRAINING ERROR
 
 class trn(fig):
+
     def plot(self):
         fig().plot(); #jus' closes a previous plot
         self.format();
@@ -367,7 +368,7 @@ class trn(fig):
 # class trn_gctime(trn):pass
 
 # @register
-# class trn_App1_gctime(trn):pass
+# class trn_App2_gctime(trn):pass
 #
 # @register
 # class trn_App1_gcstate(trn):pass
