@@ -12,6 +12,15 @@ public class Parameter {
     private long endTime;
     private long gcID;
     private double anomalyScore;
+    private double anomalyClassificationScore;
+
+    public double getAnomalyClassificationScore() {
+        return anomalyClassificationScore;
+    }
+
+    public void setAnomalyClassificationScore(double anomalyClassificationScore) {
+        this.anomalyClassificationScore = anomalyClassificationScore;
+    }
 
     public double getAnomalyScore() {
         return anomalyScore;
