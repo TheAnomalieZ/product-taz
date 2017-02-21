@@ -43,7 +43,7 @@ public class OpticsOF extends DatabaseHandler {
     public OpticsOF(int totalPoints, String file_name){
         this.file_path = Properties.ATTRIBUTE_TABLE_FILEPATH+file_name;
         this.totalPoints = totalPoints;
-        this.minPoint = (totalPoints/100)*51;
+        this.minPoint = (totalPoints/100)*55;
         this.file_name = file_name;
         System.out.println("total - "+totalPoints);
         System.out.println("filepath - "+file_path);
