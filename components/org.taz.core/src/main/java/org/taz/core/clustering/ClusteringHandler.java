@@ -54,6 +54,27 @@ public class ClusteringHandler {
         return anomalyMap;      //// TODO: 2/20/17 Need to check if its null. If its null NO ANOMALY detected
     }
 
+    public TreeMap<Integer, Parameter> getAnomalyPointsRegion(){
+        TreeMap<Long, Parameter> parameterTreeMap = opticsOF.getParameterTreeMap();
+        TreeMap<Integer, Parameter> anomalyRegionMap = new TreeMap<>();
+        double percentileVal = getPercentileValue();
+        System.out.println(percentileVal);
+        int i = 0;
+        for(Map.Entry<Long,Parameter> entry : parameterTreeMap.entrySet()){
+            Parameter parameter = entry.getValue();
+            if(parameter.getAnomalyScore()>=percentileVal){
+                parameter.setAnomalyClassificationScore(parameter.getAnomalyScore());
+                anomalyRegionMap.put(i,parameter);
+            }
+            else{
+                parameter.setAnomalyClassificationScore(0.0);
+                anomalyRegionMap.put(i,parameter);
+            }
+            i++;
+        }
+        return anomalyRegionMap;
+    }
+
     private double getPercentileValue (){
         double[] anomalyScoreArray = new double[anomalyScores.size()];
         //anomalyScoreArray = anomalyScores.toArray(anomalyScoreArray);
