@@ -20,7 +20,7 @@ def mserror(win,**kwargs):
     ts=getSeries()[:,0]
     tsdf=pd.Series(ts)
     bn=analysis.get_best_net(id)
-    mse=lambda win:np.mean(win - bn.predict(np.array(win,dtype='float32')[:,None,None]))**2
+    mse=lambda win:np.mean(win - bn.predict(np.array(win,dtype='float32')[:,None,None]))
     if win==0: #no window. just return all errors at once
         pr= (bn.predict(ts[:,None,None])[:,0,0]-ts)**2;
         return pr
@@ -38,6 +38,8 @@ print aer.size
 # scorelist = aer
 # scorelist = [0 if math.isnan(x) else x for x in scorelist]
 
+
+
 dic = aer.to_dict()
 scorelist = dic.values()
 scorelist = [0 if math.isnan(x) else x for x in scorelist]
@@ -48,3 +50,10 @@ writer = csv.writer(file)
 writer.writerows(scorelist)
 file.close()
 
+pct=5
+el=np.percentile(scorelist,90+pct)
+print ("threshold: "+str(el))
+file = open(filepath+"_threshold.csv", "wb")
+writer = csv.writer(file)
+writer.writerow([el])
+file.close()

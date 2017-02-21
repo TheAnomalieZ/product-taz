@@ -97,6 +97,7 @@ class sharexaxis(fig):
 
         for aeri0,aer in enumerate(dataall[1]):
             data=dataall[0],aer
+            print aer
             aeri=aeri0+1
 
             ret= self.style( ax[aeri].plot(data[1]
@@ -143,6 +144,7 @@ class sharexaxis(fig):
             #shade  pct
             pct=5
             el=np.percentile(yed,90+pct)
+            print ("threshold"+str(el))
             eax.axhspan(el,max(ymxd),facecolor='r',alpha=.1)
             #put pct tick
             if len(yt)>1 and el!=max(ymxd):
@@ -225,10 +227,10 @@ class erfig(recon):
 #    al=550
 
 @register
-class er_App2_gctime(erfig):
-   xl=1;xu=400
-   wins=[0,10,50,100]
-   al=550
+class er_App1_gctime(erfig):
+   xl=1;xu=500
+   wins=[30]
+   al=300
 
 # @register
 # class er_App2_gcstate(erfig):

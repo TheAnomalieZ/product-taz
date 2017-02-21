@@ -77,11 +77,10 @@ public class AE {
 
         try {
             reader = new CSVReader(new FileReader( thresholdPath));
-            String [] nextLine;
+            String [] nl;
             Double t;
-            while ((nextLine = reader.readNext()) != null) {
-                // nextLine[] is an array of values from the line
-                t = Double.parseDouble(nextLine[0]);
+            while ((nl = reader.readNext()) != null) {
+                t = Double.parseDouble(nl[0]);
                 System.out.println(t) ;
                 scorelist.add(t);
             }
@@ -133,7 +132,7 @@ public class AE {
                 time[0] =Double.valueOf(i);
                 int times =0;
                 int last = 0;
-                for(int j=i;times<5 && j<labellist.size();j++){
+                for(int j=i;times<10 && j<labellist.size();j++){
                     if(labellist.get(j)==1){
                         times++;
                     }else{
@@ -155,6 +154,10 @@ public class AE {
         return anomalies;
     }
 
+    /*
+    * Method to calculate percentile values
+    *
+    */
     public void calculatePercentile( ArrayList<Double>  scorelist){
         ArrayList<Double>  anomalyScores = new ArrayList<Double>();
         for(double a:scorelist){

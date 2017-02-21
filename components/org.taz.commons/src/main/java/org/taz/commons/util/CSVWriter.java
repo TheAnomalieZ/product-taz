@@ -137,7 +137,7 @@ public class CSVWriter {
 
     public void generateGCTimeSeries(ArrayList<Double> series, String fileName){
 
-        logger.info("Pause Time Series");
+        logger.info("GC Time Series");
         PrintWriter outfile = null;
         try {
             outfile = new PrintWriter(new File(fileName));
