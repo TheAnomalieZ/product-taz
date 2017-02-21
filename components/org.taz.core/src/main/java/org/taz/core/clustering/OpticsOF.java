@@ -1,6 +1,5 @@
 package org.taz.core.clustering;
 
-import ch.qos.logback.core.db.dialect.DBUtil;
 import de.lmu.ifi.dbs.elki.algorithm.clustering.optics.AbstractOPTICS;
 import de.lmu.ifi.dbs.elki.algorithm.outlier.OPTICSOF;
 import de.lmu.ifi.dbs.elki.data.DoubleVector;
@@ -32,7 +31,7 @@ public class OpticsOF extends DatabaseHandler {
     private String file_path;
     private String file_name;
     private TreeMap<Long, Parameter> parameterTreeMap = null;
-    //Clusterer clusterer = new OPTICS(5.0,3);
+
     public OpticsOF(int totalPoints, String file_name, int minPoint){
         this.minPoint = minPoint;
         this.totalPoints = totalPoints;
@@ -43,12 +42,17 @@ public class OpticsOF extends DatabaseHandler {
     public OpticsOF(int totalPoints, String file_name){
         this.file_path = Properties.ATTRIBUTE_TABLE_FILEPATH+file_name;
         this.totalPoints = totalPoints;
-        this.minPoint = (totalPoints/100)*55;
+        this.minPoint = (totalPoints/100)*55; //Set min point to 55% of total points
         this.file_name = file_name;
         System.out.println("total - "+totalPoints);
         System.out.println("filepath - "+file_path);
         System.out.println("minpoints - "+minPoint);
     }
+
+    /**
+     * Generate anomaly scorelist for dataset
+     * @return list array of scores
+     */
     public ArrayList<Double> generateAnomalyScore(){
         ArrayList<Double> anomalyScore = new ArrayList<>();
         String dirName = file_name.replaceAll(".csv","");
@@ -59,23 +63,17 @@ public class OpticsOF extends DatabaseHandler {
                 Database db = makeSimpleDatabase(file_path,totalPoints);
                 ListParameterization params = new ListParameterization();
                 params.addParameter(AbstractOPTICS.Parameterizer.MINPTS_ID, minPoint);
-                System.out.println("Min point - "+minPoint);
                 OPTICSOF<DoubleVector> opticsof = ClassGenericsUtil.parameterizeOrAbort(OPTICSOF.class, params);
                 // run OPTICSOF on database
                 OutlierResult result = opticsof.run(db);
                 DoubleRelation scores = result.getScores();
                 for (DBIDIter iter = scores.iterDBIDs(); iter.valid(); iter.advance()) {
-                    //System.out.println(DBIDUtil.toString(iter) + "," + scores.doubleValue(iter));
                     anomalyScore.add(scores.doubleValue(iter));
                     outfile.append(Double.toString(scores.doubleValue(iter))+"\n");
                     long key = parameterTreeMap.firstKey()+Long.parseLong(DBIDUtil.toString(iter));
                     Parameter parameter = parameterTreeMap.get(key);
                     parameter.setAnomalyScore(scores.doubleValue(iter));
                     parameterTreeMap.put(key,parameter);
-                    //parameterTreeMap.get(parameterTreeMap.firstKey()+DBIDUtil.toString(iter));
-                    //System.out.println(parameterTreeMap.firstKey());
-                    //System.out.println(DBIDUtil.toString(iter));
-                    //DBIDUtil.toString(iter) + " " +
                 }
                 outfile.close();
             } catch (FileNotFoundException e) {
@@ -84,6 +82,12 @@ public class OpticsOF extends DatabaseHandler {
         return anomalyScore;
     }
 
+    /**
+     * This method is for research purpose. Generate multiple score values for multiple min point values.
+     * @param startMinPoint start minpoint value
+     * @param iterations number of iterations to run
+     * @param gap gap between increment of minpoint
+     */
     public void runMinPointTest(int startMinPoint, int iterations, int gap){
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         int minPoint = startMinPoint;

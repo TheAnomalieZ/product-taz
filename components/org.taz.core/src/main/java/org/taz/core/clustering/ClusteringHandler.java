@@ -19,7 +19,7 @@ public class ClusteringHandler {
 
     public ClusteringHandler(String file_path) {
         createOpticsOfInstance(file_path);
-        percentilePercentage = 75.0;
+        percentilePercentage = 90.0;
     }
 
     private OpticsOF createOpticsOfInstance(String file_path){
@@ -42,7 +42,6 @@ public class ClusteringHandler {
         TreeMap<Long, Parameter> parameterTreeMap = opticsOF.getParameterTreeMap();
         TreeMap<Integer, Parameter> anomalyMap = new TreeMap<>();
         double percentileVal = getPercentileValue();
-        System.out.println(percentileVal);
         int i = 0;
         for(Map.Entry<Long,Parameter> entry : parameterTreeMap.entrySet()){
             Parameter parameter = entry.getValue();
@@ -75,9 +74,12 @@ public class ClusteringHandler {
         return anomalyRegionMap;
     }
 
-    private double getPercentileValue (){
+    /**
+     * Get percentile value of dataset
+     * @return percentile value
+     */
+    public double getPercentileValue (){
         double[] anomalyScoreArray = new double[anomalyScores.size()];
-        //anomalyScoreArray = anomalyScores.toArray(anomalyScoreArray);
         for(int i=0;i<anomalyScores.size();i++){
             anomalyScoreArray[i] = anomalyScores.get(i);
         }

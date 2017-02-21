@@ -23,12 +23,15 @@ public class CSVGenerator {
         getTimegap();
     }
 
+    /**
+     * Generate CSV file of attributes for clustering
+     * @return created CSV's file path
+     */
     public String generateCSV(){
         System.out.println("Generating csv..");
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String fileName = "None";
         try {
-            //String path = "files/clustering/attribute_tables/";
             PrintWriter outfile = new PrintWriter(new File(Properties.ATTRIBUTE_TABLE_FILEPATH+"clustering_attributes_"+timeStamp+".csv"));
             fileName = "clustering_attributes_"+timeStamp+".csv";
             for(Map.Entry<Long,Long> entry : timeGapMap.entrySet()){
@@ -46,16 +49,11 @@ public class CSVGenerator {
 
     private void getTimegap() {
         timeGapMap = new TreeMap<>();
-        /*timegap = new ArrayList<>();
-        gcIdList = new ArrayList<>();*/
         for (Map.Entry<Long, Parameter> entry : parameterTreeMap.entrySet()) {
             long gcId = entry.getKey();
             long endTime = entry.getValue().getEndTime();
             if(parameterTreeMap.containsKey(gcId+1)){
                 timeGapMap.put(gcId+1,parameterTreeMap.get(gcId+1).getStartTime()-endTime);
-                //System.out.println((gcId+1)+" - "+(parameterTreeMap.get(gcId+1).getStartTime()-endTime));
-                /*timegap.add(parameterTreeMap.get(gcId+1).getStartTime()-endTime);
-                gcIdList.add(gcId);*/
             }
 
         }
