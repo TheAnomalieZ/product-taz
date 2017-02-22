@@ -34,7 +34,7 @@ public class GCAnalysisPageService {
         ArrayList<ClusteringAnomalyRegion> anomalyRegions = new ArrayList<>();
 
         ClusteringHandler clusteringHandler = new ClusteringHandler(filePath);
-        clusteringHandler.setPercentile(95.0);
+        clusteringHandler.setPercentile(98.0);
         TreeMap<Integer, Parameter> anomalyRegion = clusteringHandler.getAnomalyPointsRegion();
         StringBuilder anomalyScoreGraphData = new StringBuilder();
         double threshold = clusteringHandler.getPercentileValue();
@@ -51,15 +51,15 @@ public class GCAnalysisPageService {
                 Parameter parameter = entry.getValue();
                 anomalyScoreGraphData.append("[" + parameter.getGcID() + "," + parameter.getAnomalyClassificationScore() + "," + threshold + "],");
 
-                if(parameter.getAnomalyClassificationScore() != 0.0 && count == 0){
+                if(parameter.getAnomalyClassificationScore() >= threshold && count == 0){
                     start = parameter;
                     count++;
-                } else if(parameter.getAnomalyClassificationScore() != 0.0){
+                } else if(parameter.getAnomalyClassificationScore() >= threshold){
                     count++;
                     end = parameter;
                 }
 
-                if(parameter.getAnomalyClassificationScore() == 0.0 && count != 0){
+                if(parameter.getAnomalyClassificationScore() < threshold && count != 0){
                     if(count > 5 && end != null) {
                         ClusteringAnomalyRegion clusteringAnomalyRegion = new ClusteringAnomalyRegion();
                         clusteringAnomalyRegion.setRegionID(region);
