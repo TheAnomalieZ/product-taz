@@ -1,0 +1,42 @@
+Job launching after 0.26 seconds in submission.
+Running python job.
+Changed into dir /home/taz/fyp/taz/experiments/gctime1
+Importing o.py
+Running o.main()
+gctime1
+gctime1
+gctime1
+gctime1
+I 2017-01-25 21:30:32 theanets.graph:643 /home/taz/fyp/taz/tmp0RrVX7.tmp: loaded model
+stateit 3
+it 2
+I 2017-01-25 21:30:32 downhill.dataset:118 valid: 95 mini-batches from callable
+I 2017-01-25 21:30:32 downhill.dataset:118 train: 283 mini-batches from callable
+I 2017-01-25 21:30:32 theanets.graph:447 building computation graph
+I 2017-01-25 21:30:32 theanets.losses:67 using loss: 1.0 * MeanSquaredError (output out:out)
+I 2017-01-25 21:30:32 theanets.regularizers:711 regularizer: 30.5783729553 * GaussianNoise(('in:out',))
+I 2017-01-25 21:30:32 downhill.base:389 -- patience = 5
+I 2017-01-25 21:30:32 downhill.base:390 -- validate_every = 1
+I 2017-01-25 21:30:32 downhill.base:391 -- max_updates = None
+I 2017-01-25 21:30:32 downhill.base:392 -- min_improvement = 0.005
+I 2017-01-25 21:30:32 downhill.base:393 -- max_gradient_norm = 0
+I 2017-01-25 21:30:32 downhill.base:394 -- max_gradient_elem = 0
+I 2017-01-25 21:30:32 downhill.base:395 -- learning_rate = 0.0001
+I 2017-01-25 21:30:32 downhill.base:396 -- momentum = 0
+I 2017-01-25 21:30:32 downhill.base:397 -- nesterov = True
+I 2017-01-25 21:30:32 downhill.adaptive:220 -- rms_halflife = 14
+I 2017-01-25 21:30:32 downhill.adaptive:221 -- rms_regularizer = 1e-08
+I 2017-01-25 21:30:32 downhill.base:118 compiling evaluation function
+I 2017-01-25 21:30:34 downhill.base:124 compiling RMSProp function
+I 2017-01-25 21:31:02 downhill.base:232 validation 0 loss=4209.428789 err=4209.428789 *
+I 2017-01-25 21:33:26 downhill.base:232 RMSProp 1 loss=3898.565645 err=3898.565645
+I 2017-01-25 21:33:26 theanets.graph:626 /tmp/tmp0NA6Yp.tmp: saved model
+I 2017-01-25 21:33:26 theanets.graph:643 /tmp/tmp0NA6Yp.tmp: loaded model
+I 2017-01-25 21:33:36 downhill.base:232 validation 1 loss=3297.455144 err=3297.455144 *
+I 2017-01-25 21:35:57 downhill.base:232 RMSProp 2 loss=2801.597165 err=2801.597165
+I 2017-01-25 21:35:57 theanets.graph:626 /tmp/tmpurcpoL.tmp: saved model
+I 2017-01-25 21:35:57 theanets.graph:643 /tmp/tmpurcpoL.tmp: loaded model
+I 2017-01-25 21:35:57 theanets.graph:626 /tmp/tmpyxGPYH.tmp: saved model
+I 2017-01-25 21:35:57 theanets.graph:643 /tmp/tmpyxGPYH.tmp: loaded model
+Got result {'main': 3297.455143794006}
+Completed successfully in 326.39 seconds. [{'main': 3297.455143794006}]

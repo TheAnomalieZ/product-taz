@@ -35,4 +35,3 @@ I 2017-02-10 09:00:29 theanets.graph:626 /tmp/tmpA6SiPv.tmp: saved model
 I 2017-02-10 09:00:29 theanets.graph:643 /tmp/tmpA6SiPv.tmp: loaded model
 Got result {'main': 1115.756784052169}
 Completed successfully in 100.05 seconds. [{'main': 1115.756784052169}]
-
