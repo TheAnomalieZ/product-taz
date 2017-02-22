@@ -35,6 +35,7 @@ class HMMModel(object):
         train_data = np.array(floats)
         model = hmm.MultinomialHMM(n_components=n1)
         model.fit(train_data)
+        joblib.dump(model, "modelname" + ".pkl")
         return model
 
     def testingHMM(self, filename, n, p, model):
@@ -47,6 +48,7 @@ class HMMModel(object):
                 floats.append(map(int, row))
         finally:
             f.close()
+
 
         test_data = np.array(floats)
         #print test_data
