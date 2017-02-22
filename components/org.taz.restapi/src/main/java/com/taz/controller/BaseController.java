@@ -26,6 +26,9 @@ public class BaseController {
     @Autowired
     GarbageCollectionPageService garbageCollectionPageService;
 
+    @Autowired
+    GCAnalysisPageService gcAnalysisPageService;
+
     private static final String HOME = "home";
     private static final String ERROR = "error";
     private static final String WELCOME = "welcome";
@@ -33,6 +36,7 @@ public class BaseController {
     private static final String JVM_INFORMATION = "jvmInformation";
     private static final String RECORDING = "recordings";
     private static final String GARBAGE_COLLECTION = "GarbageCollection";
+    private static final String CLUSTER_ANALYSIS = "ClusterAnalysis";
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String jfrAnalyzer(ModelMap model) {
@@ -75,5 +79,11 @@ public class BaseController {
     public String gcPage(@RequestParam("fileName")String fileName, ModelMap model) {
         garbageCollectionPageService.configureGCAttributes(fileName, model);
         return GARBAGE_COLLECTION;
+    }
+
+    @RequestMapping(value = "/cluster_analysis", method = RequestMethod.GET)
+    public String gcAnalysisPage(@RequestParam("fileName")String fileName, ModelMap model) {
+        gcAnalysisPageService.getPageData(fileName, model);
+        return CLUSTER_ANALYSIS;
     }
 }

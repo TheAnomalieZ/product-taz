@@ -1,4 +1,4 @@
-package com.taz.graph_models;
+package com.taz.models;
 
 import java.util.ArrayList;
 

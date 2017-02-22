@@ -1,6 +1,8 @@
 package com.taz.service;
 
-import com.taz.graph_models.HeapUsage;
+import com.taz.data.GCEventModelService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
@@ -22,6 +24,10 @@ import java.util.concurrent.TimeUnit;
 public class GarbageCollectionPageService {
 
     private JFRReader jfrReader;
+//    private GCEventsModelDataService gcEventsModelDataService;
+
+    @Autowired
+    GCEventModelService gcEventModelService;
 
     @Value("${service.file.path}")
     private String rootPath;
@@ -30,9 +36,26 @@ public class GarbageCollectionPageService {
         this.jfrReader = JFRReader.getInstance();
     }
 
+
     public void getGCModel(String fileName, ModelMap model) {
         String filePath = rootPath + "/" + fileName;
-        GCEventsModel gcEventsModel = jfrReader.getGCEventModel(filePath);
+
+        com.taz.data.entity.GCEventsModel gcEventsModelEntity = gcEventModelService.findGCEventsModelByFileName(fileName);
+        GCEventsModel gcEventsModel;
+
+        if(gcEventsModelEntity == null){
+            com.taz.data.entity.GCEventsModel gcEventsModel1 = new com.taz.data.entity.GCEventsModel();
+            gcEventsModel = jfrReader.getGCEventModel(filePath);
+            BeanUtils.copyProperties(gcEventsModel, gcEventsModel1);
+            gcEventsModel1.setFileName(fileName);
+//            gcEventModelService.save(gcEventsModel1);
+        } else {
+            GCEventsModel gcEventsModel1 = new GCEventsModel();
+            BeanUtils.copyProperties(gcEventsModelEntity, gcEventsModel1);
+            gcEventsModel = gcEventsModel1;
+        }
+
+
         formatDataForGraph(gcEventsModel, model);
         model.addAttribute("gcId", gcEventsModel.getGcIdList());
         HashMap<String, HashMap<String, String>> pieDataHashMap = new HashMap<>();

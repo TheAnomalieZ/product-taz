@@ -111,30 +111,37 @@
                                     <i class="glyphicon glyphicon-upload"></i>
                                     <span>Start upload</span>
                                 </button>
+                                <table role="presentation" class="table table-striped" id="fileTable">
+                                    <tbody class="files">
+                                    <tr class="template-upload fade processing in">
+                                        <td>
+                                            <p class="name" id="file_name"></p>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </form>
-
-                    <br>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <%--<h3 class="panel-title">Notes</h3>--%>
-                        </div>
-                        <div class="panel-body">
-                            <ul>
-                                <li>The maximum file size for uploads in this is <strong>200 MB</strong></li>
-                                <li>Only <strong>JFR</strong> files are allowed in this
-                                </li>
-                                <li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage
-                                    (see <a href="https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support">Browser
-                                        support</a>).
-                                </li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <%--<h3 class="panel-title">Notes</h3>--%>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>The maximum file size for uploads in this is <strong>200 MB</strong></li>
+                            <li>Only <strong>JFR</strong> files are allowed in this
+                            </li>
+                            <li>You can <strong>drag &amp; drop</strong> files from your desktop on this webpage
+                                (see <a href="https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support">Browser
+                                    support</a>).
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            <%--</div>--%>
 
             <!-- File upload end -->
             <%--File view start--%>
@@ -155,8 +162,13 @@
                             <tr>
                                 <td>${fileName}</td>
                                 <td>
-                                    <button type="button" class="btn btn-success" onclick="location.href='/garbage_collection?fileName=${fileName}'">
+                                    <button type="button" class="btn btn-success"
+                                            onclick="location.href='/cluster_analysis?fileName=${fileName}'">
                                         Analyze
+                                    </button>
+                                    <button type="button" class="btn btn-success"
+                                            onclick="location.href='/overview?fileName=${fileName}'">
+                                        Profiling
                                     </button>
                                     <span>
                                     <button type="button" class="btn btn-danger" onclick="deleteFile('${fileName}')">
@@ -254,6 +266,16 @@
         });
     }
 
+    window.onload = function () {
+        var file_input = document.getElementById('input_file');
+        var file_table = document.getElementById('file_name');
+//        var file_table = document.getElementById('fileTable');
+
+        file_input.addEventListener('change', function (e) {
+//            file_table.insertRow().insertCell().textContent = this.files[0].name;
+            file_table.innerHTML = this.files[0].name;
+        });
+    }
 </script>
 
 </body>

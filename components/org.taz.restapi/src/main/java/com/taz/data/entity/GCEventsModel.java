@@ -1,6 +1,9 @@
-package org.taz.commons.parser.models;
+package com.taz.data.entity;
 
-import org.taz.commons.parser.events.*;
+import org.taz.commons.parser.events.GCReferenceProcessingEvent;
+import org.taz.commons.parser.events.GarbageCollectionEvent;
+import org.taz.commons.parser.events.HeapSummaryEvent;
+import org.taz.commons.parser.events.MetaspaceSummaryEvent;
 
 import java.util.ArrayList;
 

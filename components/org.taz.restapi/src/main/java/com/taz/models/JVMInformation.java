@@ -1,4 +1,4 @@
-package com.taz.graph_models;
+package com.taz.models;
 
 /**
  * Created by K.Kokulan on 12/20/2016.
