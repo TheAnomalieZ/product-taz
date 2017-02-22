@@ -99,6 +99,11 @@ public class JFRParserV18 implements JFRParser {
         return gcTimeSeriesModel.getHeapandPauseSeries();
     }
 
+    public ArrayList<Integer> getGCStates(){
+        GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
+        return gcTimeSeriesModel.getStateSequence();
+    }
+
     public ArrayList<EventNode> getAllJFRAttributes() {
         ArrayList<EventNode> eventNodes = new ArrayList<EventNode>();
         for(IEventType iEventType : ieventtypes){

@@ -206,4 +206,9 @@ public class JFRReader {
         logger.info("Erase old JFR loadings");
         jfrList = new LinkedHashMap<String,JFRParser>();
     }
+
+    public ArrayList<Integer> getGarbageCollectionStates(String filePath) {
+        parser = readSingleJFR(filePath);
+        return parser.getGCStates();
+    }
 }

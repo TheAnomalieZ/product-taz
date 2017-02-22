@@ -125,4 +125,11 @@ public interface JFRParser {
             throws EventNotFoundException, AttributeNotFoundException;
 
     public IView getIView();
+
+
+    /**
+     * Method to retrieve GC states
+     * @return List of GC states
+     */
+    ArrayList<Integer> getGCStates();
 }

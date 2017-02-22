@@ -33,7 +33,7 @@ public class CSVWriter {
         logger.info("GC state sequences");
         PrintWriter outfile = null;
         try {
-            outfile = new PrintWriter(new File(fileName+"_states.csv"));
+            outfile = new PrintWriter(new File(fileName));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
