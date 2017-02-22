@@ -1,9 +1,9 @@
 package com.taz.service;
 
-import com.taz.graph_models.CpuUsage;
-import com.taz.graph_models.GcData;
-import com.taz.graph_models.HeapUsage;
-import com.taz.graph_models.JVMInformation;
+import com.taz.models.CpuUsage;
+import com.taz.models.GcData;
+import com.taz.models.HeapUsage;
+import com.taz.models.JVMInformation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;

@@ -15,10 +15,7 @@ import org.taz.commons.parser.models.GCEventsModel;
 import org.taz.commons.parser.util.EventNode;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by vithulan on 11/29/16.
@@ -32,6 +29,10 @@ public class JFRParserV18 implements JFRParser {
     public JFRParserV18(String path) {
         FILE_PATH = path;
         initParser(this.FILE_PATH);
+    }
+
+    public IView getiView() {
+        return iView;
     }
 
     public ArrayList<Integer> getMemoryStates() {
@@ -57,6 +58,11 @@ public class JFRParserV18 implements JFRParser {
     public ArrayList<CPULoadEvent> getCPUEvents() {
         CPULoadHandler cpuLoadHandler = new CPULoadHandler(iView);
         return cpuLoadHandler.getEventSeries();
+    }
+
+    public HashMap<String, Object> getOverviewPageEvents() {
+        OverviewDataHandler overviewDataHandler = new OverviewDataHandler(iView);
+        return overviewDataHandler.getEventsMap();
     }
 
     public ArrayList<HeapSummaryEvent> getHeapSummaryEvents() {
@@ -93,6 +99,12 @@ public class JFRParserV18 implements JFRParser {
         GCEventsModelHandler gcEventsModelHandler = new GCEventsModelHandler(iView);
         return gcEventsModelHandler.getGCEventModel();
     }
+
+    public LinkedHashMap<ArrayList<String>,Long> getHotMethods(long startTime, long endTime){
+        StackTraceHandler stackTraceHandler = new StackTraceHandler(iView);
+        return stackTraceHandler.getStackTrace(startTime, endTime);
+    }
+
 
     public ArrayList<Double> getGCTimeSeries(){
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);

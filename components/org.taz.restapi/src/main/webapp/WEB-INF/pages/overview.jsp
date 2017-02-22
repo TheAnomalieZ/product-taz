@@ -152,7 +152,7 @@
             <!-- heap usage end-->
 
             <!-- CPU usage start-->
-            <div class="row">
+            <div class="row" id="cpu_graph">
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
@@ -220,7 +220,12 @@
     loadCpuUsage(${totalCpuUsage.data.get(0)});
     loadGCPauseTime(${gcData.data.get(0)}, ${gcData.gaugeMax});
     loadHeapUsageLineChart(${heapUsageData.tenpData});
-    loadCpuUsageLineChart(${totalCpuUsage.cpuUsageData});
+    var x = ${totalCpuUsage.cpuUsageData}.length;
+    if(x < 1000){
+        loadCpuUsageLineChart(${totalCpuUsage.cpuUsageData});
+    } else{
+        document.getElementById('cpu_graph').style.display = 'none';
+    }
 </script>
 
 

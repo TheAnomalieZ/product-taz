@@ -8,8 +8,7 @@ import org.taz.commons.parser.memory.MemEvent;
 import org.taz.commons.parser.models.GCEventsModel;
 import org.taz.commons.parser.util.EventNode;
 
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
 
 public interface JFRParser {
 
@@ -68,6 +67,12 @@ public interface JFRParser {
      * Method to retrieve Heap summary Events
      * @return Map of time and pausetime interval
      */
+    public HashMap<String, Object> getOverviewPageEvents();
+
+    /**
+     * Method to retrieve over view Events
+     * @return event Map
+     */
     public ArrayList<HeapSummaryEvent> getHeapSummaryEvents();
 
     /**
@@ -106,6 +111,12 @@ public interface JFRParser {
      * @return GC Event Model
      */
     public GCEventsModel getGCEventModel();
+
+    /**
+     * Method to retrieve hot Methods
+     * @return Likedlist
+     */
+    public LinkedHashMap<ArrayList<String>,Long> getHotMethods(long startTime, long endTime);
 
     /**
      * Initiate Flight recorder parser

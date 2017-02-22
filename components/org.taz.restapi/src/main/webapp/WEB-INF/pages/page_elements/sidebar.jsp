@@ -47,11 +47,9 @@
                         <span>Analysis JFR</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/error">Memory Analysis</a></li>
-                        <li><a href="/error">CPU Analysis</a></li>
-                        <li><a href="/error">IO Analysis</a></li>
-                        <li><a href="/error">Network Analysis</a></li>
-
+                        <li><a href="/cluster_analysis?fileName=${fileName}">Cluster Analysis</a></li>
+                        <li><a href="/error">NN Analysis</a></li>
+                        <li><a href="/error">HMM Analysis</a></li>
                     </ul>
                 </li>
             </ul>
