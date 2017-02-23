@@ -76,9 +76,8 @@ var loadHeapUsageLineChart = function (value) {
     });
 };
 
-var zoomRange = function (min, max, timeMin, timeMax){
+var zoomRange = function (min, max){
     anomalyScoreLineChart.zoom([min, max]);
-    heapUsageLineChart.zoom(timeMin, timeMax);
 };
 
 

@@ -80,7 +80,25 @@
         <section class="wrapper">
             <!-- page start-->
             <%-- Content start--%>
-
+            <!-- heap usage start-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Heap Usage
+                            <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                             </span>
+                        </header>
+                        <div class="panel-body">
+                            <div class="chart">
+                                <div id="heap-usage-line-chart"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- heap usage end-->
             <!-- heap usage start-->
             <div class="row">
                 <div class="col-lg-12">
@@ -200,6 +218,8 @@
 <script src="../../resources/js/scripts.js"></script>
 <script type="text/javascript">
     loadanomalyScoreLineChart(${anomalyScore});
+    loadHeapUsageLineChart(${heapUsedData});
+
 
     var zoomGraph = function(min, max){
         zoomRange(min, max);
