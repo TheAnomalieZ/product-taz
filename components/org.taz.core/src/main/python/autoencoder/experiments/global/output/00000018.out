@@ -1,0 +1,184 @@
+Job launching after 12.86 seconds in submission.
+Running python job.
+Changed into dir /home/taz/fyp/taz/experiments/global
+Importing o.py
+Running o.main()
+global
+global
+global
+global
+I 2017-01-19 00:14:29 theanets.layers.base:371 layer Input "in": 1 inputs
+I 2017-01-19 00:14:29 theanets.layers.base:207 layer LSTM "hid1": (in:out)1 -> 20, sigmoid, 1820 parameters
+I 2017-01-19 00:14:29 theanets.layers.base:207 layer Feedforward "out": (hid1:out)20 -> 1, linear, 21 parameters
+I 2017-01-19 00:14:29 theanets.graph:94 network has 1841 total parameters
+stateit 2
+it 100000
+I 2017-01-19 00:14:29 downhill.dataset:118 valid: 95 mini-batches from callable
+I 2017-01-19 00:14:29 downhill.dataset:118 train: 283 mini-batches from callable
+I 2017-01-19 00:14:29 theanets.graph:447 building computation graph
+I 2017-01-19 00:14:29 theanets.losses:67 using loss: 1.0 * MeanSquaredError (output out:out)
+I 2017-01-19 00:14:29 theanets.regularizers:711 regularizer: 9.76721119881 * GaussianNoise(('in:out',))
+I 2017-01-19 00:14:44 downhill.base:389 -- patience = 5
+I 2017-01-19 00:14:44 downhill.base:390 -- validate_every = 1
+I 2017-01-19 00:14:44 downhill.base:391 -- max_updates = None
+I 2017-01-19 00:14:44 downhill.base:392 -- min_improvement = 0.005
+I 2017-01-19 00:14:44 downhill.base:393 -- max_gradient_norm = 0
+I 2017-01-19 00:14:44 downhill.base:394 -- max_gradient_elem = 0
+I 2017-01-19 00:14:44 downhill.base:395 -- learning_rate = 0.0001
+I 2017-01-19 00:14:44 downhill.base:396 -- momentum = 0
+I 2017-01-19 00:14:44 downhill.base:397 -- nesterov = True
+I 2017-01-19 00:14:44 downhill.adaptive:220 -- rms_halflife = 14
+I 2017-01-19 00:14:44 downhill.adaptive:221 -- rms_regularizer = 1e-08
+I 2017-01-19 00:14:44 downhill.base:118 compiling evaluation function
+I 2017-01-19 00:14:49 downhill.base:124 compiling RMSProp function
+I 2017-01-19 00:16:10 downhill.base:232 validation 0 loss=1063.492223 err=1063.492223 *
+I 2017-01-19 00:28:31 downhill.base:232 RMSProp 1 loss=895.389203 err=895.389203
+I 2017-01-19 00:28:31 theanets.graph:626 /tmp/tmpf7dLNC.tmp: saved model
+I 2017-01-19 00:28:31 theanets.graph:643 /tmp/tmpf7dLNC.tmp: loaded model
+I 2017-01-19 00:29:38 downhill.base:232 validation 1 loss=626.052562 err=626.052562 *
+I 2017-01-19 00:41:58 downhill.base:232 RMSProp 2 loss=418.633506 err=418.633506
+I 2017-01-19 00:41:58 theanets.graph:626 /tmp/tmp7k1rvD.tmp: saved model
+I 2017-01-19 00:41:58 theanets.graph:643 /tmp/tmp7k1rvD.tmp: loaded model
+I 2017-01-19 00:43:04 downhill.base:232 validation 2 loss=272.490100 err=272.490100 *
+I 2017-01-19 00:55:20 downhill.base:232 RMSProp 3 loss=188.897088 err=188.897088
+I 2017-01-19 00:55:20 theanets.graph:626 /tmp/tmpJU8Vft.tmp: saved model
+I 2017-01-19 00:55:20 theanets.graph:643 /tmp/tmpJU8Vft.tmp: loaded model
+I 2017-01-19 00:56:27 downhill.base:232 validation 3 loss=123.276185 err=123.276185 *
+I 2017-01-19 01:08:40 downhill.base:232 RMSProp 4 loss=82.037771 err=82.037771
+I 2017-01-19 01:08:40 theanets.graph:626 /tmp/tmpfrCIIx.tmp: saved model
+I 2017-01-19 01:08:40 theanets.graph:643 /tmp/tmpfrCIIx.tmp: loaded model
+I 2017-01-19 01:09:47 downhill.base:232 validation 4 loss=54.070678 err=54.070678 *
+I 2017-01-19 01:21:57 downhill.base:232 RMSProp 5 loss=39.392208 err=39.392208
+I 2017-01-19 01:21:57 theanets.graph:626 /tmp/tmph287_r.tmp: saved model
+I 2017-01-19 01:21:57 theanets.graph:643 /tmp/tmph287_r.tmp: loaded model
+I 2017-01-19 01:23:04 downhill.base:232 validation 5 loss=28.764885 err=28.764885 *
+I 2017-01-19 01:35:24 downhill.base:232 RMSProp 6 loss=22.290786 err=22.290786
+I 2017-01-19 01:35:24 theanets.graph:626 /tmp/tmp4X9Zwa.tmp: saved model
+I 2017-01-19 01:35:24 theanets.graph:643 /tmp/tmp4X9Zwa.tmp: loaded model
+I 2017-01-19 01:36:30 downhill.base:232 validation 6 loss=17.913136 err=17.913136 *
+I 2017-01-19 01:48:43 downhill.base:232 RMSProp 7 loss=14.940107 err=14.940107
+I 2017-01-19 01:48:43 theanets.graph:626 /tmp/tmpZNoQRz.tmp: saved model
+I 2017-01-19 01:48:43 theanets.graph:643 /tmp/tmpZNoQRz.tmp: loaded model
+I 2017-01-19 01:49:50 downhill.base:232 validation 7 loss=12.846882 err=12.846882 *
+I 2017-01-19 02:01:54 downhill.base:232 RMSProp 8 loss=11.498158 err=11.498158
+I 2017-01-19 02:01:54 theanets.graph:626 /tmp/tmpiPjEPE.tmp: saved model
+I 2017-01-19 02:01:54 theanets.graph:643 /tmp/tmpiPjEPE.tmp: loaded model
+I 2017-01-19 02:03:00 downhill.base:232 validation 8 loss=10.574467 err=10.574467 *
+I 2017-01-19 02:15:09 downhill.base:232 RMSProp 9 loss=9.592232 err=9.592232
+I 2017-01-19 02:15:09 theanets.graph:626 /tmp/tmpff8zCu.tmp: saved model
+I 2017-01-19 02:15:09 theanets.graph:643 /tmp/tmpff8zCu.tmp: loaded model
+I 2017-01-19 02:16:15 downhill.base:232 validation 9 loss=8.908783 err=8.908783 *
+I 2017-01-19 02:28:21 downhill.base:232 RMSProp 10 loss=8.316973 err=8.316973
+I 2017-01-19 02:28:21 theanets.graph:626 /tmp/tmpEh2lSa.tmp: saved model
+I 2017-01-19 02:28:21 theanets.graph:643 /tmp/tmpEh2lSa.tmp: loaded model
+I 2017-01-19 02:29:28 downhill.base:232 validation 10 loss=7.772388 err=7.772388 *
+I 2017-01-19 02:41:37 downhill.base:232 RMSProp 11 loss=7.266330 err=7.266330
+I 2017-01-19 02:41:37 theanets.graph:626 /tmp/tmpfKBHX4.tmp: saved model
+I 2017-01-19 02:41:37 theanets.graph:643 /tmp/tmpfKBHX4.tmp: loaded model
+I 2017-01-19 02:42:43 downhill.base:232 validation 11 loss=6.873285 err=6.873285 *
+I 2017-01-19 02:54:50 downhill.base:232 RMSProp 12 loss=6.502258 err=6.502258
+I 2017-01-19 02:54:50 theanets.graph:626 /tmp/tmpFGaSKS.tmp: saved model
+I 2017-01-19 02:54:50 theanets.graph:643 /tmp/tmpFGaSKS.tmp: loaded model
+I 2017-01-19 02:55:56 downhill.base:232 validation 12 loss=6.219860 err=6.219860 *
+I 2017-01-19 03:08:05 downhill.base:232 RMSProp 13 loss=5.938502 err=5.938502
+I 2017-01-19 03:08:05 theanets.graph:626 /tmp/tmpeTYlgr.tmp: saved model
+I 2017-01-19 03:08:05 theanets.graph:643 /tmp/tmpeTYlgr.tmp: loaded model
+I 2017-01-19 03:09:11 downhill.base:232 validation 13 loss=5.729158 err=5.729158 *
+I 2017-01-19 03:21:20 downhill.base:232 RMSProp 14 loss=5.524069 err=5.524069
+I 2017-01-19 03:21:20 theanets.graph:626 /tmp/tmpYThRgp.tmp: saved model
+I 2017-01-19 03:21:20 theanets.graph:643 /tmp/tmpYThRgp.tmp: loaded model
+I 2017-01-19 03:22:27 downhill.base:232 validation 14 loss=5.402344 err=5.402344 *
+I 2017-01-19 03:34:40 downhill.base:232 RMSProp 15 loss=5.197137 err=5.197137
+I 2017-01-19 03:34:40 theanets.graph:626 /tmp/tmp4RaZU0.tmp: saved model
+I 2017-01-19 03:34:40 theanets.graph:643 /tmp/tmp4RaZU0.tmp: loaded model
+I 2017-01-19 03:35:46 downhill.base:232 validation 15 loss=5.064953 err=5.064953 *
+I 2017-01-19 03:47:55 downhill.base:232 RMSProp 16 loss=4.865664 err=4.865664
+I 2017-01-19 03:47:55 theanets.graph:626 /tmp/tmp7rqqI5.tmp: saved model
+I 2017-01-19 03:47:55 theanets.graph:643 /tmp/tmp7rqqI5.tmp: loaded model
+I 2017-01-19 03:49:02 downhill.base:232 validation 16 loss=4.741190 err=4.741190 *
+I 2017-01-19 04:01:11 downhill.base:232 RMSProp 17 loss=4.598349 err=4.598349
+I 2017-01-19 04:01:11 theanets.graph:626 /tmp/tmpUSOaTe.tmp: saved model
+I 2017-01-19 04:01:11 theanets.graph:643 /tmp/tmpUSOaTe.tmp: loaded model
+I 2017-01-19 04:02:18 downhill.base:232 validation 17 loss=4.471461 err=4.471461 *
+I 2017-01-19 04:14:24 downhill.base:232 RMSProp 18 loss=4.353735 err=4.353735
+I 2017-01-19 04:14:24 theanets.graph:626 /tmp/tmp_QdZbS.tmp: saved model
+I 2017-01-19 04:14:24 theanets.graph:643 /tmp/tmp_QdZbS.tmp: loaded model
+I 2017-01-19 04:15:31 downhill.base:232 validation 18 loss=4.269715 err=4.269715 *
+I 2017-01-19 04:27:41 downhill.base:232 RMSProp 19 loss=4.178047 err=4.178047
+I 2017-01-19 04:27:41 theanets.graph:626 /tmp/tmpKoJeI_.tmp: saved model
+I 2017-01-19 04:27:41 theanets.graph:643 /tmp/tmpKoJeI_.tmp: loaded model
+I 2017-01-19 04:28:47 downhill.base:232 validation 19 loss=4.091980 err=4.091980 *
+I 2017-01-19 04:40:55 downhill.base:232 RMSProp 20 loss=4.016435 err=4.016435
+I 2017-01-19 04:40:55 theanets.graph:626 /tmp/tmpwITzK1.tmp: saved model
+I 2017-01-19 04:40:55 theanets.graph:643 /tmp/tmpwITzK1.tmp: loaded model
+I 2017-01-19 04:42:02 downhill.base:232 validation 20 loss=3.925492 err=3.925492 *
+I 2017-01-19 04:54:12 downhill.base:232 RMSProp 21 loss=3.851258 err=3.851258
+I 2017-01-19 04:54:12 theanets.graph:626 /tmp/tmpwDeubw.tmp: saved model
+I 2017-01-19 04:54:12 theanets.graph:643 /tmp/tmpwDeubw.tmp: loaded model
+I 2017-01-19 04:55:20 downhill.base:232 validation 21 loss=3.818026 err=3.818026 *
+I 2017-01-19 05:10:36 downhill.base:232 RMSProp 22 loss=3.697908 err=3.697908
+I 2017-01-19 05:10:36 theanets.graph:626 /tmp/tmpR5bgu_.tmp: saved model
+I 2017-01-19 05:10:36 theanets.graph:643 /tmp/tmpR5bgu_.tmp: loaded model
+I 2017-01-19 05:12:36 downhill.base:232 validation 22 loss=3.668237 err=3.668237 *
+I 2017-01-19 05:25:14 downhill.base:232 RMSProp 23 loss=3.594325 err=3.594325
+I 2017-01-19 05:25:14 theanets.graph:626 /tmp/tmpln_qYb.tmp: saved model
+I 2017-01-19 05:25:14 theanets.graph:643 /tmp/tmpln_qYb.tmp: loaded model
+I 2017-01-19 05:26:19 downhill.base:232 validation 23 loss=3.516320 err=3.516320 *
+I 2017-01-19 05:38:33 downhill.base:232 RMSProp 24 loss=3.475757 err=3.475757
+I 2017-01-19 05:38:33 theanets.graph:626 /tmp/tmpIiTZtw.tmp: saved model
+I 2017-01-19 05:38:33 theanets.graph:643 /tmp/tmpIiTZtw.tmp: loaded model
+I 2017-01-19 05:39:39 downhill.base:232 validation 24 loss=3.439444 err=3.439444 *
+I 2017-01-19 05:51:49 downhill.base:232 RMSProp 25 loss=3.408112 err=3.408112
+I 2017-01-19 05:51:49 theanets.graph:626 /tmp/tmpOZqtuz.tmp: saved model
+I 2017-01-19 05:51:49 theanets.graph:643 /tmp/tmpOZqtuz.tmp: loaded model
+I 2017-01-19 05:52:59 downhill.base:232 validation 25 loss=3.354821 err=3.354821 *
+I 2017-01-19 05:56:55 downhill.base:419 interrupted!
+I 2017-01-19 05:56:55 theanets.graph:626 /tmp/tmp7H_WFZ.tmp: saved model
+I 2017-01-19 05:56:55 theanets.graph:643 /tmp/tmp7H_WFZ.tmp: loaded model
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/launcher.py", line 243, in launch
+    result = python_launcher(job)
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/launcher.py", line 327, in python_launcher
+    result = module.main(job['id'], params)
+  File "../../omain.py", line 20, in main
+    o=float(rnn.function(no_array,run_id=job_id))
+  File "../../rnn.py", line 128, in function
+    rnndb.save_net(gts_id,params,xp.network,run_id=run_id)
+  File "../../rnndb.py", line 69, in save_net
+    o= tbl.insert_one(pc).inserted_id
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/collection.py", line 654, in insert_one
+    with self._socket_for_writes() as sock_info:
+  File "/usr/lib/python2.7/contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/mongo_client.py", line 823, in _get_socket
+    server = self._get_topology().select_server(selector)
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 214, in select_server
+    address))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 189, in select_servers
+    self._error_message(selector))
+ServerSelectionTimeoutError: localhost:27017: [Errno 111] Connection refused
+Problem executing the function
+Job failed in 20619.71 seconds.
+(<class 'pymongo.errors.ServerSelectionTimeoutError'>, ServerSelectionTimeoutError('localhost:27017: [Errno 111] Connection refused',), <traceback object at 0x7f50e5a97cf8>)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/launcher.py", line 415, in <module>
+    main()
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/launcher.py", line 219, in main
+    launch(options.db_address, options.experiment_name, options.job_id)
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/launcher.py", line 293, in launch
+    db.save(job, experiment_name, 'jobs', {'id' : job_id})
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/utils/database/mongodb.py", line 218, in save
+    dbdocs       = list(dbcollection.find(field_filters))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 1114, in next
+    if len(self.__data) or self._refresh():
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 1036, in _refresh
+    self.__collation))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 873, in __send_message
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/mongo_client.py", line 888, in _send_message_with_response
+    server = topology.select_server(selector)
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 214, in select_server
+    address))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 189, in select_servers
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: [Errno 111] Connection refused

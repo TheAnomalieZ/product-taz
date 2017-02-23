@@ -85,6 +85,11 @@ public class JFRParserV18 implements JFRParser {
         return jvmInformationEventHandler.getEventList();
     }
 
+    public RecordingEvent getRecordingEvent(){
+        RecordingEventHandler recordingEventHandler = new RecordingEventHandler(iView);
+        return recordingEventHandler.getRecordingEvent();
+    }
+
     public ArrayList<InitialSystemPropertyEvent> getInitialSystemPropertyEventList(){
         InitialSystemPropertyEventHandler initialSystemPropertyEventHandler = new InitialSystemPropertyEventHandler(iView);
         return initialSystemPropertyEventHandler.getEventSeries();

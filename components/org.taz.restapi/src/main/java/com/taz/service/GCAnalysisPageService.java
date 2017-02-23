@@ -1,10 +1,10 @@
 package com.taz.service;
 
-import com.taz.data.GCEventModelService;
-import com.taz.models.ClusteringAnomalyRegion;
+import com.taz.models.AnomalyRegion;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+import org.taz.commons.parser.events.HeapSummaryEvent;
 import org.taz.commons.util.JFRReader;
 import org.taz.core.clustering.ClusteringHandler;
 import org.taz.core.clustering.util.Parameter;
@@ -31,10 +31,10 @@ public class GCAnalysisPageService {
         model.addAttribute("fileName", fileName);
 
 
-        ArrayList<ClusteringAnomalyRegion> anomalyRegions = new ArrayList<>();
+        ArrayList<AnomalyRegion> anomalyRegions = new ArrayList<>();
 
         ClusteringHandler clusteringHandler = new ClusteringHandler(filePath);
-        clusteringHandler.setPercentile(98.0);
+        clusteringHandler.setPercentile(95.0);
         TreeMap<Integer, Parameter> anomalyRegion = clusteringHandler.getAnomalyPointsRegion();
         StringBuilder anomalyScoreGraphData = new StringBuilder();
         double threshold = clusteringHandler.getPercentileValue();
@@ -61,7 +61,7 @@ public class GCAnalysisPageService {
 
                 if(parameter.getAnomalyClassificationScore() < threshold && count != 0){
                     if(count > 5 && end != null) {
-                        ClusteringAnomalyRegion clusteringAnomalyRegion = new ClusteringAnomalyRegion();
+                        AnomalyRegion clusteringAnomalyRegion = new AnomalyRegion();
                         clusteringAnomalyRegion.setRegionID(region);
                         clusteringAnomalyRegion.setStartTime(start.getStartTime());
                         clusteringAnomalyRegion.setEndTime(end.getEndTime());
@@ -83,7 +83,7 @@ public class GCAnalysisPageService {
         model.addAttribute("anomalyScore", anomalyScoreGraphData.toString());
 
         if(!anomalyRegions.isEmpty()){
-            for(ClusteringAnomalyRegion clusteringAnomalyRegion : anomalyRegions) {
+            for(AnomalyRegion clusteringAnomalyRegion : anomalyRegions) {
                 long startTime = clusteringAnomalyRegion.getStartTime()/1000000;
                 long endTime = clusteringAnomalyRegion.getEndTime()/1000000;
 
@@ -106,5 +106,24 @@ public class GCAnalysisPageService {
             }
         }
         model.addAttribute("hotMethods", anomalyRegions);
+
+        ArrayList<HeapSummaryEvent> heapSummaryEvents = jfrReader.getHeapSummaryDashboard(filePath);
+
+        StringBuilder heapSummaryData = new StringBuilder();
+        if (!heapSummaryEvents.isEmpty()) {
+            heapSummaryData.append("[");
+
+            for (HeapSummaryEvent heapSummaryEvent : heapSummaryEvents) {
+                double heapUsed = Double.parseDouble(heapSummaryEvent.getHeapUsed()) / (1024 * 1024);
+                double committedHeap = Double.parseDouble(heapSummaryEvent.getHeapSpaceCommittedSize()) / (1024 * 1024);
+                long time = heapSummaryEvent.getStartTimestamp() / 1000000;
+
+                heapSummaryData.append("[" + time + ',' + committedHeap + ',' + heapUsed + "],");
+            }
+
+            heapSummaryData.append("]");
+        }
+
+        model.addAttribute("heapUsedData", heapSummaryData.toString());
     }
 }

@@ -25,12 +25,18 @@ public class AE {
     private String savefilePath;
     private String scorefilePath = null;
     private String thresholdPath = null;
+    private double threshold = 0;
 
+
+    public double getThreshold() {
+        return threshold;
+    }
 
     public AE() {
         jfrReader = JFRReader.getInstance();
         csvWriter = CSVWriter.getInstance();
-        savefilePath = System.getProperty("user.dir") + "/components/org.taz.core/src/main/resources/";
+        savefilePath = AEConstants.savefilePath;
+
     }
     /*
     * Method to get the anomaly scores from autoencoder
@@ -83,6 +89,7 @@ public class AE {
                 t = Double.parseDouble(nl[0]);
                 System.out.println(t) ;
                 scorelist.add(t);
+                threshold =t;
             }
         } catch (FileNotFoundException e1) {
             e1.printStackTrace();

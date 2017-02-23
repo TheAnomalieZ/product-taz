@@ -100,78 +100,97 @@
         </div>
       </div>
       <!-- heap usage end-->
+      <!-- heap usage start-->
+      <div class="row">
+        <div class="col-lg-12">
+          <section class="panel">
+            <header class="panel-heading">
+              Heap Usage
+                            <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                             </span>
+            </header>
+            <div class="panel-body">
+              <div class="chart">
+                <div id="heap-usage-line-chart"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <!-- heap usage end-->
 
 
       <%--Anomaly region--%>
-      <%--<div class="row">--%>
-        <%--<div class="col-sm-12">--%>
-          <%--<section class="panel">--%>
-            <%--<header class="panel-heading">--%>
-              <%--Anomaly Regions--%>
-                     <%--<span class="tools pull-right">--%>
-                                <%--<a href="javascript:;" class="fa fa-chevron-down"></a>--%>
-                                <%--<a href="javascript:;" class="fa fa-cog"></a>--%>
-                                <%--<a href="javascript:;" class="fa fa-times"></a>--%>
-                            <%--</span>--%>
-            <%--</header>--%>
-            <%--<div class="panel-body">--%>
-              <%--<c:forEach var="region" items="${hotMethods}">--%>
-                <%--<button type="button" data-toggle="tab" href="#regin_${region.regionID}" onclick="zoomGraph(${region.startGCId}, ${region.endGCId})"--%>
-                        <%--class="btn btn-primary">Anomaly Region ${region.regionID}</button>--%>
-              <%--</c:forEach>--%>
-            <%--</div>--%>
-          <%--</section>--%>
+      <div class="row">
+        <div class="col-sm-12">
+          <section class="panel">
+            <header class="panel-heading">
+              Anomaly Regions
+                     <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                <a href="javascript:;" class="fa fa-cog"></a>
+                                <a href="javascript:;" class="fa fa-times"></a>
+                            </span>
+            </header>
+            <div class="panel-body">
+              <c:forEach var="region" items="${hotMethods}">
+                <button type="button" data-toggle="tab" href="#regin_${region.regionID}" onclick="zoomGraph(${region.startGCId}, ${region.endGCId})"
+                        class="btn btn-primary">Anomaly Region ${region.regionID}</button>
+              </c:forEach>
+            </div>
+          </section>
+        </div>
         <%--</div>--%>
-        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-        <%--&lt;%&ndash;<div class="row">&ndash;%&gt;--%>
-        <%--<div class="tab-content">--%>
-          <%--<c:forEach var="region" items="${hotMethods}">--%>
-            <%--<div class="col-sm-12 tab-pane" id="regin_${region.regionID}" >--%>
-              <%--<section class="panel">--%>
-                <%--<header class="panel-heading">--%>
-                  <%--Hot Methods--%>
-                    <%--&lt;%&ndash;<span class="tools pull-right">&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<a href="javascript:;" class="fa fa-chevron-down"></a>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<a href="javascript:;" class="fa fa-cog"></a>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;<a href="javascript:;" class="fa fa-times"></a>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;</span>&ndash;%&gt;--%>
-                <%--</header>--%>
-                <%--<div class="panel-body">--%>
+        <%--<div class="row">--%>
+        <div class="tab-content">
+          <c:forEach var="region" items="${hotMethods}">
+            <div class="col-sm-12 tab-pane" id="regin_${region.regionID}" >
+              <section class="panel">
+                <header class="panel-heading">
+                  Hot Methods
+                    <%--<span class="tools pull-right">--%>
+                    <%--<a href="javascript:;" class="fa fa-chevron-down"></a>--%>
+                    <%--<a href="javascript:;" class="fa fa-cog"></a>--%>
+                    <%--<a href="javascript:;" class="fa fa-times"></a>--%>
+                    <%--</span>--%>
+                </header>
+                <div class="panel-body">
 
-                  <%--<table class="table  table-hover general-table">--%>
-                    <%--<thead>--%>
-                    <%--<tr>--%>
-                      <%--<th> Method</th>--%>
-                      <%--<th>Percentage bar</th>--%>
-                      <%--<th>Percentage</th>--%>
-                    <%--</tr>--%>
-                    <%--</thead>--%>
-                    <%--<tbody id="hotMethodTableBody">--%>
-                    <%--<c:forEach var="type" items="${region.hotMethodsPercentage.entrySet()}">--%>
-                      <%--<tr>--%>
-                        <%--<td>${type.key}</td>--%>
-                        <%--<td>--%>
-                          <%--<div class="progress progress-striped progress-xs">--%>
-                            <%--<div style="width: ${type.value}%" aria-valuemax="100"--%>
-                                 <%--aria-valuemin="0"--%>
-                                 <%--aria-valuenow="40" role="progressbar"--%>
-                                 <%--class="progress-bar progress-bar-success">--%>
-                              <%--<span class="sr-only">${type.value}% Complete (success)</span>--%>
-                            <%--</div>--%>
-                          <%--</div>--%>
-                        <%--</td>--%>
-                        <%--<td>${type.value} %</td>--%>
-                      <%--</tr>--%>
-                    <%--</c:forEach>--%>
-                    <%--</tbody>--%>
-                  <%--</table>--%>
+                  <table class="table  table-hover general-table">
+                    <thead>
+                    <tr>
+                      <th> Method</th>
+                      <th>Percentage bar</th>
+                      <th>Percentage</th>
+                    </tr>
+                    </thead>
+                    <tbody id="hotMethodTableBody">
+                    <c:forEach var="type" items="${region.hotMethodsPercentage.entrySet()}">
+                      <tr>
+                        <td>${type.key}</td>
+                        <td>
+                          <div class="progress progress-striped progress-xs">
+                            <div style="width: ${type.value}%" aria-valuemax="100"
+                                 aria-valuemin="0"
+                                 aria-valuenow="40" role="progressbar"
+                                 class="progress-bar progress-bar-success">
+                              <span class="sr-only">${type.value}% Complete (success)</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td>${type.value} %</td>
+                      </tr>
+                    </c:forEach>
+                    </tbody>
+                  </table>
 
-                <%--</div>--%>
-              <%--</section>--%>
-            <%--</div>--%>
-          <%--</c:forEach>--%>
-        <%--</div>--%>
-      <%--</div>--%>
+                </div>
+              </section>
+            </div>
+          </c:forEach>
+        </div>
+      </div>
       <%--Anomaly region End--%>
       <%-- Content end--%>
 
@@ -201,6 +220,7 @@
 <script src="../../resources/js/scripts.js"></script>
 <script type="text/javascript">
   loadanomalyScoreLineChart(${anomalyScore});
+  loadHeapUsageLineChart(${heapUsedData});
 
   var zoomGraph = function(min, max){
     zoomRange(min, max);

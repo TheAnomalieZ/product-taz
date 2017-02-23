@@ -121,6 +121,11 @@ public class JFRReader {
         return parser.getJVMInformationEventList();
     }
 
+    public RecordingEvent getRecordingEvent(String filePath){
+        parser = readSingleJFR(filePath);
+        return parser.getRecordingEvent();
+    }
+
     public ArrayList<InitialSystemPropertyEvent> getInitSystemPropertyEventList(String filePath){
         parser = readSingleJFR(filePath);
         return parser.getInitialSystemPropertyEventList();
