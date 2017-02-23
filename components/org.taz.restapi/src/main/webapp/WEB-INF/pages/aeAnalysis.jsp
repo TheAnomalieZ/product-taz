@@ -135,7 +135,7 @@
             </header>
             <div class="panel-body">
               <c:forEach var="region" items="${hotMethods}">
-                <button type="button" data-toggle="tab" href="#regin_${region.regionID}" onclick="zoomGraph(${region.startGCId}, ${region.endGCId}, ${region.startTime}, ${region.endTime})"
+                <button type="button" data-toggle="tab" href="#regin_${region.regionID}" onclick="zoomGraph(${region.startGCId}, ${region.endGCId})"
                         class="btn btn-primary">Anomaly Region ${region.regionID}</button>
               </c:forEach>
             </div>
@@ -220,10 +220,10 @@
 <script src="../../resources/js/scripts.js"></script>
 <script type="text/javascript">
   loadanomalyScoreLineChart(${anomalyScore});
-  loadHeapUsageLineChart(${heapUsedData})
+  loadHeapUsageLineChart(${heapUsedData});
 
-  var zoomGraph = function(min, max, timeMin, timeMax){
-    zoomRange(min, max, timeMin, timeMax);
+  var zoomGraph = function(min, max){
+    zoomRange(min, max);
   };
 </script>
 
