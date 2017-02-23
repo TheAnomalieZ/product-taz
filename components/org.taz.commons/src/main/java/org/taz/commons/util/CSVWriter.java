@@ -43,8 +43,8 @@ public class CSVWriter {
             outfile.append(list.get(i++).toString() + "\n");
         }
         outfile.close();
-
     }
+
 
     public void getAEGCSequence(ArrayList<Integer> list,File fileName){
         logger.info("AE GC state sequences");
