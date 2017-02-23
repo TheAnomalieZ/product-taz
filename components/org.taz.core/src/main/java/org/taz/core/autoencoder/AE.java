@@ -38,10 +38,12 @@ public class AE {
         savefilePath = AEConstants.savefilePath;
 
     }
-    /*
-    * Method to get the anomaly scores from autoencoder
-    *
-    */
+    /**
+     * Method to get the anomaly scores from autoencoder
+     * @param filePath Testing JFR file path
+     * @param jfrType System name
+     * @return ArrayList of anomaly scores in double
+     */
     public ArrayList<Double> generateScoreSeries(String filePath, String jfrType) {
         String ext = "";
         String fileName = String.format("%s%s", RandomStringUtils.randomAlphanumeric(8), ext);
@@ -101,10 +103,12 @@ public class AE {
 
     }
 
-    /*
-    * Method to do the threashold calculation for the anomaly scores derive from autoencoder
-    *
-    */
+    /**
+     * Method to do the threashold calculation for the anomaly scores derive from autoencoder
+     * @param scorelist anomaly scores of a jfr
+     *
+     * @return ArrayList of labellist
+     */
     public ArrayList<Integer> getAnomalyLabels( ArrayList<Double>  scorelist) {
         int lastIndex = scorelist.size()-1;
         double th = scorelist.get(lastIndex);
@@ -123,10 +127,12 @@ public class AE {
 
     }
 
-    /*
-    * Method to get the anomaly time periods
-    *
-    */
+    /**
+     * Method to get the anomaly time periods
+     * @param labellist labellist of a jfr
+     * @param
+     * @return ArrayList of anomaly time period
+     */
     public  ArrayList<Double[]> getAnomlayTimes(ArrayList<Integer> labellist){
         Double[] time = new Double[2];
         ArrayList<Double[]> anomalies = new ArrayList<>();
@@ -161,10 +167,10 @@ public class AE {
         return anomalies;
     }
 
-    /*
-    * Method to calculate percentile values
-    *
-    */
+    /**
+     * Method to calculate percentile values
+     *
+     */
     public void calculatePercentile( ArrayList<Double>  scorelist){
         ArrayList<Double>  anomalyScores = new ArrayList<Double>();
         for(double a:scorelist){

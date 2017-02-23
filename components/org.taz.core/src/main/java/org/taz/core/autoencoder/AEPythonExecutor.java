@@ -8,10 +8,16 @@ import java.nio.file.Paths;
  * Created by Maninesan on 2/5/17.
  */
 public class AEPythonExecutor {
-    public static final String FILE_NAME = "./components/org.taz.core/src/main/python/autoencoder/output.py";
+    public static final String FILE_NAME = "/home/garth/FYP/product-taz/components/org.taz.core/src/main/python/autoencoder/output.py";
 
-    public static void callPythonAE(String fileName, String jfrType) throws IOException {
-        String filePath = fileName;
+    /**
+     * Call python scripts from java system process
+     * @param filePath jfr gc time file path
+     * @param jfrType System name of paticular jfr
+     * @throws IOException
+     */
+
+    public static void callPythonAE(String filePath, String jfrType) throws IOException {
         System.out.println(filePath);
         File f = new File(filePath);
         if(f.exists() && !f.isDirectory()) {
@@ -20,7 +26,7 @@ public class AEPythonExecutor {
                 System.out.println("No data points, and file empty");
                 return;
             }
-        //call python script
+            //call python script
             try {
                 String execution = "python " + FILE_NAME+" "+ filePath +" "+ jfrType;
                 Runtime r = Runtime.getRuntime();
@@ -40,6 +46,12 @@ public class AEPythonExecutor {
         }
 
     }
+
+    /**
+     * Show results in java std out
+     * @param process1
+     * @throws IOException
+     */
     private static void getExecutionResult(Process process1) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(process1.getInputStream()));
         String line = "";
