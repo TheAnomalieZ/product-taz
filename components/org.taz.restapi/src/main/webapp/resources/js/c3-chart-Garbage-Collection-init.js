@@ -20,6 +20,9 @@ var heapUsageLineChart = c3.generate({
             label: 'MB'
         }
     },
+    point: {
+        show: false
+    },
     zoom: {
         enabled: true
     },
@@ -45,6 +48,9 @@ var cpu_usage_line_chart = c3.generate({
         y: {
             label: 'Count'
         }
+    },
+    point: {
+        show: false
     },
     zoom: {
         enabled: true

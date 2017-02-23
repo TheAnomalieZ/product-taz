@@ -112,6 +112,9 @@ var heapUsageLineChart = c3.generate({
             label: 'MB'
         }
     },
+    point: {
+        show: false
+    },
     zoom: {
         enabled: true,
         onzoomstart: function (event) {
@@ -146,6 +149,9 @@ var cpu_usage_line_chart = c3.generate({
             max: 90,
             label: '%'
         }
+    },
+    point: {
+        show: false
     },
     zoom: {
         enabled: true,

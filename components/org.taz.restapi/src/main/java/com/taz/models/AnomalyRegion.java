@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 /**
  * Created by K.Kokulan on 2/21/2017.
  */
-public class ClusteringAnomalyRegion {
+public class AnomalyRegion {
     private int regionID;
     private long startTime;
     private long endTime;

@@ -16,6 +16,9 @@ var anomalyScoreLineChart = c3.generate({
             label: 'Score'
         }
     },
+    point: {
+         show: false
+    },
     zoom: {
         enabled: true
     },

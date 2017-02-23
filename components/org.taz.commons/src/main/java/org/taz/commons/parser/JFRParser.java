@@ -94,6 +94,13 @@ public interface JFRParser {
      */
     public ArrayList<JVMInformationEvent> getJVMInformationEventList();
 
+
+    /**
+     * Method to retrieve Recording events
+     * @return recording event
+     */
+    public RecordingEvent getRecordingEvent();
+
     /**
      * Method to retrieve initial System property Event List
      * @return Arraylist of init sys property event
