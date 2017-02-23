@@ -66,7 +66,7 @@ public class ClusteringHandler {
                 anomalyRegionMap.put(i,parameter);
             }
             else{
-                parameter.setAnomalyClassificationScore(0.0);
+                parameter.setAnomalyClassificationScore(parameter.getAnomalyScore());
                 anomalyRegionMap.put(i,parameter);
             }
             i++;
