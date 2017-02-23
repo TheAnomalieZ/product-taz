@@ -29,6 +29,10 @@ public class AETrain {
         csvWriter = CSVWriter.getInstance();
     }
 
+    /**
+     * Setup the folders and mongodb for training
+     * @param jfrType
+     */
     public void setupTraining(String jfrType){
         String outputfileDir = FILE_PATH + jfrType;
         File dir = new File(outputfileDir);
@@ -72,6 +76,11 @@ public class AETrain {
         }
     }
 
+    /**
+     * Call for Training of autoencoder
+     * @param filePath jfr file path
+     * @param jfrType System name
+     */
     public void callAETrain(String filePath, String jfrType){
         try {
             String outputfilePath = FILE_PATH+jfrType;
@@ -96,6 +105,12 @@ public class AETrain {
 
 
     }
+
+    /**
+     * Show python outputs in java std out
+     * @param process1
+     * @throws IOException
+     */
     private  void getExecutionResult(Process process1) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(process1.getInputStream()));
         String line = "";
