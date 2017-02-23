@@ -21,6 +21,8 @@ public class AETest {
 
         ArrayList<Double[]> times    = ae.getAnomlayTimes(labellist);
 
+        double t = ae.getThreshold();
+
 
 //        String scorefilePath = "/home/garth/FYP/product-taz/components/org.taz.core/src/main/resources/K6pJ3BDB/App1_gctime_ae_score.csv";
 //        CSVReader reader = null;
