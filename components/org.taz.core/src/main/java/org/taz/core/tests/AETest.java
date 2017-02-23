@@ -1,4 +1,4 @@
-package org.taz.core.util;
+package org.taz.core.tests;
 
 import com.opencsv.CSVReader;
 import org.taz.core.autoencoder.AE;

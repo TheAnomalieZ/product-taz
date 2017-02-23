@@ -1,4 +1,4 @@
-package org.taz.core.util;
+package org.taz.core.tests;
 
 import org.taz.core.autoencoder.AETrain;
 
