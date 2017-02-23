@@ -54,7 +54,6 @@ public class HMM {
             String [] nextLine;
             Double score;
             while ((nextLine = reader.readNext()) != null) {
-                // nextLine[] is an array of values from the line
                 score = Double.parseDouble(nextLine[0]);
                 System.out.println(score) ;
                 scorelist.add(score);
@@ -70,4 +69,79 @@ public class HMM {
 
     }
 
+    public ArrayList<Integer> generateAnomalyLabels(ArrayList<Double> scorelist, double threshold){
+        //double threshold = getPercentileValue(scorelist, 10);
+
+        System.out.println("Threshold = " + threshold);
+        ArrayList<Integer> labelList = new ArrayList<>();
+        for(double score : scorelist){
+            if(score >= threshold){
+                labelList.add(1);
+                //System.out.println(1);
+            }
+            else{
+                labelList.add(0);
+                //System.out.println(0);
+            }
+
+        }
+
+        return labelList;
+    }
+
+    public double getPercentileValue (ArrayList<Double> scorelist, double percentage){
+        double[] scoreArray = new double[scorelist.size()];
+        for(int i=0;i<scorelist.size();i++){
+            scoreArray[i] = scorelist.get(i);
+        }
+        Percentile percentile = new Percentile();
+        percentile.setData(scoreArray);
+        return percentile.evaluate(percentage);
+    }
+
+    public double generateThreshold(ArrayList<Double> scorelist, double percentage){
+        double threshold = 0.0;
+        double sum = 0.0;
+        double length = scorelist.size();
+        for(double score : scorelist){
+            sum = sum + score;
+        }
+        double average = sum/length;
+        threshold = average + average*percentage/100;
+        return threshold;
+    }
+
+    public  ArrayList<Double[]> getAnomlayTimes(ArrayList<Integer> labellist, int len){
+        Double[] time = new Double[2];
+        ArrayList<Double[]> anomalies = new ArrayList<>();
+        int order = 0;
+        int i=0;
+        while(i<labellist.size()){
+            int item = labellist.get(i);
+
+            if(item==0){
+                time[0] =Double.valueOf(i);
+                int times =0;
+                int last = 0;
+                for(int j=i;times < len && j<labellist.size();j++){
+                    if(labellist.get(j)==1){
+                        times++;
+                    }else{
+                        times=0;
+                    }
+                    last = j;
+                }
+                time[1] = Double.valueOf(--last);
+                i=last;
+                anomalies.add(time);
+                time = new Double[2];
+            }else{
+                i++;
+            }
+        }
+        for(Double[] w:anomalies){
+            System.out.println(w[0]+"  "+w[1]);
+        }
+        return anomalies;
+    }
 }

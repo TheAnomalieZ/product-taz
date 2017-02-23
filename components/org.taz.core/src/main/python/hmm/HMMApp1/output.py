@@ -12,7 +12,8 @@ filepath = str(sys.argv[3])
 modelpath = str(sys.argv[4])
 
 hmm = HMMModel()
-model = joblib.load("/home/suve/product-taz/components/org.taz.core/src/main/python/hmm/HMMApp1/model1.pkl")
+# model = joblib.load("/home/suve/product-taz/components/org.taz.core/src/main/python/hmm/HMMApp1/model1.pkl")
+model = joblib.load(modelpath)
 print filepath
 scorelist = hmm.testingHMM(filepath, n2, n3, model)
 scorelist= [scorelist[x:x+1] for x in xrange(0, len(scorelist), 1)]

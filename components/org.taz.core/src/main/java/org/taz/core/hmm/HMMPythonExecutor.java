@@ -10,8 +10,9 @@ public class HMMPythonExecutor {
 
     public static void callPythonHMM(String fileName, String jfrType) throws IOException {
         String filePath = fileName;
-        String modelPath = "./components/org.taz.core/src/main/python/hmm/HMMApp1/model.pkl";
-        System.out.println(filePath);
+        //String modelPath = "./components/org.taz.core/src/main/python/hmm/HMMApp1/model.pkl";
+        String modelPath = "./files/hmm/train/app1/model1.pkl";
+        //System.out.println(filePath);
         File f = new File(filePath);
         if(f.exists() && !f.isDirectory()) {
             BufferedReader br = new BufferedReader(new FileReader(filePath));
@@ -21,7 +22,7 @@ public class HMMPythonExecutor {
             }
             //call python script
             try {
-                String execution = "python " + FILE_NAME + " " + "30" + " " + "1030" + " " + filePath +" "+ modelPath;
+                String execution = "python " + FILE_NAME + " " + "30" + " " + "8030" + " " + filePath +" "+ modelPath;
                 Runtime r = Runtime.getRuntime();
                 Process p = r.exec(execution);
                 getExecutionResult(p);

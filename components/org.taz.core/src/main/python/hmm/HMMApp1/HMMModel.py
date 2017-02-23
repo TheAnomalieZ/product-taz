@@ -38,6 +38,21 @@ class HMMModel(object):
         joblib.dump(model, "modelname" + ".pkl")
         return model
 
+    def prepareData(self, floats, size):
+        dataArray = []
+        copyData = []
+        count = 0
+        for data in floats:
+            count = count + 1
+            if count == size:
+                break
+            copyData.append(data)
+
+        for data in floats:
+            copyData.append(data)
+        return copyData
+
+
     def testingHMM(self, filename, n, p, model):
         scorelist = []
         f = open(filename)
@@ -49,8 +64,10 @@ class HMMModel(object):
         finally:
             f.close()
 
+        datavalues = self.prepareData(floats, n)
 
-        test_data = np.array(floats)
+
+        test_data = np.array(datavalues)
         #print test_data
         testlist = LinkedList()
         start = False
