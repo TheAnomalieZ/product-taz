@@ -13,6 +13,15 @@ public class Parameter {
     private long gcID;
     private double anomalyScore;
     private double anomalyClassificationScore;
+    private long metaspaceUsed;
+
+    public long getMetaspaceUsed() {
+        return metaspaceUsed;
+    }
+
+    public void setMetaspaceUsed(long metaspaceUsed) {
+        this.metaspaceUsed = metaspaceUsed;
+    }
 
     public double getAnomalyClassificationScore() {
         return anomalyClassificationScore;

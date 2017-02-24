@@ -70,10 +70,10 @@ public class OpticsOF extends DatabaseHandler {
                 for (DBIDIter iter = scores.iterDBIDs(); iter.valid(); iter.advance()) {
                     anomalyScore.add(scores.doubleValue(iter));
                     outfile.append(Double.toString(scores.doubleValue(iter))+"\n");
-                    long key = parameterTreeMap.firstKey()+Long.parseLong(DBIDUtil.toString(iter));
+                   /* long key = parameterTreeMap.firstKey()+Long.parseLong(DBIDUtil.toString(iter));
                     Parameter parameter = parameterTreeMap.get(key);
                     parameter.setAnomalyScore(scores.doubleValue(iter));
-                    parameterTreeMap.put(key,parameter);
+                    parameterTreeMap.put(key,parameter);*/
                 }
                 outfile.close();
             } catch (FileNotFoundException e) {
@@ -124,5 +124,34 @@ public class OpticsOF extends DatabaseHandler {
 
     public TreeMap<Long, Parameter> getParameterTreeMap() {
         return parameterTreeMap;
+    }
+
+    public ArrayList<Double> generateAnomalyScoreForTest(){
+        ArrayList<Double> anomalyScore = new ArrayList<>();
+        String dirName = file_name.replaceAll(".csv","");
+        //new File(Properties.ANOMALY_SCORES_FILEPATH+dirName).mkdir();
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        try {
+            PrintWriter outfile = new PrintWriter(new File(Properties.ANOMALY_SCORES_FILEPATH+dirName+".csv"));
+            Database db = makeSimpleDatabase(file_path,totalPoints);
+            ListParameterization params = new ListParameterization();
+            params.addParameter(AbstractOPTICS.Parameterizer.MINPTS_ID, minPoint);
+            OPTICSOF<DoubleVector> opticsof = ClassGenericsUtil.parameterizeOrAbort(OPTICSOF.class, params);
+            // run OPTICSOF on database
+            OutlierResult result = opticsof.run(db);
+            DoubleRelation scores = result.getScores();
+            for (DBIDIter iter = scores.iterDBIDs(); iter.valid(); iter.advance()) {
+                anomalyScore.add(scores.doubleValue(iter));
+                outfile.append(Double.toString(scores.doubleValue(iter))+"\n");
+                   /* long key = parameterTreeMap.firstKey()+Long.parseLong(DBIDUtil.toString(iter));
+                    Parameter parameter = parameterTreeMap.get(key);
+                    parameter.setAnomalyScore(scores.doubleValue(iter));
+                    parameterTreeMap.put(key,parameter);*/
+            }
+            outfile.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return anomalyScore;
     }
 }

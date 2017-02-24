@@ -16,18 +16,27 @@ public class TestApp {
     public static void main(String[] args) {
         //String file_path = "/home/vithulan/JFRs/OpticsOF/data.csv";
        // String file_path = "/home/vithulan/JFRs/CSVs/heapused_metaspace_dataspace.csv";
-       // String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/Testing/App1/anomaly_final.jfr";
-        String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/Testing/App1/anomaly.jfr";
-
+       //String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/Testing/App1/anomaly_final.jfr";
+            String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/Testing/App2/app2_anomaly_final.jfr";
+        //String FILE_PATH = "/home/vithulan/JFRs/JFR_Collection/Testing/App2/anomaly.jfr";
         /*OpticsOF opticsOF  = new OpticsOF();
         opticsOF.cluster();*/
 
-        ClusteringHandler clusteringHandler = new ClusteringHandler(FILE_PATH);
-        clusteringHandler.setPercentile(90.0);
-        TreeMap<Integer, Parameter> anomalyMap = clusteringHandler.getAnomalyPoints();
+
+        //ClusteringHandler clusteringHandler = new ClusteringHandler(FILE_PATH);
+       // clusteringHandler.setPercentile(90.0);
+        /*TreeMap<Integer, Parameter> anomalyMap = clusteringHandler.getAnomalyPointsRegion();
+       // TreeMap<Integer, Parameter> anomalyMap = clusteringHandler.getAnomalyPoints();
         for(Map.Entry<Integer,Parameter> entry : anomalyMap.entrySet()){
             System.out.println(entry.getValue().getGcID()+"  "+entry.getValue().getAnomalyScore());
-        }
+        }*/
+
+        /*OpticsOF opticsOF = new OpticsOF(976,"anomaly/heap_duration_gap.csv");
+        opticsOF.generateAnomalyScore();*/
+
+        ClusteringHandler clusteringHandler = new ClusteringHandler(FILE_PATH,"Test");
+        //clusteringHandler.setPercentile(90.0);
+
         /*ParserAPI parserAPI = new ParserAPI(FILE_PATH);
         TreeMap<Long, Parameter> parameterTreeMap = parserAPI.generateAttributeTable();
         CSVGenerator csvGenerator = new CSVGenerator(parameterTreeMap);

@@ -22,6 +22,25 @@ public class ClusteringHandler {
         percentilePercentage = 90.0;
     }
 
+    /**
+     * This instantiation is for research purposes
+     * @param file_path
+     * @param method
+     */
+    public ClusteringHandler(String file_path, String method){
+        ParserAPI parserAPI = new ParserAPI(file_path);
+        TreeMap<Long, Parameter> parameterTreeMap = parserAPI.generateAttributeTableForTest();
+        CSVGenerator csvGenerator = new CSVGenerator(parameterTreeMap);
+        //this.setPercentile(90.0);
+        for(int i =0;i<8;i++){
+            String file = csvGenerator.generateTestCSVs(i);
+            opticsOF = new OpticsOF(csvGenerator.getTotalPoints(),file);
+            opticsOF.setParameterTreeMap(parameterTreeMap);
+            this.anomalyScores = opticsOF.generateAnomalyScoreForTest();
+        }
+
+    }
+
     private OpticsOF createOpticsOfInstance(String file_path){
         ParserAPI parserAPI = new ParserAPI(file_path);
         TreeMap<Long, Parameter> parameterTreeMap = parserAPI.generateAttributeTable();
