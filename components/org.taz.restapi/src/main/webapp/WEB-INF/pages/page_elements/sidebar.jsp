@@ -49,7 +49,7 @@
                     <ul class="sub">
                         <li><a href="/cluster_analysis?fileName=${fileName}">Cluster Analysis</a></li>
                         <li><a href="/ae_analysis?fileName=${fileName}">AE Analysis</a></li>
-                        <li><a href="/error">HMM Analysis</a></li>
+                        <li><a href="/hmm_analysis?fileName=${fileName}">HMM Analysis</a></li>
                     </ul>
                 </li>
             </ul>
