@@ -137,3 +137,53 @@ I 2017-02-12 07:11:53 downhill.base:232 RMSProp 27 loss=528.778867 err=528.77886
 I 2017-02-12 07:11:57 theanets.graph:626 /tmp/tmpnGWnP0.tmp: saved model
 I 2017-02-12 07:11:58 theanets.graph:643 /tmp/tmpnGWnP0.tmp: loaded model
 I 2017-02-12 07:14:22 downhill.base:232 validation 27 loss=526.001968 err=526.001968 *
+I 2017-02-12 07:19:47 downhill.base:419 interrupted!
+I 2017-02-12 07:19:48 theanets.graph:626 /tmp/tmpkB0PMj.tmp: saved model
+I 2017-02-12 07:19:48 theanets.graph:643 /tmp/tmpkB0PMj.tmp: loaded model
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/launcher.py", line 243, in launch
+    result = python_launcher(job)
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/launcher.py", line 327, in python_launcher
+    result = module.main(job['id'], params)
+  File "../../omain.py", line 20, in main
+    o=float(rnn.function(no_array,run_id=job_id))
+  File "../../rnn.py", line 128, in function
+    rnndb.save_net(gts_id,params,xp.network,run_id=run_id)
+  File "../../rnndb.py", line 69, in save_net
+    o= tbl.insert_one(pc).inserted_id
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/collection.py", line 654, in insert_one
+    with self._socket_for_writes() as sock_info:
+  File "/usr/lib/python2.7/contextlib.py", line 17, in __enter__
+    return self.gen.next()
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/mongo_client.py", line 823, in _get_socket
+    server = self._get_topology().select_server(selector)
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 214, in select_server
+    address))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 189, in select_servers
+    self._error_message(selector))
+ServerSelectionTimeoutError: localhost:27017: [Errno 111] Connection refused
+Problem executing the function
+Job failed in 27958.93 seconds.
+(<class 'pymongo.errors.ServerSelectionTimeoutError'>, ServerSelectionTimeoutError('localhost:27017: [Errno 111] Connection refused',), <traceback object at 0x7f503d771dd0>)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/launcher.py", line 415, in <module>
+    main()
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/launcher.py", line 219, in main
+    launch(options.db_address, options.experiment_name, options.job_id)
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/launcher.py", line 293, in launch
+    db.save(job, experiment_name, 'jobs', {'id' : job_id})
+  File "/usr/local/lib/python2.7/dist-packages/spearmint/utils/database/mongodb.py", line 218, in save
+    dbdocs       = list(dbcollection.find(field_filters))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 1114, in next
+    if len(self.__data) or self._refresh():
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 1036, in _refresh
+    self.__collation))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/cursor.py", line 873, in __send_message
+    **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/mongo_client.py", line 888, in _send_message_with_response
+    server = topology.select_server(selector)
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 214, in select_server
+    address))
+  File "/usr/local/lib/python2.7/dist-packages/pymongo/topology.py", line 189, in select_servers
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: [Errno 111] Connection refused

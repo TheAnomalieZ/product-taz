@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.taz.commons.parser.events.*;
 import org.taz.commons.parser.memory.MemEvent;
 import org.taz.commons.parser.models.GCEventsModel;
+//import org.taz.database.dao.GCEventsModelDataService;
 
 
 import java.util.*;
@@ -120,6 +121,11 @@ public class JFRReader {
         return parser.getJVMInformationEventList();
     }
 
+    public RecordingEvent getRecordingEvent(String filePath){
+        parser = readSingleJFR(filePath);
+        return parser.getRecordingEvent();
+    }
+
     public ArrayList<InitialSystemPropertyEvent> getInitSystemPropertyEventList(String filePath){
         parser = readSingleJFR(filePath);
         return parser.getInitialSystemPropertyEventList();
@@ -135,14 +141,20 @@ public class JFRReader {
         return parser.getGCEventModel();
     }
 
-    public HashMap<String, Object> getEventsForOverviewPage(String filePath){
-        HashMap<String, Object> eventMap = new HashMap<>(4);
+    public LinkedHashMap<ArrayList<String>,Long> getHotMethods(String filePath, long startTime, long endTime){
         parser = readSingleJFR(filePath);
-        eventMap.put(TAZConstants.HEAP_SUMMARY_EVENT, parser.getHeapSummaryEvents());
-        eventMap.put(TAZConstants.CPU_LOAD_EVENT, parser.getCPUEvents());
-        eventMap.put(TAZConstants.GC_EVENT, parser.getGarbageCollectionEvents());
-        eventMap.put(TAZConstants.JVM_INFORMATION, parser.getJVMInformationEvent());
-        return eventMap;
+        return parser.getHotMethods(startTime, endTime);
+    }
+
+    public HashMap<String, Object> getEventsForOverviewPage(String filePath){
+//        HashMap<String, Object> eventMap = new HashMap<>(4);
+        parser = readSingleJFR(filePath);
+
+//        eventMap.put(TAZConstants.HEAP_SUMMARY_EVENT, parser.getHeapSummaryEvents());
+//        eventMap.put(TAZConstants.CPU_LOAD_EVENT, parser.getCPUEvents());
+//        eventMap.put(TAZConstants.GC_EVENT, parser.getGarbageCollectionEvents());
+//        eventMap.put(TAZConstants.JVM_INFORMATION, parser.getJVMInformationEvent());
+        return parser.getOverviewPageEvents();
     }
 
     public void getGCAttributes(){
@@ -205,5 +217,10 @@ public class JFRReader {
     public void refreshViewList(){
         logger.info("Erase old JFR loadings");
         jfrList = new LinkedHashMap<String,JFRParser>();
+    }
+
+    public ArrayList<Integer> getGarbageCollectionStates(String filePath) {
+        parser = readSingleJFR(filePath);
+        return parser.getGCStates();
     }
 }

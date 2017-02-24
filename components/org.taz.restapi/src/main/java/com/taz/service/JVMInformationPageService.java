@@ -1,6 +1,6 @@
 package com.taz.service;
 
-import com.taz.graph_models.JVMInformation;
+import com.taz.models.JVMInformation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;

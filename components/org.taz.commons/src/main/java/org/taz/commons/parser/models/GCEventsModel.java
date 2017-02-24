@@ -8,11 +8,21 @@ import java.util.ArrayList;
  * Created by K.Kokulan on 12/26/2016.
  */
 public class GCEventsModel {
+
+    private String fileName;
     private ArrayList<String> gcIdList;
     private ArrayList<GarbageCollectionEvent> garbageCollectionEvent;
     private ArrayList<HeapSummaryEvent> heapSummaryEvent;
     private ArrayList<GCReferenceProcessingEvent> gcReferenceProcessingEvent;
     private ArrayList<MetaspaceSummaryEvent> metaspaceSummaryEvents;
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
     public ArrayList<String> getGcIdList() {
         return gcIdList;

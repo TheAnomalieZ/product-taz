@@ -13,11 +13,11 @@ import java.io.*;
  * Created by Maninesan on 2/18/17.
  */
 public class AETrain {
-    public static final String SPEARMINT_PATH = "./components/org.taz.core/src/main/python/Spearmint/spearmint/main.py";
-    public static final String FILE_PATH = "./components/org.taz.core/src/main/python/autoencoder/experiments/";
-    public static final String DATA_PATH = "./components/org.taz.core/src/main/python/autoencoder/data/";
-    public static final String FILE_ONE = "./files/autoencoder/trainingexample/o.py";
-    public static final String FILE_TWO = "./files/autoencoder/trainingexample/config.json";
+    public static final String SPEARMINT_PATH = "/home/kokulan/projects/Product_taz/product-taz/components/org.taz.core/src/main/python/Spearmint/spearmint/main.py";
+    public static final String FILE_PATH = "/home/kokulan/projects/Product_taz/product-taz/components/org.taz.core/src/main/python/autoencoder/experiments/";
+    public static final String DATA_PATH = "/home/kokulan/projects/Product_taz/product-taz/components/org.taz.core/src/main/python/autoencoder/data/";
+    public static final String FILE_ONE = "/home/kokulan/projects/Product_taz/product-taz/files/autoencoder/trainingexample/o.py";
+    public static final String FILE_TWO = "/home/kokulan/projects/Product_taz/product-taz/files/autoencoder/trainingexample/config.json";
 
     private JFRReader jfrReader;
     private CSVWriter csvWriter;
@@ -72,21 +72,23 @@ public class AETrain {
         }
     }
 
-    public void callAETrain(String filePath, String jfrType) throws IOException {
+    public boolean callAETrain(String filePath, String jfrType){
 
-
-        String outputfilePath = FILE_PATH+jfrType;
-
-        csvWriter.generateGCTimeSeries(jfrReader.getHeapTimeSeries(filePath),DATA_PATH);
-
-        setupTraining(jfrType);
-
+        boolean done = false;
         try {
+            String outputfilePath = FILE_PATH+jfrType;
+
+            csvWriter.generateGCTimeSeries(jfrReader.getHeapTimeSeries(filePath),DATA_PATH+"/"+jfrType);
+
+            setupTraining(jfrType);
+
+
             String execution = "python " + SPEARMINT_PATH +" "+ outputfilePath;
             Runtime r = Runtime.getRuntime();
             Process p = r.exec(execution);
             getExecutionResult(p);
             p.waitFor();
+            done = true;
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -94,7 +96,7 @@ public class AETrain {
             System.out.println("Python script ERROR");
         }
 
-
+        return done;
 
     }
     private  void getExecutionResult(Process process1) throws IOException {

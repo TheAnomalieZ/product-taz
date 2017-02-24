@@ -33,7 +33,7 @@ public class CSVWriter {
         logger.info("GC state sequences");
         PrintWriter outfile = null;
         try {
-            outfile = new PrintWriter(new File(fileName+"_states.csv"));
+            outfile = new PrintWriter(new File(fileName));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -43,8 +43,8 @@ public class CSVWriter {
             outfile.append(list.get(i++).toString() + "\n");
         }
         outfile.close();
-
     }
+
 
     public void getAEGCSequence(ArrayList<Integer> list,File fileName){
         logger.info("AE GC state sequences");

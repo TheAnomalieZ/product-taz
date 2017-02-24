@@ -15,10 +15,7 @@ import org.taz.commons.parser.models.GCEventsModel;
 import org.taz.commons.parser.util.EventNode;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by vithulan on 11/29/16.
@@ -32,6 +29,10 @@ public class JFRParserV18 implements JFRParser {
     public JFRParserV18(String path) {
         FILE_PATH = path;
         initParser(this.FILE_PATH);
+    }
+
+    public IView getiView() {
+        return iView;
     }
 
     public ArrayList<Integer> getMemoryStates() {
@@ -59,6 +60,11 @@ public class JFRParserV18 implements JFRParser {
         return cpuLoadHandler.getEventSeries();
     }
 
+    public HashMap<String, Object> getOverviewPageEvents() {
+        OverviewDataHandler overviewDataHandler = new OverviewDataHandler(iView);
+        return overviewDataHandler.getEventsMap();
+    }
+
     public ArrayList<HeapSummaryEvent> getHeapSummaryEvents() {
         HeapSummaryEventHandler heapSummaryEventHandler = new HeapSummaryEventHandler(iView);
         return heapSummaryEventHandler.getEventSeries();
@@ -79,6 +85,11 @@ public class JFRParserV18 implements JFRParser {
         return jvmInformationEventHandler.getEventList();
     }
 
+    public RecordingEvent getRecordingEvent(){
+        RecordingEventHandler recordingEventHandler = new RecordingEventHandler(iView);
+        return recordingEventHandler.getRecordingEvent();
+    }
+
     public ArrayList<InitialSystemPropertyEvent> getInitialSystemPropertyEventList(){
         InitialSystemPropertyEventHandler initialSystemPropertyEventHandler = new InitialSystemPropertyEventHandler(iView);
         return initialSystemPropertyEventHandler.getEventSeries();
@@ -94,9 +105,20 @@ public class JFRParserV18 implements JFRParser {
         return gcEventsModelHandler.getGCEventModel();
     }
 
+    public LinkedHashMap<ArrayList<String>,Long> getHotMethods(long startTime, long endTime){
+        StackTraceHandler stackTraceHandler = new StackTraceHandler(iView);
+        return stackTraceHandler.getStackTrace(startTime, endTime);
+    }
+
+
     public ArrayList<Double> getGCTimeSeries(){
         GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
         return gcTimeSeriesModel.getHeapandPauseSeries();
+    }
+
+    public ArrayList<Integer> getGCStates(){
+        GCTimeSeriesModel gcTimeSeriesModel = new GCTimeSeriesModel(iView);
+        return gcTimeSeriesModel.getStateSequence();
     }
 
     public ArrayList<EventNode> getAllJFRAttributes() {

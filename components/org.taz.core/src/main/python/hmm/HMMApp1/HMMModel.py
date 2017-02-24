@@ -35,7 +35,23 @@ class HMMModel(object):
         train_data = np.array(floats)
         model = hmm.MultinomialHMM(n_components=n1)
         model.fit(train_data)
+
         return model
+
+    def prepareData(self, floats, size):
+        dataArray = []
+        copyData = []
+        count = 0
+        for data in floats:
+            count = count + 1
+            if count == size:
+                break
+            copyData.append(data)
+
+        for data in floats:
+            copyData.append(data)
+        return copyData
+
 
     def testingHMM(self, filename, n, p, model):
         scorelist = []
@@ -48,7 +64,10 @@ class HMMModel(object):
         finally:
             f.close()
 
-        test_data = np.array(floats)
+        datavalues = self.prepareData(floats, n)
+
+
+        test_data = np.array(datavalues)
         #print test_data
         testlist = LinkedList()
         start = False
