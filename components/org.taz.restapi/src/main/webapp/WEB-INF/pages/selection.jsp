@@ -86,23 +86,29 @@
                                 </button>
                                 <p></p>
 
-                                <p>
-                                    Small description
+                                <p><B>
+                                    Able to analysis of the extensive of data collected by Java Flight Recorder.
+                                </B>
                                 </p>
 
-                                <p>* features</p>
+                                <p><B>Features</B></p>
+                                <p>* Garbage Collection Details </p>
+                                <p>* Recorded Event Details</p>
+                                <p>* Memory Related Information</p>
+                                <p>* JVM Information</p>
+                                <p>* CPU Usage Information</p>
                             </div>
                             <div class="col-md-6">
                                 <button type="button" id="analyze" class="btn btn-info btn-lg" onclick=""
-                                        style="width: 80%;">Analyze
+                                        style="width: 80%;">Detect Anomalies
                                 </button>
                                 <p></p>
 
                                 <p>
-                                    Small description
+                                    Able to Analysis and detect the outliers in the data collected by JFR.
                                 </p>
-
-                                <p>* features</p>
+                                <p><B>Features</B></p>
+                                <P> * Outlier detection using machine learning techniques</P>
                             </div>
                         </div>
                     </section>
@@ -121,9 +127,9 @@
                         </header>
                         <div class="panel-body">
                             <div class="col-md-6">
-                                <h3>Do you want to just find anomalous behaviour of your JFR</h3>
+                                <h4>Do you want to just find anomalous behaviour of your JFR without any training</h4>
 
-                                <p>small description about clustering method</p>
+                                <p>here you able to detect outliers using clustering</p>
 
                                 <div>
                                     <button type="button" class="btn btn-info btn-lg"
@@ -133,9 +139,9 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <h3>Do you want to train and find anomalous behaviour of your JFR</h3>
+                                <h4>Do you want to train and find outliers in your JFR output</h4>
 
-                                <p>small description about clustering method</p>
+                                <p>It is better to train your own system for detect anomalous behaviour. In the case of this situation use this methods</p>
 
                                 <div>
                                     <button type="button" class="btn btn-info btn-lg"
@@ -183,7 +189,7 @@
 
                                 <p></p>
 
-                                <p>small description about clustering method</p>
+                                <%--<p>small description about clustering method</p>--%>
 
                                 <div>
                                     <button type="button" class="btn btn-info btn-lg"
@@ -229,8 +235,6 @@
                                 </div>
                             </div>
                         </div>
-
-                </div>
         </section>
         </div>
         </div>

@@ -25,7 +25,7 @@ public class HMM {
     public HMM(){
         jfrReader = JFRReader.getInstance();
         csvWriter = CSVWriter.getInstance();
-        savefilePath = System.getProperty("user.dir") + "/components/org.taz.core/src/main/resources/hmm/";
+        savefilePath = "/home/kokulan/projects/Product_taz/product-taz/components/org.taz.core/src/main/resources/hmm/";
     }
     public ArrayList<Double> generateScoreSeries(String filePath, String jfrType) {
         String ext = "";

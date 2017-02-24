@@ -41,17 +41,17 @@
                         <li><a href="/garbage_collection?fileName=${fileName}">Garbage Collection</a></li>
                     </ul>
                 </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-laptop"></i>
-                        <span>Analysis JFR</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="/cluster_analysis?fileName=${fileName}">Cluster Analysis</a></li>
-                        <li><a href="/ae_analysis?fileName=${fileName}">AE Analysis</a></li>
-                        <li><a href="/hmm_analysis?fileName=${fileName}">HMM Analysis</a></li>
-                    </ul>
-                </li>
+                <%--<li class="sub-menu">--%>
+                    <%--<a href="javascript:;">--%>
+                        <%--<i class="fa fa-laptop"></i>--%>
+                        <%--<span>Analysis JFR</span>--%>
+                    <%--</a>--%>
+                    <%--<ul class="sub">--%>
+                        <%--<li><a href="/cluster_analysis?fileName=${fileName}">Cluster Analysis</a></li>--%>
+                        <%--<li><a href="/ae_analysis?fileName=${fileName}">AE Analysis</a></li>--%>
+                        <%--<li><a href="/hmm_analysis?fileName=${fileName}">HMM Analysis</a></li>--%>
+                    <%--</ul>--%>
+                <%--</li>--%>
             </ul>
         </div>
         <!-- sidebar menu end-->

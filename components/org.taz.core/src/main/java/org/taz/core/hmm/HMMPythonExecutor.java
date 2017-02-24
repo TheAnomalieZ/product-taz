@@ -6,12 +6,12 @@ import java.io.*;
  * Created by suve on 21/02/17.
  */
 public class HMMPythonExecutor {
-    public static final String FILE_NAME = "./components/org.taz.core/src/main/python/hmm/HMMApp1/output.py";
+    public static final String FILE_NAME = "/home/kokulan/projects/Product_taz/product-taz/components/org.taz.core/src/main/python/hmm/HMMApp1/output.py";
 
     public static void callPythonHMM(String fileName, String appName) throws IOException {
         String filePath = fileName;
         //String modelPath = "./components/org.taz.core/src/main/python/hmm/HMMApp1/model.pkl";
-        String modelPath = "./files/hmm/train/" + appName + "/model" + appName + ".pkl";
+        String modelPath = "/home/kokulan/projects/Product_taz/product-taz/files/hmm/train/app1/model1.pkl";
         //System.out.println(filePath);
         File f = new File(filePath);
         if(f.exists() && !f.isDirectory()) {

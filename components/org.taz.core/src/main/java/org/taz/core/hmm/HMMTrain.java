@@ -17,9 +17,9 @@ import java.io.InputStreamReader;
 public class HMMTrain {
     private JFRReader jfrreader;
     private CSVWriter csvWriter;
-    private static final String APP_FILE_PATH = "./files/hmm/train/";
-    private static final String DATA_FILE_PATH = "./files/hmm/train/";
-    private static final String SCRIPT_FILE_PATH = "./components/org.taz.core/src/main/python/hmm/HMMApp1/trainHMM.py";
+    private static final String APP_FILE_PATH = "/home/kokulan/projects/Product_taz/product-taz/files/hmm/train/";
+    private static final String DATA_FILE_PATH = "/home/kokulan/projects/Product_taz/product-taz/files/hmm/train/";
+    private static final String SCRIPT_FILE_PATH = "/home/kokulan/projects/Product_taz/product-taz/components/org.taz.core/src/main/python/hmm/HMMApp1/trainHMM.py";
     private String savefilePath;
 
     public HMMTrain(){

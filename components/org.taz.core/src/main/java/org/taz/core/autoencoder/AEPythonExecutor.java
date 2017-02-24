@@ -8,7 +8,7 @@ import java.nio.file.Paths;
  * Created by Maninesan on 2/5/17.
  */
 public class AEPythonExecutor {
-    public static final String FILE_NAME = "/home/garth/FYP/product-taz/components/org.taz.core/src/main/python/autoencoder/output.py";
+    public static final String FILE_NAME = "/home/kokulan/projects/Product_taz/product-taz/components/org.taz.core/src/main/python/autoencoder/output.py";
 
     /**
      * Call python scripts from java system process
