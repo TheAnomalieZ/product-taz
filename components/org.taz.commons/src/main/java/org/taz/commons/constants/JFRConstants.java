@@ -32,6 +32,7 @@ public class JFRConstants {
     public static final String TYPE = "type";
     public static final String GC_REFER_STATICS = "GC Reference Statistics";
     public static final String METASPACE_SUMMARY = "Metaspace Summary";
+    public static final String METASPACE_USED = "metaspace:used";
 
     public static String RECORDING = "Flight Recording";
     public static String ID = "id";
