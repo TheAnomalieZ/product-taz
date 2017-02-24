@@ -28,7 +28,8 @@ public class HMMTrain {
 
     }
 
-    public void startHMMTraining(String filepath, String appName){
+    public boolean startHMMTraining(String filepath, String appName){
+        boolean done = false;
         String ext = "";
         String fileName = String.format("%s%s", RandomStringUtils.randomAlphanumeric(8), ext);
 
@@ -49,12 +50,15 @@ public class HMMTrain {
             Process process = runtime.exec(execution);
             getExecutionResults(process);
             process.waitFor();
+            done = true;
 
         }catch(IOException e){
             e.printStackTrace();
         }catch(InterruptedException e){
             e.printStackTrace();
         }
+
+        return done;
     }
 
     public void getExecutionResults(Process process) throws IOException{
