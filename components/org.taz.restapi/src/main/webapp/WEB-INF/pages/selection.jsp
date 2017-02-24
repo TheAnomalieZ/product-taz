@@ -143,37 +143,40 @@
                                     </button>
                                 </div>
                                 <div class="col-md-12" id="AE_options" hidden style="padding: 2%">
-                                        <button type="button" class="btn btn-success btn-lg"
-                                                id="ae_train_dropdown" style="width: 40%;">Train
-                                        </button>
+                                    <button type="button" class="btn btn-success btn-lg"
+                                            id="ae_train_dropdown" style="width: 40%;">Train
+                                    </button>
                                     <span>
                                         <button type="button" class="btn btn-warning btn-lg"
-                                            id="ae_dropdown" style="width: 40%;">Analyse
+                                                id="ae_dropdown" style="width: 40%;">Analyse
                                         </button>
                                         </span>
-                                        <div class="col-md-12" hidden id="option_pane_AE" style="padding: 2%">
-                                            <form class="form-horizontal">
-                                                <select class="form-control" style="width: 300px" id="system_Ae">
-                                                    <option value="app1">App 1</option>
-                                                    <option value="app2">App 2</option>
-                                                </select>
-                                                <p></p>
-                                                <button type="button" class="btn btn-success"
-                                                        onclick="load_file_upload_ae()">GO
-                                                </button>
-                                            </form>
-                                        </div>
+
+                                    <div class="col-md-12" hidden id="option_pane_AE" style="padding: 2%">
+                                        <form class="form-horizontal">
+                                            <select class="form-control" style="width: 300px" id="system_Ae">
+                                                <option value="app1">App 1</option>
+                                                <option value="app2">App 2</option>
+                                            </select>
+
+                                            <p></p>
+                                            <button type="button" class="btn btn-success"
+                                                    onclick="load_file_upload_ae()">GO
+                                            </button>
+                                        </form>
+                                    </div>
                                     <div class="col-md-12" hidden id="option_pane_train_AE" style="padding: 2%">
                                         <form class="form-horizontal">
-                                        <select class="form-control" style="width: 300px" id="system_train_Ae">
-                                            <option value="app1">App 1</option>
-                                            <option value="app2">App 2</option>
-                                        </select>
-                                        <p></p>
-                                        <button type="button" class="btn btn-success"
-                                                onclick="load_train_ae()">Train
-                                        </button>
-                                    </form>
+                                            <select class="form-control" style="width: 300px" id="system_train_Ae">
+                                                <option value="app1">App 1</option>
+                                                <option value="app2">App 2</option>
+                                            </select>
+
+                                            <p></p>
+                                            <button type="button" class="btn btn-success"
+                                                    onclick="load_train_ae()">Train
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                                 <p></p>
@@ -196,52 +199,55 @@
                                                 id="hmm_dropdown" style="width: 40%;">Analyse
                                         </button>
                                     </span>
+
                                     <div class="col-md-12" hidden id="option_pane_HMM" style="padding: 2%">
                                         <form class="form-horizontal">
                                             <select class="form-control" style="width: 300px" id="system_Hmm">
                                                 <option value="app1">App 1</option>
                                                 <option value="app2">App 2</option>
                                             </select>
+
                                             <p></p>
                                             <button type="button" class="btn btn-success"
                                                     onclick="load_file_upload_hmm()">GO
                                             </button>
                                         </form>
+                                    </div>
+                                    <div class="col-md-12" hidden id="option_pane_train_HMM" style="padding: 2%">
+                                        <form class="form-horizontal">
+                                            <select class="form-control" style="width: 300px" id="system_train_Hmm">
+                                                <option value="app1">App 1</option>
+                                                <option value="app2">App 2</option>
+                                            </select>
 
-                                        <div class="col-md-12" hidden id="option_pane_train_HMM" style="padding: 2%">
-                                            <form class="form-horizontal">
-                                                <select class="form-control" style="width: 300px" id="system_train_Hmm">
-                                                    <option value="app1">App 1</option>
-                                                    <option value="app2">App 2</option>
-                                                </select>
-                                                <p></p>
-                                                <button type="button" class="btn btn-success"
-                                                        onclick="load_train_hmm()">Train
-                                                </button>
-                                            </form>
-                                        </div>
+                                            <p></p>
+                                            <button type="button" class="btn btn-success"
+                                                    onclick="load_train_hmm()">Train
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                    </section>
+
                 </div>
-            </div>
-            <!-- heap usage end-->
-
-
-            <%--Anomaly region--%>
-            <div class="row">
-
-            </div>
-            <%--Anomaly region End--%>
-            <%-- Content end--%>
-
-            <!-- page end-->
         </section>
+        </div>
+        </div>
+        <!-- heap usage end-->
+
+
+        <%--Anomaly region--%>
+        <div class="row">
+
+        </div>
+        <%--Anomaly region End--%>
+        <%-- Content end--%>
+
+        <!-- page end-->
     </section>
-    <!--main content end-->
+</section>
+<!--main content end-->
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
@@ -264,61 +270,69 @@
             document.getElementById('panel_body').style.display = 'none';
         });
 
-        $("#ae").click(function(){
+        $("#ae").click(function () {
             $("#AE_options").show();
             $("#HMM_options").hide();
             $("#option_pane_HMM").hide();
+            $("#option_pane_train_HMM").hide();
         });
 
-        $("#hmm").click(function(){
+        $("#hmm").click(function () {
             $("#AE_options").hide();
             $("#HMM_options").show();
             $("#option_pane_AE").hide();
+            $("#option_pane_train_AE").hide();
         });
 
-        $("#ae_dropdown").click(function(){
+        $("#ae_dropdown").click(function () {
             $("#option_pane_AE").show();
             $("#option_pane_train_AE").hide();
 
         });
 
 
-        $("#ae_train_dropdown").click(function(){
+        $("#ae_train_dropdown").click(function () {
             $("#option_pane_train_AE").show();
             $("#option_pane_AE").hide();
 
         });
 
-        $("#hmm_dropdown").click(function(){
+        $("#hmm_dropdown").click(function () {
             $("#option_pane_HMM").show();
             $("#option_pane_train_HMM").hide();
 
         });
 
 
-        $("#hmm_train_dropdown").click(function(){
+        $("#hmm_train_dropdown").click(function () {
             $("#option_pane_train_HMM").show();
             $("#option_pane_HMM").hide();
         });
     });
 
-    var load_file_upload_ae = function(){
+    var load_file_upload_ae = function () {
         var sys = $('#system_Ae').val();
         var url = '/ae_file_upload';
-        location.href= url;
+        location.href = url;
     };
 
-    var load_file_upload_hmm = function(){
+    var load_file_upload_hmm = function () {
         var sys = $('#system_Hmm').val();
-        var url = '/hmm_file_upload'
-        location.href= url;
+        var url = '/hmm_file_upload';
+        location.href = url;
     };
 
 
-    var load_train_ae = function(){
+    var load_train_ae = function () {
         var sys = $('#system_train_ae').val();
-        var url = '/ae_train_file_upload'
-        location.href= url;
+        var url = '/ae_train_file_upload';
+        location.href = url;
+    };
+
+    var load_train_hmm = function () {
+        var sys = $('#system_train_hmm').val();
+        var url = '/hmm_train_file_upload';
+        location.href = url;
     };
 </script>
 

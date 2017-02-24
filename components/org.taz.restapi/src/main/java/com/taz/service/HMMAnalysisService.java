@@ -33,7 +33,8 @@ public class HMMAnalysisService {
         model.addAttribute("fileName", fileName);
 
         HMM hmm = new HMM();
-        ArrayList<Double> scoreList  = hmm.generateScoreSeries(filePath,"App2_gctime");
+//        ArrayList<Double> scoreList  = hmm.generateScoreSeries(filePath,"App2_gctime");
+        ArrayList<Double> scoreList  = hmm.generateScoreSeries(filePath,"ap4");
         double threshold = hmm.getPercentileValue(scoreList, 5);
         ArrayList<Integer> labelList = hmm.generateAnomalyLabels(scoreList, threshold);
         ArrayList<Double[]> regions    = hmm.getAnomlayTimes(labelList, 10);

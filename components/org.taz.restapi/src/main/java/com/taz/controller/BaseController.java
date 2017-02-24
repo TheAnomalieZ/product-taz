@@ -27,6 +27,9 @@ public class BaseController {
     TrainingFileService trainingFileService;
 
     @Autowired
+    TrainingHMMFileService trainingHMMFileService;
+
+    @Autowired
     GarbageCollectionPageService garbageCollectionPageService;
 
     @Autowired
@@ -53,6 +56,7 @@ public class BaseController {
     private static final String AE_FILE_UPLOAD = "ae_fileupload";
     private static final String HMM_FILE_UPLOAD = "hmm_fileupload";
     private static final String AE_TRAIN_FILE_UPLOAD = "ae_training";
+    private static final String HMM_TRAIN_FILE_UPLOAD = "hmm_training";
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String jfrAnalyzer(ModelMap model) {
@@ -148,6 +152,13 @@ public class BaseController {
         model.addAttribute("chart_title", "Memory Event");
         model.addAttribute("AvailableFileNames", trainingFileService.getAllFileNames());
         return AE_TRAIN_FILE_UPLOAD;
+    }
+
+    @RequestMapping(value = "/hmm_train_file_upload", method = RequestMethod.GET)
+    public String hmmTrainFileUpload(ModelMap model) {
+        model.addAttribute("chart_title", "Memory Event");
+        model.addAttribute("AvailableFileNames", trainingHMMFileService.getAllFileNames());
+        return HMM_TRAIN_FILE_UPLOAD;
     }
 
 
