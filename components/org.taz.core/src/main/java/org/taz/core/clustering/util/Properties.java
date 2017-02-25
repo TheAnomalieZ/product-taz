@@ -8,4 +8,5 @@ public class Properties {
     public static final String ATTRIBUTE_TABLE_FILEPATH = SYSTEM_PATH+"/files/clustering/attribute_tables/";
     public static final String MINPOINT_TEST_FILEPATH = SYSTEM_PATH+"/files/clustering/minpoint_test/";
     public static final String ANOMALY_SCORES_FILEPATH = SYSTEM_PATH+"/files/clustering/anomaly_scores/";
+    public static final String PERCENTILE_TEST_FILEPATH = SYSTEM_PATH+"/files/clustering/percentile_test/";
 }

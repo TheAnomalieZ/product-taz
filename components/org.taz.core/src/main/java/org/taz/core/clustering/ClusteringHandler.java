@@ -4,7 +4,11 @@ import org.apache.commons.math3.stat.descriptive.rank.Percentile;
 import org.taz.core.clustering.util.CSVGenerator;
 import org.taz.core.clustering.util.Parameter;
 import org.taz.core.clustering.util.ParserAPI;
+import org.taz.core.clustering.util.Properties;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
@@ -32,11 +36,20 @@ public class ClusteringHandler {
         TreeMap<Long, Parameter> parameterTreeMap = parserAPI.generateAttributeTableForTest();
         CSVGenerator csvGenerator = new CSVGenerator(parameterTreeMap);
         //this.setPercentile(90.0);
-        for(int i =0;i<8;i++){
-            String file = csvGenerator.generateTestCSVs(i);
+        if(method.equals("attribute")) {
+            System.out.println("Running attribute test");
+            for (int i = 0; i < 8; i++) {
+                String file = csvGenerator.generateTestCSVs(i);
+                opticsOF = new OpticsOF(csvGenerator.getTotalPoints(), file);
+                opticsOF.setParameterTreeMap(parameterTreeMap);
+                this.anomalyScores = opticsOF.generateAnomalyScoreForTest();
+            }
+        }
+        if(method.equals("minpoint")){
+            System.out.println("Running minpoint test");
+            String file = csvGenerator.generateCSV();
             opticsOF = new OpticsOF(csvGenerator.getTotalPoints(),file);
             opticsOF.setParameterTreeMap(parameterTreeMap);
-            this.anomalyScores = opticsOF.generateAnomalyScoreForTest();
         }
 
     }
@@ -112,5 +125,31 @@ public class ClusteringHandler {
 
     public ArrayList<Double> getAnomalyScores() {
         return anomalyScores;
+    }
+
+    public void percentileValueforTest(double start, int iterations,int gap){
+        ArrayList<Double> anomalyScores = this.getAnomalyScores();
+        for(int i=0;i<iterations;i++){
+            this.setPercentile(start+i*gap);
+            double value = this.getPercentileValue();
+            try {
+                PrintWriter outfile = new PrintWriter(new File(Properties.PERCENTILE_TEST_FILEPATH+"Percentile_Test_"+(start+i)+".csv"));
+                for(double anomalyScore : anomalyScores){
+                    if(anomalyScore>value){
+                        outfile.write(anomalyScore+"\n");
+                    }
+                    else{
+                        outfile.write(0.0+"\n");
+                    }
+                }
+                outfile.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void runMinpointTest(int startMinPoint, int iterations, int gap) {
+        opticsOF.runMinPointTest(startMinPoint,iterations,gap);
     }
 }
