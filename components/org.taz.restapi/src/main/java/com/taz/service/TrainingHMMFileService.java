@@ -66,7 +66,7 @@ public class TrainingHMMFileService {
         boolean train = false;
         HMMTrain hmmTrain = new HMMTrain();
         String filePath = rootPath + "/" + fileName;
-        train = hmmTrain.startHMMTraining(filePath, "ap4");
+        train = hmmTrain.startHMMTraining(filePath, "ap3");
 
         return train;
     }

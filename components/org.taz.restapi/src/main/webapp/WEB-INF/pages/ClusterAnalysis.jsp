@@ -57,9 +57,9 @@
                 <li>
                     <a href="/home">Home</a>
                 </li>
-                <%--<li>--%>
-                <%--<a class="active-trail active" href="#">Pages</a>--%>
-                <%--</li>--%>
+                <li>
+                <a class="active-trail active" href="/cluster_file_upload">My files</a>
+                </li>
                 <li>
                     <a class="current" href="">Analyse using clustering</a>
                 </li>
