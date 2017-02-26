@@ -71,10 +71,10 @@ public class OpticsOF extends DatabaseHandler {
                 for (DBIDIter iter = scores.iterDBIDs(); iter.valid(); iter.advance()) {
                     anomalyScore.add(scores.doubleValue(iter));
                     outfile.append(Double.toString(scores.doubleValue(iter))+"\n");
-                   /* long key = parameterTreeMap.firstKey()+Long.parseLong(DBIDUtil.toString(iter));
+                    long key = parameterTreeMap.firstKey()+Long.parseLong(DBIDUtil.toString(iter));
                     Parameter parameter = parameterTreeMap.get(key);
                     parameter.setAnomalyScore(scores.doubleValue(iter));
-                    parameterTreeMap.put(key,parameter);*/
+                    parameterTreeMap.put(key,parameter);
                 }
                 outfile.close();
             } catch (FileNotFoundException e) {

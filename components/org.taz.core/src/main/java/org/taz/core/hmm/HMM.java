@@ -132,7 +132,7 @@ public class HMM {
                     last = j;
                 }
                 time[1] = Double.valueOf(--last);
-                i=last;
+                i=++last;
                 anomalies.add(time);
                 time = new Double[2];
             }else{

@@ -175,7 +175,7 @@
                                                         <div style="width: ${type.value}%" aria-valuemax="100"
                                                              aria-valuemin="0"
                                                              aria-valuenow="40" role="progressbar"
-                                                             class="progress-bar progress-bar-success">
+                                                             class="progress-bar progress-bar-danger">
                                                             <span class="sr-only">${type.value}% Complete (success)</span>
                                                         </div>
                                                     </div>

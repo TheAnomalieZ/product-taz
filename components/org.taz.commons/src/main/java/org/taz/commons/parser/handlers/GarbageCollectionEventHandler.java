@@ -7,6 +7,8 @@ import org.taz.commons.parser.events.GarbageCollectionEvent;
 import org.taz.commons.parser.util.EventHandler;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Created by K.Kokulan on 12/20/2016.
@@ -35,6 +37,8 @@ public class GarbageCollectionEventHandler extends EventHandler{
                 eventList.add(garbageCollectionEvent);
             }
         }
+        Collections.sort(eventList, (o1, o2) -> (Integer.parseInt(o1.getGcId())) - Integer.parseInt(o2.getGcId()));
+
         return eventList;
     }
 }

@@ -9,6 +9,8 @@ import org.taz.commons.util.JFRReader;
 import org.taz.core.clustering.ClusteringHandler;
 import org.taz.core.clustering.util.Parameter;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 /**
@@ -99,7 +101,7 @@ public class GCAnalysisPageService {
                     for (Map.Entry<ArrayList<String>, Long> entry : hotMethods.entrySet()) {
                         Long time = entry.getValue();
                         double percentage = ((float) time / totalTime) * 100;
-                        hotMethodsPercentage.put(entry.getKey().get(0), percentage);
+                        hotMethodsPercentage.put(entry.getKey().get(0), round(percentage, 2));
                     }
                 }
                 clusteringAnomalyRegion.setHotMethodsPercentage(hotMethodsPercentage);
@@ -125,5 +127,13 @@ public class GCAnalysisPageService {
         }
 
         model.addAttribute("heapUsedData", heapSummaryData.toString());
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }
