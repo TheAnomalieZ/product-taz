@@ -14,6 +14,15 @@ public class Parameter {
     private double anomalyScore;
     private double anomalyClassificationScore;
     private long metaspaceUsed;
+    private double anomalyUpdatedScore;
+
+    public double getAnomalyUpdatedScore() {
+        return anomalyUpdatedScore;
+    }
+
+    public void setAnomalyUpdatedScore(double anomalyUpdatedScore) {
+        this.anomalyUpdatedScore = anomalyUpdatedScore;
+    }
 
     public long getMetaspaceUsed() {
         return metaspaceUsed;

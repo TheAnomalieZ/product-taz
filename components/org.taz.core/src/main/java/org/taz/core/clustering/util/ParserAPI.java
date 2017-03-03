@@ -44,6 +44,10 @@ public class ParserAPI {
         }
     }
 
+    /**
+     * Generate attribute table
+     * @return Treemap of GCID and Parameter object with anomaly score
+     */
     public TreeMap<Long, Parameter> generateAttributeTable() {
         System.out.println("Generating attribute table..");
         Map<Long, Parameter> parametersMap = new HashMap<>();

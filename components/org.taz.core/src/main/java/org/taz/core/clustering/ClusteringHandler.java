@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -23,7 +24,7 @@ public class ClusteringHandler {
 
     public ClusteringHandler(String file_path) {
         createOpticsOfInstance(file_path);
-        percentilePercentage = 90.0;
+        percentilePercentage = 80.0;
     }
 
     /**
@@ -103,6 +104,60 @@ public class ClusteringHandler {
             }
             i++;
         }
+        return anomalyRegionMap;
+    }
+
+    public TreeMap<Integer, Parameter> getAnomalyPointsRegionPrec(){
+        TreeMap<Long, Parameter> parameterTreeMap = opticsOF.getParameterTreeMap();
+        System.out.println("Map size "+parameterTreeMap.size());
+        TreeMap<Integer, Parameter> anomalyRegionMap = new TreeMap<>();
+        double percentileVal = getPercentileValue();
+        System.out.println(percentileVal);
+        int i = 0;
+        int count = 0;
+        HashMap<Integer, Parameter> tempMap = new HashMap<>();
+        for(Map.Entry<Long,Parameter> entry : parameterTreeMap.entrySet()){
+            Parameter parameter = entry.getValue();
+
+            if(parameter.getAnomalyScore()>=percentileVal){
+                count++;
+                tempMap.put(i,parameter);
+                if(tempMap.size()==10){
+                    System.out.println("TEMP MAP"+tempMap.size());
+                    System.out.println("Anomaly Map before "+anomalyRegionMap.size());
+                    for(Map.Entry<Integer,Parameter> entry1 : tempMap.entrySet()){
+                        Parameter parameter1 = entry1.getValue();
+                        parameter1.setAnomalyUpdatedScore(entry1.getValue().getAnomalyScore());
+                        anomalyRegionMap.put(entry1.getKey(),parameter1);
+                        count--;
+                    }
+                    System.out.println("Anomaly Map after"+anomalyRegionMap.size());
+                    /*parameter.setAnomalyUpdatedScore(parameter.getAnomalyScore());
+                    anomalyRegionMap.put(i,parameter);*/
+                    count = 0;
+                    tempMap = new HashMap<>();
+                }
+
+            }
+            else{
+                if(tempMap.size()>0){
+                    count=0;
+                    System.out.println("Anomaly Map before else "+anomalyRegionMap.size());
+                    for(Map.Entry<Integer,Parameter> entry1 : tempMap.entrySet()){
+                        System.out.println("TEMP MAPPPPP"+tempMap.size());
+                        Parameter parameter1 = entry1.getValue();
+                        parameter1.setAnomalyUpdatedScore(percentileVal-percentileVal*0.1);
+                        anomalyRegionMap.put(entry1.getKey(),parameter1);
+                    }
+                    System.out.println("Anomaly Map After else "+anomalyRegionMap.size());
+                    tempMap = new HashMap<>();
+                }
+                parameter.setAnomalyUpdatedScore(parameter.getAnomalyScore());
+                anomalyRegionMap.put(i,parameter);
+            }
+            i++;
+        }
+        System.out.println(anomalyRegionMap.size());
         return anomalyRegionMap;
     }
 
