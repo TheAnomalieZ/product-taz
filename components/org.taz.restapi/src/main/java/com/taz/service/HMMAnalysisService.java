@@ -4,11 +4,14 @@ import com.taz.models.AnomalyRegion;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+import org.taz.commons.parser.events.GarbageCollectionEvent;
 import org.taz.commons.parser.events.HeapSummaryEvent;
 import org.taz.commons.parser.events.RecordingEvent;
 import org.taz.commons.util.JFRReader;
 import org.taz.core.hmm.HMM;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -56,6 +59,10 @@ public class HMMAnalysisService {
 
         if(!regions.isEmpty()){
             RecordingEvent recordingEvent = jfrReader.getRecordingEvent(filePath);
+            ArrayList<GarbageCollectionEvent> garbageCollectionEvents = jfrReader.getGarbageCollectionEventDashboard(filePath);
+
+            int startGcId = Integer.parseInt(garbageCollectionEvents.get(0).getGcId());
+
             long JFRStartTime = recordingEvent.getStartTime()/1000000;
             AnomalyRegion aeAnomalyRegion = null;
             int regionCount = 1;
@@ -63,8 +70,16 @@ public class HMMAnalysisService {
             for(Double [] region : regions) {
                 aeAnomalyRegion = new AnomalyRegion();
 
-                long startTime = region[0].longValue() * 1000 + JFRStartTime;
-                long endTime = region[1].longValue() * 1000 + JFRStartTime;
+                int startGc = startGcId + region[0].intValue();
+                int endValue = startGcId + region[1].intValue();
+
+                long startTime = 0L;
+                long endTime = 0L;
+
+                if(garbageCollectionEvents.get(startGc) != null) {
+                    startTime = garbageCollectionEvents.get(startGc).getStartTimestamp()/ 1000000;
+                    endTime = garbageCollectionEvents.get(endValue).getStartTimestamp() / 1000000;
+                }
 
                 LinkedHashMap<ArrayList<String>, Long> hotMethods = jfrReader.getHotMethods(filePath, startTime, endTime);
                 LinkedHashMap<String, Double> hotMethodsPercentage = new LinkedHashMap<>();
@@ -78,7 +93,7 @@ public class HMMAnalysisService {
                     for (Map.Entry<ArrayList<String>, Long> entry : hotMethods.entrySet()) {
                         Long time = entry.getValue();
                         double percentage = ((float) time / totalTime) * 100;
-                        hotMethodsPercentage.put(entry.getKey().get(0), percentage);
+                        hotMethodsPercentage.put(entry.getKey().get(0), round(percentage, 2));
                     }
                 }
                 aeAnomalyRegion.setRegionID(regionCount);
@@ -88,6 +103,7 @@ public class HMMAnalysisService {
                 aeAnomalyRegion.setEndGCId(region[1].longValue());
                 aeAnomalyRegion.setHotMethodsPercentage(hotMethodsPercentage);
 
+                regionCount++;
                 anomalyRegions.add(aeAnomalyRegion);
             }
         }
@@ -111,7 +127,15 @@ public class HMMAnalysisService {
             heapSummaryData.append("]");
         }
 
-        model.addAttribute("heapUsedData", heapSummaryData.toString());
+            model.addAttribute("heapUsedData", heapSummaryData.toString());
 
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }
