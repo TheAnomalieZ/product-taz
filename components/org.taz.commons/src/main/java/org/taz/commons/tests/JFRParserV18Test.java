@@ -1,121 +1,65 @@
 package org.taz.commons.tests;
 
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import org.taz.commons.constants.JFRConstants;
+import org.taz.commons.parser.JFRParserV18;
+import org.taz.commons.parser.util.EventNode;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * Created by Maninesan on 2/23/17.
  */
 public class JFRParserV18Test {
-    @Test
-    public void getMemoryStates() throws Exception {
+    @org.testng.annotations.BeforeMethod
+    public void setUp() throws Exception {
 
     }
 
-    @Test
-    public void getHeapTimeSeries() throws Exception {
+    @org.testng.annotations.AfterMethod
+    public void tearDown() throws Exception {
 
     }
 
-    @Test
-    public void getGCEvents() throws Exception {
+    @org.testng.annotations.Test
+    public void testGetMemoryStates1() throws Exception {
 
     }
 
-    @Test
-    public void getPauseTimeSeries() throws Exception {
+    @org.testng.annotations.Test
+    public void testGetHeapTimeSeries1() throws Exception {
 
     }
 
-    @Test
-    public void getCPUEvents() throws Exception {
+    @org.testng.annotations.Test
+    public void testGetPauseTimeSeries1() throws Exception {
 
     }
 
-    @Test
-    public void getOverviewPageEvents() throws Exception {
+    @org.testng.annotations.Test
+    public void testGetJVMInformationEvent1() throws Exception {
 
     }
 
-    @Test
-    public void getHeapSummaryEvents() throws Exception {
+    @org.testng.annotations.Test
+    public void testGetHotMethods1() throws Exception {
 
     }
 
-    @Test
-    public void getGarbageCollectionEvents() throws Exception {
+    @org.testng.annotations.Test
+    public void testGetJFRAttributes() throws Exception {
+        String[] a = new String[]{"(startTime)", "(endTime)", "(duration)",
+                "(producer)","(producerURI)"
+                ,"(eventType)"
+                ,"(eventTypePath)"
+                ,"jvmUser","jvmSystem", "machineTotal"};
+
+        EventNode en =  new JFRParserV18("/home/garth/FYP/product-taz/components/org.taz.commons/src/main/java/org/taz/commons/tests/normal.jfr").getJFRAttributes(JFRConstants.CPULOAD);
+        Object[] arrayList= en.getAttributes().toArray();
+        assertEquals(a,arrayList);
+
 
     }
 
-    @Test
-    public void getJVMInformationEvent() throws Exception {
-
-    }
-
-    @Test
-    public void getJVMInformationEventList() throws Exception {
-
-    }
-
-    @Test
-    public void getRecordingEvent() throws Exception {
-
-    }
-
-    @Test
-    public void getInitialSystemPropertyEventList() throws Exception {
-
-    }
-
-    @Test
-    public void getRecordingSettingEventList() throws Exception {
-
-    }
-
-    @Test
-    public void getGCEventModel() throws Exception {
-
-    }
-
-    @Test
-    public void getHotMethods() throws Exception {
-
-    }
-
-    @Test
-    public void getGCTimeSeries() throws Exception {
-
-    }
-
-    @Test
-    public void getGCStates() throws Exception {
-
-    }
-
-    @Test
-    public void getAllJFRAttributes() throws Exception {
-
-    }
-
-    @Test
-    public void getJFRAttributes() throws Exception {
-
-    }
-
-    @Test
-    public void initParser() throws Exception {
-
-    }
-
-    @Test
-    public void getAttributeValues() throws Exception {
-
-    }
-
-    @Test
-    public void getIView() throws Exception {
-
-    }
 
 }
