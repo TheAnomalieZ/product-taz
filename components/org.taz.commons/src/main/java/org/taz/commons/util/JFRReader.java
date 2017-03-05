@@ -164,7 +164,7 @@ public class JFRReader {
         }
     }
 
-    private ArrayList<Double> convertGCTimeSeries(ArrayList<Double> series){
+    public static ArrayList<Double> convertGCTimeSeries(ArrayList<Double> series){
         ArrayList<Double> convertedSeries = new ArrayList<Double>();
         ArrayList<Double> tempSeries = series;
         int i =1000;
