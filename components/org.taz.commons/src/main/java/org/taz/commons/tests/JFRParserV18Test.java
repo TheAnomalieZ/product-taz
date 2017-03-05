@@ -32,8 +32,6 @@ public class JFRParserV18Test {
 
     }
 
-
-
     @org.testng.annotations.Test
     public void testGetMemoryStates() throws Exception {
         //generate gc states from parser
@@ -62,8 +60,8 @@ public class JFRParserV18Test {
     }
 
 
-
     @org.testng.annotations.Test
+
     public void testGetHeapTimeSeries() throws Exception {
         //generate heap time series from parser
         ArrayList<Double> testlist = JFRReader.convertGCTimeSeries(new JFRParserV18(jfrPath).getGCTimeSeries());
@@ -106,8 +104,6 @@ public class JFRParserV18Test {
     public void testGetHotMethods() throws Exception {
 
     }
-
-
 
     /**
      * Test the CPULOAD event attributes
